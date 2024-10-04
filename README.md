@@ -14,11 +14,11 @@
 <tr>
 
 
-<th align="center"><img src="https://avatars.githubusercontent.com/u/179177172?v=4" width="50" style="max-width: 100%;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/179177172?v=4" width="50" style="width: 80px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64" style="width: 80px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 80px;">
 </th>
 </tr>
 </thead>
