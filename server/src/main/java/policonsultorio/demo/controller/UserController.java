@@ -1,2 +1,8 @@
-package policonsultorio.demo.controller;public class UserController {
+package policonsultorio.demo.controller;
+
+/*
+@RestController
+@RequestMapping("api/user")
+@CrossOrigin("*")*/
+public class UserController {
 }
