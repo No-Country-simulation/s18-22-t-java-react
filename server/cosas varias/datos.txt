@@ -1,0 +1,30 @@
+team:
+https://meet.google.com/vdi-stqw-yjv
+
+
+https://github.com/No-Country-simulation/s18-22-t-java-react
+
+
+gmail:
+name:
+stjavareact71
+
+email:
+stjavareact71@gmail.com
+
+password:
+Contrasenia#
+
+
+github:
+email: stjavareact71@gmail.com
+password: Contrasenia#1
+name: stjavareact71
+
+
+server:
+https://railway.app
+
+
+diagramas:
+https://app.diagrams.net/
