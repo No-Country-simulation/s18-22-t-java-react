@@ -1,0 +1,92 @@
+{
+  "roles": [
+    {
+      "id": 1,
+      "name": "Doctor"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. John Smith",
+      "password": "password123",
+      "rol": 1,
+      "dni": "12345678",
+      "phone": "+54 11 5555 1234",
+      "email": "john.smith@example.com",
+      "address": "123 Elm St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Dr. Emily Johnson",
+      "password": "password123",
+      "rol": 1,
+      "dni": "87654321",
+      "phone": "+54 11 5555 5678",
+      "email": "emily.johnson@example.com",
+      "address": "456 Oak St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Dr. Michael Williams",
+      "password": "password123",
+      "rol": 1,
+      "dni": "12348765",
+      "phone": "+54 11 5555 9876",
+      "email": "michael.williams@example.com",
+      "address": "789 Maple St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Dr. Sarah Brown",
+      "password": "password123",
+      "rol": 1,
+      "dni": "87651234",
+      "phone": "+54 11 5555 2468",
+      "email": "sarah.brown@example.com",
+      "address": "101 Pine St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Dr. James Davis",
+      "password": "password123",
+      "rol": 1,
+      "dni": "13572468",
+      "phone": "+54 11 5555 1357",
+      "email": "james.davis@example.com",
+      "address": "202 Cedar St, Buenos Aires",
+      "active": true
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "id_user": 1,
+      "speciality": "Cardiología"
+    },
+    {
+      "id": 2,
+      "id_user": 2,
+      "speciality": "Dermatología"
+    },
+    {
+      "id": 3,
+      "id_user": 3,
+      "speciality": "Neurología"
+    },
+    {
+      "id": 4,
+      "id_user": 4,
+      "speciality": "Pediatría"
+    },
+    {
+      "id": 5,
+      "id_user": 5,
+      "speciality": "Traumatología"
+    }
+  ]
+}
