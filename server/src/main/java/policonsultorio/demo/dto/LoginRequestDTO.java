@@ -1,2 +1,11 @@
-package policonsultorio.demo.dto;public record LoginRequestDTO() {
+package policonsultorio.demo.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public record LoginRequestDTO(
+        @NotBlank
+        String name,
+        @NotBlank
+        String password
+) {
 }
