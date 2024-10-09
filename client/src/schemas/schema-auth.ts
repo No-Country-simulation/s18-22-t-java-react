@@ -8,3 +8,8 @@ export const schemaRegister = z.object({
     direction: z.string(),
     password: z.string({ message: "Password required" }).min(6, { message: "min 6 character" }),
 })
+
+export const schemaLogin = z.object({
+    email: z.string({ message: "Email required" }).email({ message: "Email invalid" }),
+    password: z.string({ message: "Password required" }).min(6, { message: "min 6 character" }),
+})

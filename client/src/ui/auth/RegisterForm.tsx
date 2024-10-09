@@ -1,8 +1,8 @@
 
 "use client"
 
-import { schemaRegister } from "@/actions"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { schemaRegister } from "@/schemas"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
