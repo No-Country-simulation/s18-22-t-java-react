@@ -1,0 +1,1 @@
+export { schemaRegister, schemaLogin } from "./schema-auth"
