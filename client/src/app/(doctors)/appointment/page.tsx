@@ -1,26 +1,19 @@
-import { Data } from "@/interfaces/user"
 import data from '../../../utils/data.json'
 import { DoctorList } from "@/ui/doctors/List"
 
 export default function AppointmentsPage() {
-  const getDoctorData = (data: Data) => {
-    const doctorList = data.doctors.map((doctor) => {
-      const user = data.users.find((user) => user.id === doctor.id_user)
-      return {
-        id: user?.id || 0,
-        name: user?.name || "Error",
-        speciality: doctor.speciality
-      }
-    })
-    return doctorList
-  }
-
-  const list = getDoctorData(data)
-
+  const doctorListWithPlacesFiltered = data.doctors.filter((doctor, index, self) =>
+    index === self.findIndex((d) => d.place === doctor.place)
+  )
+  const doctorListWithSpecialityFiltered = data.doctors.filter((doctor, index, self) =>
+    index === self.findIndex((d) => d.speciality === doctor.speciality)
+  )
   return (
     <div className="flex flex-col p-4 gap-4">
-      <h3>Lista de Profesionales</h3>
-      <DoctorList list={list} />
+      <h3>Lista de Especialidades</h3>
+      <DoctorList list={doctorListWithSpecialityFiltered} title={"speciality"} />
+      <h3>Lista de Establecimientos</h3>
+      <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
     </div>
   )
 }

@@ -8,6 +8,7 @@ export function DoctorDetails({ doctor }: Props) {
   return (
     <div className="flex flex-col gap-2">
       <div>
+        <p className="text-2xl font-bold">{doctor.name}</p>
         <p>Especialidad: {doctor.speciality}</p>
         <p>DNI: {doctor.dni}</p>
         <p>Teléfono: {doctor.phone}</p>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function DashboardPage() {
     return (
@@ -17,7 +18,7 @@ export default function DashboardPage() {
                         <button className="border max-w-max self-end px-2 py-1">Mis turnos</button>
                     </form>
 
-                    <button className="bg-gray-300 py-5 px-24">Reserva un turno</button>
+                    <Link href={'/appointment'} className="bg-gray-300 py-5 px-24">Reserva un turno</Link>
 
                 </div>
 
