@@ -1,22 +1,22 @@
-import { DoctorForList } from "@/interfaces/user"
+import { Doctor } from "@/interfaces/user"
 import Link from "next/link"
 
 interface Props {
-  list: DoctorForList[]
+  list: Doctor[]
+  title: string
 }
 
-export function DoctorList({ list }: Props) {
+export function DoctorList({ list, title }: Props) {
   return (
     <div className="flex flex-col gap-2">
-      {list.map((doctor) => (
-        <div className="flex justify-between border border-black rounded p-4" key={doctor.id}>
-          <div className="flex flex-col">
-            <span className="text-2xl font-semibold">{doctor.name}</span>
-            <span>{doctor.speciality}</span>
+      <div className="flex gap-2">
+        {list.map((doctor) => (
+          <div className="flex flex-col gap-4 border border-black rounded p-2" key={doctor.id}>
+            <span>{title === 'speciality' ? doctor.speciality : doctor.place}</span>
+            <Link href={`/search?${title === 'speciality' ? 'speciality=' + doctor.speciality : 'place=' + doctor.place}`} className="px-4 py-2 border bg-blue-500 rounded text-white">Ver Más</Link>
           </div>
-          <Link href={`/appointment/${doctor.id}`} className="p-4 border bg-blue-500 rounded text-white">Ver Agenda</Link>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

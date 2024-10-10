@@ -19,6 +19,7 @@ export interface Doctor {
   id: number
   id_user: number
   speciality: string
+  place: string
 }
 
 export interface DoctorComplete extends User {
