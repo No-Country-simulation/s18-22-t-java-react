@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { schemaLogin } from "@/schemas"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import Link from "next/link"
 
 type TypeFormData = z.infer<typeof schemaLogin>
 
@@ -31,7 +32,7 @@ export function LoginForm() {
             <input type="password" id="password" {...register("password")} className="border" />
             {errors.password && (<p className="text-red-500">{errors.password.message}</p>)}
 
-            <button className="border">Enviar</button>
+            <Link href={'/dashboard'} className="border">Enviar</Link>
         </form>
     )
 }
