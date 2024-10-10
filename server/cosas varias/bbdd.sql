@@ -6,7 +6,9 @@ USE clinica;
 CREATE TABLE user (
 	id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT  PRIMARY KEY,
     name VARCHAR(250)  NOT NULL,
-    password VARCHAR(250) NOT NULL
+    password VARCHAR(250) NOT NULL,
+    email VARCHAR(250)  NOT NULL,
+    phone VARCHAR(250)  NOT NULL
 );
 
 CREATE TABLE authorizarion (
@@ -15,4 +17,4 @@ CREATE TABLE authorizarion (
     jwt VARCHAR(250) NOT NULL
 );
 
-SELECT * FROM authorizarion;
+SELECT * FROM user;

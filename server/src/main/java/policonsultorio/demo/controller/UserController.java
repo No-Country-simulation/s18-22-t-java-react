@@ -14,6 +14,6 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> register(@Valid @RequestBody LoginRequestDTO loginRequestDto){
 
-        return
+        return null;
     }
 }

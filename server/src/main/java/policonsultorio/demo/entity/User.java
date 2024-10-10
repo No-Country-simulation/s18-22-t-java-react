@@ -22,6 +22,10 @@ public class User {
     private String name;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "email", nullable = false)
+    private String email;
+    @Column(name = "phone", nullable = false)
+    private String phone;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Authorizarion jwt;
