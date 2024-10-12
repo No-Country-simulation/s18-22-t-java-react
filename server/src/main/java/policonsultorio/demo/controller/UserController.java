@@ -20,19 +20,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping(produces = "application/json")
     public ResponseEntity<?> register(@Valid @RequestBody LoginRequestDTO loginRequestDto) {
 
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(userService.register(loginRequestDto));
+            return ResponseEntity.status(HttpStatus.CREATED).body(userService.register(loginRequestDto));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
 
         }
     }
 
-    @GetMapping
-    public  String testResponse(){
-        return "hola clinica";
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<?> getById(@PathVariable Long id) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.findByUserId(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong n/" + e.getMessage());
+        }
     }
 }
