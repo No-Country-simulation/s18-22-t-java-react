@@ -27,8 +27,9 @@ public class User {
     private String phone;
     @Column(name = "img")
     private String img;
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "authorizarion_id", referencedColumnName = "id")
+   // @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+   // @JoinColumn(name = "authorizarion_id", referencedColumnName = "id")
+   @OneToOne(mappedBy = "userId")
     private Authorizarion authorizarion;
 
 

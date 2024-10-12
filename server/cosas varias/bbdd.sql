@@ -9,13 +9,16 @@ CREATE TABLE user (
     password VARCHAR(250) NOT NULL,
     email VARCHAR(250)  NOT NULL,
     img TEXT,
-    phone VARCHAR(250)  NOT NULL
+    phone VARCHAR(250)  NOT NULL,
+     active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE authorizarion (
 	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL ,
-    jwt VARCHAR(250) NOT NULL
+    jwt VARCHAR(250) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 SELECT * FROM user;
+SELECT * FROM authorizarion;
