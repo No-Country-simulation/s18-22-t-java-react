@@ -27,8 +27,8 @@ public class User {
     private String phone;
     @Column(name = "img")
     private String img;
-    @Column(name = "active")
-    private Boolean active;
+    @Column(name = "active",columnDefinition = "boolean default true")
+    private Boolean active = true;
    @OneToOne(mappedBy = "userId")
     private Authorizarion authorizarion;
 

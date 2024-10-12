@@ -26,11 +26,11 @@ class ClinicaApplicationTests {
     public void createUserTest()
             throws Exception {
         try {
-            LoginRequestDTO alex = new LoginRequestDTO(null, "alex", "1234", "algon@gmai.com", "32536987", null);
+            LoginRequestDTO alex = new LoginRequestDTO(null, "alex", "1234", "algon@gmai.com", "32536987", null,null);
 
-            User userCreated = userService.register(alex);
+            LoginRequestDTO userCreated = userService.register(alex);
             System.out.println(userCreated);
-            Assertions.assertThat(userCreated.getId()).isPositive();
+            Assertions.assertThat(userCreated.id()).isPositive();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
