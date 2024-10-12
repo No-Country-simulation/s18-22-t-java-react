@@ -1,14 +1,13 @@
 package policonsultorio.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import policonsultorio.demo.dto.LoginRequestDTO;
 
 @Entity(name = "User")
 @Table(name = "user")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -16,9 +15,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "BIGINT UNSIGNED")
     private Long id ;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
     @Column(name = "password", nullable = false)
     private String password;
@@ -26,9 +25,18 @@ public class User {
     private String email;
     @Column(name = "phone", nullable = false)
     private String phone;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Authorizarion jwt;
+    @Column(name = "img")
+    private String img;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "authorizarion_id", referencedColumnName = "id")
+    private Authorizarion authorizarion;
 
 
+    public User(LoginRequestDTO loginRequestDto) {
+        this.name = loginRequestDto.name();
+        this.password = loginRequestDto.password();
+        this.email = loginRequestDto.email();
+        this.phone = loginRequestDto.phone();
+        this.img = loginRequestDto.img();
+    }
 }

@@ -21,7 +21,7 @@ public class Authorizarion {
     @Column(name = "id")
     private Long id ;
 
-    @OneToOne(mappedBy = "jwt")
+    @OneToOne(mappedBy = "authorizarion")
     private User userId;
     @Column(name = "jwt", nullable = false)
     private String jwt;
