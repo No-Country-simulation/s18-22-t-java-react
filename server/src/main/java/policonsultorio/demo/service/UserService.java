@@ -1,5 +1,6 @@
 package policonsultorio.demo.service;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class UserService {
             usuario.setActive(true);
             usuario = userRepositoty.save(usuario);
         } else if (usuario.getActive()) {
-          throw new EntityNotFoundException("Entity is exist");
+          throw new EntityExistsException("Entity is exist");
         }
 
         return new LoginRequestDTO(usuario);
