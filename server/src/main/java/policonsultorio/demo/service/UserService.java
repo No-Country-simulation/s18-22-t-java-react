@@ -33,4 +33,10 @@ public class UserService {
         return new LoginRequestDTO(usuario);
 
     }
+
+    public LoginRequestDTO findByUserId(Long id) {
+
+        User usuario = userRepositoty.findById(id).orElseThrow(()-> new  EntityNotFoundException("Entoty not found") );
+        return new LoginRequestDTO(usuario);
+    }
 }

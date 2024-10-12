@@ -1,35 +1,35 @@
 package policonsultorio.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import policonsultorio.demo.controller.UserController;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.service.UserService;
-
-import static net.bytebuddy.matcher.ElementMatchers.is;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.web.servlet.function.RequestPredicates.contentType;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+
+@WebMvcTest(UserController.class)
 public class TestUserController {
 
-    @Mock
+
+    @MockBean
     private UserService userService;
 
     @InjectMocks
@@ -45,7 +45,7 @@ public class TestUserController {
 
     @Test
     public void testCrearUsuario() throws Exception {
-        LoginRequestDTO user = new LoginRequestDTO(null, "alex5", "1234", "algon@gmai.com", "32536987", null, null);
+        LoginRequestDTO user = new LoginRequestDTO(null, "alex13", "1234", "algon@gmai.com", "32536987", null, null);
 
         // User user = new User(alex);
         when(userService.register(any(LoginRequestDTO.class))).thenReturn(user);
@@ -57,11 +57,12 @@ public class TestUserController {
         // Realizar la solicitud
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
+                        .content(json))
                 .andExpect(status().isCreated())
-                .andExpect((ResultMatcher) contentType(MediaType.APPLICATION_JSON))
-                .andExpect((ResultMatcher) jsonPath("$.name", is("alex2")))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.name", is("alex13")))
                 .andReturn();
+
 
         // Verificar el resultado
         verify(userService, times(1)).register(any(LoginRequestDTO.class));
