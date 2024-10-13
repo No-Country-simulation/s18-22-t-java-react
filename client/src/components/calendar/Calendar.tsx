@@ -1,32 +1,40 @@
 "use client"
 
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin, { type DateClickArg } from "@fullcalendar/interaction"
-import { useState } from 'react'
+import * as React from "react"
 
-interface Prop {
-    title: string
-    date: Date | string
-    color: string
-}
+import { Calendar } from "@/components/ui/calendar"
 
-export default function Calendar() {
+export function CalendarDemo() {
+    const [date, setDate] = React.useState<Date | undefined>(new Date())
 
-    const [selectData, setSetSelectData] = useState<Prop>({ title: "", date: "", color: "" })
-
-    const handleDateClick = (arg: DateClickArg) => {
-        setSetSelectData({ title: "Reservado", date: arg.dateStr, color: "#ef4444" })
-    }
+    console.log(date)
 
     return (
-        <FullCalendar
-            plugins={[dayGridPlugin, interactionPlugin]}
-            initialView="dayGridMonth"
-            events={[selectData]}
-            dateClick={handleDateClick}
-        />
+        <div className="grid grid-cols-3 gap-20 max-w-[1400px] mx-auto px-4 mt-10 ">
+
+
+            <Calendar
+                className="col-span-2"
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                disabled={(date) => date.getDay() === 0 || date < new Date()}
+            />
+
+
+            <div>
+                <span className="font-bold">Miércoles 4 de octubre</span>
+                <h2>Horarios disponibles</h2>
+
+                <ul className="space-y-2 my-6">
+                    {
+                        Array.from({ length: 4 }).map((item, index) => (
+                            <li key={index} className="border border-black rounded-md px-10 py-1 max-w-min">10:00</li>
+                        ))
+                    }
+                </ul>
+
+            </div>
+        </div>
     )
 }
-
-
