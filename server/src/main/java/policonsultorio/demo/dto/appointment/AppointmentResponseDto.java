@@ -12,8 +12,8 @@ import java.time.LocalTime;
 public record AppointmentResponseDto(
     @Schema(description = "Appointment ID", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     int id,
-    //int id_doctor,
-    //int id_patient,
+    Long id_doctor,
+    int id_patient,
     @Schema(description = "Appointment date", example = "2025-01-01", requiredMode = Schema.RequiredMode.REQUIRED)
     LocalDate date,
     @Schema(description = "Appointment start time", example = "10:00", requiredMode = Schema.RequiredMode.REQUIRED)

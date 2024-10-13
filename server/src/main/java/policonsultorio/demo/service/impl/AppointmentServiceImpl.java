@@ -9,7 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
 import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
 import policonsultorio.demo.entity.AppointmentEntity;
+import policonsultorio.demo.entity.Doctor;
+import policonsultorio.demo.entity.Patient;
 import policonsultorio.demo.repository.AppointmentRepository;
+import policonsultorio.demo.repository.DoctorRepository;
+import policonsultorio.demo.repository.PatientRepository;
 import policonsultorio.demo.service.AppointmentService;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.exception.appointment.*;
@@ -22,16 +26,18 @@ import java.time.LocalDate;
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
+    private final DoctorRepository doctorRepository;
+    private final PatientRepository patientRepository;
     @Override
     @Transactional
     public AppointmentResponseDto createAppointment(AppointmentRequestDto appointmentRequestDto) {
-        /*DoctorEntity doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
+        Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new RuntimeException("Doctor not found"));
 
-        PatientEntity patient = patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new RuntimeException("Patient not found"));*/
+        Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
 
-        AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto /*doctor, patient*/);
+        AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto, doctor, patient);
 
         entity = appointmentRepository.save(entity);
 
@@ -82,10 +88,10 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Appointment is completed");
         }
 
-        /*appointment.setDoctor(doctorRepository.findById(appointmentRequestDto.id_doctor())
+        appointment.setDoctor(doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new RuntimeException("Doctor not found")));
         appointment.setPatient(patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new RuntimeException("Patient not found")));*/
+                .orElseThrow(() -> new RuntimeException("Patient not found")));
         appointment.setDate(appointmentRequestDto.date());
         appointment.setStartTime(appointmentRequestDto.startTime());
         appointment.setEndTime(appointmentRequestDto.endTime());

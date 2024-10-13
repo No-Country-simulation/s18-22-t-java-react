@@ -13,11 +13,11 @@ import java.time.LocalTime;
     name = "AppointmentRequestDto",
     description = "Data transfer object for creating an appointment")
 public record AppointmentRequestDto(
-        /*@NotNull(message = "Doctor ID is required")
+        @NotNull(message = "Doctor ID is required")
         Integer id_doctor,
 
         @NotNull(message = "Patient ID is required")
-        Integer id_patient,*/
+        Integer id_patient,
 
         @Schema(description = "Appointment date", example = "2025-01-01", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "Appointment date is required")

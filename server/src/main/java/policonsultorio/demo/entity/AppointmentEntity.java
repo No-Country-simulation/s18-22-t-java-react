@@ -19,13 +19,13 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    /*@ManyToOne(targetEntity = DoctorEntity.class)
+    @ManyToOne(targetEntity = Doctor.class)
     @JoinColumn(name = "id_doctor")
-    public DoctorEntity doctor;
+    public Doctor doctor;
 
-    @ManyToOne(targetEntity = PatientEntity.class)
+    @ManyToOne(targetEntity = Patient.class)
     @JoinColumn(name = "id_patient")
-    public PatientEntity patient;*/
+    public Patient patient;
 
     private LocalDate date;
 
