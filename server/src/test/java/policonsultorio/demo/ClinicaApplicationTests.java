@@ -4,14 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Rollback;
-import policonsultorio.demo.controller.UserController;
 import policonsultorio.demo.dto.LoginRequestDTO;
-import policonsultorio.demo.entity.User;
 import policonsultorio.demo.service.UserService;
 
 
