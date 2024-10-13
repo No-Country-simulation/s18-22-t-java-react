@@ -1,4 +1,4 @@
-package policonsultorio.demo.config.exceptios;
+package policonsultorio.demo.config.exceptions;
 
 import lombok.*;
 
