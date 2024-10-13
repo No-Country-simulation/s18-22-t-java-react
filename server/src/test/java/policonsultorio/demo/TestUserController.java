@@ -1,6 +1,8 @@
 package policonsultorio.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,10 +16,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.Assert;
 import policonsultorio.demo.controller.UserController;
 import policonsultorio.demo.dto.LoginRequestDTO;
+import policonsultorio.demo.entity.User;
 import policonsultorio.demo.service.UserService;
+
 import static org.hamcrest.Matchers.is;
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -67,4 +74,39 @@ public class TestUserController {
         // Verificar el resultado
         verify(userService, times(1)).register(any(LoginRequestDTO.class));
     }
+
+    @BeforeEach
+    public void setUp() {
+        LoginRequestDTO user = new LoginRequestDTO(1L);
+
+        when(userService.findByUserId(1L)).thenReturn(user);
+    }
+
+    @Test
+    public void traerUserporId() throws Exception {
+
+
+        // Realizar la solicitud
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/api/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(""))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id", is(1)))
+                .andReturn();
+
+
+        // Verificar el resultado
+        String jsonResponse = result.getResponse().getContentAsString();
+        ObjectMapper objectMapper = new ObjectMapper();
+        LoginRequestDTO user = objectMapper.readValue(jsonResponse, LoginRequestDTO.class);
+
+// Verificar el resultado
+        assertNotNull(user);
+        assertEquals(1, user.id());
+    }
+
+
+  
+
 }

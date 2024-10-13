@@ -39,4 +39,13 @@ public class UserService {
         User usuario = userRepositoty.findById(id).orElseThrow(()-> new  EntityNotFoundException("Entoty not found") );
         return new LoginRequestDTO(usuario);
     }
+
+
+    public User deleteLogicUser(int id){
+        Long idUser = Long.valueOf(id);
+        var userDb = findByUserId( idUser);
+      User user = new User(userDb);
+      user.setActive(false);
+      return userRepositoty.save(user);
+    }
 }

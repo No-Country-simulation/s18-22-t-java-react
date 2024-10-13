@@ -19,4 +19,10 @@ public record LoginRequestDTO(
         public LoginRequestDTO(User usuario) {
                 this(usuario.getId(), usuario.getName(), usuario.getPassword(), usuario.getEmail(), usuario.getPhone(), usuario.getImg(),usuario.getActive());
         }
+
+        public LoginRequestDTO(Long id) {
+                this(id,null,null,null,null,null,null);
+        }
+
+
 }
