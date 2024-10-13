@@ -20,4 +20,8 @@ public class Patient {
 
     @Column(name = "healt_insurer")
     private String insurer;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
