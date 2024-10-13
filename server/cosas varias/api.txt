@@ -1,0 +1,27 @@
+ API Gestión de Citas
+1. Implementar endpoint para crear cita médica
+   - Validar que no haya superposición de turnos
+   - Validar que el paciente no tenga otra cita en el mismo horario con el mismo médico
+   - Validar disponibilidad del horario
+
+2. Implementar endpoint para cancelar cita médica
+   - Validar regla de cancelación (mínimo 24hs antes)
+   - Gestionar notificaciones automáticas a lista de espera
+
+3. Implementar endpoint para obtener disponibilidad de agenda médica
+   - Filtrar por fecha
+   - Filtrar por médico
+
+4. Implementar endpoints para búsqueda de médicos
+   - Búsqueda por nombre
+   - Búsqueda por especialidad
+   - Implementar filtros
+
+ API Lista de Espera
+5. Implementar endpoint para registrar paciente en lista de espera
+   - Asociar a médico específico
+   - Asociar a rango de fechas deseado
+
+6. Implementar sistema de notificaciones para lista de espera
+   - Crear servicio de notificación cuando se libere un turno
+   - Priorizar orden de lista de espera
