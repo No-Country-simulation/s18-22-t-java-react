@@ -27,21 +27,18 @@ name: stjavareact71
 server:
 https://railway.app
 
-user:
-root
+mysql:{
 
-mysql:
-password:
-QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB
+user: root,
 
-url:
-mysql://root:QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB@junction.proxy.rlwy.net:19333/railway
+password: QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB,
 
-ip:
-junction.proxy.rlwy.net
+url: mysql://root:QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB@junction.proxy.rlwy.net:19333/railway,
 
-dominio:
-s18-22-t-java-react-production.up.railway.app
+ip: junction.proxy.rlwy.net,
+
+dominio: s18-22-t-java-react-production.up.railway.app
+}
 
 
 diagramas:

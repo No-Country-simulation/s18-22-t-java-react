@@ -1,6 +1,7 @@
 package policonsultorio.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -80,6 +81,7 @@ public class TestUserController {
 
         when(userService.findByUserId(1L)).thenReturn(user);
     }
+
     @Test
     public void traerUserporId() throws Exception {
 
@@ -103,4 +105,8 @@ public class TestUserController {
         assertNotNull(user);
         assertEquals(1, user.id());
     }
+
+
+  
+
 }

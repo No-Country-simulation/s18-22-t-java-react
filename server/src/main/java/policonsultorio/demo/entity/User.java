@@ -10,6 +10,7 @@ import policonsultorio.demo.dto.LoginRequestDTO;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @EqualsAndHashCode(of = "id")
 public class User {
 
@@ -34,10 +35,12 @@ public class User {
 
 
     public User(LoginRequestDTO loginRequestDto) {
+        this.id = loginRequestDto.id();
         this.name = loginRequestDto.name();
         this.password = loginRequestDto.password();
         this.email = loginRequestDto.email();
         this.phone = loginRequestDto.phone();
         this.img = loginRequestDto.img();
+        this.active = loginRequestDto.active();
     }
 }

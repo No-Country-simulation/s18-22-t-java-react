@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Rollback;
 import policonsultorio.demo.dto.LoginRequestDTO;
+import policonsultorio.demo.entity.User;
 import policonsultorio.demo.service.UserService;
 
 
@@ -24,7 +25,7 @@ class ClinicaApplicationTests {
     @Rollback(value = false)
     public void createUserTest() throws Exception {
 
-            LoginRequestDTO alex = new LoginRequestDTO(null, "alex", "1234", "algon@gmai.com", "32536987", null,null);
+            LoginRequestDTO alex = new LoginRequestDTO(null, "alex15", "1234", "algon@gmai.com", "32536987", null,null);
 
             LoginRequestDTO userCreated = userService.register(alex);
 
@@ -33,6 +34,16 @@ class ClinicaApplicationTests {
     }
 
 
+    @Test
+    @DisplayName("Test 1:delete logic user")
+    @Order(2)
+    @Rollback(value = false)
+    public void delete_logic_user() throws Exception {
 
+        User userCreated = userService.deleteLogicUser(10);
+        System.out.println("userCreated.getActive() = " + userCreated.getActive());
+        Assertions.assertThat(userCreated.getActive()).isEqualTo(false);
+
+    }
 
 }
