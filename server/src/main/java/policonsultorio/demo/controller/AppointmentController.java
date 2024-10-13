@@ -2,6 +2,7 @@ package policonsultorio.demo.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -9,7 +10,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +36,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Appointment created successfully",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "400", description = "Invalid input data",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -55,7 +56,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment cancelled successfully",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"CANCELADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -74,7 +76,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment completed successfully",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"COMPLETADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -93,7 +96,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment updated successfully",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "400", description = "Invalid input data",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
@@ -114,7 +118,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -133,7 +138,8 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointments found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
             })
