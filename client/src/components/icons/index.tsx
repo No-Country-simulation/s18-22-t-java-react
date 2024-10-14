@@ -1,1 +1,1 @@
-export { InfoIcon, WarningIcon, DangerIcon } from '@/components/icons/Icons'
+export { IconDanger, IconInfo, IconWarning } from '@/components/icons/Icons'

@@ -12,7 +12,7 @@ interface Props {
   OnSubmit: () => void
 }
 
-import { DangerIcon, InfoIcon, WarningIcon } from '@/components/icons'
+import { IconDanger, IconInfo, IconWarning } from '@/components/icons'
 import { useState } from 'react'
 
 export function Alert({ ClassName, Type, ButtonText, DialogTitle, ConfirmDate, ConfirmHour, CancelButton, ConfirmButton, OnSubmit }: Props) {
@@ -31,9 +31,9 @@ export function Alert({ ClassName, Type, ButtonText, DialogTitle, ConfirmDate, C
               <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10'>
-                    {Type === 'Info' ? (<InfoIcon color={IconColor} />) :
-                      Type === 'Warning' ? (<WarningIcon color={IconColor} />) :
-                        (<DangerIcon color={IconColor} />)
+                    {Type === 'Info' ? (<IconInfo color={IconColor} />) :
+                      Type === 'Warning' ? (<IconWarning color={IconColor} />) :
+                        (<IconDanger color={IconColor} />)
                     }
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
