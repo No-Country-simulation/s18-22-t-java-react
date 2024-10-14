@@ -22,7 +22,9 @@ public class UserService {
 
         User usuario = userRepositoty.findByName(loginRequestDto.name());
         if (usuario == null) {
-            usuario = userRepositoty.save(new User(loginRequestDto));
+            User u = new User(loginRequestDto);
+            u.setActive(true);
+            usuario = userRepositoty.save(u);
         } else if (!usuario.getActive()) {
             usuario.setActive(true);
             usuario = userRepositoty.save(usuario);
