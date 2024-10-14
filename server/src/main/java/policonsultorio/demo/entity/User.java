@@ -1,8 +1,12 @@
 package policonsultorio.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.LoginRequestDTO;
+
+import java.time.LocalDate;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -28,6 +32,12 @@ public class User {
     private String phone;
     @Column(name = "img")
     private String img;
+    @Column(name = "initial_date")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate initialDate = LocalDate.now();
+    @Column(name = "rol")
+    @Enumerated(EnumType.STRING)
+    private Roles rol = Roles.PACIENT;
     @Column(name = "active",columnDefinition = "boolean default true")
     private Boolean active = true;
    @OneToOne(mappedBy = "userId")
