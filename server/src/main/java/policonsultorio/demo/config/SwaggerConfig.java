@@ -35,7 +35,7 @@ import org.springframework.http.HttpHeaders;
                 ),
                 @Server(
                         description = "Staging Server",
-                        url = "https://staging.polyclinic.com"
+                        url = "https://clinica-medica-production.up.railway.app"
                 ),
                 @Server(
                         description = "Production Server",

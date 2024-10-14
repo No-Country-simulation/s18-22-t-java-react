@@ -111,4 +111,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handlePatientNotFoundException(PatientNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("Patient not found", ex.getMessage()));
     }
+
+    @ExceptionHandler(AppointmentAlreadyBookedException.class)
+    public ResponseEntity<ErrorResponse> handleAppointmentAlreadyBookedException(AppointmentAlreadyBookedException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Appointment already booked", ex.getMessage()));
+    }
+
+    @ExceptionHandler(AppointmentConflictException.class)
+    public ResponseEntity<ErrorResponse> handleAppointmentConflictException(AppointmentConflictException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Appointment conflict with other appointments", ex.getMessage()));
+    }
 }

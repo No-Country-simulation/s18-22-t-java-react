@@ -15,7 +15,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import policonsultorio.demo.dto.ErrorResponse;
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
+import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
 import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
+import policonsultorio.demo.dto.appointment.PagedResponseDto;
 import policonsultorio.demo.service.AppointmentService;
 
 @RestController
@@ -28,10 +30,10 @@ public class AppointmentController {
     private final AppointmentService appointmentService;
 
 
-    @PostMapping("/create")
+    @PostMapping("/schedule")
     @Operation(
-            summary = "Create an appointment",
-            description = "Create an appointment with the given data",
+            summary = "Schedule an appointment",
+            description = "Schedule an appointment with the given data",
             tags = {"Appointment"}
     )
     @ApiResponses(value = {
@@ -45,6 +47,27 @@ public class AppointmentController {
     })
     public ResponseEntity<AppointmentResponseDto> createAppointment(@Valid @RequestBody AppointmentRequestDto appointmentRequestDto) {
         AppointmentResponseDto responseDto = appointmentService.createAppointment(appointmentRequestDto);
+        return ResponseEntity.ok(responseDto);
+    }
+
+
+    @PatchMapping("/reschedule/{id}")
+    @Operation(
+            summary = "Reschedule an appointment",
+            description = "Reschedule an appointment with the given ID",
+            tags = {"Appointment"}
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Appointment rescheduled successfully",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
+                    examples = @ExampleObject(name = "appointment", value = "{\"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\"}"))),
+            @ApiResponse(responseCode = "404", description = "Appointment not found",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+    })
+    public ResponseEntity<AppointmentResponseDto> rescheduleAppointment(@PathVariable int id, @RequestBody AppointmentRescheduleDto appointmentRescheduleDto) {
+        AppointmentResponseDto responseDto = appointmentService.rescheduleAppointment(id, appointmentRescheduleDto);
         return ResponseEntity.ok(responseDto);
     }
 
@@ -138,16 +161,18 @@ public class AppointmentController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointments found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PagedResponseDto.class),
+                            examples = @ExampleObject(name = "appointment", value = "{\"content\": [{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}], \"page\": 0, \"size\": 10, \"totalElements\": 1, \"totalPages\": 1, \"last\": true}"))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
-            })
-    public ResponseEntity<Page<AppointmentResponseDto>> getAllAppointments( @RequestParam(defaultValue = "0") int page,
-                                                                            @RequestParam(defaultValue = "10") int size) {
-        Page<AppointmentResponseDto> responseDto = appointmentService.getAllAppointments(page, size);
+    })
+    public ResponseEntity<PagedResponseDto<AppointmentResponseDto>> getAllAppointments(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PagedResponseDto<AppointmentResponseDto> responseDto = appointmentService.getAllAppointments(page, size);
         return ResponseEntity.ok(responseDto);
     }
+
 
 
 }

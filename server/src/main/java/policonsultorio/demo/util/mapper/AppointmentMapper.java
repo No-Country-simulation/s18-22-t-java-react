@@ -3,6 +3,7 @@ package policonsultorio.demo.util.mapper;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
+import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
 import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
@@ -31,6 +32,14 @@ public class AppointmentMapper {
                 entity.getStartTime(),
                 entity.getEndTime(),
                 entity.getStatus()
+        );
+    }
+
+    public static AppointmentRescheduleDto toDtoReschedule(AppointmentEntity entity) {
+        return new AppointmentRescheduleDto(
+                entity.getDate(),
+                entity.getStartTime(),
+                entity.getEndTime()
         );
     }
 

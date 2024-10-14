@@ -7,7 +7,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
+import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
 import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
+import policonsultorio.demo.dto.appointment.PagedResponseDto;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
@@ -20,6 +22,9 @@ import policonsultorio.demo.util.exception.appointment.*;
 import policonsultorio.demo.util.mapper.AppointmentMapper;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,11 +43,47 @@ public class AppointmentServiceImpl implements AppointmentService {
         Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
+        // Validar si ya existe una cita con el mismo doctor en el mismo rango horario
+        boolean existsAppointment = appointmentRepository.existsByDoctorAndDateAndStartTimeAndEndTime(
+                doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.endTime());
+
+        if (existsAppointment) {
+            throw new AppointmentAlreadyBookedException("Doctor already has an appointment in this time slot");
+        }
+
         AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto, doctor, patient);
 
         entity = appointmentRepository.save(entity);
 
         return AppointmentMapper.toDto(entity);
+    }
+
+    @Override
+    @Transactional
+    public AppointmentResponseDto rescheduleAppointment(int id, AppointmentRescheduleDto rescheduleDto) {
+        AppointmentEntity appointment = findAppointmentById(id);
+
+        if (appointment.getStatus() == AppointmentStatus.CANCELADA) {
+            throw new AppointmentAlreadyCancelledException("Cannot reschedule a cancelled appointment");
+        }
+
+        if (appointment.getStatus() == AppointmentStatus.COMPLETADA) {
+            throw new AppointmentAlreadyCompletedException("Cannot reschedule a completed appointment");
+        }
+
+        // Verifica si hay otra cita en el mismo horario
+        if (appointmentRepository.existsByDoctorAndDateAndStartTimeBetweenOrEndTimeBetween(
+                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), rescheduleDto.newEndTime(),
+                appointment.getStartTime(), appointment.getEndTime())) {
+            throw new AppointmentConflictException("Doctor already has an appointment at the specified time");
+        }
+
+        appointment.setDate(rescheduleDto.newDate());
+        appointment.setStartTime(rescheduleDto.newStartTime());
+        appointment.setEndTime(rescheduleDto.newEndTime());
+        appointment = appointmentRepository.save(appointment);
+
+        return AppointmentMapper.toDto(appointment);
     }
 
     @Override
@@ -112,16 +153,22 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<AppointmentResponseDto> getAllAppointments(int page, int size) {
-        if (page < 0 ) {
-            throw new InvalidPageNumberException("Invalid page number");
-        }
-        if (size < 0) {
-            throw new InvalidPageSizeException("Invalid page size");
-        }
+    public PagedResponseDto<AppointmentResponseDto> getAllAppointments(int page, int size) {
         Page<AppointmentEntity> appointments = appointmentRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
-        return appointments.map(AppointmentMapper::toDto);
+        List<AppointmentResponseDto> content = appointments.getContent().stream()
+                .map(AppointmentMapper::toDto)
+                .collect(Collectors.toList());
+
+        return new PagedResponseDto<>(
+                content,
+                appointments.getNumber(),
+                appointments.getSize(),
+                appointments.getTotalElements(),
+                appointments.getTotalPages(),
+                appointments.isLast()
+        );
     }
+
 
     @Override
     public Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size) {
