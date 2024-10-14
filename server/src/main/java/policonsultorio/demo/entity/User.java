@@ -1,7 +1,7 @@
 package policonsultorio.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import enums.Roles;
+import policonsultorio.demo.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.LoginRequestDTO;
@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "BIGINT UNSIGNED")
-    private Long id ;
+    private Long id;
     @Column(name = "name", nullable = false, unique = true)
     private String name;
     @Column(name = "password", nullable = false)
@@ -38,9 +38,9 @@ public class User {
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
     private Roles rol = Roles.PACIENT;
-    @Column(name = "active",columnDefinition = "boolean default true")
+    @Column(name = "active", columnDefinition = "boolean default true")
     private Boolean active = true;
-   @OneToOne(mappedBy = "userId")
+    @OneToOne(mappedBy = "userId")
     private Authorizarion authorizarion;
 
 

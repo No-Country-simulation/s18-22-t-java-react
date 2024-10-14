@@ -1,4 +1,4 @@
-package enums;
+package policonsultorio.demo.enums;
 
 public enum Roles {
     MEDIC,

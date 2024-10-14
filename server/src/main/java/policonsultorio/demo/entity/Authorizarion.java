@@ -21,7 +21,7 @@ public class Authorizarion {
     @Column(name = "id")
     private Long id ;
 
-    //@OneToOne(mappedBy = "authorizarion")
+
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User userId;
