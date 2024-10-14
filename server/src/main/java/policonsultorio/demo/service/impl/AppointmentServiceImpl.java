@@ -28,14 +28,15 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
+
     @Override
     @Transactional
     public AppointmentResponseDto createAppointment(AppointmentRequestDto appointmentRequestDto) {
         Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
-                .orElseThrow(() -> new RuntimeException("Doctor not found"));
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
 
         Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new RuntimeException("Patient not found"));
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
         AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto, doctor, patient);
 
@@ -89,9 +90,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         appointment.setDoctor(doctorRepository.findById(appointmentRequestDto.id_doctor())
-                .orElseThrow(() -> new RuntimeException("Doctor not found")));
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found")));
         appointment.setPatient(patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new RuntimeException("Patient not found")));
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found")));
         appointment.setDate(appointmentRequestDto.date());
         appointment.setStartTime(appointmentRequestDto.startTime());
         appointment.setEndTime(appointmentRequestDto.endTime());
