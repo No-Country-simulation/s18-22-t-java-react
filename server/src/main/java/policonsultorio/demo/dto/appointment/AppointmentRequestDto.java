@@ -13,9 +13,12 @@ import java.time.LocalTime;
     name = "AppointmentRequestDto",
     description = "Data transfer object for creating an appointment")
 public record AppointmentRequestDto(
+
+        @Schema(description = "Doctor ID", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "Doctor ID is required")
         Integer id_doctor,
 
+        @Schema(description = "Patient ID", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "Patient ID is required")
         Integer id_patient,
 

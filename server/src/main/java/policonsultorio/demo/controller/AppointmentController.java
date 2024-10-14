@@ -37,7 +37,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Appointment created successfully",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "400", description = "Invalid input data",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -57,7 +57,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment cancelled successfully",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"CANCELADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"CANCELADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -77,7 +77,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment completed successfully",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"COMPLETADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"COMPLETADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -97,7 +97,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment updated successfully",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "400", description = "Invalid input data",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
@@ -119,7 +119,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointment found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "404", description = "Appointment not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
@@ -139,7 +139,7 @@ public class AppointmentController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Appointments found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = AppointmentResponseDto.class),
-                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
+                    examples = @ExampleObject(name = "appointment", value = "{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}"))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
             })
