@@ -37,7 +37,7 @@ public class User {
     private LocalDate initialDate = LocalDate.now();
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
-    private Roles rol = Roles.PACIENT;
+    private Roles rol = Roles.PATIENT;
     @Column(name = "active", columnDefinition = "boolean default true")
     private Boolean active = true;
     @OneToOne(mappedBy = "userId")
