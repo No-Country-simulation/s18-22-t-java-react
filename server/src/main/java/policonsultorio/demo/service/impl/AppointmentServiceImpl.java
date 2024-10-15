@@ -157,7 +157,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         Page<AppointmentEntity> appointments = appointmentRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
         List<AppointmentResponseDto> content = appointments.getContent().stream()
                 .map(AppointmentMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
 
         return new PagedResponseDto<>(
                 content,
@@ -176,8 +176,21 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Page<AppointmentResponseDto> getAppointmentByPatient(int id_patient, int page, int size) {
-        return null;
+    public PagedResponseDto<AppointmentResponseDto> getAppointmentAllByPatient(int id_patient, int page, int size) {
+        Page<AppointmentEntity> appointments = appointmentRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
+        List<AppointmentResponseDto> content = appointments.getContent().stream()
+                .map(AppointmentMapper::toDto)
+                .toList();
+
+        return new PagedResponseDto<>(
+                content,
+                appointments.getNumber(),
+                appointments.getSize(),
+                appointments.getTotalElements(),
+                appointments.getTotalPages(),
+                appointments.isLast()
+        );
+
     }
 
     @Override

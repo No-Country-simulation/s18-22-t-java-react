@@ -29,7 +29,7 @@ public interface AppointmentService {
 
     Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size);
 
-    Page<AppointmentResponseDto> getAppointmentByPatient(int id_patient, int page, int size);
+    PagedResponseDto<AppointmentResponseDto> getAppointmentAllByPatient(int id_patient, int page, int size);
 
     Page<AppointmentResponseDto> getAppointmentByDate(LocalDate date, int page, int size);
 

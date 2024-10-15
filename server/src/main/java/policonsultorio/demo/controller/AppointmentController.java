@@ -173,6 +173,26 @@ public class AppointmentController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @GetMapping("/get_all_by_patient/{id_patient}")
+    @Operation(
+            summary = "Get all appointments by patient ID",
+            description = "Get all appointments by patient ID",
+            tags = {"Appointment"}
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Appointments found",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PagedResponseDto.class),
+                            examples = @ExampleObject(name = "appointment", value = "{\"content\": [{\"id\": 1, \"id_doctor\": 1, \"id_patient\": 1, \"date\": \"2025-01-01\", \"startTime\": \"10:00\", \"endTime\": \"11:00\", \"status\": \"PROGRAMADA\"}], \"page\": 0, \"size\": 10, \"totalElements\": 1, \"totalPages\": 1, \"last\": true}"))),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+    })
+    public ResponseEntity<PagedResponseDto<AppointmentResponseDto>> getAppointmentAllByPatient(
+            @PathVariable("id_patient") int id_patient,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PagedResponseDto<AppointmentResponseDto> responseDto = appointmentService.getAppointmentAllByPatient(id_patient, page, size);
+        return ResponseEntity.ok(responseDto);
+    }
 
 
 }
