@@ -7,25 +7,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.entity.User;
-import policonsultorio.demo.repository.UserRepositoty;
-
-import java.util.Map;
+import policonsultorio.demo.repository.UserRepository;
 
 @Service
 @Transactional
 public class UserService {
 
     @Autowired
-    private UserRepositoty userRepositoty;
+    private UserRepository userRepository;
 
     public LoginRequestDTO register(LoginRequestDTO loginRequestDto) {
 
-        User usuario = userRepositoty.findByName(loginRequestDto.name());
+        User usuario = userRepository.findByName(loginRequestDto.name());
         if (usuario == null) {
-            usuario = userRepositoty.save(new User(loginRequestDto));
+            User u = new User(loginRequestDto);
+            u.setActive(true);
+            usuario = userRepository.save(u);
         } else if (!usuario.getActive()) {
             usuario.setActive(true);
-            usuario = userRepositoty.save(usuario);
+            usuario = userRepository.save(usuario);
         } else if (usuario.getActive()) {
           throw new EntityExistsException("Entity is exist");
         }
@@ -36,7 +36,7 @@ public class UserService {
 
     public LoginRequestDTO findByUserId(Long id) {
 
-        User usuario = userRepositoty.findById(id).orElseThrow(()-> new  EntityNotFoundException("Entoty not found") );
+        User usuario = userRepository.findById(id).orElseThrow(()-> new  EntityNotFoundException("Entoty not found") );
         return new LoginRequestDTO(usuario);
     }
 
@@ -46,6 +46,6 @@ public class UserService {
         var userDb = findByUserId( idUser);
       User user = new User(userDb);
       user.setActive(false);
-      return userRepositoty.save(user);
+      return userRepository.save(user);
     }
 }

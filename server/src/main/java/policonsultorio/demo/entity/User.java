@@ -1,8 +1,12 @@
 package policonsultorio.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import policonsultorio.demo.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.LoginRequestDTO;
+
+import java.time.LocalDate;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -17,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "BIGINT UNSIGNED")
-    private Long id ;
+    private Long id;
     @Column(name = "name", nullable = false, unique = true)
     private String name;
     @Column(name = "password", nullable = false)
@@ -28,9 +32,15 @@ public class User {
     private String phone;
     @Column(name = "img")
     private String img;
-    @Column(name = "active",columnDefinition = "boolean default true")
+    @Column(name = "initial_date")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate initialDate = LocalDate.now();
+    @Column(name = "rol")
+    @Enumerated(EnumType.STRING)
+    private Roles rol = Roles.PATIENT;
+    @Column(name = "active", columnDefinition = "boolean default true")
     private Boolean active = true;
-   @OneToOne(mappedBy = "userId")
+    @OneToOne(mappedBy = "userId")
     private Authorizarion authorizarion;
 
 

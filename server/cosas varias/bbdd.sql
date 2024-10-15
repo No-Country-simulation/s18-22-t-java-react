@@ -2,7 +2,7 @@ DROP DATABASE if EXISTS clinica;
 CREATE DATABASE clinica CHARACTER SET utf8 COLLATE UTF8_GENERAL_CI;
 USE clinica;
 
-
+DROP TABLE  user;
 CREATE TABLE user (
 	id BIGINT UNSIGNED  AUTO_INCREMENT  PRIMARY KEY,
     name VARCHAR(250) UNIQUE NOT NULL,
@@ -10,7 +10,9 @@ CREATE TABLE user (
     email VARCHAR(250)  NOT NULL,
     img TEXT,
     phone VARCHAR(250)  NOT NULL,
-     active BOOLEAN DEFAULT TRUE
+     rol ENUM('MEDIC','PACIENT'),
+     initial_date DATE NOT NULL,
+	  active BOOLEAN DEFAULT TRUE 
 );
 
 CREATE TABLE authorizarion (
@@ -19,6 +21,9 @@ CREATE TABLE authorizarion (
     jwt VARCHAR(250) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
+#ALTER TABLE user ADD rol ENUM('MEDIC','PACIENT');
+#ALTER TABLE user ADD  initial_date DATE NOT NULL;
 
 SELECT * FROM user;
 SELECT * FROM authorizarion;
