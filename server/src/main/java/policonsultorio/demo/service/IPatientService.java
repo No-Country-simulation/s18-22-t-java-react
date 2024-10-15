@@ -1,12 +1,14 @@
 package policonsultorio.demo.service;
 
+import policonsultorio.demo.dto.request.PatientRequestDTO;
+import policonsultorio.demo.dto.response.PatientResponseDTO;
 import policonsultorio.demo.entity.Patient;
 
 import java.util.List;
 
 public interface IPatientService {
 
-    Patient save(Patient patient);
+    PatientResponseDTO save(PatientRequestDTO patientRequestDTO);
     Patient getPatientById(int id);
     List<Patient> getAllPatients();
 
