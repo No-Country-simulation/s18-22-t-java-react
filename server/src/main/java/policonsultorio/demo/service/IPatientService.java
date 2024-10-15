@@ -9,7 +9,7 @@ import java.util.List;
 public interface IPatientService {
 
     PatientResponseDTO save(PatientRequestDTO patientRequestDTO);
-    Patient getPatientById(int id);
+    PatientResponseDTO getPatientById(Long id);
     List<Patient> getAllPatients();
 
 }

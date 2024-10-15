@@ -39,8 +39,9 @@ public class PatientService implements IPatientService {
     }
 
     @Override
-    public Patient getPatientById(int id) {
-        return patientRepository.findById(id).orElse(null);
+    public PatientResponseDTO getPatientById(Long id) {
+        Patient byUserId = patientRepository.findByUserId(id);
+        return new PatientResponseDTO(byUserId);
     }
 
     @Override

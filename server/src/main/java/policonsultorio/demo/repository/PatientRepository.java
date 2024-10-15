@@ -6,4 +6,5 @@ import policonsultorio.demo.entity.Patient;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
+    Patient findByUserId(Long userId);
 }
