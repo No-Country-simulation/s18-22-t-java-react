@@ -15,7 +15,7 @@ export function DoctorList({ list, title }: Props) {
             {title === 'speciality' ? (
               <SpecialityCard key={doctor.id} name={doctor.speciality} img="" />
             ) : (
-              <PlaceCard key={doctor.id} name={doctor.place} img="" address="Calle falsa 123" />
+              <PlaceCard details={false} key={doctor.id} name={doctor.place} img="" address="Calle falsa 123" />
             )}
           </>
         ))}
