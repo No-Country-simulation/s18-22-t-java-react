@@ -15,5 +15,7 @@ public class DoctorResponse {
 	private String phone;
 	private String img;
 	private Boolean active = true;
-
+	private String specialization;
+	private String licenseNumber;
 }
+
