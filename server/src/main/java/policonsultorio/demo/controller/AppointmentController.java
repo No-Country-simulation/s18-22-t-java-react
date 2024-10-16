@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,7 @@ public class AppointmentController {
     })
     public ResponseEntity<AppointmentResponseDto> createAppointment(@Valid @RequestBody AppointmentRequestDto appointmentRequestDto) {
         AppointmentResponseDto responseDto = appointmentService.createAppointment(appointmentRequestDto);
-        return ResponseEntity.ok(responseDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
 
@@ -66,7 +67,9 @@ public class AppointmentController {
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
     })
-    public ResponseEntity<AppointmentResponseDto> rescheduleAppointment(@PathVariable int id, @RequestBody AppointmentRescheduleDto appointmentRescheduleDto) {
+    public ResponseEntity<AppointmentResponseDto> rescheduleAppointment(
+            @PathVariable int id,
+            @Valid @RequestBody AppointmentRescheduleDto appointmentRescheduleDto) {
         AppointmentResponseDto responseDto = appointmentService.rescheduleAppointment(id, appointmentRescheduleDto);
         return ResponseEntity.ok(responseDto);
     }

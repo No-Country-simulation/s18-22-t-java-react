@@ -1,11 +1,14 @@
 package policonsultorio.demo.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
+import policonsultorio.demo.entity.Patient;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,4 +30,5 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
     );
 
 
+    Page<AppointmentEntity> findByPatient(Patient patient, PageRequest id);
 }
