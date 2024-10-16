@@ -1,4 +1,7 @@
+'use client'
+
 import { DoctorComplete } from "@/interfaces/user"
+import { Alert } from "../alert"
 
 interface Props {
   doctor: DoctorComplete
@@ -22,10 +25,18 @@ export function DoctorDetails({ doctor }: Props) {
         <h4>Seleccionar Fecha:</h4>
         <div className="bg-gray-500 animate-pulse h-10 rounded" />
 
-        <button type="button" className="bg-green-500 rounded px-4 py-2 text-white">Confirmar Cita</button>
+        <Alert
+          ClassName="bg-green-500 text-white"
+          Type="Info"
+          ButtonText="Confimar Cita"
+          CancelButton="Cancelar"
+          ConfirmButton="Confirmar"
+          DialogTitle="Revise los datos de su cita"
+          ConfirmDate="20/10/2024"
+          ConfirmHour="15:00"
+          OnSubmit={() => console.log('Enviar Datos')}
+        />
       </div>
-
-
     </div>
   )
 }
