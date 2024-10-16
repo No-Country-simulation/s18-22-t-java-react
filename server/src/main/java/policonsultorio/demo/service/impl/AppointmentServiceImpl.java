@@ -43,8 +43,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
-        // Validar si ya existe una cita con el mismo doctor en el mismo rango horario
-        boolean existsAppointment = appointmentRepository.existsByDoctorAndDateAndStartTimeAndEndTime(
+        // Verifica si hay otra cita en el mismo horario
+        boolean existsAppointment = appointmentRepository.existsByDoctorAndDateAndTimeConflict(
                 doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.endTime());
 
         if (existsAppointment) {
@@ -72,9 +72,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         // Verifica si hay otra cita en el mismo horario
-        if (appointmentRepository.existsByDoctorAndDateAndStartTimeBetweenOrEndTimeBetween(
-                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), rescheduleDto.newEndTime(),
-                appointment.getStartTime(), appointment.getEndTime())) {
+        if (appointmentRepository.existsByDoctorAndDateAndTimeConflict(
+                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), rescheduleDto.newEndTime())) {
             throw new AppointmentConflictException("Doctor already has an appointment at the specified time");
         }
 
@@ -130,6 +129,20 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Appointment is completed");
         }
 
+        Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
+
+        // Validar si ya existe una cita en el nuevo rango horario antes de actualizar
+        boolean existsConflict = appointmentRepository.existsByDoctorAndDateAndTimeConflict(
+                doctor,
+                appointmentRequestDto.date(),
+                appointmentRequestDto.startTime(),
+                appointmentRequestDto.endTime());
+
+        if (existsConflict) {
+            throw new AppointmentConflictException("Doctor already has an appointment in this time slot");
+        }
+
         appointment.setDoctor(doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found")));
         appointment.setPatient(patientRepository.findById(appointmentRequestDto.id_patient())
@@ -138,11 +151,12 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setStartTime(appointmentRequestDto.startTime());
         appointment.setEndTime(appointmentRequestDto.endTime());
         appointment.setStatus(appointmentRequestDto.status());
+
         appointment = appointmentRepository.save(appointment);
 
         return AppointmentMapper.toDto(appointment);
-
     }
+
 
     @Override
     @Transactional(readOnly = true)
