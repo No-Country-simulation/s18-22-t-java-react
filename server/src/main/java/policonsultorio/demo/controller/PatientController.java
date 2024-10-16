@@ -25,4 +25,9 @@ public class PatientController {
     public ResponseEntity<PatientResponseDTO> searchPatient(@PathVariable Long id){
         return new ResponseEntity<>(patientService.getPatientById(id), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePatient(@PathVariable Long id){
+        patientService.deletePatientById(id);
+    }
 }
