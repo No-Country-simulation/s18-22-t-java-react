@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
+import policonsultorio.demo.util.Enum.TimeSlot;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<AppointmentEntity, Integer> {
@@ -31,4 +33,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
 
     Page<AppointmentEntity> findByPatient(Patient patient, PageRequest id);
+
+
+    List<AppointmentEntity> findByDoctorAndDate(Doctor doctor, LocalDate date);
 }
