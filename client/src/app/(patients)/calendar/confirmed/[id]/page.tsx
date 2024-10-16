@@ -1,6 +1,8 @@
 import { Check } from "lucide-react";
 
 export default function ConfirmedPage({ params }: { params: { name: string } }) {
+
+    console.log(params.name)
     return (
         <div className="h-[calc(100vh-112px)] flex justify-center items-center pb-10">
 
