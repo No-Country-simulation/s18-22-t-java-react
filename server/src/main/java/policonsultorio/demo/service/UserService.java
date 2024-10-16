@@ -6,8 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.LoginRequestDTO;
+import policonsultorio.demo.dto.request.LoginDtoResponse;
 import policonsultorio.demo.entity.User;
+<<<<<<< HEAD
 import policonsultorio.demo.repository.UserRepository;
+=======
+import policonsultorio.demo.repository.UserRepositoty;
+import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
+
+import java.util.Map;
+>>>>>>> 2b40593 (fix: add login controller)
 
 @Service
 @Transactional
@@ -15,6 +23,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DoctorServiceImpl doctorServiceImpl;
 
     public LoginRequestDTO register(LoginRequestDTO loginRequestDto) {
 
@@ -27,7 +38,7 @@ public class UserService {
             usuario.setActive(true);
             usuario = userRepository.save(usuario);
         } else if (usuario.getActive()) {
-          throw new EntityExistsException("Entity is exist");
+            throw new EntityExistsException("Entity is exist");
         }
 
         return new LoginRequestDTO(usuario);
@@ -35,17 +46,26 @@ public class UserService {
     }
 
     public LoginRequestDTO findByUserId(Long id) {
-
-        User usuario = userRepository.findById(id).orElseThrow(()-> new  EntityNotFoundException("Entoty not found") );
+        User usuario = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entoty not found"));
         return new LoginRequestDTO(usuario);
     }
 
 
-    public User deleteLogicUser(int id){
+    public User deleteLogicUser(int id) {
         Long idUser = Long.valueOf(id);
         var userDb = findByUserId( idUser);
       User user = new User(userDb);
       user.setActive(false);
       return userRepository.save(user);
+
+    }
+
+    public User login(LoginDtoResponse loginRequestDto) {
+
+        var userDb = userRepository.findByName(loginRequestDto.name());
+        if (!userDb.getPassword().equals(loginRequestDto.password())) throw new EntityNotFoundException("password not match");
+
+        return userDb;
+
     }
 }
