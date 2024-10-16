@@ -1,5 +1,7 @@
 
+import Image from "next/image";
 import Link from "next/link";
+import HomeImage from '/public/images/home.jpg'
 
 export default function Home() {
   return (
@@ -30,8 +32,10 @@ export default function Home() {
             <div className="flex transition-transform ease-out duration-500">
               {/* Imagen*/}
               <div className="min-w-full h-64 flex items-center justify-center">
-                <img
-                  src="https://hospital-clinic.com.mx/wp-content/uploads/2024/01/8.-Habitacion-2.jpg"
+                <Image
+                  src={HomeImage}
+                  width={1200}
+                  height={1200}
                   alt="Policonsultorio 1"
                   className="w-full h-full object-cover"
                 />

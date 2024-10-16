@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function DashboardPage() {
 
     return (
@@ -28,7 +30,7 @@ export default function DashboardPage() {
                 ))}
             </div>
 
-            <button className="bg-gray-300 py-5 px-24">Reserva un turno</button>
+            <Link href={"/calendar"}><button className="bg-gray-300 py-5 px-24">Reserva un turno</button></Link>
 
 
         </div>
