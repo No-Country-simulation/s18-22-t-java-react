@@ -48,4 +48,11 @@ public class PatientService implements IPatientService {
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
+
+    @Override
+    public void deletePatientById(Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        user.setActive(false);
+        userRepository.save(user);
+    }
 }

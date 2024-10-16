@@ -11,5 +11,5 @@ public interface IPatientService {
     PatientResponseDTO save(PatientRequestDTO patientRequestDTO);
     PatientResponseDTO getPatientById(Long id);
     List<Patient> getAllPatients();
-
+    void deletePatientById(Long id);
 }
