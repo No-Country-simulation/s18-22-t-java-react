@@ -1,38 +1,37 @@
-import data from '../../utils/data.json'
-import { Data } from "@/interfaces/user"
+import { DoctorFromResponse } from '@/interfaces/user'
 import { DoctorCard, PlaceCard, SpecialityCard } from "@/ui"
 
 type Props = {
   query: string
+  data: DoctorFromResponse[]
 }
 
-export const SearchResults: React.FC<Props> = async ({ query }) => {
-  const getDoctorData = (data: Data) => {
-    const doctorList = data.doctors
+export const SearchResults: React.FC<Props> = async ({ query, data }) => {
+  const getDoctorData = (data: DoctorFromResponse[]) => {
+    const doctorList = data
       .filter((doctor) => {
-        const user = data.users.find((user) => user.id === doctor.id_user)
+        const user = data.find((user) => user.id === doctor.id)
 
         if (user) {
           const matchesQuery =
             user.name.toLowerCase().includes(query.toLowerCase()) ||
-            doctor.place.toLowerCase().includes(query.toLowerCase()) ||
-            doctor.speciality.toLowerCase().includes(query.toLowerCase())
+            doctor.place?.toLowerCase().includes(query.toLowerCase()) ||
+            doctor.specialization.toLowerCase().includes(query.toLowerCase())
 
           return matchesQuery
         }
         return false
       })
       .map((doctor) => {
-        const user = data.users.find((user) => user.id === doctor.id_user)
+        const user = data.find((user) => user.id === doctor.id)
 
         if (user) {
           return {
             id: user.id,
             name: user.name,
-            speciality: doctor.speciality,
-            place: doctor.place,
-            address: doctor.address || "Dirección no disponible"
-
+            speciality: doctor.specialization,
+            place: 'Consultorio Principal',
+            address: doctor.email || 'Dirección no disponible',
           }
         }
       })
@@ -40,7 +39,7 @@ export const SearchResults: React.FC<Props> = async ({ query }) => {
 
     const uniqueDoctorList = Array.from(
       new Map(
-        doctorList.map(item => [`${item?.speciality}-${item?.place}`, item])
+        doctorList.map((item) => [`${item?.speciality}-${item?.place}`, item])
       ).values()
     )
 
@@ -48,19 +47,20 @@ export const SearchResults: React.FC<Props> = async ({ query }) => {
   }
 
   const results = getDoctorData(data)
+  console.log(results);
 
   const isNameSearch = results.some(result => result?.name.toLowerCase().includes(query.toLowerCase()))
   const isSpecialitySearch = results.some(result => result?.speciality.toLowerCase().includes(query.toLowerCase()))
   const isPlaceSearch = results.some(result => result?.place.toLowerCase().includes(query.toLowerCase()))
 
-  let filteredResults = results;
+  let filteredResults = results
 
   if (isSpecialitySearch) {
     filteredResults = Array.from(
       new Map(
         filteredResults.map(item => [item?.speciality, item])
       ).values()
-    );
+    )
   }
 
   if (isPlaceSearch) {
@@ -68,7 +68,7 @@ export const SearchResults: React.FC<Props> = async ({ query }) => {
       new Map(
         filteredResults.map(item => [item?.place, item])
       ).values()
-    );
+    )
   }
 
   return (
@@ -82,7 +82,7 @@ export const SearchResults: React.FC<Props> = async ({ query }) => {
           <>
             <div className='flex flex-wrap gap-4 h-min w-full max-w-6xl'>
               {filteredResults.map((doctor) => (
-                <div className="flex h-min flex-grow" key={doctor?.id}>
+                <div className="flex h-min flex-grow flex-wrap gap-4" key={doctor?.id}>
                   {isNameSearch && (
                     <DoctorCard id={doctor?.id} name={doctor?.name} img="" place={doctor?.place} speciality={doctor?.speciality} />
                   )}

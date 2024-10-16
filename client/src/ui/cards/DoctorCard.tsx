@@ -10,7 +10,7 @@ interface Props {
 }
 export function DoctorCard({ id, name, speciality, place, img }: Props) {
   return (
-    <div className="w-full flex gap-4 border-b border-b-black pl-4 pb-4">
+    <div className="min-w-full flex gap-4 border-b border-b-black pl-4 pb-4">
       <>
         {img !== '' ? (
           <Image src={img} height={120} width={275} alt={name + "image"} />
