@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function ConfirmedPage({ params }: { params: { name: string } }) {
 
@@ -16,7 +17,7 @@ export default function ConfirmedPage({ params }: { params: { name: string } }) 
 
                 <div className="grid grid-cols-2 gap-4 mt-16">
                     <button className="border border-[#D9D9D9] py-2 rounded-lg">Descargar comprobante</button>
-                    <button className="bg-[#D9D9D9] py-2">Volver al inicio</button>
+                    <Link href={"/dashboard"} className="bg-[#D9D9D9] py-2">Volver al inicio</Link>
                 </div>
             </div>
         </div>

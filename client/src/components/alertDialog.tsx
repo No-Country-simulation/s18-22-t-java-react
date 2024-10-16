@@ -1,3 +1,4 @@
+"use client"
 
 import {
     AlertDialog,
@@ -9,7 +10,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface Props {
     openDialog: boolean
@@ -20,7 +21,7 @@ interface Props {
 
 export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formattedDate }: Props) => {
 
-    const [successful, setSuccessful] = useState(false)
+    const route = useRouter()
 
     return (
         <>
@@ -34,12 +35,12 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => setSuccessful(true)}>Continue</AlertDialogAction>
+                        <AlertDialogAction onClick={() => route.push("/calendar/confirmed/123")}>Continue</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
 
-            <AlertDialog open={successful} onOpenChange={setSuccessful}>
+            {/* <AlertDialog open={successful} onOpenChange={setSuccessful}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>Tu turno ha sido reservado</AlertDialogTitle>
@@ -51,7 +52,7 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                         <AlertDialogAction>Continue</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
-            </AlertDialog>
+            </AlertDialog> */}
         </>
     )
 }
