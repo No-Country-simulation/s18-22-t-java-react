@@ -3,20 +3,17 @@ import { SvgPerfil } from "@/components/svg/svgs";
 import Link from "next/link";
 
 export function TopMenu() {
-    const icons = [{ icon: <SvgPerfil /> }, { icon: <SvgNotifications /> }, { icon: <SvgHome /> }]
+    const icons = [{ icon: <SvgPerfil /> }, { icon: <SvgHome /> }, { icon: <SvgNotifications /> }]
 
     return (
-        <div className="bg-[#D9D9D9] py-4">
-            <div className="flex justify-between items-center max-w-[1600px] px-4 mx-auto">
-                <div className="bg-[#C3C3C3] size-24 rounded-full flex justify-center items-center">
-                    <Link href={"/dashboard"}  >Logo</Link>
-                </div>
-
-                <nav>
+        <div className=" py-8">
+            <nav className="flex justify-between items-center max-w-[1400px] px-4 mx-auto text-[#004784]">
+                <Link href={"/dashboard"} className="text-3xl font-semibold" >Logo policonsultorios</Link>
+                <div>
                     <ul className="flex gap-8 items-center">
                         <li >
                             <Link
-                                className="border border-gray-500 px-4 py-1"
+                                className="border-2 border-[#004784] rounded-full px-6 py-2 font-semibold"
                                 href={"#"}>Mis turnos</Link>
                         </li>
                         {
@@ -32,8 +29,8 @@ export function TopMenu() {
                         }
 
                     </ul>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
     )
 }
