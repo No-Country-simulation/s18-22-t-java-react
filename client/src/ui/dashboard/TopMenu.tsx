@@ -14,7 +14,7 @@ export function TopMenu() {
                         <li >
                             <Link
                                 className="border-2 border-[#004784] rounded-full px-6 py-2 font-semibold"
-                                href={"#"}>Mis turnos</Link>
+                                href={"/calendar"}>Mis turnos</Link>
                         </li>
                         {
                             icons.map((item, index) => (
