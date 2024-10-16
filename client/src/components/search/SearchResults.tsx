@@ -1,5 +1,5 @@
 import { DoctorFromResponse } from '@/interfaces/user'
-import { DoctorCard, PlaceCard, SpecialityCard } from "@/ui"
+import { DoctorCard, PlaceCard, Placeholder, SpecialityCard } from "@/ui"
 
 type Props = {
   query: string
@@ -95,9 +95,7 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
                 </div>
               ))}
             </div>
-            <div className='w-[212px] h-[450px] bg-gray-300 ml-auto text-center content-center'>
-              <p className='text-xl p-2'>Chat bot o Publicidad</p>
-            </div>
+            <Placeholder />
           </>
         )}
         {results.length === 0 && query && (
