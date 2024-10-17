@@ -1,8 +1,8 @@
-import { Doctor } from "@/interfaces/user"
+import { DoctorFromResponse } from "@/interfaces/user"
 import { SpecialityCard, PlaceCard } from "../index"
 
 interface Props {
-  list: Doctor[]
+  list: DoctorFromResponse[]
   title: string
 }
 
@@ -13,9 +13,9 @@ export function DoctorList({ list, title }: Props) {
         {list.map((doctor) => (
           <>
             {title === 'speciality' ? (
-              <SpecialityCard key={doctor.id} name={doctor.speciality} img="" />
+              <SpecialityCard key={doctor.id} name={doctor.specialization} img="" />
             ) : (
-              <PlaceCard details={false} key={doctor.id} name={doctor.place} img="" address="Calle falsa 123" />
+              <PlaceCard details={false} key={doctor.id} name={doctor.place || 'Consultorio Principal'} img="" address="Jujuy 2176" />
             )}
           </>
         ))}
