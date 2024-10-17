@@ -60,7 +60,7 @@ public class doctorControllerTest {
         String json = mapper.writeValueAsString(doctor);
 
         // Realizar la solicitud
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("api/v1/doctor")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("api/v1/doctor/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated())
