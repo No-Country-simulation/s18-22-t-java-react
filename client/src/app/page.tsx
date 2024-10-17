@@ -2,8 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeImage from '/public/images/home.png'
-import { ButtonComponent } from "@/ui";
-import { Header } from "@/ui/patient/Header";
+import { ButtonComponent, Header } from "@/ui";
 
 export default function Home() {
   return (

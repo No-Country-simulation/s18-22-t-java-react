@@ -14,6 +14,8 @@ export function RegisterForm() {
 
     const submit = handleSubmit(data => {
 
+        console.log(data)
+
         reset({
             email: "",
             password: "",

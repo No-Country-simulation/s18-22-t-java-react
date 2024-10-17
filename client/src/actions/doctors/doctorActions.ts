@@ -47,4 +47,5 @@ export const getHoursDoctor = async (id: number) => {
 
   const data = await fetch(url).then((res) => res.json())
 
+  return data
 }

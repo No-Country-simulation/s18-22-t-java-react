@@ -30,8 +30,9 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
             id: user.id,
             name: user.name,
             speciality: doctor.specialization,
+            img: doctor.img,
             place: 'Consultorio Principal',
-            address: doctor.email || 'Dirección no disponible',
+            address: doctor.email || 'Jujuy 2176',
           }
         }
       })
@@ -46,8 +47,18 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
     return uniqueDoctorList
   }
 
-  const results = getDoctorData(data)
-  // console.log(results);
+  const results = getDoctorData([...data, {
+    id: 0,
+    password: "",
+    email: "",
+    phone: "",
+    active: true,
+    specialization: "",
+    licenseNumber: "",
+    img: "",
+    place: "Consultorio Principal",
+    name: "",
+  }])
 
   const isNameSearch = results.some(result => result?.name.toLowerCase().includes(query.toLowerCase()))
   const isSpecialitySearch = results.some(result => result?.speciality.toLowerCase().includes(query.toLowerCase()))
@@ -74,7 +85,7 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
   return (
     <div className="flex flex-col gap-2">
       {query && (
-        <span className='py-9 text-xl font-medium'>Resultados para {query}</span>
+        <span className='py-9 text-xl font-medium'>Resultados para &quot;{query}&quot;</span>
       )}
       <div className='flex'>
 
@@ -84,7 +95,7 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
               {filteredResults.map((doctor) => (
                 <div className="flex h-min flex-grow flex-wrap gap-4" key={doctor?.id}>
                   {isNameSearch && (
-                    <DoctorCard id={doctor?.id} name={doctor?.name} img="" place={doctor?.place} speciality={doctor?.speciality} />
+                    <DoctorCard id={doctor?.id} name={doctor?.name} img={doctor?.img} place={doctor?.place} speciality={doctor?.speciality} />
                   )}
                   {isSpecialitySearch && (
                     <SpecialityCard img="" name={doctor?.speciality} />
