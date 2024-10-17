@@ -4,7 +4,6 @@ import { Select } from "@/ui";
 import Image from "next/image";
 
 export default function ClinicPage({ params }: { params: { name: string } }) {
-    console.log(params.name)
     return (
         <div className="max-w-[1200px] mx-auto px-4">
 

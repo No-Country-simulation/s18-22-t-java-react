@@ -47,7 +47,7 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
   }
 
   const results = getDoctorData(data)
-  console.log(results);
+  // console.log(results);
 
   const isNameSearch = results.some(result => result?.name.toLowerCase().includes(query.toLowerCase()))
   const isSpecialitySearch = results.some(result => result?.speciality.toLowerCase().includes(query.toLowerCase()))

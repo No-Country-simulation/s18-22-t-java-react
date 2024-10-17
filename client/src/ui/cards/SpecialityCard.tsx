@@ -7,7 +7,7 @@ interface Props {
 }
 export function SpecialityCard({ name, img }: Props) {
   return (
-    <Link href={`/appointment?q=${name}`} className="flex flex-col border  rounded">
+    <Link href={`/specialty/${name}`} className="flex flex-col border  rounded">
       <>
         {img !== '' ? (
           <Image src={img} height={120} width={275} alt={name + "image"} />
