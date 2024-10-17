@@ -8,14 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.dto.request.LoginDtoResponse;
 import policonsultorio.demo.entity.User;
-<<<<<<< HEAD
 import policonsultorio.demo.repository.UserRepository;
-=======
-import policonsultorio.demo.repository.UserRepositoty;
 import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 
 import java.util.Map;
->>>>>>> 2b40593 (fix: add login controller)
+
 
 @Service
 @Transactional
