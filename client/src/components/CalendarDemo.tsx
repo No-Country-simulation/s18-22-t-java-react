@@ -26,6 +26,17 @@ export function CalendarDemo() {
         </li>
     );
 
+    const hourArray = ["10:00", "11:00", "08:00"]
+
+    const filterHours = () => {
+
+        if (formatYear === "10/17/2024") {
+            return amHours.filter(item => !hourArray.includes(item.hour))
+        } else {
+            return amHours
+        }
+
+    }
 
     return (
         <div className="grid grid-cols-3 gap-20 max-w-[1400px] mx-auto px-4 mt-10 ">
@@ -50,7 +61,7 @@ export function CalendarDemo() {
                     <div>
                         <h3 className="font-bold text-xl mb-2 text-center">AM</h3>
                         <ul className="space-y-2">
-                            {amHours.map((item) => createHourItem(item.hour))}
+                            {filterHours().map((item) => createHourItem(item.hour))}
                         </ul>
                     </div>
 

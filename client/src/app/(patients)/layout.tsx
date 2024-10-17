@@ -6,9 +6,11 @@ export default function LayoutDashboard({
     children: React.ReactNode;
 }) {
     return (
-        <div>
+        <div className="min-h-screen">
             <TopMenu />
+
             {children}
+
         </div>
     );
 }
