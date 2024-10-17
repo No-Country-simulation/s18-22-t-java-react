@@ -11,5 +11,5 @@ public interface AuthorizationRepository extends JpaRepository<Authorizarion,Lon
     @Query(value = "SELECT * FROM authorization WHERE user_id = :user_id",nativeQuery = true)
     Authorizarion findByUserId(@Param("user_id")Long user_id);
 
-  
+
 }
