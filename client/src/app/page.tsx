@@ -1,56 +1,36 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import HomeImage from '/public/images/home.jpg'
+import HomeImage from '/public/images/home.png'
+import { ButtonComponent } from "@/ui";
 
 export default function Home() {
   return (
     <div>
       <div>
-        {/* Navbar */}
-        <nav className="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
-          <div className="text-lg font-bold">Logo</div>
-          <div className="space-x-4">
-            {/* Enlace a Registrarse */}
-            <Link href="/auth/register">
-              <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded">
-                Registrarse
-              </button>
-            </Link>
-            {/* Enlace a Iniciar Sesión */}
-            <Link href="/auth/login">
-              <button className="bg-blue-500 hover:bg-blue-400 text-white py-2 px-4 rounded">
-                Iniciar Sesión
-              </button>
-            </Link>
-          </div>
-        </nav>
-
-        {/* Slider */}
-        <header className="w-full">
-          <div className="relative w-full h-64 overflow-hidden">
-            <div className="flex transition-transform ease-out duration-500">
-              {/* Imagen*/}
-              <div className="min-w-full h-64 flex items-center justify-center">
-                <Image
-                  src={HomeImage}
-                  width={1200}
-                  height={1200}
-                  alt="Policonsultorio 1"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        <div className="relative w-full overflow-hidden">
+          <div className="flex transition-transform ease-out duration-500">
+            <div className="min-w-full flex items-center justify-center">
+              <Image
+                src={HomeImage}
+                width={1200}
+                height={1200}
+                alt="Policonsultorio 1"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
-        </header>
+        </div>
 
-        {/* Contenido principal */}
-        <main className="p-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Bienvenido</h1>
-          <p className="text-lg text-gray-600">Policonsultorio</p>
-          <Link href={'/appointment'} className="text-lg text-gray-600">Agendar Cita</Link>
-        </main>
+        <div className="flex flex-col gap-12 gaptext-center absolute left-[239px] top-[326px]">
+          <h1 className="font-medium mb-4 text-[#004784] text-6xl text-start max-w-[868px]">Comenzá gestionar tus citas
+            en un solo lugar.</h1>
+          <p className="max-w-[555px] text-start text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dolor nulla, maximus sit amet nulla egestas, egestas maximus sapien. Aliquam eget libero id justo molestie ultricies. Fusce ac nisi dignissim, finibus libero  amet, congue orci. Fusce non gravida nunc. Praesent fermentum egestas eros, non imperdiet dolor. </p>
+          <Link href={'/appointment'} className="mt-16 max-w-max">
+            <ButtonComponent size="big" variant="dark" text="Reservá un turno" />
+          </Link>
+        </div>
       </div>
-    </div>
+    </div >
   );
 }

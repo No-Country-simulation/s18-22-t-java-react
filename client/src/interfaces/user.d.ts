@@ -38,3 +38,16 @@ export interface Data {
   users: User[]
   doctors: Doctor[]
 }
+
+export interface DoctorFromResponse {
+  id: number
+  name: string
+  password: string
+  email: string
+  phone: string
+  img: string
+  active: boolean
+  specialization: string
+  licenseNumber: string
+  place?: string
+}
