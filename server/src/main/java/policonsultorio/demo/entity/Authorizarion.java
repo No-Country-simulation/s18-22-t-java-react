@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.util.Set;
 
 @Entity(name = "Authorizarion")
-@Table(name = "authorizarion")
+@Table(name = "authorization")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

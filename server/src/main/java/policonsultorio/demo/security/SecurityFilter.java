@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import policonsultorio.demo.entity.User;
+import policonsultorio.demo.repository.AuthorizationRepository;
 import policonsultorio.demo.repository.UserRepository;
 import policonsultorio.demo.service.UserService;
 
@@ -27,6 +28,9 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AuthorizationRepository authorizationRepository;
 
 
     @Override
@@ -44,7 +48,8 @@ public class SecurityFilter extends OncePerRequestFilter {
             Optional<User> userDb = userRepository.findById(Long.valueOf(userId));
             User user = userDb.get();
             if (user != null) {
-                var token = "";//buscar el jwt en el service
+                var authorization = authorizationRepository.findByUserId(user.getId());
+                var token = authorization.getJwt();
                 var nombreUsuario = tokenService.getSubject(token);
 
                 if (nombreUsuario != null) {
