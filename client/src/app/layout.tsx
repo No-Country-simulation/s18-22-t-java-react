@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google'
 import "./globals.css";
-import { Header } from "@/ui/patient/Header";
 
 const poppins = Poppins({
   style: 'normal',
@@ -25,7 +24,6 @@ export default function RootLayout({
         className={`${poppins.className} antialiased`}
       >
         <main>
-          <Header />
           {children}
         </main>
       </body>
