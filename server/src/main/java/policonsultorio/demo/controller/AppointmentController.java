@@ -1,6 +1,7 @@
 package policonsultorio.demo.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,16 +11,18 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import policonsultorio.demo.dto.ErrorResponse;
-import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
-import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
-import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
-import policonsultorio.demo.dto.appointment.PagedResponseDto;
+import policonsultorio.demo.dto.appointment.*;
 import policonsultorio.demo.service.AppointmentService;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/appointment")
@@ -196,6 +199,25 @@ public class AppointmentController {
         PagedResponseDto<AppointmentResponseDto> responseDto = appointmentService.getAppointmentAllByPatient(id_patient, page, size);
         return ResponseEntity.ok(responseDto);
     }
+
+
+    @GetMapping("/occupied-times/{doctorId}")
+    @Operation(
+            summary = "Get occupied times by doctor ID and date",
+            description = "Retrieve the list of occupied appointment times for a doctor on a specific date.",
+            tags = {"Appointment"}
+    )
+    public ResponseEntity<OccupiedTimesResponseDto> getOccupiedTimes(
+            @PathVariable("doctorId") int doctorId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+
+        OccupiedTimesResponseDto occupiedTimes = appointmentService.getOccupiedTimes(date, doctorId);
+
+        return ResponseEntity.ok(occupiedTimes);
+    }
+
+
+
 
 
 }

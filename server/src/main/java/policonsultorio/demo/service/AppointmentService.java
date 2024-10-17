@@ -2,14 +2,14 @@ package policonsultorio.demo.service;
 
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
-import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
-import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
-import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
-import policonsultorio.demo.dto.appointment.PagedResponseDto;
+import org.springframework.transaction.annotation.Transactional;
+import policonsultorio.demo.dto.appointment.*;
+import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public interface AppointmentService {
 
@@ -30,9 +30,9 @@ public interface AppointmentService {
     Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size);
 
     PagedResponseDto<AppointmentResponseDto> getAppointmentAllByPatient(int id_patient, int page, int size);
-
     Page<AppointmentResponseDto> getAppointmentByDate(LocalDate date, int page, int size);
 
     Page<AppointmentResponseDto> getAppointmentByStatus(AppointmentStatus status, int page, int size);
 
+    OccupiedTimesResponseDto getOccupiedTimes (LocalDate date, int id_doctor);
 }

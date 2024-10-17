@@ -6,10 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
-import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
-import policonsultorio.demo.dto.appointment.AppointmentResponseDto;
-import policonsultorio.demo.dto.appointment.PagedResponseDto;
+import policonsultorio.demo.dto.appointment.*;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
@@ -18,13 +15,17 @@ import policonsultorio.demo.repository.DoctorRepository;
 import policonsultorio.demo.repository.PatientRepository;
 import policonsultorio.demo.service.AppointmentService;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
+import policonsultorio.demo.util.Enum.TimeSlot;
 import policonsultorio.demo.util.exception.appointment.*;
 import policonsultorio.demo.util.mapper.AppointmentMapper;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -50,6 +51,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         /*if(!patient.getActive()){
             throw new PatientNotActiveException("Patient not active");
         }*/
+
+        if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
+            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
+        }
 
         if(appointmentRequestDto.date().isBefore(LocalDate.now())){
             throw new AppointmentDateException("The appointment date cannot be in the past. Please select a future date.");
@@ -85,6 +90,10 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         if (appointment.getStatus() == AppointmentStatus.COMPLETADA) {
             throw new AppointmentAlreadyCompletedException("Cannot reschedule a completed appointment");
+        }
+
+        if (!TimeSlot.isValidTime(rescheduleDto.newStartTime())) {
+            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
         }
 
         if (rescheduleDto.newDate().isBefore(LocalDate.now())) {
@@ -161,6 +170,11 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Appointment is completed");
         }
 
+
+        if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
+            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
+        }
+
         Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
 
@@ -222,12 +236,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         );
     }
 
-
-    @Override
-    public Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size) {
-        return null;
-    }
-
     @Override
     @Transactional(readOnly = true)
     public PagedResponseDto<AppointmentResponseDto> getAppointmentAllByPatient(int id_patient, int page, int size) {
@@ -256,6 +264,11 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     @Override
+    public Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size) {
+        return null;
+    }
+
+    @Override
     public Page<AppointmentResponseDto> getAppointmentByDate(LocalDate date, int page, int size) {
         return null;
     }
@@ -263,6 +276,22 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public Page<AppointmentResponseDto> getAppointmentByStatus(AppointmentStatus status, int page, int size) {
         return null;
+    }
+
+    @Override
+    public OccupiedTimesResponseDto getOccupiedTimes(LocalDate date,  int doctorId) {
+        Doctor doctor = doctorRepository.findById(doctorId)
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
+
+        // Obtener las citas para esa fecha
+        List<AppointmentEntity> appointments = appointmentRepository.findByDoctorAndDate(doctor, date);
+
+        // Extraer las horas de inicio de las citas
+        List<String> occupiedTimes = appointments.stream()
+                .map(appointment -> appointment.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm")))
+                .toList();
+
+        return new OccupiedTimesResponseDto(date, occupiedTimes);
     }
 
     private AppointmentEntity findAppointmentById(int id) {
