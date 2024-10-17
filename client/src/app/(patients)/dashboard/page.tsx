@@ -2,9 +2,9 @@
 export default function DashboardPage() {
 
     return (
-        <div className="max-w-[1400px] mx-auto px-10 my-16">
+        <div className="max-w-[1200px] mx-auto px-10 my-16">
 
-            <h2 className="text-2xl font-semibold">Te damos la bienvenida Mica!</h2>
+            <h2 className="text-5xl font-semibold">Te damos la bienvenida Mica!</h2>
 
             <div className="flex flex-col gap-2 my-10">
                 <h3>Tus turnos ya agendados:</h3>
