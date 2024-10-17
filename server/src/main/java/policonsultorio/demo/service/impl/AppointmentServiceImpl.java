@@ -53,7 +53,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }*/
 
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
-            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
+            throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
 
         if(appointmentRequestDto.date().isBefore(LocalDate.now())){
@@ -93,7 +93,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         if (!TimeSlot.isValidTime(rescheduleDto.newStartTime())) {
-            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
+            throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
 
         if (rescheduleDto.newDate().isBefore(LocalDate.now())) {
@@ -172,7 +172,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
-            throw new RuntimeException("The start time must be a valid time between 10:00 and 20:00 (e.g., 10:00, 10:30, etc.).");
+            throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
 
         Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())

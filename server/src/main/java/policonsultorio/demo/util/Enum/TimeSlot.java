@@ -7,6 +7,13 @@ import java.util.Arrays;
 
 @Getter
 public enum TimeSlot {
+
+    TIME_07_00(LocalTime.of(7, 0)),
+    TIME_07_30(LocalTime.of(7, 30)),
+    TIME_08_00(LocalTime.of(8, 0)),
+    TIME_08_30(LocalTime.of(8, 30)),
+    TIME_09_00(LocalTime.of(9, 0)),
+    TIME_09_30(LocalTime.of(9, 30)),
     TIME_10_00(LocalTime.of(10, 0)),
     TIME_10_30(LocalTime.of(10, 30)),
     TIME_11_00(LocalTime.of(11, 0)),
@@ -23,11 +30,7 @@ public enum TimeSlot {
     TIME_16_30(LocalTime.of(16, 30)),
     TIME_17_00(LocalTime.of(17, 0)),
     TIME_17_30(LocalTime.of(17, 30)),
-    TIME_18_00(LocalTime.of(18, 0)),
-    TIME_18_30(LocalTime.of(18, 30)),
-    TIME_19_00(LocalTime.of(19, 0)),
-    TIME_19_30(LocalTime.of(19, 30)),
-    TIME_20_00(LocalTime.of(20, 0));
+    TIME_18_00(LocalTime.of(18, 0));
 
     private final LocalTime time;
 
