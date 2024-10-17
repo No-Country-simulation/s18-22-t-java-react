@@ -6,8 +6,8 @@ export function TopMenu() {
     const icons = [{ icon: <SvgPerfil /> }, { icon: <SvgHome /> }, { icon: <SvgNotifications /> }]
 
     return (
-        <div className=" py-8">
-            <nav className="flex justify-between items-center max-w-[1400px] px-4 mx-auto text-[#004784]">
+        <div className="py-8">
+            <nav className="flex justify-between items-center px-20 mx-auto text-[#004784]">
                 <Link href={"/dashboard"} className="text-3xl font-semibold" >Logo policonsultorios</Link>
                 <div>
                     <ul className="flex gap-8 items-center">

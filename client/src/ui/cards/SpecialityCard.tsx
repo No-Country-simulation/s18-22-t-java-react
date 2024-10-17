@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import specialtyImg from '/public/images/specialty.svg'
 
 interface Props {
   name?: string,
@@ -7,12 +8,12 @@ interface Props {
 }
 export function SpecialityCard({ name, img }: Props) {
   return (
-    <Link href={`/appointment?q=${name}`} className="flex flex-col border  rounded">
+    <Link href={`/specialty/${name}`} className="h-[184px] w-[275px]flex flex-col border-2 border-[#D9D9D9] rounded-[6px]">
       <>
         {img !== '' ? (
           <Image src={img} height={120} width={275} alt={name + "image"} />
         ) : (
-          <div className="h-[120px] w-[275px] bg-gray-300" />
+          <Image src={specialtyImg} height={120} width={275} alt={"specialty image"} className="rounded-t" />
         )}
       </>
       <div className="flex items-center h-[66px] px-3">

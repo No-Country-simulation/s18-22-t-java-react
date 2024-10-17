@@ -35,11 +35,11 @@ export function Search({ placeholder }: { placeholder: string }) {
   return (
     <div className="flex flex-col gap-4 mb-2 mt-14">
       <div className="relative flex flex-col">
-        <label htmlFor="search" className='text-2xl mb-4'>
+        <label htmlFor="search" className='text-[32px] font-medium mb-4 text-[#1A2C33]'>
           Reservá tu próximo turno
         </label>
         <input
-          className="block w-full rounded border border-gray-400 bg-gray-300 px-6 py-6 text-sm outline-2 placeholder:text-gray-500"
+          className="block w-full rounded-3xl border border-gray-400 bg-[#F6F7F7] px-8 py-6 text-sm outline-2 placeholder:text-gray-500 placeholder:text-xl drop shadow-3xl"
           placeholder={placeholder}
           name="search"
           id="search"
@@ -48,7 +48,7 @@ export function Search({ placeholder }: { placeholder: string }) {
           }}
           defaultValue={searchParams.get('q')?.toString()}
         />
-        <IconSearch className='absolute p-1 right-4 top-16' />
+        <IconSearch color='#004784' size={50} className='absolute p-1 right-5 top-[72px] text-[#1A2C33]' />
       </div>
     </div>
   )

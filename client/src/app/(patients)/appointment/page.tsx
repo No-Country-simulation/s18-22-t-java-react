@@ -18,12 +18,25 @@ export default async function AppointmentsPage({
 
   const data: DoctorFromResponse[] = await getAllDoctors()
 
-  const doctorListWithPlacesFiltered = data.filter((doctor, index, self) =>
+  /* const doctorListWithPlacesFiltered = data.filter((doctor, index, self) =>
     index === self.findIndex((d) => d.place === doctor.place)
-  )
+  ) */
   const doctorListWithSpecialityFiltered = data.filter((doctor, index, self) =>
     index === self.findIndex((d) => d.specialization === doctor.specialization)
   )
+
+  const doctorListWithPlacesFiltered = [{
+    id: 0,
+    password: "",
+    email: "",
+    phone: "",
+    active: true,
+    specialization: "",
+    licenseNumber: "",
+    img: "",
+    name: "Consultorio Principal",
+    address: 'Jujuy 2176'
+  }]
 
 
   return (
@@ -37,9 +50,9 @@ export default async function AppointmentsPage({
 
       {!query && (
         <>
-          <h3 className='text-xl'>Especialidades</h3>
+          <h3 className='text-2xl text-[#1A2C33] mb-2'>Especialidades</h3>
           <DoctorList list={doctorListWithSpecialityFiltered} title={"speciality"} />
-          <h3 className='text-xl'>Establecimientos</h3>
+          <h3 className='text-2xl text-[#1A2C33] my-2'>Establecimientos</h3>
           <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
         </>
       )}

@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        '3xl': '0 4px 10px 0px rgba(0, 0, 0, 0.10)',
+        '4xl': '4px 4px 6px 1px rgba(0, 0, 0, 0.25)',
+      },
       colors: {
         blue: {
           50: '#E6EFF7',
@@ -53,7 +57,6 @@ const config: Config = {
         yellow: {
           200: '#FFEFCE',
         },
-
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
