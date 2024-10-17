@@ -35,7 +35,7 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => route.push("/calendar/confirmed/123")}>Continue</AlertDialogAction>
+                        <AlertDialogAction onClick={() => route.push("/appointment/confirmed/123")}>Continue</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

@@ -15,6 +15,7 @@ export function LoginForm() {
     const submit = handleSubmit(data => {
 
         console.log(data)
+
         reset({
             email: "",
             password: "",

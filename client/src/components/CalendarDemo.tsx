@@ -13,7 +13,7 @@ export function CalendarDemo() {
     const [date, setDate] = useState<Date | undefined>(new Date())
     const [hour, setHour] = useState<string>("")
 
-    const formatYear = format(date ?? new Date(), "MM/dd/yyyy")
+    const formatYear = format(date ?? new Date(), 'yyyy-MM-dd')
     const formattedDate = format(formatYear, "EEEE d 'de' MMMM", { locale: es });
 
     const createHourItem = (hour: string) => (
@@ -30,12 +30,9 @@ export function CalendarDemo() {
 
     const filterHours = () => {
 
-        if (formatYear === "10/17/2024") {
+        if (formatYear === "2024-10-18") {
             return amHours.filter(item => !hourArray.includes(item.hour))
-        } else {
-            return amHours
-        }
-
+        } else { return amHours }
     }
 
     return (

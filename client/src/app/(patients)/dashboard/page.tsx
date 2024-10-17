@@ -27,7 +27,7 @@ export default function DashboardPage() {
         },]
 
     return (
-        <div className="max-w-[1400px] mx-auto px-10 my-16">
+        <div className="max-w-[1200px] mx-auto px-10 my-16">
 
             <h2 className="text-6xl font-medium text-secondaryBlue-500">Te damos la bienvenida Mica!</h2>
 
