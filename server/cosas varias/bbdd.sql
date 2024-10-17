@@ -27,3 +27,6 @@ CREATE TABLE authorizarion (
 
 SELECT * FROM user;
 SELECT * FROM authorizarion;
+SELECT * FROM doctor;
+describe doctor;
+describe user;
