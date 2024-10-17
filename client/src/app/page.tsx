@@ -2,11 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeImage from '/public/images/home.png'
-import { ButtonComponent } from "@/ui";
+import { ButtonComponent, Header } from "@/ui";
 
 export default function Home() {
   return (
     <div>
+      <Header />
       <div>
         <div className="relative w-full overflow-hidden">
           <div className="flex transition-transform ease-out duration-500">
