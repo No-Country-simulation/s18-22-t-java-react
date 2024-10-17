@@ -1,12 +1,17 @@
 package policonsultorio.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import policonsultorio.demo.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.LoginRequestDTO;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -16,7 +21,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @EqualsAndHashCode(of = "id")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,5 +57,35 @@ public class User {
         this.phone = loginRequestDto.phone();
         this.img = loginRequestDto.img();
         this.active = loginRequestDto.active();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
     }
 }
