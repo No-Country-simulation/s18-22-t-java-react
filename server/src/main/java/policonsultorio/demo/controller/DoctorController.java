@@ -11,7 +11,7 @@ import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/doctor")
+@RequestMapping("/doctor")
 @CrossOrigin("*")
 public class DoctorController {
  @Autowired
