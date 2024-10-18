@@ -215,9 +215,4 @@ public class AppointmentController {
 
         return ResponseEntity.ok(occupiedTimes);
     }
-
-
-
-
-
 }

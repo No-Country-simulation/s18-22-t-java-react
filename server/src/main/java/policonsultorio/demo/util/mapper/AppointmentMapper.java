@@ -17,7 +17,7 @@ public class AppointmentMapper {
         entity.setPatient(patient);
         entity.setDate(dto.date());
         entity.setStartTime(dto.startTime());
-        entity.setEndTime(dto.endTime());
+        //entity.setEndTime(dto.endTime());
         entity.setStatus(dto.status());
 
         return entity;

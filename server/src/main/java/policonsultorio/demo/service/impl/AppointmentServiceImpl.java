@@ -35,6 +35,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
 
+    LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
+
     @Override
     @Transactional
     public AppointmentResponseDto createAppointment(AppointmentRequestDto appointmentRequestDto) {
@@ -60,19 +62,22 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentDateException("The appointment date cannot be in the past. Please select a future date.");
         }
 
-        if(appointmentRequestDto.startTime().isAfter(appointmentRequestDto.endTime())){
+        calculatedEndTime = appointmentRequestDto.startTime().plusMinutes(30);
+
+        if (appointmentRequestDto.startTime().isAfter(calculatedEndTime)) {
             throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
         }
 
         // Verifica si hay otra cita en el mismo horario
         boolean existsAppointment = appointmentRepository.existsByDoctorAndDateAndTimeConflict(
-                doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.endTime());
+                doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), calculatedEndTime);
 
         if (existsAppointment) {
             throw new AppointmentAlreadyBookedException("Doctor already has an appointment in this time slot");
         }
 
         AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto, doctor, patient);
+        entity.setEndTime(calculatedEndTime);
 
         entity = appointmentRepository.save(entity);
 
@@ -185,10 +190,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         if (!appointment.getDoctor().equals(doctor) ||
                 !appointment.getDate().equals(appointmentRequestDto.date()) ||
                 !appointment.getStartTime().equals(appointmentRequestDto.startTime()) ||
-                !appointment.getEndTime().equals(appointmentRequestDto.endTime())) {
+                !appointment.getEndTime().equals(calculatedEndTime)) {
 
             boolean existsConflict = appointmentRepository.existsByDoctorAndDateAndTimeConflict(
-                    doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.endTime());
+                    doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), calculatedEndTime);
 
             if (existsConflict) {
                 throw new AppointmentConflictException("Doctor already has an appointment in this time slot");
@@ -199,7 +204,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setPatient(patient);
         appointment.setDate(appointmentRequestDto.date());
         appointment.setStartTime(appointmentRequestDto.startTime());
-        appointment.setEndTime(appointmentRequestDto.endTime());
+        appointment.setEndTime(calculatedEndTime);
         appointment.setStatus(appointmentRequestDto.status());
 
         appointment = appointmentRepository.save(appointment);
@@ -294,9 +299,12 @@ public class AppointmentServiceImpl implements AppointmentService {
         return new OccupiedTimesResponseDto(date, occupiedTimes);
     }
 
+
     private AppointmentEntity findAppointmentById(int id) {
         return appointmentRepository.findById(id)
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found"));
     }
+
+
 
 }
