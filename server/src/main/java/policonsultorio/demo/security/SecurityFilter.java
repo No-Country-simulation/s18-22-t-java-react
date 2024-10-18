@@ -39,26 +39,30 @@ public class SecurityFilter extends OncePerRequestFilter {
         {
 //refactor
             HttpServletRequestWrapper2 wrappedRequest = new HttpServletRequestWrapper2(request);
+
             String body = wrappedRequest.getBody();
-            // Parse the body to extract the user ID
-            JSONObject jsonObject = new JSONObject(body);
-            String userId = jsonObject.getString("Id");
+            Long userId = null;
+            if (body != null && !body.isEmpty()) {
+                // Parse the body to extract the user ID
+                JSONObject jsonObject = new JSONObject(body);
+
+                if (jsonObject.has("id"))  userId = Long.valueOf(jsonObject.getString("Id"));
 
 
-            Optional<User> userDb = userRepository.findById(Long.valueOf(userId));
-            User user = userDb.get();
-            if (user != null) {
-                var authorization = authorizationRepository.findByUserId(user.getId());
-                var token = authorization.getJwt();
-                var nombreUsuario = tokenService.getSubject(token);
+                Optional<User> userDb = userRepository.findById(userId);
+                User user = userDb.get();
+                if (user != null) {
+                    var authorization = authorizationRepository.findByUserId(user.getId());
+                    var token = authorization.getJwt();
+                    var nombreUsuario = tokenService.getSubject(token);
 
-                if (nombreUsuario != null) {
-                    UserDetails usuario = userRepository.findByNameUserDetails(nombreUsuario);
-                    var authentication = new UsernamePasswordAuthenticationToken(usuario, null,
-                            usuario.getAuthorities());
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                    if (nombreUsuario != null) {
+                        UserDetails usuario = userRepository.findByNameUserDetails(nombreUsuario);
+                        var authentication = new UsernamePasswordAuthenticationToken(usuario, null,
+                                usuario.getAuthorities());
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                    }
                 }
-
             }
             filterChain.doFilter(request, response);
         }
