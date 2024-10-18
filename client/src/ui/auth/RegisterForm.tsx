@@ -5,17 +5,22 @@ import { schemaRegister } from "@/schemas"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { createUser } from "@/actions"
-import { ButtonComponent } from "@/ui"
+import { SubmitButton } from "@/ui"
 import { useState } from "react"
+import { useRouter } from "next/navigation";
 
 type TypeFormData = z.infer<typeof schemaRegister>
 
 export function RegisterForm() {
 
+    const router = useRouter()
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<TypeFormData>({ resolver: zodResolver(schemaRegister) })
 
     const [success, setSuccess] = useState<string | undefined>('')
-    const [error, setError] = useState('')
+    const [error, setError] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
+
 
     const submit = handleSubmit(async data => {
         console.log(data)
@@ -27,20 +32,37 @@ export function RegisterForm() {
         formData.append('phone', data.phone)
         formData.append('insurer', data.insurer)
 
+        setLoading(true)
+        setError('')
+        setSuccess('')
+
         try {
             const result = await createUser(formData)
             console.log(result)
+            setLoading(false)
 
-            setSuccess(result.success)
+            if (result.errors || result.registerError) {
+                setError(result.message + ': ' + result.registerError || 'Error desconocido al iniciar sesión.')
+                return
+            }
 
-            reset({
-                email: "",
-                password: "",
-                name: "",
-                phone: "",
-                insurer: ""
-            })
+            if (result.success) {
+                setSuccess(result.success)
+
+                reset({
+                    email: "",
+                    password: "",
+                    name: "",
+                    phone: "",
+                    insurer: ""
+                })
+                setTimeout(() => {
+                    router.push('/dashboard')
+                }, 1000)
+            }
+
         } catch (error: unknown) {
+            setLoading(false)
             setError('Ha ocurrido un error al registrarse' + error)
         }
 
@@ -81,7 +103,8 @@ export function RegisterForm() {
             <input type="password" id="password" {...register("password")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.password && (<p className="text-red-500">{errors.password.message}</p>)}
 
-            <ButtonComponent submit size="normal" text="Enviar" variant="dark" className="place-self-center mt-2" />
+            <SubmitButton loading={loading} variant="dark" loadingText="Cargando" text="Enviar" className="place-self-center mt-2" />
+
             {success && <p className="text-xl text-emerald-500">{success}</p>}
             {error && <p className="text-xl text-red-600">{error}</p>}
         </form>

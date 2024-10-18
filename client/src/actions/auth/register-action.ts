@@ -1,8 +1,10 @@
 'use server'
 import { schemaRegister } from '@/schemas'
 
+const BASE_URL = process.env.API_URL
+
 export const createUser = async (formData: FormData) => {
-  const url = 'https://clinica-medica-production.up.railway.app/patients/create'
+  const url = BASE_URL + '/patients/create'
 
   const nameFromForm = formData.get('name') as string
   const emailFromForm = formData.get('email') as string
@@ -37,33 +39,41 @@ export const createUser = async (formData: FormData) => {
     insurer: insurerFromForm,
   }
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
 
-  const responseData = await response.json()
+    const responseData = await response.json()
 
-  if (!responseData) {
+    if (!responseData) {
+      return {
+        errors: {},
+        registerError: null,
+        message: 'Algo salio mal...',
+      }
+    }
+
+    if (responseData.message) {
+      return {
+        errors: {},
+        registerError: responseData.message,
+        message: 'Error al registrarse',
+      }
+    }
+
+    return {
+      success: 'Registro exitoso',
+    }
+  } catch (error) {
     return {
       errors: {},
-      registerError: null,
-      message: 'Algo salio mal...',
+      registerError: 'Error al comunicarse con el servidor' + error,
+      message: 'Algo salió mal durante el registro.' + error,
     }
-  }
-
-  if (responseData.message) {
-    return {
-      errors: {},
-      registerError: responseData.message,
-      message: 'Error al registrarse',
-    }
-  }
-
-  return {
-    success: 'Registro exitoso',
   }
 }
