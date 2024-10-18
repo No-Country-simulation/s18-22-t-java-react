@@ -1,10 +1,12 @@
-
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schemaRegister } from "@/schemas"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { createUser } from "@/actions"
+import { ButtonComponent } from "@/ui"
+import { useState } from "react"
 
 type TypeFormData = z.infer<typeof schemaRegister>
 
@@ -12,46 +14,76 @@ export function RegisterForm() {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<TypeFormData>({ resolver: zodResolver(schemaRegister) })
 
-    const submit = handleSubmit(data => {
+    const [success, setSuccess] = useState<string | undefined>('')
+    const [error, setError] = useState('')
 
+    const submit = handleSubmit(async data => {
         console.log(data)
 
-        reset({
-            email: "",
-            password: "",
-            dni: "",
-            userName: ""
-        })
+        const formData = new FormData()
+        formData.append('name', data.name)
+        formData.append('email', data.email)
+        formData.append('password', data.password)
+        formData.append('phone', data.phone)
+        formData.append('insurer', data.insurer)
+
+        try {
+            const result = await createUser(formData)
+            console.log(result)
+
+            setSuccess(result.success)
+
+            reset({
+                email: "",
+                password: "",
+                name: "",
+                phone: "",
+                insurer: ""
+            })
+        } catch (error: unknown) {
+            setError('Ha ocurrido un error al registrarse' + error)
+        }
+
     })
 
     return (
-        <form onSubmit={submit} className="grid w-[500px] p-5 border gap-2">
+        <form onSubmit={submit} className="grid p-6 border gap-4 rounded-3xl text-secondaryBlue-700">
 
-            <label htmlFor="userName">UserName <span className="text-red-500">*</span></label>
-            <input type="text" id="userName" {...register("userName")} className="border" />
-            {errors.userName && (<p className="text-red-500">{errors.userName.message}</p>)}
+            <h2 className="text-4xl my-2 font-medium">Formulario de Registro</h2>
 
-            <label htmlFor="email">Email <span className="text-red-500">*</span></label>
-            <input type="email" id="email" {...register("email")} className="border" />
+            <label htmlFor="name" className="text-xl">Nombre<span className="text-red-500">*</span></label>
+            <input type="text" id="name" {...register("name")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.name && (<p className="text-red-500">{errors.name.message}</p>)}
+
+            <label htmlFor="email" className="text-xl">Email <span className="text-red-500">*</span></label>
+            <input type="email" id="email" {...register("email")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.email && (<p className="text-red-500">{errors.email.message}</p>)}
-
+            {/* 
             <label htmlFor="dni">DNI/CC <span className="text-red-500">*</span></label>
             <input type="text" id="dni" {...register("dni")} className="border" />
             {errors.dni && (<p className="text-red-500">{errors.dni.message}</p>)}
+ */}
+            <label htmlFor="phone" className="text-xl">Telefono <span className="text-red-500">*</span></label>
+            <input type="text" id="phone" {...register("phone")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.phone && (<p className="text-red-500">{errors.phone.message}</p>)}
 
+            <label htmlFor="insurer" className="text-xl">Aseguradora/Obra Social <span className="text-red-500">*</span></label>
+            <input type="text" id="insurer" {...register("insurer")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.insurer && (<p className="text-red-500">{errors.insurer.message}</p>)}
+            {/* 
             <label htmlFor="city">City </label>
             <input type="text" id="city" {...register("city")} className="border" />
 
             <label htmlFor="direction">Direction </label>
             <input type="text" id="direction" {...register("direction")} className="border" />
-
-            <label htmlFor="password">Password <span className="text-red-500">*</span></label>
-            <input type="password" id="password" {...register("password")} className="border" />
+ */}
+            <label htmlFor="password" className="text-xl">Contraseña <span className="text-red-500">*</span></label>
+            <input type="password" id="password" {...register("password")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.password && (<p className="text-red-500">{errors.password.message}</p>)}
 
-
-            <button className="border">Enviar</button>
-
+            <ButtonComponent submit size="normal" text="Enviar" variant="dark" className="place-self-center mt-2" />
+            {success && <p className="text-xl text-emerald-500">{success}</p>}
+            {error && <p className="text-xl text-red-600">{error}</p>}
         </form>
     )
 }

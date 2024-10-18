@@ -1,15 +1,27 @@
-import { z } from "zod"
+import { z } from 'zod'
 
 export const schemaRegister = z.object({
-    userName: z.string({ message: "Name required" }).min(8, { message: "first and last name" }),
-    email: z.string({ message: "Email required" }).email({ message: "Email invalid" }),
-    dni: z.string({ message: "DNI required" }).min(8, ({ message: "enter a valid DNI" })).regex(/^\d+$/, { message: "DNI must contain only numbers" }),
-    city: z.string(),
-    direction: z.string(),
-    password: z.string({ message: "Password required" }).min(6, { message: "min 6 character" }),
+  name: z
+    .string({ message: 'Nombre requerido' })
+    .min(8, { message: 'Rellene con su Nombre completo' }),
+  email: z
+    .string({ message: 'Email requerido' })
+    .email({ message: 'Email invalido' }),
+  phone: z
+    .string({ message: 'Telefono requerido' })
+    .min(10, { message: 'Numero de telefono debe tener al menos 10 digitos' })
+    .regex(/^\d+$/, { message: 'Phone must contain only numbers' }),
+  insurer: z.string({ message: 'Aseguradora u Obra social requerida' }),
+  password: z
+    .string({ message: 'Contraseña requerido' })
+    .min(6, { message: 'Minimo 6 Caracteres' }),
 })
 
 export const schemaLogin = z.object({
-    email: z.string({ message: "Email required" }).email({ message: "Email invalid" }),
-    password: z.string({ message: "Password required" }).min(6, { message: "min 6 character" }),
+  email: z
+    .string({ message: 'Email requerido' })
+    .email({ message: 'Email invalido' }),
+  password: z
+    .string({ message: 'Contraseña requerido' })
+    .min(6, { message: 'Minimo 6 Caracteres' }),
 })
