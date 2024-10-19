@@ -1,13 +1,13 @@
 package policonsultorio.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import policonsultorio.demo.enums.Roles;
-import jakarta.persistence.*;
-import lombok.*;
 import policonsultorio.demo.dto.LoginRequestDTO;
+import policonsultorio.demo.enums.Roles;
 
 import java.time.LocalDate;
 import java.util.Collection;
