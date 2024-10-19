@@ -41,7 +41,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 // Parse the body to extract the user ID
                 JSONObject jsonObject = new JSONObject(body);
                 if (jsonObject.has("id")) {
-                    userId = Long.valueOf(jsonObject.getString("id")); // Ensure correct key
+                    userId = Long.valueOf(jsonObject.getString("id"));
                     Optional<User> userDb = userRepository.findById(userId);
                     if (userDb.isPresent()) {
                         User user = userDb.get();

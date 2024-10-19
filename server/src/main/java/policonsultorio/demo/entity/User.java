@@ -1,6 +1,7 @@
 package policonsultorio.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -46,6 +47,7 @@ public class User implements UserDetails {
     @Column(name = "active", columnDefinition = "boolean default true")
     private Boolean active = true;
     @OneToOne(mappedBy = "userId")
+    @JsonIgnore
     private Authorizarion authorizarion;
 
 
@@ -88,4 +90,21 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
+
+    @Override
+    public String toString() {
+        return "User:{" +
+                "id:" + getId() +
+                ", name:'" + getName() + '\'' +
+                ", password:'" + getPassword() + '\'' +
+                ", email:'" + getEmail() + '\'' +
+                ", phone:'" + getPhone() + '\'' +
+                ", img:'" + getImg() + '\'' +
+                ", initialDate:" + getInitialDate() +
+                ", rol:" + getRol() +
+                ", active" + getActive() +
+                '}';
+    }
+
 }

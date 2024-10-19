@@ -14,8 +14,6 @@ import policonsultorio.demo.repository.UserRepository;
 import policonsultorio.demo.security.TokenService;
 import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 
-import java.util.Map;
-
 
 @Service
 @Transactional
@@ -66,7 +64,7 @@ public class UserService {
 
     }
 
-    public User login(LoginDtoResponse loginRequestDto) {
+    public String login(LoginDtoResponse loginRequestDto) {
 
         var userDb = userRepository.findByName(loginRequestDto.name());
         if (!userDb.getPassword().equals(loginRequestDto.password())) throw new EntityNotFoundException("password not match");
@@ -75,7 +73,7 @@ public class UserService {
         String jwt = tokenService.generarToken(userDb);
         auhorization =  (auhorization == null)? Authorizarion.builder().userId(userDb).jwt(jwt).build() :  Authorizarion.builder().id(auhorization.getId()).userId(userDb).jwt(jwt).build();
         AuthorizationRepository.save(auhorization);
-        return userDb;
+        return userDb.toString();
 
     }
 }
