@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequestWrapper;
 
 import java.io.*;
 
+/**
+ * <h3>Clase para parcear los parametros que vienen en el body de los response</h3>
+ */
 public class HttpServletRequestWrapper2 extends HttpServletRequestWrapper {
     private final String body;
 
