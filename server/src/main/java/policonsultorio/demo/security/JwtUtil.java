@@ -3,8 +3,11 @@ package policonsultorio.demo.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.context.annotation.Configuration;
+
 import java.util.Date;
 
+@Configuration
 public class JwtUtil {
 
     private static final String SECRET_KEY = "tu_clave_secreta"; // Reemplaza esto por tu clave secreta
