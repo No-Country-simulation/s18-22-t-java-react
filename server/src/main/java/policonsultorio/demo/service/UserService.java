@@ -57,23 +57,26 @@ public class UserService {
 
     public User deleteLogicUser(int id) {
         Long idUser = Long.valueOf(id);
-        var userDb = findByUserId( idUser);
-      User user = new User(userDb);
-      user.setActive(false);
-      return userRepository.save(user);
+        var userDb = findByUserId(idUser);
+        User user = new User(userDb);
+        user.setActive(false);
+        return userRepository.save(user);
 
     }
 
     public String login(LoginDtoResponse loginRequestDto) {
 
-        var userDb = userRepository.findByName(loginRequestDto.name());
-        if (!userDb.getPassword().equals(loginRequestDto.password())) throw new EntityNotFoundException("password not match");
+        User userDb = userRepository.findByName(loginRequestDto.name());
+        if (!userDb.getPassword().equals(loginRequestDto.password()))
+            throw new EntityNotFoundException("password not match");
 
         Authorizarion auhorization = AuthorizationRepository.findByUserId(userDb.getId());
         String jwt = tokenService.generarToken(userDb);
-        auhorization =  (auhorization == null)? Authorizarion.builder().userId(userDb).jwt(jwt).build() :  Authorizarion.builder().id(auhorization.getId()).userId(userDb).jwt(jwt).build();
-        AuthorizationRepository.save(auhorization);
-        return userDb.toString();
+        auhorization = (auhorization == null) ? Authorizarion.builder().userId(userDb).jwt(jwt).build() : Authorizarion.builder().id(auhorization.getId()).userId(userDb).jwt(jwt).build();
+        var auth =  AuthorizationRepository.save(auhorization);
+       // userDb.setAuthorizarion(auhorization);
+       // User userDbSave = userRepository.save(userDb);
+        return auth.toString();
 
     }
 }

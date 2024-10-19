@@ -26,6 +26,19 @@ public class Authorizarion {
     @Column(name = "jwt", nullable = false)
     private String jwt;
 
-
+    @Override
+    public String toString() {
+        return "User:{" +
+                "id:" + getUserId().getId() +
+                ", name:'" + getUserId().getName() + '\'' +
+                ", password:'" + getUserId().getPassword() + '\'' +
+                ", email:'" + getUserId().getEmail() + '\'' +
+                ", phone:'" + getUserId().getPhone() + '\'' +
+                ", img:'" + getUserId().getImg() + '\'' +
+                ", initialDate:" + getUserId().getInitialDate() +
+                ", rol:" + getUserId().getRol() +
+                ", active" + getUserId().getActive() +
+                '}';
+    }
 
 }
