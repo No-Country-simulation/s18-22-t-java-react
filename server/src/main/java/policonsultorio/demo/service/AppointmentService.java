@@ -35,4 +35,5 @@ public interface AppointmentService {
     Page<AppointmentResponseDto> getAppointmentByStatus(AppointmentStatus status, int page, int size);
 
     OccupiedTimesResponseDto getOccupiedTimes (LocalDate date, int id_doctor);
+
 }

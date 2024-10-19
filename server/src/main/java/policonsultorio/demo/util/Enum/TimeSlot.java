@@ -32,7 +32,7 @@ public enum TimeSlot {
     TIME_17_30(LocalTime.of(17, 30)),
     TIME_18_00(LocalTime.of(18, 0));
 
-    private final LocalTime time;
+    private final LocalTime time;   
 
     TimeSlot(LocalTime time) {
         this.time = time;

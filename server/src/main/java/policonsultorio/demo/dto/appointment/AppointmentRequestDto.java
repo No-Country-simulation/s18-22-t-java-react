@@ -31,9 +31,8 @@ public record AppointmentRequestDto(
         @NotNull(message = "Appointment start time is required")
         LocalTime startTime,
 
-        @Schema(description = "Appointment end time", example = "11:00", requiredMode = Schema.RequiredMode.REQUIRED)
-        @NotNull(message = "Appointment end time is required")
-        LocalTime endTime,
+        /*@Schema(description = "Appointment end time", example = "11:00", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+        LocalTime endTime,*/
 
         @Schema(description = "Appointment status", example = "PROGRAMADA", requiredMode = Schema.RequiredMode.REQUIRED)
         AppointmentStatus status
