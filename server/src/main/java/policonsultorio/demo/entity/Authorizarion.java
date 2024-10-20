@@ -20,7 +20,7 @@ public class Authorizarion {
     private Long id ;
 
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User userId;
     @Column(name = "jwt", nullable = false)
