@@ -2,7 +2,10 @@ package policonsultorio.demo.service;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.LoginRequestDTO;
@@ -11,6 +14,7 @@ import policonsultorio.demo.entity.Authorizarion;
 import policonsultorio.demo.entity.User;
 import policonsultorio.demo.repository.AuthorizationRepository;
 import policonsultorio.demo.repository.UserRepository;
+import policonsultorio.demo.security.SecurityFilter;
 import policonsultorio.demo.security.TokenService;
 import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 
@@ -18,6 +22,7 @@ import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 @Service
 @Transactional
 public class UserService {
+
 
     @Autowired
     private UserRepository userRepository;
@@ -77,6 +82,15 @@ public class UserService {
        // userDb.setAuthorizarion(auhorization);
        // User userDbSave = userRepository.save(userDb);
         return auth.toString();
+
+    }
+
+    public User findByEmail(String email) {
+
+        return userRepository.findByEmail(email);
+
+
+
 
     }
 }

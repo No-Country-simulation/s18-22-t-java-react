@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.Optional;
 import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
+import policonsultorio.demo.service.UserService;
 
 @Slf4j
 @Component
@@ -32,6 +33,9 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private AuthorizationRepository authorizationRepository;
@@ -61,7 +65,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
                         if (emaiUsuario != null) {
                             logger.info("Token subject (username): {}", emaiUsuario);  // Log del nombre de usuario del token
-                            UserDetails usuario = userRepository.findByEmailUserDetails(emaiUsuario);
+                            UserDetails usuario =  userService.findByEmail(emaiUsuario);
                             if(usuario == null) throw new EntityNotFoundException("userDetails is null");
                             var authentication = new UsernamePasswordAuthenticationToken(user, null, usuario.getAuthorities());
                             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -76,7 +80,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             } else {
                 logger.warn("Request body is empty.");  // Log de advertencia si el cuerpo de la solicitud está vacío
             }
-
+         
             filterChain.doFilter(wrappedRequest, response);
         } catch (IOException ex) {
             logger.error("I/O error while reading input message: {}", ex.getMessage());  // Log de errores de I/O

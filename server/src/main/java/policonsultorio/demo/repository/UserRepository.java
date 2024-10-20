@@ -10,9 +10,12 @@ import policonsultorio.demo.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByName(@NotBlank String name);
 
-    @Query(value = "SELECT * FROM user WHERE name = :name",nativeQuery = true)
-    UserDetails findByNameUserDetails(@Param("name") String email);
+    User findByEmail( String email);
 
-    @Query(value = "SELECT * FROM user WHERE email = :email",nativeQuery = true)
-    UserDetails findByEmailUserDetails(@Param("email")String email);
+   /* @Query("SELECT u FROM User u WHERE u.email = :email")
+    User findByEmail(@Param("email") String email);*/
+
+
+
+
 }

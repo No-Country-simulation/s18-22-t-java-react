@@ -20,16 +20,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfigurations {
 
     @Autowired
-    SecurityFilter  securityFilter;
+    SecurityFilter securityFilter;
 
     @Autowired
     TokenService tokenService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return   httpSecurity.csrf(AbstractHttpConfigurer::disable)
+        return httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/user/**",
-                                        "/api/v1/doctor/create"
-                                        ).permitAll()
+                                        "/api/v1/doctor/create",
+                                        "/patients/create"
+                                ).permitAll()
 
                                 .requestMatchers("/v3/api-docs/**",
                                         "/swagger-ui/**",
@@ -39,7 +41,7 @@ public class SecurityConfigurations {
                                         "/swagger-resources/**",
                                         "/configuration/security",
                                         "/webjars/**").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
                         //.anyRequest().permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -50,12 +52,12 @@ public class SecurityConfigurations {
 
 
     @Bean
-    public AuthenticationManager AathenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+    public AuthenticationManager AathenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
 
         return new BCryptPasswordEncoder();
     }
