@@ -27,7 +27,7 @@ public class AppointmentMapper {
         return new AppointmentResponseDto(
                 entity.getId(),
                 entity.getDoctor().getId(),
-                entity.getPatient().getId(),
+                entity.getPatient().getUser().getId(),
                 entity.getDate(),
                 entity.getStartTime(),
                 entity.getEndTime(),
