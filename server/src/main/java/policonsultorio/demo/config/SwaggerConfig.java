@@ -31,11 +31,11 @@ import org.springframework.http.HttpHeaders;
         servers = {
                 @Server(
                         description = "Local Development Server",
-                        url = "http://localhost:8080"
+                        url = "http://localhost:8080/api/v1"
                 ),
                 @Server(
                         description = "Staging Server",
-                        url = "https://clinica-medica-production.up.railway.app"
+                        url = "https://clinica-medica-production.up.railway.app/api/v1"
                 ),
                 @Server(
                         description = "Production Server",
