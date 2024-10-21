@@ -54,6 +54,13 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new PatientNotActiveException("Patient not active");
         }*/
 
+        boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
+                doctor, patient, appointmentRequestDto.date());
+
+        if (patientAlreadyHasAppointment) {
+            throw new PatientAlreadyHasAppointmentException("Patient already has an appointment with this doctor on the same day.");
+        }
+
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
             throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
@@ -175,7 +182,6 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Appointment is completed");
         }
 
-
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
             throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
@@ -200,6 +206,15 @@ public class AppointmentServiceImpl implements AppointmentService {
             }
         }
 
+
+        // Verificar si el paciente ya tiene una cita con el mismo doctor en la misma fecha
+        boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDateExcludingAppointment(
+                doctor, patient, appointmentRequestDto.date(), appointment.getId());
+
+        if (patientAlreadyHasAppointment) {
+            throw new PatientAlreadyHasAppointmentException("Patient already has an appointment with this doctor on the same day.");
+        }
+
         appointment.setDoctor(doctor);
         appointment.setPatient(patient);
         appointment.setDate(appointmentRequestDto.date());
@@ -211,6 +226,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return AppointmentMapper.toDto(appointment);
     }
+
 
 
     @Override

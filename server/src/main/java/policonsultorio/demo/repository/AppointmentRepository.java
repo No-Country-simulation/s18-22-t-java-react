@@ -36,4 +36,18 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
 
     List<AppointmentEntity> findByDoctorAndDate(Doctor doctor, LocalDate date);
+
+    boolean existsByDoctorAndPatientAndDate(Doctor doctor, Patient patient, LocalDate date);
+
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
+            "WHERE a.doctor = :doctor " +
+            "AND a.patient = :patient " +
+            "AND a.date = :date " +
+            "AND a.id != :appointmentId")
+    boolean existsByDoctorAndPatientAndDateExcludingAppointment(@Param("doctor") Doctor doctor,
+                                                                @Param("patient") Patient patient,
+                                                                @Param("date") LocalDate date,
+                                                                @Param("appointmentId") int appointmentId);
+
 }
