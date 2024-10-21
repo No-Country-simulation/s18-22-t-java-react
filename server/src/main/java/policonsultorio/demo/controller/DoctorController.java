@@ -1,5 +1,12 @@
 package policonsultorio.demo.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +20,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/doctor")
 @CrossOrigin("*")
+@Tag(name = "Doctor")
 public class DoctorController {
- @Autowired
- private DoctorServiceImpl doctorService;
+	 @Autowired
+	 private DoctorServiceImpl doctorService;
 
 
 
 
 	// CREATE - POST Method to create a new doctor
 	@PostMapping("create")
+	@Operation(
+			summary = "Create a doctor",
+			description = "Create a new doctor",
+			tags = {"Doctor"}
+	)
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "201", description = "Doctor created successfully",
+			content = @Content(mediaType = "application/json", schema = @Schema(implementation = DoctorResponse.class),
+			examples = @ExampleObject(name = "doctor",
+					value = "{\"id\": 1, \"name\": \"John Doe\", \"password\": \"pass123\", \"email\": \"john@gmail.com\", \"phone\": \"123456789\", \"img\": \"a_image\", \"active\": \"true\", \"specialization\": \"Cardiología\", \"licenseNumber\": \"654321\"}")))
+	})
 	public ResponseEntity<DoctorResponse> createDoctor(@RequestBody DoctorRequest doctorRequest) {
 		try {
 			DoctorResponse doctorResponse = doctorService.create(doctorRequest);
@@ -33,6 +52,18 @@ public class DoctorController {
 
 	// GET BY ID - GET Method to retrieve a doctor by ID
 	@GetMapping("getById/{id}")
+	@Operation(
+			summary = "Search a doctor",
+			description = "Search for a specific doctor using a given ID",
+			tags = {"Doctor"}
+	)
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Doctor found",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = DoctorResponse.class),
+			examples = @ExampleObject(name = "doctor",
+					value = "{\"id\": 1, \"name\": \"John Doe\", \"password\": \"pass123\", \"email\": \"john@gmail.com\", \"phone\": \"123456789\", \"img\": \"a_image\", \"active\": \"true\", \"specialization\": \"Cardiología\", \"licenseNumber\": \"654321\"}"))),
+            @ApiResponse(responseCode = "404", description = "Doctor not found with that ID")
+	})
 	public ResponseEntity<DoctorResponse> getDoctorById(@PathVariable Integer id) {
 		try {
 			DoctorResponse doctorResponse = doctorService.getById(id);
@@ -44,6 +75,18 @@ public class DoctorController {
 
 	// UPDATE - PUT Method to update an existing doctor
 	@PutMapping("update/{id}")
+	@Operation(
+			summary = "Update a doctor",
+			description = "Update information about a doctor",
+			tags = {"Doctor"}
+	)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Updated doctor",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = DoctorResponse.class),
+            examples = @ExampleObject(name = "doctor",
+                    value = "{\"id\": 1, \"name\": \"John Doe\", \"password\": \"pass123\", \"email\": \"john@gmail.com\", \"phone\": \"123456789\", \"img\": \"a_image\", \"active\": \"true\", \"specialization\": \"Cardiología\", \"licenseNumber\": \"654321\"}"))),
+            @ApiResponse(responseCode = "404", description = "Doctor not found with that ID")
+    })
 	public ResponseEntity<DoctorResponse> updateDoctor(
 			@PathVariable Integer id, @RequestBody DoctorRequest doctorRequest) {
 		try {
@@ -56,6 +99,11 @@ public class DoctorController {
 
 	// FIND ALL - GET Method to get all doctors
 	@GetMapping("allDoctors")
+	@Operation(
+			summary = "List all doctors",
+			description = "List all registered doctors",
+			tags = {"Doctor"}
+	)
 	public ResponseEntity<List<DoctorResponse>> getAllDoctors() {
 		try {
 			List<DoctorResponse> doctors = doctorService.getAll();
