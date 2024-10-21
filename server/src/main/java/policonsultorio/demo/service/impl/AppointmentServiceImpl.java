@@ -22,10 +22,7 @@ import policonsultorio.demo.util.mapper.AppointmentMapper;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -47,8 +44,10 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new DoctorNotActiveException("Doctor not active");
         }
 
-        Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+        Patient patient = patientRepository.findByUserId(Long.valueOf(appointmentRequestDto.id_patient()));
+        if (patient == null) {
+            throw new PatientNotFoundException("Patient not found");
+        }
 
         /*if(!patient.getActive()){
             throw new PatientNotActiveException("Patient not active");
@@ -183,8 +182,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
 
-        Patient patient = patientRepository.findById(appointmentRequestDto.id_patient())
-                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+        Patient patient = patientRepository.findByUserId(Long.valueOf(appointmentRequestDto.id_patient()));
+        if (patient == null) {
+            throw new PatientNotFoundException("Patient not found");
+        }
 
         // Verificar conflicto de horario solo si el doctor o las horas cambian
         if (!appointment.getDoctor().equals(doctor) ||
@@ -249,8 +250,10 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new IllegalArgumentException("Page number and size must be positive");
         }
 
-        Patient patient = patientRepository.findById(id_patient)
-                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+        Patient patient = patientRepository.findByUserId((long) id_patient);
+        if (patient == null) {
+            throw new PatientNotFoundException("Patient not found");
+        }
 
         Page<AppointmentEntity> appointments = appointmentRepository.findByPatient(patient, PageRequest.of(page, size, Sort.by("id").descending()));
         List<AppointmentResponseDto> content = appointments.getContent().stream()
