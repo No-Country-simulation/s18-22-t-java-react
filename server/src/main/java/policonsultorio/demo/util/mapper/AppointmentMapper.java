@@ -38,8 +38,7 @@ public class AppointmentMapper {
     public static AppointmentRescheduleDto toDtoReschedule(AppointmentEntity entity) {
         return new AppointmentRescheduleDto(
                 entity.getDate(),
-                entity.getStartTime(),
-                entity.getEndTime()
+                entity.getStartTime()
         );
     }
 

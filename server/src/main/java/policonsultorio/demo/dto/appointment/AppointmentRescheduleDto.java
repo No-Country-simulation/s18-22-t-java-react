@@ -19,10 +19,10 @@ public record AppointmentRescheduleDto(
 
         @Schema(description = "New appointment start time", example = "10:00", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "New appointment start time is required")
-        LocalTime newStartTime,
+        LocalTime newStartTime
 
-        @Schema(description = "New appointment end time", example = "11:00", requiredMode = Schema.RequiredMode.REQUIRED)
+        /*@Schema(description = "New appointment end time", example = "11:00", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "New appointment end time is required")
-        LocalTime newEndTime
+        LocalTime newEndTime*/
 ) {
 }

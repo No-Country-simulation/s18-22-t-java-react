@@ -53,11 +53,20 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new PatientNotActiveException("Patient not active");
         }*/
 
+        //verificar si el paciente ya tiene una cita con este doctor
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
                 doctor, patient, appointmentRequestDto.date());
 
         if (patientAlreadyHasAppointment) {
             throw new PatientAlreadyHasAppointmentException("Patient already has an appointment with this doctor on the same day.");
+        }
+
+        //verificar si el paciente ya tiene una cita con otro doctor en el mismo horario
+        boolean patientHasConflictWithOtherDoctor = appointmentRepository.existsByPatientAndDateAndTimeConflict(
+                patient, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.startTime().plusMinutes(30));
+
+        if (patientHasConflictWithOtherDoctor) {
+            throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this time slot.");
         }
 
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
@@ -111,19 +120,21 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentDateException("The appointment date cannot be in the past. Please select a future date.");
         }
 
-        if (rescheduleDto.newStartTime().isAfter(rescheduleDto.newEndTime())) {
+        calculatedEndTime = rescheduleDto.newStartTime().plusMinutes(30);
+
+        if (rescheduleDto.newStartTime().isAfter(calculatedEndTime)) {
             throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
         }
 
         // Verifica si hay otra cita en el mismo horario
         if (appointmentRepository.existsByDoctorAndDateAndTimeConflict(
-                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), rescheduleDto.newEndTime())) {
+                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), calculatedEndTime)) {
             throw new AppointmentConflictException("Doctor already has an appointment at the specified time");
         }
 
         appointment.setDate(rescheduleDto.newDate());
         appointment.setStartTime(rescheduleDto.newStartTime());
-        appointment.setEndTime(rescheduleDto.newEndTime());
+        appointment.setEndTime(calculatedEndTime);
         appointment = appointmentRepository.save(appointment);
 
         return AppointmentMapper.toDto(appointment);
@@ -193,6 +204,8 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new PatientNotFoundException("Patient not found");
         }
 
+        calculatedEndTime = appointmentRequestDto.startTime().plusMinutes(30);
+
         // Verificar conflicto de horario solo si el doctor o las horas cambian
         if (!appointment.getDoctor().equals(doctor) ||
                 !appointment.getDate().equals(appointmentRequestDto.date()) ||
@@ -208,9 +221,21 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
 
+        // Imprimir el ID de la cita actual para verificar
+        System.out.println("Updating appointment with ID: " + appointment.getId());
+
+        // Verificar si el paciente tiene un conflicto de horario con otro doctor, excluyendo la cita actual
+        boolean patientHasConflictWithOtherDoctor = appointmentRepository.existsByPatientAndDateAndTimeConflictExcludingAppointment(
+                patient, appointmentRequestDto.date(), appointmentRequestDto.startTime(), calculatedEndTime, appointment.getId());
+
+        if (patientHasConflictWithOtherDoctor) {
+            throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this time slot.");
+        }
+
+
         // Verificar si el paciente ya tiene una cita con el mismo doctor en la misma fecha
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDateExcludingAppointment(
-                doctor, patient, appointmentRequestDto.date(), appointment.getId());
+                doctor, patient, appointmentRequestDto.date(), appointmentRequestDto.startTime(), calculatedEndTime, appointment.getId());
 
         if (patientAlreadyHasAppointment) {
             throw new PatientAlreadyHasAppointmentException("Patient already has an appointment with this doctor on the same day.");

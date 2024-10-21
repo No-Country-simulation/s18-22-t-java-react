@@ -21,6 +21,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
             "FROM AppointmentEntity a " +
             "WHERE a.doctor = :doctor " +
             "AND a.date = :date " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
             "AND ( " +
             "      (a.startTime < :newEndTime AND a.endTime > :newStartTime) " +
             "   )")
@@ -37,17 +38,54 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
     List<AppointmentEntity> findByDoctorAndDate(Doctor doctor, LocalDate date);
 
-    boolean existsByDoctorAndPatientAndDate(Doctor doctor, Patient patient, LocalDate date);
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
+            "WHERE a.doctor = :doctor " +
+            "AND a.patient = :patient " +
+            "AND a.date = :date " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA')")  // Ignorar las citas canceladas
+    boolean existsByDoctorAndPatientAndDate(@Param("doctor") Doctor doctor,
+                                            @Param("patient") Patient patient,
+                                            @Param("date") LocalDate date);
+
+
+
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
+            "WHERE a.patient = :patient " +
+            "AND a.date = :date " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
+            "AND ((a.startTime < :endTime AND a.endTime > :startTime))")
+    boolean existsByPatientAndDateAndTimeConflict(@Param("patient") Patient patient,
+                                                  @Param("date") LocalDate date,
+                                                  @Param("startTime") LocalTime startTime,
+                                                  @Param("endTime") LocalTime endTime);
 
     @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
             "FROM AppointmentEntity a " +
             "WHERE a.doctor = :doctor " +
             "AND a.patient = :patient " +
             "AND a.date = :date " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
+            "AND ((a.startTime < :endTime AND a.endTime > :startTime)) " +
             "AND a.id != :appointmentId")
     boolean existsByDoctorAndPatientAndDateExcludingAppointment(@Param("doctor") Doctor doctor,
                                                                 @Param("patient") Patient patient,
                                                                 @Param("date") LocalDate date,
+                                                                @Param("startTime") LocalTime startTime,
+                                                                @Param("endTime") LocalTime endTime,
                                                                 @Param("appointmentId") int appointmentId);
 
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
+            "WHERE a.patient = :patient " +
+            "AND a.date = :date " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
+            "AND ((a.startTime < :endTime AND a.endTime > :startTime)) " +
+            "AND a.id != :appointmentId")
+    boolean existsByPatientAndDateAndTimeConflictExcludingAppointment(@Param("patient") Patient patient,
+                                                                      @Param("date") LocalDate date,
+                                                                      @Param("startTime") LocalTime startTime,
+                                                                      @Param("endTime") LocalTime endTime,
+                                                                      @Param("appointmentId") int appointmentId);
 }

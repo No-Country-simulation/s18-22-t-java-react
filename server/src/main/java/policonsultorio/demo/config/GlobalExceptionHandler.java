@@ -141,4 +141,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handlePatientNotActiveException(PatientNotActiveException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Patient not active", ex.getMessage()));
     }
+
+    @ExceptionHandler(AppointmentTimeConflictException.class)
+    public ResponseEntity<ErrorResponse> handleAppointmentTimeConflictException(AppointmentTimeConflictException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Appointment time conflict", ex.getMessage()));
+    }
+
+    @ExceptionHandler(PatientAlreadyHasAppointmentException.class)
+    public ResponseEntity<ErrorResponse> handlePatientAlreadyHasAppointmentException(PatientAlreadyHasAppointmentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Patient already has an appointment", ex.getMessage()));
+    }
 }
