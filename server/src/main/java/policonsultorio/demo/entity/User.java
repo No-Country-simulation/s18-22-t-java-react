@@ -1,12 +1,18 @@
 package policonsultorio.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import policonsultorio.demo.enums.Roles;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import policonsultorio.demo.dto.LoginRequestDTO;
+import policonsultorio.demo.enums.Roles;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -16,7 +22,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @EqualsAndHashCode(of = "id")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +32,7 @@ public class User {
     private String name;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     @Column(name = "phone", nullable = false)
     private String phone;
@@ -41,6 +47,7 @@ public class User {
     @Column(name = "active", columnDefinition = "boolean default true")
     private Boolean active = true;
     @OneToOne(mappedBy = "userId")
+    @JsonIgnore
     private Authorizarion authorizarion;
 
 
@@ -53,4 +60,51 @@ public class User {
         this.img = loginRequestDto.img();
         this.active = loginRequestDto.active();
     }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
+
+
+    @Override
+    public String toString() {
+        return "User:{" +
+                "id:" + getId() +
+                ", name:'" + getName() + '\'' +
+                ", password:'" + getPassword() + '\'' +
+                ", email:'" + getEmail() + '\'' +
+                ", phone:'" + getPhone() + '\'' +
+                ", img:'" + getImg() + '\'' +
+                ", initialDate:" + getInitialDate() +
+                ", rol:" + getRol() +
+                ", active" + getActive() +
+                '}';
+    }
+
 }

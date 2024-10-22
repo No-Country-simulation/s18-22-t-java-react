@@ -20,6 +20,7 @@ import org.springframework.util.Assert;
 import policonsultorio.demo.controller.UserController;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.entity.User;
+import policonsultorio.demo.service.Doctor.IDoctorService;
 import policonsultorio.demo.service.UserService;
 
 import static org.hamcrest.Matchers.is;
@@ -36,6 +37,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class TestUserController {
 
 
+    @MockBean
+    private IDoctorService iDoctorService;
     @MockBean
     private UserService userService;
 
