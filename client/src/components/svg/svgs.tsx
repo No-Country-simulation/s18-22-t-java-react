@@ -2,14 +2,8 @@
 
 
 export const SvgHome = () => (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <rect width="32" height="32" fill="url(#pattern0_122_738)" />
-        <defs>
-            <pattern id="pattern0_122_738" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlinkHref="#image0_122_738" transform="scale(0.0111111)" />
-            </pattern>
-            <image id="image0_122_738" width="90" height="90" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjElEQVR4nO3cv49MYRTG8ZOQsQpCi6go6GjWf0BDL6HQqPwotbod/AUqxYqein/Aj8aqFFQ2zJbCJkiIr9zNLSbD7oyZe9/3vOd9PuVm9t7nPHNzd0/uZMxEREREZAywBNwBRsAGMGx+Nv4aWRBwCHjJ314DRxc9vthWyaeAD2zvE7Cssha7ki8D35muec2lGY85GLsFTb5hze1oUM2bBuwC7vH/7ja/O+XYTZk7GVoNgH3AY+b3FDiww/Enr+RJGxYdcAx4y+LeASe2OcdUFhlwFvhMd74C5/9xnnqLBq4CP+neL+CW1V40sAd4QP8eAXvbc05llSwhfdlabmZ5oUUBLLf/t6Y20zktAuAi8A3HLMASMqQAVvgS8oRCWImA4x0tIclYaXpYQpKwkgA324WhOFbQk5BVyrZknmVYQvri98kNcBpYJ44RcMY8KWEJmdMP4ErufotaQhZ0H9idq+T9JS0hHXgGHExdcnFLSEfeAydTlXyuxCWk4yc3F/ouudglpGO/gdt9FNx8FuJh12kDWO30cyDASu6JHFvpsugcT0NKMVLRaXzssugalhIXt45BW7ZuITk+FEllLBcqYyo6DRWdiIpOREUnoqITUdGJqOhEQhVtFWQLNQyOs4UaBsfZQg2D42yhhsFxtlDD4DhbqGFwnC3UMDjOFmoYHGcLNQyOs4UaBsfZQg2D42yhhsFxtlDD4DhbqGFwnC3UMDjOFmoYHGcLNQyOs4UaBsfZQg2D42yhhsFxtlDD4DhbqGFwnC3UMDjONs8wm9TjS86iX1GPFzmLvkE9ruX+btE3xLeW/ZvSgSPBy14DDpsH7ZV9vbmPBfkDuQk8b24X2a9kERERERERERHz5w8J5kAMAqGLzAAAAABJRU5ErkJggg==" />
-        </defs>
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 14.5L4.83333 11.6667M4.83333 11.6667L14.75 1.75L24.6667 11.6667M4.83333 11.6667V25.8333C4.83333 26.6157 5.4676 27.25 6.25 27.25H10.5M24.6667 11.6667L27.5 14.5M24.6667 11.6667V25.8333C24.6667 26.6157 24.0324 27.25 23.25 27.25H19M10.5 27.25C11.2824 27.25 11.9167 26.6157 11.9167 25.8333V20.1667C11.9167 19.3843 12.5509 18.75 13.3333 18.75H16.1667C16.9491 18.75 17.5833 19.3843 17.5833 20.1667V25.8333C17.5833 26.6157 18.2176 27.25 19 27.25M10.5 27.25H19" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 )
 
@@ -26,14 +20,9 @@ export const SvgNotifications = () => (
 )
 
 export const SvgPerfil = () => (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <rect width="32" height="32" fill="url(#pattern0_122_197)" />
-        <defs>
-            <pattern id="pattern0_122_197" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlinkHref="#image0_122_197" transform="scale(0.0111111)" />
-            </pattern>
-            <image id="image0_122_197" width="90" height="90" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAADAklEQVR4nO3cS4tcRRgG4NKoGBcK3kG8hOhWXIgoGhDRoAuX3l0IKgFd+BdcioJR1BBEV17+gODGlUSNxEvEaxgjuAuY0UQEb1EfKU4tRIwy4/Sp6qrvgbOZbpiul+rq6q++PimFEEIIIYQQQlg7XIqH8So+xLf4tVyr5W/5sYewdR3/Ylw4CffgHWv3Nu7GptrjaBpuxor/7wC21x5Pc3AaXrDxnsfm2uNrAs7FBxbnPZyTRmYKOb/NF+3AsGGblotFzuR/mtmnptFYzJr8X3ankWC7em5JA+2TVyoG/cUQ+2zcq747U++wt3bKeCsNULtowR/YknplKhC1YkfqlanS1oqXU6+wXzveT70y1ZBb8U3qFX7Rjp9TrzQm9UpjUq80JvVKrNGzBb2qHV3vOvZrR9f76Fe046XUK1OjSyu6rnVsLZWz2vJruCT1zPo6kDbantQ7U8tWbben3mHTTL0cx/PZEGeGGW6qGPQNaSSmvri57UqjwebSPTSXd4fsVMpyP9xM63Xu5Tg7jcwU9r4Fz+QxGxyPs4zsXkDIu4ZdLv4Nbixv843Ywo21u1jnPvuu3E20xq/r+bl7cAdOrD2OpYItufiTezBKL/VqOeDN1+Fc6iyP7ei+dhFCCCGEEEIIw8AZuAYP4im8XipwuZx6CD+V61Cpi+wtz9mJB3A1Tq89jubg/HJg+yK+snEOll/n5rrJeWlEuAKP41PzyAWnj/EYLk89w0V4pNyep7ZcRn0Ul6Ve4Dq81kiH0t/l1/QGbsUJadngFNyPTyyPj3AfTk7LoMyOLy2vFdzW7AzHVeVUpBdv4srU2G0h8gfLb/rzO56uvpzk46Nyr7ne7cs3DKgV8vU4ahxHsG3ukLeVr8Gj+RHXzhXyWeUEelSHceYcQT9Ze6QNeGKOoGveeKoVn88RdF6nRvfDHEF/XXuUDTg4R9DP1B5lA3bOEfQF+M64juLChQf9lx/7fG88R2ZvBy6dns+VXcgx/TpWxvgsLp415BBCCCGEEEIIIYTUpj8BC/LLBrcKHY4AAAAASUVORK5CYII=" />
-        </defs>
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.6667 9.91667C22.6667 13.0463 20.1297 15.5833 17 15.5833C13.8704 15.5833 11.3334 13.0463 11.3334 9.91667C11.3334 6.78705 13.8704 4.25 17 4.25C20.1297 4.25 22.6667 6.78705 22.6667 9.91667Z" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M17 19.8333C11.5232 19.8333 7.08337 24.2732 7.08337 29.75H26.9167C26.9167 24.2732 22.4769 19.8333 17 19.8333Z" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 )
 
