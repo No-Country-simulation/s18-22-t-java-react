@@ -28,9 +28,15 @@ public class SecurityConfigurations {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/user/**",
+                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/user/**",
+                                        "/v1/user",
+                                        "/user/**",
                                         "/api/v1/doctor/create",
-                                        "/patients/create"
+                                        "/v1/doctor/create",
+                                        "/doctor/create",
+                                        "/api/v1/patients/create",
+                                         "/v1/patients/create",
+                                          "/patients/create"
                                 ).permitAll()
 
                                 .requestMatchers("/v3/api-docs/**",
