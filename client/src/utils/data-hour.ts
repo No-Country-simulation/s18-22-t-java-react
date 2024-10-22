@@ -1,6 +1,4 @@
-export interface Hours {
-    hour: string
-}
+
 
 export const hourData = [
     { hour: "07:00" },
@@ -28,7 +26,7 @@ export const hourData = [
     { hour: "18:00" },
 ];
 
-export const splitHours = (hours: Hours[]) => {
+export const splitHours = (hours: { hour: string }[]) => {
     const amHours = hours.filter(item => parseInt(item.hour) < 12);
     const pmHours = hours.filter(item => parseInt(item.hour) >= 12);
     return { amHours, pmHours };

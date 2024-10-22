@@ -1,31 +1,32 @@
 import { getDoctorById } from '@/actions/doctors/doctorActions'
 import { CalendarDemo } from '@/components/CalendarDemo'
-import Image from 'next/image'
 import { redirect } from 'next/navigation'
+import { BackButton } from '@/components'
+import Image from 'next/image'
 
 export default async function AppointmentById({ params }: { params: { id: string } }) {
   const id = Number(params.id)
-
   const doctor = await getDoctorById(id)
-
 
   if (!doctor) {
     redirect("/dashboard")
   }
 
   return (
-    <div className=" max-w-[1400px] mx-auto px-6 py-10">
-      <div className="flex justify-between">
+    <div className=" max-w-[1200px] mx-auto px-6 pt-2 pb-20 relative">
+      <BackButton className='-left-12' />
+      <div className="flex justify-between mt-10">
         <div>
-          <h2 className="mb-6 text-2xl">Selecciona un turno</h2>
+          <h2 className="mb-6 text-2xl font-bold">Selecciona un turno:</h2>
           <div className="flex gap-8">
 
+            {/* DESCRIPTION DOCTOR  */}
             <figure className='relative size-20 rounded-full overflow-hidden'>
-              <Image src={doctor.img} fill sizes='(max-width: 728px) 100px' alt='' />
+              <Image src={doctor.img} fill sizes='(max-width: 728px) 100px' alt='doctor' priority />
             </figure>
             <div>
-              <h3>{doctor.name}</h3>
-              <span>{doctor.specialization}</span>
+              <h3 className='text-xl font-medium '>{doctor.name}</h3>
+              <span className='text-[#505256] font-bold'>{doctor.specialization}</span>
 
               <p className="mt-2">Clínica colón - jujuy 2176</p>
             </div>
@@ -41,7 +42,7 @@ export default async function AppointmentById({ params }: { params: { id: string
         </div>
       </div>
 
-      <CalendarDemo />
+      <CalendarDemo doctor={{ id: doctor.id, name: doctor.name }} />
 
     </div>
   )
