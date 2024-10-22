@@ -23,14 +23,9 @@ interface Props {
 export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formattedDate, doctor }: Props) => {
 
     const appointmentCreate = async () => {
-        const appointment = await createAppointment({
-            id_doctor: doctor.id, id_patient: 3, date: formattedDate, startTime: hour
+        await createAppointment({
+            id_doctor: doctor.id, id_patient: 31, date: doctor.dateYear, startTime: hour
         })
-
-        if (appointment.message) {
-            console.log(appointment.message)
-        }
-
     }
 
     return (
@@ -45,7 +40,13 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                        <AlertDialogAction className="bg-blue-500 px-6 py-[21px]" onClick={appointmentCreate}>Confirmar</AlertDialogAction>
+
+                        <AlertDialogAction
+                            className="bg-blue-500 px-6 py-[21px]"
+                            onClick={appointmentCreate}>
+                            Confirmar
+                        </AlertDialogAction>
+
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

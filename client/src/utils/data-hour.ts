@@ -1,5 +1,4 @@
 
-
 export const hourData = [
     { hour: "07:00" },
     { hour: "07:30" },
@@ -25,9 +24,3 @@ export const hourData = [
     { hour: "17:30" },
     { hour: "18:00" },
 ];
-
-export const splitHours = (hours: { hour: string }[]) => {
-    const amHours = hours.filter(item => parseInt(item.hour) < 12);
-    const pmHours = hours.filter(item => parseInt(item.hour) >= 12);
-    return { amHours, pmHours };
-};

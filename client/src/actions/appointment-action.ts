@@ -17,12 +17,14 @@ export const createAppointment = async ({ id_doctor, id_patient, date, startTime
 
     const data = await fetch(url, {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             "id_doctor": id_doctor,
             "id_patient": id_patient,
             "date": date,
             "startTime": startTime,
-            "endTime": "20:00",
             "status": "PROGRAMADA"
         })
     }).then((res) => res.json())
@@ -31,6 +33,6 @@ export const createAppointment = async ({ id_doctor, id_patient, date, startTime
         redirect(`/appointment/confirmed/${data.id}`)
     }
 
-    return { message: data.error }
+    console.log("error al crear la cita")
 
 }
