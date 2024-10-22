@@ -151,4 +151,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handlePatientAlreadyHasAppointmentException(PatientAlreadyHasAppointmentException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Patient already has an appointment", ex.getMessage()));
     }
+
+    @ExceptionHandler(AppointmentTimeRestrictionException.class)
+    public ResponseEntity<ErrorResponse> handleAppointmentTimeRestrictionException(AppointmentTimeRestrictionException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Appointment time restriction", ex.getMessage()));
+    }
 }

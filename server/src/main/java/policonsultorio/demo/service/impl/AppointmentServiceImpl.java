@@ -20,6 +20,7 @@ import policonsultorio.demo.util.exception.appointment.*;
 import policonsultorio.demo.util.mapper.AppointmentMapper;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -33,6 +34,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final PatientRepository patientRepository;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
+    LocalDateTime currentTime = LocalDateTime.now();
 
     @Override
     @Transactional
@@ -67,6 +69,12 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         if (patientHasConflictWithOtherDoctor) {
             throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this time slot.");
+        }
+
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointmentRequestDto.date(), appointmentRequestDto.startTime());
+
+        if (appointmentDateTime.isBefore(currentTime)) {
+            throw new AppointmentDateException("The appointment time cannot be in the past. Please select a future time.");
         }
 
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
@@ -112,6 +120,19 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Cannot reschedule a completed appointment");
         }
 
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
+
+        if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
+            throw new AppointmentTimeRestrictionException("Appointments can only be rescheduled with at least 24 hours in advance.");
+        }
+
+        LocalDateTime newAppointmentDateTime = LocalDateTime.of(rescheduleDto.newDate(), rescheduleDto.newStartTime());
+
+        if (newAppointmentDateTime.isBefore(currentTime)) {
+            throw new AppointmentDateException("The new appointment time cannot be in the past. Please select a future time.");
+        }
+
+
         if (!TimeSlot.isValidTime(rescheduleDto.newStartTime())) {
             throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
         }
@@ -153,6 +174,12 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentAlreadyCompletedException("Cannot cancel a completed appointment");
         }
 
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
+
+        if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
+            throw new AppointmentTimeRestrictionException("Appointments can only be cancelled with at least 24 hours in advance.");
+        }
+
         appointment.setStatus(AppointmentStatus.CANCELADA);
         appointment = appointmentRepository.save(appointment);
 
@@ -191,6 +218,13 @@ public class AppointmentServiceImpl implements AppointmentService {
         if (appointment.getStatus() == AppointmentStatus.COMPLETADA) {
             throw new AppointmentAlreadyCompletedException("Appointment is completed");
         }
+
+        LocalDateTime newAppointmentDateTime = LocalDateTime.of(appointmentRequestDto.date(), appointmentRequestDto.startTime());
+
+        if (newAppointmentDateTime.isBefore(currentTime)) {
+            throw new AppointmentDateException("The appointment time cannot be in the past. Please select a future time.");
+        }
+
 
         if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
             throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
