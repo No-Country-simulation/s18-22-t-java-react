@@ -9,7 +9,7 @@ interface Props {
 export function DoctorList({ list, title }: Props) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-2">
+      <div className="flex gap-2 overflow-x-scroll">
         {list.map((doctor) => (
           <>
             {title === 'speciality' ? (
