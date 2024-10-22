@@ -15,7 +15,7 @@ public record AppointmentResponseDto(
     @Schema(description = "Doctor ID", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     Long id_doctor,
     @Schema(description = "Patient ID", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
-    int id_patient,
+    Long id_patient,
     @Schema(description = "Appointment date", example = "2025-01-01", requiredMode = Schema.RequiredMode.REQUIRED)
     LocalDate date,
     @Schema(description = "Appointment start time", example = "09:00", requiredMode = Schema.RequiredMode.REQUIRED)
