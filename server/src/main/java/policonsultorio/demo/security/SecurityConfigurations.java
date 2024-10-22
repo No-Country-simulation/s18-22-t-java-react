@@ -47,8 +47,8 @@ public class SecurityConfigurations {
                                         "/swagger-resources/**",
                                         "/configuration/security",
                                         "/webjars/**").permitAll()
-                                .anyRequest().authenticated()
-                        //.anyRequest().permitAll()
+                                //.anyRequest().authenticated()
+                     .anyRequest().permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
