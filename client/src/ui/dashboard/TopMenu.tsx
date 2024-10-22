@@ -3,7 +3,7 @@ import { SvgPerfil } from "@/components/svg/svgs";
 import Link from "next/link";
 
 export function TopMenu() {
-    const icons = [{ icon: <SvgPerfil /> }, { icon: <SvgHome /> }, { icon: <SvgNotifications /> }]
+    const icons = [{ icon: <SvgPerfil />, title: "Mi perfil" }, { icon: <SvgHome />, title: "Inicio" }, { icon: <SvgNotifications />, name: "notificación" }]
 
     return (
         <div className="py-8">
@@ -26,9 +26,9 @@ export function TopMenu() {
                             icons.map((item, index) => (
                                 <li key={index}>
                                     <Link
-                                        className=" bg-[#C3C3C3] flex justify-center items-center p-2 rounded-full"
+                                        className={`flex gap-2 justify-center items-center ${item.name && "bg-blue-500  p-2 rounded-full"}`}
                                         href={"#"}>
-                                        {item.icon}
+                                        <span>{item.icon}</span> {item.title && <span>{item.title}</span>}
                                     </Link>
                                 </li>
                             ))

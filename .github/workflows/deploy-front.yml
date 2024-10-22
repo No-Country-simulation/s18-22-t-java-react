@@ -6,6 +6,8 @@ on:
   branch:
     - develop-front
   push:
+    branches:
+      - develop-front
     paths:
       - 'client/**'
 jobs:
