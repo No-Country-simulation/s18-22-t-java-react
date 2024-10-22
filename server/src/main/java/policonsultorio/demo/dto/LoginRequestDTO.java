@@ -1,5 +1,6 @@
 package policonsultorio.demo.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import policonsultorio.demo.entity.User;
 
@@ -10,6 +11,7 @@ public record LoginRequestDTO(
         @NotBlank
         String password,
         @NotBlank
+        @Email
         String email,
         @NotBlank
         String phone,

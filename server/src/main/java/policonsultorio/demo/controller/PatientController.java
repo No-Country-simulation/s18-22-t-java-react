@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class PatientController {
             examples = @ExampleObject(name = "patient",
                     value = "{\"id\": 1, \"name\": \"John Doe\", \"password\": \"pass123\", \"email\": \"john@gmail.com\", \"phone\": \"123456789\", \"img\": \"a_image\", \"active\": \"true\", \"insurer\": \"SURA\"}")))
     })
-    public ResponseEntity<PatientResponseDTO> createPatient(@RequestBody PatientRequestDTO patientRequestDTO){
+    public ResponseEntity<PatientResponseDTO> createPatient(@RequestBody @Valid PatientRequestDTO patientRequestDTO){
         PatientResponseDTO patientSaved = patientService.save(patientRequestDTO);
         return new ResponseEntity<>(patientSaved, HttpStatus.CREATED);
     }
