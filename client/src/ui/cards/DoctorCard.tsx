@@ -35,8 +35,8 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
       </div>
       {dashboard ? (
         <div className="flex justify-center items-center ml-auto mr-[50px] gap-6">
-          <Link href={'/appointment/' + id} className="w-40 h-16 bg-white border-2 border-blue-500 text-blue-500 rounded-xl text-lg font-medium text-center content-center">Cancelar</Link>
-          <Link href={'/appointment/' + id} className="w-40 h-16 bg-blue-500 text-white rounded-xl text-lg font-medium text-center content-center">Reprogramar</Link>
+          <Link href={'/appointment/calendar/' + id} className="w-40 h-16 bg-white border-2 border-blue-500 text-blue-500 rounded-xl text-lg font-medium text-center content-center">Cancelar</Link>
+          <Link href={'/appointment/calendar/' + id} className="w-40 h-16 bg-blue-500 text-white rounded-xl text-lg font-medium text-center content-center">Reprogramar</Link>
         </div>
       ) : (
         <div className="flex justify-center items-center ml-auto mr-[50px]">

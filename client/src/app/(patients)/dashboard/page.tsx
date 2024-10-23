@@ -15,7 +15,7 @@ export default function DashboardPage() {
             "licenseNumber": "MP123456"
         },
         {
-            "id": 2,
+            "id": 3,
             "name": "Dra. Valeria González",
             "password": "valeria321",
             "email": "valeria.gonzalez@example.com",

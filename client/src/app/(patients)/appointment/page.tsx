@@ -3,6 +3,7 @@ import { Search, SearchResults } from "@/components";
 import { Suspense } from "react";
 import { getAllDoctors } from '@/actions/doctors/doctorActions';
 import { DoctorFromResponse } from "@/interfaces/user";
+import { SwiperList } from "@/components/swiper/SwiperList";
 
 export default async function AppointmentsPage({
   searchParams,
@@ -51,7 +52,7 @@ export default async function AppointmentsPage({
       {!query && (
         <>
           <h3 className='text-2xl text-[#1A2C33] mb-2'>Especialidades</h3>
-          <DoctorList list={doctorListWithSpecialityFiltered} title={"speciality"} />
+          <SwiperList list={doctorListWithSpecialityFiltered} />
           <h3 className='text-2xl text-[#1A2C33] my-2'>Establecimientos</h3>
           <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
         </>
