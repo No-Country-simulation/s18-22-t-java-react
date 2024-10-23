@@ -1,9 +1,10 @@
+import { getAppointmentById } from "@/actions/appointment-action";
 import { Check } from "lucide-react";
 import Link from "next/link";
 
-export default function ConfirmedPage({ params }: { params: { name: string } }) {
+export default async function ConfirmedPage({ params }: { params: { id: string } }) {
 
-    console.log(params)
+    const appointment = await getAppointmentById(params.id)
 
     return (
         <div className="h-[calc(100vh-112px)] flex justify-center items-center pb-10">
@@ -14,7 +15,7 @@ export default function ConfirmedPage({ params }: { params: { name: string } }) 
                 </div>
 
                 <h1 className="text-4xl font-bold">Tu turno ha sido reservado</h1>
-                <p className="my-4">Para el día [Fecha de cita] a la [Hora de la cita]  con [Nombre del doctor] en [Establecimiento]</p>
+                <p className="my-4">Para el día <span className="font-bold">{appointment.date}</span> a la <span className="font-bold">{appointment.starTime}</span> con el doctor <span className="font-bold">{appointment.doctorName}</span> en <span className="font-bold">[Establecimiento]</span></p>
 
                 <div className="grid grid-cols-2 gap-4 mt-16">
                     <button className="border-2 text-blue-500 font-semibold border-blue-500 py-4 rounded-xl">Descargar comprobante</button>

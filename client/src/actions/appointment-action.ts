@@ -1,17 +1,12 @@
 "use server"
 
+import { CreateAppointment } from "@/interfaces"
 import { redirect } from "next/navigation"
-
-interface Prop {
-    id_doctor: number
-    id_patient: number
-    date: string
-    startTime: string
-}
 
 const BASE_URL = process.env.API_URL
 
-export const createAppointment = async ({ id_doctor, id_patient, date, startTime }: Prop) => {
+// POST CREAR CITA
+export const createAppointment = async ({ id_doctor, id_patient, date, startTime }: CreateAppointment) => {
 
     const url = BASE_URL + '/appointment/schedule'
 
@@ -29,10 +24,28 @@ export const createAppointment = async ({ id_doctor, id_patient, date, startTime
         })
     }).then((res) => res.json())
 
-    if (data) {
+    if (data.id) {
+        console.log({ data })
         redirect(`/appointment/confirmed/${data.id}`)
     }
 
     console.log("error al crear la cita")
+}
 
+export const getAppointmentById = async (id: string) => {
+    const urlAppointment = BASE_URL + `/appointment/get_by_id/${id}`
+    const getAppointment = await fetch(urlAppointment).then(res => res.json())
+
+    if (getAppointment.error) {
+        redirect("/")
+    }
+
+    const urlDoctor = BASE_URL + `/doctor/getById/${getAppointment.id_doctor}`
+    const getDoctor = await fetch(urlDoctor).then(res => res.json()).catch(err => console.log(err))
+
+    return {
+        date: getAppointment.date,
+        starTime: getAppointment.startTime,
+        doctorName: getDoctor.name
+    }
 }
