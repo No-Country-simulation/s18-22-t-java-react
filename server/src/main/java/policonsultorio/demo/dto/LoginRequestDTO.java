@@ -11,11 +11,11 @@ public record LoginRequestDTO(
         @NotBlank
         String name,
         @NotBlank
-         String dni,
+        String dni,
         @NotBlank
-         String obraSocial,
+        String obraSocial,
         @NotBlank
-         String numeroAsociado,
+        String numeroAsociado,
         @NotBlank
         String password,
         @NotBlank
@@ -26,15 +26,15 @@ public record LoginRequestDTO(
         String img,
         Boolean active
 ) {
-        public LoginRequestDTO(User usuario) {
-                this(usuario.getId(), usuario.getName(), usuario.getDni(),usuario.getObraSocial(),
-                        usuario.getNumeroAsociado(),usuario.getPassword(), usuario.getEmail(), usuario.getPhone(),
-                        usuario.getImg(),usuario.getActive());
-        }
+    public LoginRequestDTO(User usuario) {
+        this(usuario.getId(), usuario.getName(), usuario.getDni(), usuario.getObraSocial(),
+                usuario.getNumeroAsociado(), usuario.getPassword(), usuario.getEmail(), usuario.getPhone(),
+                usuario.getImg(), usuario.getActive());
+    }
 
-        public LoginRequestDTO(Long id) {
-                this(id,null,null,null,null,null,null,null,null,null);
-        }
+    public LoginRequestDTO(Long id) {
+        this(id, null, null, null, null, null, null, null, null, null);
+    }
 
 
 }
