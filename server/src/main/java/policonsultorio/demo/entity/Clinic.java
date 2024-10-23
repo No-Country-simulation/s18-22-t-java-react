@@ -30,6 +30,8 @@ public class Clinic {
     private String description;
     @Column(name = "vlinic_image", columnDefinition = "TEXT")
     private String vlinicImage;
+    @Column(name = "active", nullable = false)
+    private Boolean active = true;
 
 
     public Clinic(ResponseClinic responseClinic) {
