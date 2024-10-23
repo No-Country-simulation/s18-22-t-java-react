@@ -71,7 +71,7 @@ public class UserService {
 
     public String login(LoginDtoResponse loginRequestDto) {
 
-        User userDb = userRepository.findByName(loginRequestDto.name());
+        User userDb = userRepository.findByEmail(loginRequestDto.email());
         if (!userDb.getPassword().equals(loginRequestDto.password()))
             throw new EntityNotFoundException("password not match");
 
