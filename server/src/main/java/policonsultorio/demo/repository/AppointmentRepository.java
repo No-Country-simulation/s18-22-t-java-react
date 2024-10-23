@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
+import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -88,4 +90,27 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
                                                                       @Param("startTime") LocalTime startTime,
                                                                       @Param("endTime") LocalTime endTime,
                                                                       @Param("appointmentId") int appointmentId);
+
+    Page<AppointmentEntity> findByDoctor(Doctor doctor, PageRequest id);
+
+    @Query("SELECT a FROM AppointmentEntity a WHERE a.status = :status AND a.endTime < :endTime")
+    List<AppointmentEntity> findByStatusAndEndTimeBefore(@Param("status") AppointmentStatus status,
+                                                         @Param("endTime") LocalTime endTime);
+
+
+
+    @Query("SELECT COUNT(a) > 0 FROM AppointmentEntity a " +
+            "WHERE a.patient = :patient " +
+            "AND a.date >= :today " +
+            "AND a.date <= :appointmentDate " +
+            "AND a.doctor != :doctor " +
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
+            "AND (a.startTime < :endTime AND a.endTime > :startTime)")
+    boolean existsByPatientAndDateRangeWithOtherDoctors(@Param("patient") Patient patient,
+                                                        @Param("today") LocalDate today,
+                                                        @Param("appointmentDate") LocalDate appointmentDate,
+                                                        @Param("startTime") LocalTime startTime,
+                                                        @Param("endTime") LocalTime endTime,
+                                                        @Param("doctor") Doctor doctor);
+
 }

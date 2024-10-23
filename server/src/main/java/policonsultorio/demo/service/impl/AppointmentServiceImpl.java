@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.appointment.*;
@@ -34,7 +35,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final PatientRepository patientRepository;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
-    LocalDateTime currentTime = LocalDateTime.now();
+
 
     @Override
     @Transactional
@@ -54,6 +55,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         /*if(!patient.getActive()){
             throw new PatientNotActiveException("Patient not active");
         }*/
+        LocalDate appointmentDate = appointmentRequestDto.date();
+        LocalTime startTime = appointmentRequestDto.startTime();
+
+        // Llamada a la validación de conflictos
+        validateNoConflictingAppointments(patient, doctor, appointmentDate, startTime);
 
         //verificar si el paciente ya tiene una cita con este doctor
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
@@ -72,6 +78,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         LocalDateTime appointmentDateTime = LocalDateTime.of(appointmentRequestDto.date(), appointmentRequestDto.startTime());
+        LocalDateTime currentTime = LocalDateTime.now();
 
         if (appointmentDateTime.isBefore(currentTime)) {
             throw new AppointmentDateException("The appointment time cannot be in the past. Please select a future time.");
@@ -121,6 +128,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
+        LocalDateTime currentTime = LocalDateTime.now();
 
         if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
             throw new AppointmentTimeRestrictionException("Appointments can only be rescheduled with at least 24 hours in advance.");
@@ -146,6 +154,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         if (rescheduleDto.newStartTime().isAfter(calculatedEndTime)) {
             throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
         }
+
+        LocalDate appointmentDate = rescheduleDto.newDate();
+        LocalTime startTime = rescheduleDto.newStartTime();
+
+        validateNoConflictingAppointments(appointment.getPatient(), appointment.getDoctor(), appointmentDate, startTime);
 
         // Verifica si hay otra cita en el mismo horario
         if (appointmentRepository.existsByDoctorAndDateAndTimeConflict(
@@ -175,6 +188,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
+        LocalDateTime currentTime = LocalDateTime.now();
 
         if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
             throw new AppointmentTimeRestrictionException("Appointments can only be cancelled with at least 24 hours in advance.");
@@ -220,6 +234,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         LocalDateTime newAppointmentDateTime = LocalDateTime.of(appointmentRequestDto.date(), appointmentRequestDto.startTime());
+        LocalDateTime currentTime = LocalDateTime.now();
 
         if (newAppointmentDateTime.isBefore(currentTime)) {
             throw new AppointmentDateException("The appointment time cannot be in the past. Please select a future time.");
@@ -254,9 +269,10 @@ public class AppointmentServiceImpl implements AppointmentService {
             }
         }
 
+        LocalDate appointmentDate = appointmentRequestDto.date();
+        LocalTime startTime = appointmentRequestDto.startTime();
 
-        // Imprimir el ID de la cita actual para verificar
-        System.out.println("Updating appointment with ID: " + appointment.getId());
+        validateNoConflictingAppointments(patient, doctor, appointmentDate, startTime);
 
         // Verificar si el paciente tiene un conflicto de horario con otro doctor, excluyendo la cita actual
         boolean patientHasConflictWithOtherDoctor = appointmentRepository.existsByPatientAndDateAndTimeConflictExcludingAppointment(
@@ -347,8 +363,25 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     @Override
-    public Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size) {
-        return null;
+    @Transactional(readOnly = true)
+    public PagedResponseDto<AppointmentResponseDto> getAppointmentAllByDoctor(int id_doctor, int page, int size) {
+        if(page < 0 || size <= 0) {
+            throw new IllegalArgumentException("Page number and size must be positive");
+        }
+        Doctor doctor = doctorRepository.findById(id_doctor)
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
+        Page<AppointmentEntity> appointments = appointmentRepository.findByDoctor(doctor, PageRequest.of(page, size, Sort.by("id").descending()));
+        List<AppointmentResponseDto> content = appointments.getContent().stream()
+                .map(AppointmentMapper::toDto)
+                .toList();
+        return new PagedResponseDto<>(
+                content,
+                appointments.getNumber(),
+                appointments.getSize(),
+                appointments.getTotalElements(),
+                appointments.getTotalPages(),
+                appointments.isLast()
+        );
     }
 
     @Override
@@ -362,6 +395,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public OccupiedTimesResponseDto getOccupiedTimes(LocalDate date,  int doctorId) {
         Doctor doctor = doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
@@ -378,10 +412,53 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
+    @Scheduled(fixedDelay = 3600000) // Ejecutar cada hora
+    public void markNoShowAppointments() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalTime currentTime = now.toLocalTime();
+        LocalTime graceTime = currentTime.minusMinutes(15);
+
+        // Buscar citas que estén en estado "PROGRAMADA" y cuyo tiempo de finalización ya pasó más el período de gracia
+        List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndEndTimeBefore(AppointmentStatus.PROGRAMADA, graceTime);
+
+        for (AppointmentEntity appointment : appointments) {
+            // Marcar la cita como "NO_ASISTIO" si no ha sido confirmada manualmente
+            appointment.setStatus(AppointmentStatus.NO_ASISTIO);
+            appointmentRepository.save(appointment);
+        }
+    }
+
+    @Transactional
+    public AppointmentResponseDto markAppointmentAsAttended(int id) {
+        AppointmentEntity appointment = findAppointmentById(id);
+
+        // Solo permitir cambiar el estado si estaba marcado como NO_ASISTIO
+        if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO) {
+            appointment.setStatus(AppointmentStatus.ASISTIO);
+            appointment = appointmentRepository.save(appointment);
+        }
+
+        return AppointmentMapper.toDto(appointment);
+    }
+
+
     private AppointmentEntity findAppointmentById(int id) {
         return appointmentRepository.findById(id)
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found"));
     }
+
+    private void validateNoConflictingAppointments(Patient patient, Doctor doctor, LocalDate appointmentDate, LocalTime startTime) {
+        LocalDate today = LocalDate.now();
+        LocalTime endTime = startTime.plusMinutes(30);
+
+        boolean hasOtherAppointments = appointmentRepository.existsByPatientAndDateRangeWithOtherDoctors(
+                patient, today, appointmentDate, startTime, endTime, doctor);
+
+        if (hasOtherAppointments) {
+            throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this period.");
+        }
+    }
+
 
 
 

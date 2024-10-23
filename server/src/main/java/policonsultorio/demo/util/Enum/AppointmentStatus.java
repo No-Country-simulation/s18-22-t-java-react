@@ -6,7 +6,9 @@ public enum AppointmentStatus {
     PROGRAMADA,
     COMPLETADA,
     CANCELADA,
-    PENDIENTE;
+    PENDIENTE,
+    NO_ASISTIO,
+    ASISTIO;
 
     @JsonCreator
     public static AppointmentStatus fromString(String value) {
