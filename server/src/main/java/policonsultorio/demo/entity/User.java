@@ -30,6 +30,12 @@ public class User implements UserDetails {
     private Long id;
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+    @Column(name = "dni", nullable = false, unique = true)
+    private String dni;
+    @Column(name = "obra_social", nullable = false, unique = true)
+    private String obraSocial;
+    @Column(name = "numero_asociado", nullable = false, unique = true)
+    private String numeroAsociado;
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "email", nullable = false, unique = true)

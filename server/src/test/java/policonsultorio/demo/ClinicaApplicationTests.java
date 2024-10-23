@@ -25,7 +25,7 @@ class ClinicaApplicationTests {
     @Rollback(value = false)
     public void createUserTest() throws Exception {
 
-            LoginRequestDTO alex = new LoginRequestDTO(null, "alex15", "1234", "algon@gmai.com", "32536987", null,null);
+            LoginRequestDTO alex = new LoginRequestDTO(null, "alex15", "1234","12354789","pasteur","123654jdjd" ,"algon@gmai.com", "32536987", null,null);
 
             LoginRequestDTO userCreated = userService.register(alex);
 
