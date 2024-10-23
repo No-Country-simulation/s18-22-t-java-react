@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,7 @@ public class DoctorController {
 			examples = @ExampleObject(name = "doctor",
 					value = "{\"id\": 1, \"name\": \"John Doe\", \"password\": \"pass123\", \"email\": \"john@gmail.com\", \"phone\": \"123456789\", \"img\": \"a_image\", \"active\": \"true\", \"specialization\": \"Cardiología\", \"licenseNumber\": \"654321\"}")))
 	})
-	public ResponseEntity<DoctorResponse> createDoctor(@RequestBody DoctorRequest doctorRequest) {
+	public ResponseEntity<DoctorResponse> createDoctor(@RequestBody @Valid DoctorRequest doctorRequest) {
 		try {
 			DoctorResponse doctorResponse = doctorService.create(doctorRequest);
 			return new ResponseEntity<>(doctorResponse, HttpStatus.CREATED);
@@ -88,7 +89,7 @@ public class DoctorController {
             @ApiResponse(responseCode = "404", description = "Doctor not found with that ID")
     })
 	public ResponseEntity<DoctorResponse> updateDoctor(
-			@PathVariable Integer id, @RequestBody DoctorRequest doctorRequest) {
+			@PathVariable Integer id, @RequestBody @Valid DoctorRequest doctorRequest) {
 		try {
 			DoctorResponse doctorResponse = doctorService.update(id, doctorRequest);
 			return new ResponseEntity<>(doctorResponse, HttpStatus.OK);
