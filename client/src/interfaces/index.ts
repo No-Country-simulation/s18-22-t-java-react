@@ -1,0 +1,1 @@
+export type { CreateAppointment, AppointmentPatient } from "./appointment" 

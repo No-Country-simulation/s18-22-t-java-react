@@ -2,7 +2,7 @@
 
 import { SkeletonHourDoctor } from "./skeleton/skeleton-hourDoctor";
 import { prueba } from "@/actions/doctors/doctorActions";
-import { AlertDialogCalendar } from "./alertDialog";
+import { AlertDialogCalendar } from "./alert/alertDialog";
 import { Calendar } from "@/components/ui/calendar"
 import { useEffect, useState } from "react";
 import { es } from 'date-fns/locale';

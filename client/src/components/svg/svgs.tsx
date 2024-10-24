@@ -61,11 +61,13 @@ export const SvgChevronDown = () => (
         </defs>
     </svg>
 )
-
-export const SvgSchedule = () => {
-    return (
-        <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.33333 7.41667V1.75M20.6667 7.41667V1.75M7.91667 13.0833H22.0833M5.08333 27.25H24.9167C26.4815 27.25 27.75 25.9815 27.75 24.4167V7.41667C27.75 5.85186 26.4815 4.58333 24.9167 4.58333H5.08333C3.51853 4.58333 2.25 5.85186 2.25 7.41667V24.4167C2.25 25.9815 3.51853 27.25 5.08333 27.25Z" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-    )
-}
+export const SvgCalendar = () => (
+    <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.3333 10.4167V4.75M22.6667 10.4167V4.75M9.91667 16.0833H24.0833M7.08333 30.25H26.9167C28.4815 30.25 29.75 28.9815 29.75 27.4167V10.4167C29.75 8.85186 28.4815 7.58333 26.9167 7.58333H7.08333C5.51853 7.58333 4.25 8.85186 4.25 10.4167V27.4167C4.25 28.9815 5.51853 30.25 7.08333 30.25Z" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+)
+export const SvgChevronNew = () => (
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.75 7.08317L22.6667 16.9998L12.75 26.9165" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+)

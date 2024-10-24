@@ -6,22 +6,17 @@ import {
   AppointmentFromResponse,
   AppointmentWithDoctor,
 } from '@/interfaces/appointment'
-
-interface Prop {
-  id_doctor: number
-  id_patient: number
-  date: string
-  startTime: string
-}
+import { CreateAppointment } from '@/interfaces'
 
 const BASE_URL = process.env.API_URL
 
+// POST CREAR CITA
 export const createAppointment = async ({
   id_doctor,
   id_patient,
   date,
   startTime,
-}: Prop) => {
+}: CreateAppointment) => {
   const url = BASE_URL + '/appointment/schedule'
 
   const data = await fetch(url, {
@@ -43,20 +38,6 @@ export const createAppointment = async ({
   }
 
   console.log('error al crear la cita')
-}
-
-export const getAppointmentById = async (id: string) => {
-  const url = BASE_URL + '/appointment/get_by_id/' + id
-
-  try {
-    const data = await fetch(url).then((res) => res.json())
-    if (!data) {
-      console.log('error al obtener la cita ', id)
-    }
-    return data
-  } catch (error) {
-    console.log('error en el servidor', error)
-  }
 }
 
 export const getAllAppointmentByPatient = async (
@@ -98,5 +79,25 @@ export const getAllAppointmentByPatient = async (
   } catch (error) {
     console.log('error en el servidor', error)
     return []
+  }
+}
+
+export const getAppointmentById = async (id: string) => {
+  const urlAppointment = BASE_URL + `/appointment/get_by_id/${id}`
+  const getAppointment = await fetch(urlAppointment).then((res) => res.json())
+
+  if (getAppointment.error) {
+    redirect('/')
+  }
+
+  const urlDoctor = BASE_URL + `/doctor/getById/${getAppointment.id_doctor}`
+  const getDoctor = await fetch(urlDoctor)
+    .then((res) => res.json())
+    .catch((err) => console.log(err))
+
+  return {
+    date: getAppointment.date,
+    starTime: getAppointment.startTime,
+    doctorName: getDoctor.name,
   }
 }

@@ -1,7 +1,7 @@
-import { SvgLocation, SvgPhone } from "@/components"
 import imageClinic from "/public/image/clinic/clinic.png"
-import { Select } from "@/ui";
+import { SvgLocation, SvgPhone } from "@/components"
 import Image from "next/image";
+import { Select } from "@/ui";
 
 export default function ClinicPage({ params }: { params: { name: string } }) {
 
