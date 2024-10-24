@@ -13,7 +13,7 @@ export default async function AppointmentById({ params }: { params: { id: string
   }
 
   return (
-    <div className="w-[1480px] mx-auto px-6 pt-2 pb-20 relative">
+    <div className="w-[1200px] mx-auto px-6 pt-2 pb-20 relative">
       <BackButton className='-left-12' />
       <div className="flex justify-between mt-10">
         <div>

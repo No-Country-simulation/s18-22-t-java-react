@@ -62,13 +62,13 @@ export function CalendarDemo({ doctor }: Props) {
             />
 
             {/* HORARIOS DISPONIBLES  */}
-            <div>
+            <div className="justify-self-center">
                 <span className="font-bold capitalize text-xl">{formattedDate}</span>
                 <h2 >Horarios disponibles</h2>
 
                 <div className="grid grid-cols-2 mt-6 justify-center justify-items-center max-w-[250px]">
                     {/* COLUMNA AM  */}
-                    <div>
+                    <div >
                         <h3 className="font-bold text-xl mb-2 text-center">AM</h3>
                         <ul className="space-y-2">
                             {
