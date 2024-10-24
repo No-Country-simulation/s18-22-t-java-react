@@ -15,7 +15,7 @@ export default async function ConfirmedPage({ params }: { params: { id: string }
                 </div>
 
                 <h1 className="text-4xl font-bold">Tu turno ha sido reservado</h1>
-                <p className="my-4">Para el día <span className="font-bold">{appointment.date}</span> a la <span className="font-bold">{appointment.starTime}</span> con el doctor <span className="font-bold">{appointment.doctorName}</span> en <span className="font-bold">[Establecimiento]</span></p>
+                <p className="my-4">Para el día <span className="font-bold">{appointment.date}</span> a la <span className="font-bold">{appointment.starTime}</span> con el doctor <span className="font-bold">{appointment.doctorName}</span> en la <span className="font-bold">Clínica colón</span></p>
 
                 <div className="grid grid-cols-2 gap-4 mt-16">
                     <button className="border-2 text-blue-500 font-semibold border-blue-500 py-4 rounded-xl">Descargar comprobante</button>

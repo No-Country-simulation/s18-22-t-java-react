@@ -13,6 +13,8 @@ const config: Config = {
       boxShadow: {
         '3xl': '0 4px 10px 0px rgba(0, 0, 0, 0.10)',
         '4xl': '4px 4px 6px 1px rgba(0, 0, 0, 0.25)',
+        "5xl": "0 2px 2px 1px rgba(0, 0, 0, 0.25)",
+        "list-select": "0 1px 2px 1px rgba(0, 0, 0, 0.25)"
       },
       colors: {
         blue: {
