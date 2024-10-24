@@ -55,11 +55,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         /*if(!patient.getActive()){
             throw new PatientNotActiveException("Patient not active");
         }*/
-        LocalDate appointmentDate = appointmentRequestDto.date();
-        LocalTime startTime = appointmentRequestDto.startTime();
 
-        // Llamada a la validación de conflictos
-        validateNoConflictingAppointments(patient, doctor, appointmentDate, startTime);
+        // Verificar si el paciente ya tiene una cita programada pendiente con cualquier especialista
+        boolean patientHasPendingAppointment = appointmentRepository.existsByPatientAndStatus(
+                patient, AppointmentStatus.PROGRAMADA);
+
+        if (patientHasPendingAppointment) {
+            throw new AppointmentAlreadyBookedException("You already have a pending appointment. Please complete or cancel the current appointment before booking a new one.");
+        }
 
         //verificar si el paciente ya tiene una cita con este doctor
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
@@ -155,10 +158,6 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
         }
 
-        LocalDate appointmentDate = rescheduleDto.newDate();
-        LocalTime startTime = rescheduleDto.newStartTime();
-
-        validateNoConflictingAppointments(appointment.getPatient(), appointment.getDoctor(), appointmentDate, startTime);
 
         // Verifica si hay otra cita en el mismo horario
         if (appointmentRepository.existsByDoctorAndDateAndTimeConflict(
@@ -268,11 +267,6 @@ public class AppointmentServiceImpl implements AppointmentService {
                 throw new AppointmentConflictException("Doctor already has an appointment in this time slot");
             }
         }
-
-        LocalDate appointmentDate = appointmentRequestDto.date();
-        LocalTime startTime = appointmentRequestDto.startTime();
-
-        validateNoConflictingAppointments(patient, doctor, appointmentDate, startTime);
 
         // Verificar si el paciente tiene un conflicto de horario con otro doctor, excluyendo la cita actual
         boolean patientHasConflictWithOtherDoctor = appointmentRepository.existsByPatientAndDateAndTimeConflictExcludingAppointment(
@@ -412,28 +406,28 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-    @Scheduled(fixedDelay = 3600000) // Ejecutar cada hora
+    @Scheduled(cron = "0 0/30 * * * *") // Ejecutar cada 30 minutos
     public void markNoShowAppointments() {
-        LocalDateTime now = LocalDateTime.now();
-        LocalTime currentTime = now.toLocalTime();
-        LocalTime graceTime = currentTime.minusMinutes(15);
+        LocalTime now = LocalTime.now();
 
-        // Buscar citas que estén en estado "PROGRAMADA" y cuyo tiempo de finalización ya pasó más el período de gracia
+        // Ajustar el margen de gracia, por ejemplo 15 minutos después de la hora de fin
+        LocalTime graceTime = now.minusMinutes(15);
+
         List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndEndTimeBefore(AppointmentStatus.PROGRAMADA, graceTime);
 
         for (AppointmentEntity appointment : appointments) {
-            // Marcar la cita como "NO_ASISTIO" si no ha sido confirmada manualmente
+            // Marcar la cita como "NO_ASISTIO" si no ha sido confirmada manualmente como ASISTIO
             appointment.setStatus(AppointmentStatus.NO_ASISTIO);
             appointmentRepository.save(appointment);
         }
     }
 
+
     @Transactional
     public AppointmentResponseDto markAppointmentAsAttended(int id) {
         AppointmentEntity appointment = findAppointmentById(id);
 
-        // Solo permitir cambiar el estado si estaba marcado como NO_ASISTIO
-        if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO) {
+        if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO || appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
             appointment.setStatus(AppointmentStatus.ASISTIO);
             appointment = appointmentRepository.save(appointment);
         }
@@ -441,22 +435,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         return AppointmentMapper.toDto(appointment);
     }
 
-
     private AppointmentEntity findAppointmentById(int id) {
         return appointmentRepository.findById(id)
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found"));
-    }
-
-    private void validateNoConflictingAppointments(Patient patient, Doctor doctor, LocalDate appointmentDate, LocalTime startTime) {
-        LocalDate today = LocalDate.now();
-        LocalTime endTime = startTime.plusMinutes(30);
-
-        boolean hasOtherAppointments = appointmentRepository.existsByPatientAndDateRangeWithOtherDoctors(
-                patient, today, appointmentDate, startTime, endTime, doctor);
-
-        if (hasOtherAppointments) {
-            throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this period.");
-        }
     }
 
 

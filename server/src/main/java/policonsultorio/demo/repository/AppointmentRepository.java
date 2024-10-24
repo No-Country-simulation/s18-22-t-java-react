@@ -45,7 +45,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
             "WHERE a.doctor = :doctor " +
             "AND a.patient = :patient " +
             "AND a.date = :date " +
-            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA')")  // Ignorar las citas canceladas
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA')")
     boolean existsByDoctorAndPatientAndDate(@Param("doctor") Doctor doctor,
                                             @Param("patient") Patient patient,
                                             @Param("date") LocalDate date);
@@ -99,18 +99,12 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
 
 
-    @Query("SELECT COUNT(a) > 0 FROM AppointmentEntity a " +
+
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
             "WHERE a.patient = :patient " +
-            "AND a.date >= :today " +
-            "AND a.date <= :appointmentDate " +
-            "AND a.doctor != :doctor " +
-            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA') " +
-            "AND (a.startTime < :endTime AND a.endTime > :startTime)")
-    boolean existsByPatientAndDateRangeWithOtherDoctors(@Param("patient") Patient patient,
-                                                        @Param("today") LocalDate today,
-                                                        @Param("appointmentDate") LocalDate appointmentDate,
-                                                        @Param("startTime") LocalTime startTime,
-                                                        @Param("endTime") LocalTime endTime,
-                                                        @Param("doctor") Doctor doctor);
+            "AND a.status = :status")
+    boolean existsByPatientAndStatus(@Param("patient") Patient patient, @Param("status") AppointmentStatus status);
+
 
 }
