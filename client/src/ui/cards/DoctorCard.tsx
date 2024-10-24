@@ -83,7 +83,6 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
           </div>
         )}
       </div>
-
       <AlertMessage
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
