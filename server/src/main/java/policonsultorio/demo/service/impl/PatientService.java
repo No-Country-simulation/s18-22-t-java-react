@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.dto.request.PatientRequestDTO;
+import policonsultorio.demo.dto.request.UpdatePatientDTO;
 import policonsultorio.demo.dto.response.PatientResponseDTO;
 import policonsultorio.demo.entity.Patient;
 import policonsultorio.demo.entity.User;
@@ -54,5 +55,22 @@ public class PatientService implements IPatientService {
         User user = userRepository.findById(id).orElseThrow();
         user.setActive(false);
         userRepository.save(user);
+    }
+
+    @Override
+    public PatientResponseDTO update(Long id, UpdatePatientDTO updatePatientDTO) {
+        Patient patientOld = patientRepository.findByUserId(id);
+        User userOld = patientOld.getUser();
+
+        patientOld.setInsurer(updatePatientDTO.insurer());
+        userOld.setNumeroAsociado(updatePatientDTO.number_associate());
+        userOld.setPhone(updatePatientDTO.phone());
+        userOld.setObraSocial(updatePatientDTO.social_work());
+
+        User newUser = userRepository.save(userOld);
+        patientOld.setUser(newUser);
+        Patient newPatient = patientRepository.save(patientOld);
+
+        return new PatientResponseDTO(newPatient);
     }
 }
