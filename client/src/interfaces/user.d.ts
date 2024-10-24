@@ -50,4 +50,17 @@ export interface DoctorFromResponse {
   specialization: string
   licenseNumber: string
   place?: string
+  dni?: string
+  establesiment?: string
+}
+
+export interface PatientFromResponse {
+  id: number
+  name: string
+  password: string
+  email: string
+  phone: string
+  img: string
+  active: boolean
+  insurer: string
 }

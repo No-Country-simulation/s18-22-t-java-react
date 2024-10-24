@@ -77,3 +77,14 @@ export const IconSliderArrow = ({ className, size, color }: IconProps) => {
   )
 }
 
+export const IconPencil = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "30"} height={size ? size : "30"} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.3787 5.37868C21.5503 4.20711 23.4497 4.20711 24.6213 5.37868C25.7929 6.55025 25.7929 8.44975 24.6213 9.62132L23.432 10.8107L19.1893 6.56802L20.3787 5.37868Z" fill="#111827" />
+      <path d="M17.068 8.68934L4.5 21.2574V25.5H8.74264L21.3107 12.932L17.068 8.68934Z" fill={color || "#111827"} />
+    </svg>
+
+
+  )
+}
+

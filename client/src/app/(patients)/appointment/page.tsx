@@ -41,7 +41,7 @@ export default async function AppointmentsPage({
 
 
   return (
-    <div className="w-full max-w-[1480px] m-auto h-screen flex flex-col p-4 gap-4">
+    <div className="w-[1480px] m-auto h-screen flex flex-col p-4 gap-4">
       <div className="relative flex flex-col">
         <Search placeholder="Buscá por profesional, establecimiento o especialidad..." />
         <Suspense key={query} fallback={'Cargando ...'}>
