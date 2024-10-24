@@ -8,4 +8,6 @@ import policonsultorio.demo.entity.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 	Page<Doctor> findByNameContainingIgnoreCase(String name, Pageable pageable);
+	Page<Doctor> findByNameContainingIgnoreCaseAndDeletedFalse(String name, Pageable pageable);
+	Page<Doctor> findAllByDeletedFalse(Pageable pageable);
 }
