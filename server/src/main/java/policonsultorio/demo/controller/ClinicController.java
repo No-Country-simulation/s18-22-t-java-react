@@ -49,12 +49,34 @@ public class ClinicController {
         }
     }
 
+
+
     @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<?> clincById(@PathVariable Long id) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(clinicService.getClinicById(id));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+
+    @PatchMapping(value = "/avilable/{id}", produces = "application/json")
+    public ResponseEntity<?> avilableLogic(@PathVariable Long id) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(clinicService.avilableClinic(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+
+    @GetMapping(value = "/all", produces = "application/json")
+    public ResponseEntity<?> allClinic() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(clinicService.getAllClinics());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", e.getMessage()));
         }
     }
 }

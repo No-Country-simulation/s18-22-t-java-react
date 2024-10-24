@@ -10,7 +10,10 @@ import policonsultorio.demo.dto.clinic.ResponseClinicUpdate;
 import policonsultorio.demo.entity.Clinic;
 import policonsultorio.demo.repository.ClinicRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -48,5 +51,17 @@ public class ClinicService {
     public RequestClinic getClinicById(Long id) {
         Optional<Clinic> clinic = clinicRepository.findById(id);
         return new RequestClinic(clinic.get().getId(), new ResponseClinic(clinic.get()));
+    }
+
+    public RequestClinic avilableClinic(Long id) {
+        Clinic clinic = clinicRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("clinic not found"));
+        clinic.setActive(true);
+       Clinic clinicDb = clinicRepository.save(clinic);
+        return new RequestClinic(clinicDb.getId(), new ResponseClinic(clinicDb));
+    }
+
+    public Set<Clinic> getAllClinics() {
+        Set<Clinic> clinics = clinicRepository.findAll().stream().collect(Collectors.toSet());
+                return clinics;
     }
 }
