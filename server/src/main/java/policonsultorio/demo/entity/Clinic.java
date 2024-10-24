@@ -2,6 +2,7 @@ package policonsultorio.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import policonsultorio.demo.dto.clinic.ResponseClinic;
 
 @Entity(name = "Clinic")
 @Table(name = "clinic")
@@ -29,6 +30,16 @@ public class Clinic {
     private String description;
     @Column(name = "vlinic_image", columnDefinition = "TEXT")
     private String vlinicImage;
+    @Column(name = "active", nullable = false)
+    private Boolean active = true;
 
 
+    public Clinic(ResponseClinic responseClinic) {
+        this.name = responseClinic.name();
+        this.cuit = responseClinic.cuit();
+        this.address = responseClinic.address();
+        this.phone = responseClinic.phone();
+        this.description = responseClinic.description();
+        this.vlinicImage = responseClinic.vlinicImage();
+    }
 }
