@@ -1,9 +1,9 @@
 import { SvgHome, SvgNotifications } from "@/components";
-import { SvgSchedule } from "@/components/svg/svgs";
+import { SvgCalendar } from "@/components/svg/svgs";
 import Link from "next/link";
 
 export function NavbarDoctors() {
-  const icons = [{ icon: <SvgSchedule />, title: "Mi Agenda" }, { icon: <SvgHome />, title: "Inicio" }, { icon: <SvgNotifications />, name: "notificación" }]
+  const icons = [{ icon: <SvgCalendar />, title: "Mi Agenda" }, { icon: <SvgHome />, title: "Inicio" }, { icon: <SvgNotifications />, name: "notificación" }]
 
   return (
     <div className="py-8">
