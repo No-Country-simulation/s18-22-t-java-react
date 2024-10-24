@@ -3,7 +3,10 @@ package policonsultorio.demo.service.Doctor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.request.DoctorRequest;
 import policonsultorio.demo.dto.response.DoctorResponse;
 import policonsultorio.demo.entity.Doctor;
@@ -57,6 +60,22 @@ public class DoctorServiceImpl implements IDoctorService {
 		}
 	}
 
+	public Page<DoctorResponse> getAllPage(Pageable pageable, String name) {
+		try {
+			Page<Doctor> doctors;
+			if (name != null && !name.isEmpty()) {
+				doctors = doctorRepository.findByNameContainingIgnoreCase(name, pageable);
+			} else {
+				doctors = doctorRepository.findAll(pageable);
+			}
+			return doctors.map(doctor -> mapper.map(doctor, DoctorResponse.class));
+		} catch (Exception e) {
+			throw new RuntimeException("Error retrieving doctors", e);
+		}
+	}
+
+
+
 	@Override
 	public DoctorResponse update(Integer id, DoctorRequest request) {
 		try {
@@ -76,6 +95,18 @@ public class DoctorServiceImpl implements IDoctorService {
 
 
 	}
+
+	@Override
+	@Transactional
+		public void softDeleteDoctor(Integer id) {
+			Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found"));
+			doctor.setDeleted(true);
+			doctorRepository.save(doctor);
+		}
+
+
+
+
 
 	@Override
 	public boolean delete(DoctorRequest id, DoctorRequest request) {
