@@ -9,6 +9,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +22,7 @@ import policonsultorio.demo.service.Doctor.DoctorServiceImpl;
 import java.util.List;
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("/doctor/")
 @CrossOrigin("*")
 @Tag(name = "Doctor")
 public class DoctorController {
@@ -115,6 +118,38 @@ public class DoctorController {
 	}
 
 
+	@GetMapping("allDoctors-page")
+	@Operation(
+			summary = "List all doctors",
+			description = "List all registered doctors",
+			tags = {"Doctor"}
+	)
+	public ResponseEntity<Page<DoctorResponse>> getAllDoctorsPage(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size,
+			@RequestParam(required = false) String name) {
+		try {
+			Pageable pageable = PageRequest.of(page, size);
+			Page<DoctorResponse> doctors = doctorService.getAllPage(pageable, name);
+			return new ResponseEntity<>(doctors, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
+	@DeleteMapping("delete/{id}")
+	@Operation(
+			summary = "deleted doctor",
+			description = "deleting a doctor",
+			tags = {"Doctor"}
+	)
+	public ResponseEntity<Void> deleteDoctor(@PathVariable Integer id) {
+		try {
+			doctorService.softDeleteDoctor(id);
+			return ResponseEntity.noContent().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 
 }
