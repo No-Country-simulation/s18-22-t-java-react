@@ -1,6 +1,6 @@
 package policonsultorio.demo.dto.clinic;
 
-import jakarta.persistence.Column;
+
 import jakarta.validation.constraints.NotBlank;
 import policonsultorio.demo.entity.Clinic;
 

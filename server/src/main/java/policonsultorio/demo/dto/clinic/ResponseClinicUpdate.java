@@ -1,6 +1,6 @@
 package policonsultorio.demo.dto.clinic;
 
-import jakarta.validation.constraints.NotBlank;
+
 import policonsultorio.demo.entity.Clinic;
 
 public record ResponseClinicUpdate(

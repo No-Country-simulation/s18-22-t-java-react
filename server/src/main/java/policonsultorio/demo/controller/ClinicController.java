@@ -1,15 +1,12 @@
 package policonsultorio.demo.controller;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import policonsultorio.demo.dto.clinic.RequestClinic;
 import policonsultorio.demo.dto.clinic.ResponseClinic;
 import policonsultorio.demo.dto.clinic.ResponseClinicUpdate;
-import policonsultorio.demo.repository.ClinicRepository;
 import policonsultorio.demo.service.ClinicService;
 
 import java.util.Map;
