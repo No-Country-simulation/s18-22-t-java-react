@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 public class DoctorResponse {
 	private Long id ;
 	private String name;
+	private String dni;
+	private String obraSocial;
+	private String numeroAsociado;
 	private String password;
 	private String email;
 	private String phone;

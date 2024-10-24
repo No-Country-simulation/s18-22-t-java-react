@@ -2,6 +2,7 @@ package policonsultorio.demo.dto.request;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,12 @@ public class DoctorRequest {
 //	@Column(name = "email", nullable = false)
 	@Email
 	private String email;
+	@NotBlank
+	private String dni;
+	@NotBlank
+	private String obraSocial;
+	@NotBlank
+	private String numeroAsociado;
 	@Column(name = "phone", nullable = false)
 	private String phone;
 	@Column(name = "img")
