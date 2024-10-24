@@ -22,7 +22,7 @@ export const getAllDoctors = async () => {
 export const getDoctorById = async (id: number) => {
   const url = BASE_URL + '/doctor/getById/' + id
 
-  const data: Doctors = await fetch(url).then((res) => res.json())
+  const data: DoctorFromResponse = await fetch(url).then((res) => res.json())
 
   if (!data) {
     redirect('/')

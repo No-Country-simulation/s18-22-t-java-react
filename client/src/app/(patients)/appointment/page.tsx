@@ -52,9 +52,15 @@ export default async function AppointmentsPage({
       {!query && (
         <>
           <h3 className='text-2xl text-[#1A2C33] mb-2'>Especialidades</h3>
-          <SwiperList list={doctorListWithSpecialityFiltered} />
+          {doctorListWithSpecialityFiltered.length === 0 ?
+            <p>No hay especialidades disponibles</p> :
+            <SwiperList list={doctorListWithSpecialityFiltered} />
+          }
           <h3 className='text-2xl text-[#1A2C33] my-2'>Establecimientos</h3>
-          <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
+          {doctorListWithPlacesFiltered.length === 0 ?
+            <p>No hay especialidades disponibles</p> :
+            <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
+          }
         </>
       )}
     </div>

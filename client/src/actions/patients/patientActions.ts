@@ -1,6 +1,6 @@
 const BASE_URL = process.env.API_URL
 
-export const fetchPatient = async (patientId: string) => {
+export const fetchPatient = async (patientId: string | number) => {
   const url = BASE_URL + '/patients/search/' + patientId
   try {
     const response = await fetch(url)

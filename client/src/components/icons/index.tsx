@@ -1,1 +1,1 @@
-export { IconDanger, IconInfo, IconWarning, IconSearch, IconPlaceMarker, IconBackArrow, IconSliderArrow, IconPencil } from '@/components/icons/Icons'
+export { IconDanger, IconInfo, IconWarning, IconSearch, IconPlaceMarker, IconBackArrow, IconSliderArrow, IconPencil, IconX } from '@/components/icons/Icons'

@@ -11,6 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       boxShadow: {
+        '2xl': '0 4px 4px 0px rgba(0, 0, 0, 0.40)',
         '3xl': '0 4px 10px 0px rgba(0, 0, 0, 0.10)',
         '4xl': '4px 4px 6px 1px rgba(0, 0, 0, 0.25)',
       },
