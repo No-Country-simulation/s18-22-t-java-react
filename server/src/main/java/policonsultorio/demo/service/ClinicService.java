@@ -10,6 +10,8 @@ import policonsultorio.demo.dto.clinic.ResponseClinicUpdate;
 import policonsultorio.demo.entity.Clinic;
 import policonsultorio.demo.repository.ClinicRepository;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ClinicService {
@@ -35,5 +37,16 @@ public class ClinicService {
 
         var clinicDb = clinicRepository.save(clinic);
         return new RequestClinic(clinicDb.getId(), new ResponseClinic(clinicDb));
+    }
+
+    public void deleteLogicClinic(Long id) {
+        Clinic clinic = clinicRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("clinic not found"));
+        clinic.setActive(false);
+        clinicRepository.save(clinic);
+    }
+
+    public RequestClinic getClinicById(Long id) {
+        Optional<Clinic> clinic = clinicRepository.findById(id);
+        return new RequestClinic(clinic.get().getId(), new ResponseClinic(clinic.get()));
     }
 }
