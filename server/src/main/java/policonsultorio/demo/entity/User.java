@@ -65,6 +65,9 @@ public class User implements UserDetails {
         this.phone = loginRequestDto.phone();
         this.img = loginRequestDto.img();
         this.active = loginRequestDto.active();
+        this.dni = loginRequestDto.dni();
+        this.obraSocial = loginRequestDto.obraSocial();
+        this.numeroAsociado = loginRequestDto.numeroAsociado();
     }
 
     @Override
