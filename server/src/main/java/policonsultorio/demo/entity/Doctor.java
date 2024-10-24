@@ -21,7 +21,7 @@ import java.util.List;
 public class Doctor extends User {
 	private String specialization;
 	private String licenseNumber;
-	private Boolean deleted;
+	private Boolean deleted  = false;
 
 //	private List<WorkingHous> workingHousList = new List<WorkingHous>();
 //  private List<Appointments> appointmentsList = new List<Appointments>();
