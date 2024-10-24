@@ -10,7 +10,6 @@ import policonsultorio.demo.dto.clinic.ResponseClinicUpdate;
 import policonsultorio.demo.entity.Clinic;
 import policonsultorio.demo.repository.ClinicRepository;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
