@@ -26,12 +26,12 @@ public class ClinicService {
 
         Clinic clinic = clinicRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("clinic not found"));
 
-        if (!responseClinic.name().isBlank()) clinic.setName(responseClinic.name());
-        if (!responseClinic.address().isBlank()) clinic.setAddress(responseClinic.address());
-        if (!responseClinic.cuit().isBlank()) clinic.setCuit(responseClinic.cuit());
-        if (!responseClinic.phone().isBlank()) clinic.setPhone(responseClinic.phone());
-        if (!responseClinic.description().isBlank()) clinic.setDescription(responseClinic.description());
-        if (!responseClinic.vlinicImage().isBlank()) clinic.setVlinicImage(responseClinic.vlinicImage());
+        if (responseClinic.name() != null) clinic.setName(responseClinic.name());
+        if (responseClinic.address() != null) clinic.setAddress(responseClinic.address());
+        if (responseClinic.cuit() != null) clinic.setCuit(responseClinic.cuit());
+        if (responseClinic.phone() != null) clinic.setPhone(responseClinic.phone());
+        if (responseClinic.description() != null) clinic.setDescription(responseClinic.description());
+        if (responseClinic.vlinicImage() != null) clinic.setVlinicImage(responseClinic.vlinicImage());
 
         var clinicDb = clinicRepository.save(clinic);
         return new RequestClinic(clinicDb.getId(), new ResponseClinic(clinicDb));
