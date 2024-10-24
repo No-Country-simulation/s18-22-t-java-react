@@ -1,4 +1,5 @@
-import { NavbarDoctors } from "@/ui";
+import { TopMenuDoctor } from "@/ui";
+
 
 export default function LayoutDashboard({
   children
@@ -7,8 +8,8 @@ export default function LayoutDashboard({
 }) {
   return (
     <div className="min-h-screen">
-      <NavbarDoctors />
-      <div className="max-w-[1524px] w-[1200px] ms-[240px] px-4 text-[#1A2C33]">
+      <TopMenuDoctor />
+      <div className="max-w-[1524px] ms-[240px] px-4 text-[#1A2C33]">
         {children}
       </div>
 
