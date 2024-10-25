@@ -53,6 +53,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		try {
 			List<Doctor> doctors = doctorRepository.findAll();
 			return doctors.stream()
+					.filter(doctor -> Boolean.FALSE.equals(doctor.getDeleted())) // Usar Boolean.FALSE para evitar NPE
 					.map(doctor -> mapper.map(doctor, DoctorResponse.class))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
@@ -60,19 +61,25 @@ public class DoctorServiceImpl implements IDoctorService {
 		}
 	}
 
+
 	public Page<DoctorResponse> getAllPage(Pageable pageable, String name) {
 		try {
 			Page<Doctor> doctors;
 			if (name != null && !name.isEmpty()) {
-				doctors = doctorRepository.findByNameContainingIgnoreCase(name, pageable);
+				// Filtra por nombre y solo devuelve doctores que no están eliminados
+				doctors = doctorRepository.findByNameContainingIgnoreCaseAndDeletedFalse(name, pageable);
 			} else {
-				doctors = doctorRepository.findAll(pageable);
+				// Devuelve todos los doctores que no están eliminados
+				doctors = doctorRepository.findAllByDeletedFalse(pageable);
 			}
 			return doctors.map(doctor -> mapper.map(doctor, DoctorResponse.class));
 		} catch (Exception e) {
 			throw new RuntimeException("Error retrieving doctors", e);
 		}
 	}
+
+
+
 
 
 
