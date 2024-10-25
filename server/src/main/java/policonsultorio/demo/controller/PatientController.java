@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import policonsultorio.demo.dto.request.PatientRequestDTO;
+import policonsultorio.demo.dto.request.UpdatePatientDTO;
 import policonsultorio.demo.dto.response.PatientResponseDTO;
 import policonsultorio.demo.service.IPatientService;
 
@@ -69,5 +70,11 @@ public class PatientController {
     })
     public void deletePatient(@PathVariable Long id){
         patientService.deletePatientById(id);
+    }
+
+    @PutMapping("update/{id}")
+    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable Long id, @RequestBody @Valid UpdatePatientDTO updatePatientDTO){
+        PatientResponseDTO patientResponseDTO = patientService.update(id, updatePatientDTO);
+        return new ResponseEntity<>(patientResponseDTO, HttpStatus.OK);
     }
 }

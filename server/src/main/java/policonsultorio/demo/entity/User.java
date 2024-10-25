@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private String name;
     @Column(name = "dni", nullable = false, unique = true)
     private String dni;
-    @Column(name = "obra_social", nullable = false, unique = false)
+    @Column(name = "obra_social", nullable = false)
     private String obraSocial;
     @Column(name = "numero_asociado", nullable = false, unique = true)
     private String numeroAsociado;
@@ -65,6 +65,9 @@ public class User implements UserDetails {
         this.phone = loginRequestDto.phone();
         this.img = loginRequestDto.img();
         this.active = loginRequestDto.active();
+        this.dni = loginRequestDto.dni();
+        this.obraSocial = loginRequestDto.obraSocial();
+        this.numeroAsociado = loginRequestDto.numeroAsociado();
     }
 
     @Override

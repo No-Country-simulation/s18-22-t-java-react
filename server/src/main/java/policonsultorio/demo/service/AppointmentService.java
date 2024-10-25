@@ -27,7 +27,7 @@ public interface AppointmentService {
 
     PagedResponseDto<AppointmentResponseDto> getAllAppointments(int page, int size);
 
-    Page<AppointmentResponseDto> getAppointmentByDoctor(int id_doctor, int page, int size);
+    PagedResponseDto<AppointmentResponseDto> getAppointmentAllByDoctor(int id_doctor, int page, int size);
 
     PagedResponseDto<AppointmentResponseDto> getAppointmentAllByPatient(int id_patient, int page, int size);
     Page<AppointmentResponseDto> getAppointmentByDate(LocalDate date, int page, int size);
@@ -35,5 +35,7 @@ public interface AppointmentService {
     Page<AppointmentResponseDto> getAppointmentByStatus(AppointmentStatus status, int page, int size);
 
     OccupiedTimesResponseDto getOccupiedTimes (LocalDate date, int id_doctor);
+
+    AppointmentResponseDto markAppointmentAsAttended(int id);
 
 }

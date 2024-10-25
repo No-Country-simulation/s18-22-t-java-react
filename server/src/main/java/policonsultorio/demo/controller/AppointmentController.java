@@ -1,7 +1,6 @@
 package policonsultorio.demo.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +19,6 @@ import policonsultorio.demo.dto.appointment.*;
 import policonsultorio.demo.service.AppointmentService;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/appointment")
@@ -214,5 +210,33 @@ public class AppointmentController {
         OccupiedTimesResponseDto occupiedTimes = appointmentService.getOccupiedTimes(date, doctorId);
 
         return ResponseEntity.ok(occupiedTimes);
+    }
+
+
+    @GetMapping("/get_all_by_doctor/{id_doctor}")
+    @Operation(
+            summary = "Get all appointments by doctor ID",
+            description = "Get all appointments by doctor ID",
+            tags = {"Appointment"}
+    )
+    public ResponseEntity<PagedResponseDto<AppointmentResponseDto>> getAppointmentAllByDoctor(
+            @PathVariable("id_doctor") int id_doctor,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        PagedResponseDto<AppointmentResponseDto> responseDto = appointmentService.getAppointmentAllByDoctor(id_doctor, page, size);
+        return ResponseEntity.ok(responseDto);
+
+    }
+
+    @PatchMapping("/markAsAttended/{id}")
+    @Operation(
+            summary = "Mark appointment as attended",
+            description = "Allows a doctor to mark an appointment as attended after it was automatically marked as no-show",
+            tags = {"Appointment"}
+    )
+    public ResponseEntity<AppointmentResponseDto> markAppointmentAsAttended(@PathVariable("id") int id) {
+        AppointmentResponseDto responseDto = appointmentService.markAppointmentAsAttended(id);
+        return ResponseEntity.ok(responseDto);
     }
 }

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
+import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
             "WHERE a.doctor = :doctor " +
             "AND a.patient = :patient " +
             "AND a.date = :date " +
-            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA')")  // Ignorar las citas canceladas
+            "AND a.status NOT IN ('CANCELADA', 'COMPLETADA')")
     boolean existsByDoctorAndPatientAndDate(@Param("doctor") Doctor doctor,
                                             @Param("patient") Patient patient,
                                             @Param("date") LocalDate date);
@@ -88,4 +90,21 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
                                                                       @Param("startTime") LocalTime startTime,
                                                                       @Param("endTime") LocalTime endTime,
                                                                       @Param("appointmentId") int appointmentId);
+
+    Page<AppointmentEntity> findByDoctor(Doctor doctor, PageRequest id);
+
+    @Query("SELECT a FROM AppointmentEntity a WHERE a.status = :status AND a.endTime < :endTime")
+    List<AppointmentEntity> findByStatusAndEndTimeBefore(@Param("status") AppointmentStatus status,
+                                                         @Param("endTime") LocalTime endTime);
+
+
+
+
+    @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
+            "FROM AppointmentEntity a " +
+            "WHERE a.patient = :patient " +
+            "AND a.status = :status")
+    boolean existsByPatientAndStatus(@Param("patient") Patient patient, @Param("status") AppointmentStatus status);
+
+
 }
