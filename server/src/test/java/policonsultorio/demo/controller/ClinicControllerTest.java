@@ -1,20 +1,24 @@
 package policonsultorio.demo.controller;
 
+import org.assertj.core.internal.Arrays;
 import org.jboss.jandex.PrimitiveType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import policonsultorio.demo.dto.clinic.RequestClinic;
 import policonsultorio.demo.entity.Clinic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import static org.assertj.core.internal.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -36,7 +40,36 @@ class ClinicControllerTest {
     }
 
     @Test
+    @Disabled
     void createClinic() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+
+        String json = """
+                {
+                  "name":"Osecactest",
+                    
+                         "cuit": "3265874",
+                      
+                         "address": "falsa 123",
+                     
+                         "phone": "94154841",
+                                
+                         "description": "unA CLINICA CON TECNOLOGINA DE ULTIJA GENERACION",
+                                
+                         "vlinicImage": "IMG"
+                }
+                """;
+        HttpEntity<String> request = new HttpEntity<>(json,headers);
+        ResponseEntity<RequestClinic> result = testRestTemplate.exchange("/api/v1/clinic", HttpMethod.POST, request, RequestClinic.class);
+        System.out.println("result = " + result);
+
+        assertAll(
+                () -> assertEquals(HttpStatus.CREATED, result.getStatusCode()),
+                () -> assertEquals(201, result.getStatusCode().value()),
+                () -> assertEquals(result.getBody().responseClinic().name(),"Osecactest")
+        );
     }
 
     @Test
