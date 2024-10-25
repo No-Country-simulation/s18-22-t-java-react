@@ -3,7 +3,10 @@ package policonsultorio.demo.service.Doctor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.request.DoctorRequest;
 import policonsultorio.demo.dto.response.DoctorResponse;
 import policonsultorio.demo.entity.Doctor;
@@ -50,12 +53,35 @@ public class DoctorServiceImpl implements IDoctorService {
 		try {
 			List<Doctor> doctors = doctorRepository.findAll();
 			return doctors.stream()
+					.filter(doctor -> Boolean.FALSE.equals(doctor.getDeleted())) // Usar Boolean.FALSE para evitar NPE
 					.map(doctor -> mapper.map(doctor, DoctorResponse.class))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new RuntimeException("Error retrieving doctors", e);
 		}
 	}
+
+
+	public Page<DoctorResponse> getAllPage(Pageable pageable, String name) {
+		try {
+			Page<Doctor> doctors;
+			if (name != null && !name.isEmpty()) {
+				// Filtra por nombre y solo devuelve doctores que no están eliminados
+				doctors = doctorRepository.findByNameContainingIgnoreCaseAndDeletedFalse(name, pageable);
+			} else {
+				// Devuelve todos los doctores que no están eliminados
+				doctors = doctorRepository.findAllByDeletedFalse(pageable);
+			}
+			return doctors.map(doctor -> mapper.map(doctor, DoctorResponse.class));
+		} catch (Exception e) {
+			throw new RuntimeException("Error retrieving doctors", e);
+		}
+	}
+
+
+
+
+
 
 	@Override
 	public DoctorResponse update(Integer id, DoctorRequest request) {
@@ -76,6 +102,18 @@ public class DoctorServiceImpl implements IDoctorService {
 
 
 	}
+
+	@Override
+	@Transactional
+		public void softDeleteDoctor(Integer id) {
+			Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found"));
+			doctor.setDeleted(true);
+			doctorRepository.save(doctor);
+		}
+
+
+
+
 
 	@Override
 	public boolean delete(DoctorRequest id, DoctorRequest request) {

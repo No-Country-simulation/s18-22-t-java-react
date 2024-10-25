@@ -30,8 +30,6 @@ public class DoctorRequest {
 	private String img;
 	@Column(name = "active",columnDefinition = "boolean default true")
 	private Boolean active = true;
-
-
 	private String specialization;
 	private String licenseNumber;
 }
