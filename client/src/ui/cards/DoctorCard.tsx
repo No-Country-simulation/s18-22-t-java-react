@@ -3,6 +3,7 @@
 import { AlertMessage } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
 export function DoctorCard({ id, name, speciality, place = "Clínica Colón", img, dashboard }: Props) {
   const [openDialog, setOpenDialog] = useState(false)
   const [messageAlert, setMessageAlert] = useState({ title: "", description: <p></p>, confirm: "Confirmar", cancel: "Cancelar" })
+
+  const route = useRouter()
 
   const cancelAlert = () => {
     const alert = {
@@ -37,6 +40,10 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
     }
     setMessageAlert(alert)
     setOpenDialog(true)
+  }
+
+  const updateAppointment = () => {
+    route.push("/appointment/calendar/1")
   }
 
   return (
@@ -83,10 +90,12 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
           </div>
         )}
       </div>
+
       <AlertMessage
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
         messageAlert={messageAlert}
+        onConfirm={updateAppointment}
       />
 
     </>
