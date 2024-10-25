@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private String name;
     @Column(name = "dni", nullable = false, unique = true)
     private String dni;
-    @Column(name = "obra_social", nullable = false, unique = true)
+    @Column(name = "obra_social", nullable = false)
     private String obraSocial;
     @Column(name = "numero_asociado", nullable = false, unique = true)
     private String numeroAsociado;
