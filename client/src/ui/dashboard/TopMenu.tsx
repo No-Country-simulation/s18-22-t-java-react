@@ -3,7 +3,7 @@ import { SvgPerfil } from "@/components/svg/svgs";
 import Link from "next/link";
 
 export function TopMenu() {
-    const icons = [{ icon: <SvgPerfil />, title: "Mi perfil" }, { icon: <SvgHome />, title: "Inicio" }, { icon: <SvgNotifications />, name: "notificación" }]
+    const icons = [{ icon: <SvgPerfil />, title: "Mi perfil", url: '/profile/181' }, { icon: <SvgHome />, title: "Inicio", url: '/dashboard' }, { icon: <SvgNotifications />, name: "notificación", url: '#' }]
 
     return (
         <div className="py-8">
@@ -14,7 +14,7 @@ export function TopMenu() {
                         <li >
                             <Link
                                 className="border-2 border-[#004784] rounded-full px-6 py-2 font-semibold"
-                                href={"/dashboard"}>Mis turnos</Link>
+                                href={"/dashboard/appointments"}>Mis turnos</Link>
                         </li>
                         <li >
                             <Link
@@ -27,7 +27,7 @@ export function TopMenu() {
                                 <li key={index}>
                                     <Link
                                         className={`flex gap-2 justify-center items-center ${item.name && "bg-blue-500  p-2 rounded-full"}`}
-                                        href={"#"}>
+                                        href={item.url}>
                                         <span>{item.icon}</span> {item.title && <span>{item.title}</span>}
                                     </Link>
                                 </li>

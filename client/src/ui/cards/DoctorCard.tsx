@@ -41,7 +41,7 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
 
   return (
     <>
-      <div className="w-[854px] h-[168px] rounded-xl flex items-center gap-4 pl-4 py-4 shadow-4xl">
+      <div className="w-[854px] h-[168px] rounded-xl flex items-center gap-4 pl-4 py-4 shadow-2xl">
 
         {/* IMAGE  */}
         {img !== '' ? (

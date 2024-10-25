@@ -95,3 +95,12 @@ export const IconX = ({ className, size, color }: IconProps) => {
     </svg>
   )
 }
+
+export const IconUser = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "24"} height={size ? size : "25"} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.9998 10.3998C14.6508 10.3998 16.7998 8.25077 16.7998 5.5998C16.7998 2.94884 14.6508 0.799805 11.9998 0.799805C9.34884 0.799805 7.19981 2.94884 7.19981 5.5998C7.19981 8.25077 9.34884 10.3998 11.9998 10.3998Z" fill={color || "#025DAB"} />
+      <path d="M0.799805 24.7998C0.799805 18.6142 5.81422 13.5998 11.9998 13.5998C18.1854 13.5998 23.1998 18.6142 23.1998 24.7998H0.799805Z" fill={color || "#025DAB"} />
+    </svg>
+  )
+}
