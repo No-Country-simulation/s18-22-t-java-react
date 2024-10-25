@@ -1,6 +1,5 @@
 'use server'
 
-import { Doctors } from '@/interfaces/doctors'
 import { hourData } from '@/utils/data-hour'
 import { redirect } from 'next/navigation'
 import { SchemaDoctor } from '@/schemas'
@@ -167,8 +166,13 @@ const doctors = [
 
 export const getAllDoctors = async () => {
   /*   const url = BASE_URL + '/doctor/allDoctors'
-   */ /*   const data = await fetch(url).then((res) => res.json())
-   */
+  const data = await fetch(url).then((res) => res.json())
+
+  if (data) {
+    return data
+  }
+  return [] */
+
   return doctors
 }
 
@@ -185,10 +189,10 @@ export const getDoctorById = async (id: number) => {
 }
 
 export const getDoctorsBySpecialty = async (specialty: string) => {
-  /* const url = BASE_URL + '/doctor/allDoctors'
+  /*   const url = BASE_URL + '/doctor/allDoctors'
 
-  const data: Doctors[] = await fetch(url).then((res) => res.json()) */
-
+  const data: Doctors[] = await fetch(url).then((res) => res.json())
+ */
   const filterBySpecialty = doctors.filter(
     (doctor) => doctor.specialization === specialty
   )

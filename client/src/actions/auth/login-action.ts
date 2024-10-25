@@ -6,11 +6,11 @@ const BASE_URL = process.env.API_URL
 export const loginUser = async (formData: FormData) => {
   const url = BASE_URL + '/user'
 
-  const nameFromForm = formData.get('name') as string
+  const emailFromForm = formData.get('email') as string
   const passwordFromForm = formData.get('password') as string
 
   const validatedFields = schemaLogin.safeParse({
-    name: nameFromForm,
+    name: emailFromForm,
     password: passwordFromForm,
   })
 
@@ -22,7 +22,7 @@ export const loginUser = async (formData: FormData) => {
   }
 
   const body = {
-    name: nameFromForm,
+    email: emailFromForm,
     password: passwordFromForm,
   }
 

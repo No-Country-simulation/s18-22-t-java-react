@@ -18,7 +18,9 @@ export const schemaRegister = z.object({
 })
 
 export const schemaLogin = z.object({
-  name: z.string({ message: 'Nombre requerido' }),
+  email: z
+    .string({ message: 'Email requerido' })
+    .email({ message: 'Email invalido' }),
   password: z
     .string({ message: 'Contraseña requerido' })
     .min(6, { message: 'Minimo 6 Caracteres' }),
