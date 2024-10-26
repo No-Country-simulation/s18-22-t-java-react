@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### buscar pasiente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/12
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/184
 
 
 
@@ -33,3 +33,6 @@ Content-Type: application/json
   "insurer": "sura2"
 }
 ### faltan datos del user
+
+### traer todos los user
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/184
