@@ -4,17 +4,17 @@ Content-Type: application/json
 
 {
   "user": {
-    "name": "Maria456",
-    "dni": "325874632",
-    "obraSocial": "Osecac5",
-    "numeroAsociado": "aa2364",
-    "password": "Maria",
-    "email": "Maria4569@gmail.com",
-    "phone": "123654789",
+    "name": "SOFIA MONSALVE",
+    "dni": "3258746254",
+    "obraSocial": "SALUD TOTAL ",
+    "numeroAsociado": "aa2365",
+    "password": "doce",
+    "email": "sofi@gmail.com",
+    "phone": "1236547802",
     "img": "imagen.png"
 
   },
-  "insurer": "Swiss Medical"
+  "insurer": "Suim"
 }
 
 ### buscar pasiente por id
