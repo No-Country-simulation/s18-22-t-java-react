@@ -1,0 +1,35 @@
+### crear pasientes    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
+Content-Type: application/json
+
+{
+  "user": {
+    "name": "Maria456",
+    "dni": "325874632",
+    "obraSocial": "Osecac5",
+    "numeroAsociado": "aa2364",
+    "password": "Maria",
+    "email": "Maria4569@gmail.com",
+    "phone": "123654789",
+    "img": "imagen.png"
+
+  },
+  "insurer": "Swiss Medical"
+}
+
+### buscar pasiente por id
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/184
+
+
+
+### actualizar pasiente
+PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/184
+Content-Type: application/json
+
+{
+  "social_work": "SUMIMEDICAL2",
+  "number_associate": "4569872",
+  "phone": "4569874122",
+  "insurer": "sura2"
+}
+### faltan datos del user

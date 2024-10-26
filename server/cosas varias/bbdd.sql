@@ -10,7 +10,9 @@ CREATE TABLE user (
     email VARCHAR(250)  NOT NULL,
     img TEXT,
     phone VARCHAR(250)  NOT NULL,
-     active BOOLEAN DEFAULT TRUE
+     rol ENUM('MEDIC','PATIENT'),
+     initial_date DATE NOT NULL,
+	  active BOOLEAN DEFAULT TRUE 
 );
 
 CREATE TABLE authorizarion (
@@ -20,5 +22,13 @@ CREATE TABLE authorizarion (
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
+#ALTER TABLE user ADD rol ENUM('MEDIC','PACIENT');
+#ALTER TABLE user ADD  initial_date DATE NOT NULL;
+
 SELECT * FROM user;
-SELECT * FROM authorizarion;
+SELECT * FROM authorization;
+SELECT * FROM doctor;
+SELECT * FROM patients;
+describe doctor;
+describe user;
+describe authorization;

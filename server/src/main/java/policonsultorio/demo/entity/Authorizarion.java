@@ -1,16 +1,14 @@
 package policonsultorio.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity(name = "Authorizarion")
-@Table(name = "authorizarion")
+@Table(name = "authorization")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -21,13 +19,26 @@ public class Authorizarion {
     @Column(name = "id")
     private Long id ;
 
-    //@OneToOne(mappedBy = "authorizarion")
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User userId;
     @Column(name = "jwt", nullable = false)
     private String jwt;
 
-
+    @Override
+    public String toString() {
+        return "User:{" +
+                "id:" + getUserId().getId() +
+                ", name:'" + getUserId().getName() + '\'' +
+                ", password:'" + getUserId().getPassword() + '\'' +
+                ", email:'" + getUserId().getEmail() + '\'' +
+                ", phone:'" + getUserId().getPhone() + '\'' +
+                ", img:'" + getUserId().getImg() + '\'' +
+                ", initialDate:" + getUserId().getInitialDate() +
+                ", rol:" + getUserId().getRol() +
+                ", active" + getUserId().getActive() +
+                '}';
+    }
 
 }
