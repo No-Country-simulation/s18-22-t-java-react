@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### buscar pasiente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/184
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/12
 
 
 
