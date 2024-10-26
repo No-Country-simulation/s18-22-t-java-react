@@ -13,6 +13,7 @@ public interface IDoctorService {
 	List<DoctorResponse> getAll() ;
 	DoctorResponse update(Integer id, DoctorRequest  request);
 
+	public void softDeleteDoctor(Integer id) ;
 	boolean delete(DoctorRequest id, DoctorRequest request);
 }
 
