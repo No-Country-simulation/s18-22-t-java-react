@@ -32,7 +32,4 @@ Content-Type: application/json
   "phone": "4569874122",
   "insurer": "sura2"
 }
-### faltan datos del user
-
-### traer todos los user
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/184
+### faltan datos del user1
