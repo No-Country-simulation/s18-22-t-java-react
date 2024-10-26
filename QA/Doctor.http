@@ -1,0 +1,22 @@
+### crear doctor    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/doctor/create
+Content-Type: application/json
+
+{
+  "name": "Zoe",
+  "password": "123456",
+  "email": "zoe1@gmail.com",
+  "dni": "95123456",
+  "obraSocial": "osde",
+  "numeroAsociado": "m123456",
+  "phone": "1123232323",
+  "img": "string",
+  "active": true,
+  "specialization": "pediatra",
+  "licenseNumber": "m65432"
+}
+
+### buscar todos los doctores
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors
+
+
