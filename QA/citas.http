@@ -1,4 +1,4 @@
-### Crear cita    https://clinica-medica-production.up.railway.app/api/v1/
+### Crear citass   https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/appointment/schedule
 Content-Type: application/json
 
