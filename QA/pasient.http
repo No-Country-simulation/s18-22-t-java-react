@@ -1,35 +1,44 @@
-### crear pasientes    https://clinica-medica-production.up.railway.app/api/v1/
+### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
 Content-Type: application/json
 
 {
   "user": {
-    "name": "SOFIA MONSALVE",
-    "dni": "3258746254",
+    "name": "Debora",
+    "dni": "37123456",
     "obraSocial": "SALUD TOTAL ",
-    "numeroAsociado": "aa2365",
+    "numeroAsociado": "aa123456",
     "password": "doce",
-    "email": "sofi@gmail.com",
-    "phone": "1236547802",
+    "email": "debora@gmail.com",
+    "phone": "111123456",
     "img": "imagen.png"
 
   },
   "insurer": "Suim"
 }
 
-### buscar pasiente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/184
+### buscar paciente por id
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/36
 
 
 
-### actualizar pasiente
-PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/184
+### actualizar paciente
+PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/33
 Content-Type: application/json
 
 {
-  "social_work": "SUMIMEDICAL2",
-  "number_associate": "4569872",
-  "phone": "4569874122",
-  "insurer": "sura2"
+  "name": "Elena",
+  "password": "doce",
+  "email": "sofi123@gmail.com",
+  "social_work": "SALUD TOTAL ",
+  "number_associate": "aa123",
+  "phone": "11223344",
+  "img": "imagen.png",
+  "active": true,
+  "insurer": "Suim"
 }
 ### faltan datos del user1
+
+###Eliminar paciente
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/36
+Content-Type: application/json
