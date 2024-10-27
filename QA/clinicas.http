@@ -1,4 +1,4 @@
-### crear clinicass  https://clinica-medica-production.up.railway.app/api/v1/
+### crear clinica https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/clinic
 Content-Type: application/json
 
@@ -11,8 +11,8 @@ Content-Type: application/json
   "vlinicImage": "string",
   "active": true
 }
-### Actualizar clinica 
-PUT https://clinica-medica-production.up.railway.app/api/v1/clinic/2
+### Actualizar clinica por id
+PUT https://clinica-medica-production.up.railway.app/api/v1/clinic/1
 Content-Type: application/json
 
 {
@@ -27,7 +27,19 @@ Content-Type: application/json
 
 ### Buscar clinica por id
 GET https://clinica-medica-production.up.railway.app/api/v1/clinic/1
-Content-Type: application/json
+
+### Buscar todas las clinicas
+GET https://clinica-medica-production.up.railway.app/api/v1/clinic/all
+
+### Patch con id
+PATCH https://clinica-medica-production.up.railway.app/api/v1/clinic/avilable/1
+
+
+
+
+
+
+
 
 
 
