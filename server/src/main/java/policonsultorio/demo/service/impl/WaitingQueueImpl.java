@@ -3,6 +3,7 @@ package policonsultorio.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import policonsultorio.demo.dto.request.WaitingQueueDTO;
+import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
 import policonsultorio.demo.entity.WaitingQueue;
@@ -12,8 +13,9 @@ import policonsultorio.demo.repository.PatientRepository;
 import policonsultorio.demo.repository.WaitingQueueRepository;
 import policonsultorio.demo.service.IWaitingQueue;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -41,5 +43,18 @@ public class WaitingQueueImpl implements IWaitingQueue {
         waitingQueue.setStatus(QueueStatus.WAITING);
 
         return waitingQueueRepository.save(waitingQueue);
+    }
+
+    @Override
+    public WaitingQueue getWaitingQueue(AppointmentEntity appointment) {
+        Doctor doctor = doctorRepository.findById(Math.toIntExact(appointment.getDoctor().getId())).orElse(null);
+
+        List<WaitingQueue> waitingQueueList = waitingQueueRepository.findByDoctorAndStatus(doctor, QueueStatus.WAITING);
+
+        if (!waitingQueueList.isEmpty()) {
+            return waitingQueueList.get(0);
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }
