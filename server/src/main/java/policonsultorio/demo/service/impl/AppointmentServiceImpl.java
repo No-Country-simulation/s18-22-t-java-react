@@ -11,10 +11,14 @@ import policonsultorio.demo.dto.appointment.*;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
+import policonsultorio.demo.entity.WaitingQueue;
+import policonsultorio.demo.enums.QueueStatus;
 import policonsultorio.demo.repository.AppointmentRepository;
 import policonsultorio.demo.repository.DoctorRepository;
 import policonsultorio.demo.repository.PatientRepository;
+import policonsultorio.demo.repository.WaitingQueueRepository;
 import policonsultorio.demo.service.AppointmentService;
+import policonsultorio.demo.service.IWaitingQueue;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
 import policonsultorio.demo.util.exception.appointment.*;
@@ -33,6 +37,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
+    private final IWaitingQueue waitingQueueService;
+    private final WaitingQueueRepository waitingQueueRepository;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
 
@@ -195,6 +201,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         appointment.setStatus(AppointmentStatus.CANCELADA);
         appointment = appointmentRepository.save(appointment);
+
+        //Llama a la funcionalidad de reasignar cita
+        reassignedAppointment(appointment);
 
         return AppointmentMapper.toDto(appointment);
     }
@@ -440,7 +449,23 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found"));
     }
 
+    @Transactional
+    protected void reassignedAppointment(AppointmentEntity appointment){
+        WaitingQueue nextPatient = waitingQueueService.getWaitingQueue(appointment);
 
+        AppointmentRequestDto reassignedAppointment = new AppointmentRequestDto(
+                Math.toIntExact(appointment.getDoctor().getId()),
+                Math.toIntExact(nextPatient.getPatient().getUser().getId()),
+                appointment.getDate(),
+                appointment.getStartTime(),
+                AppointmentStatus.PROGRAMADA
+        );
+
+        createAppointment(reassignedAppointment);
+
+        nextPatient.setStatus(QueueStatus.ASSIGNED);
+        waitingQueueRepository.save(nextPatient);
+    }
 
 
 }
