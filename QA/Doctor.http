@@ -20,3 +20,17 @@ Content-Type: application/json
 GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors
 
 
+### buscar doctor por id
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/getById/13
+
+
+### buscar todos los doctores paginacion
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors-page?page=0&size=10
+
+### Eliminar doctor
+DELETE https://clinica-medica-production.up.railway.app/api/v1/doctor/delete/13
+
+
+
+
+
