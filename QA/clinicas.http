@@ -1,10 +1,10 @@
-### crear clinica   https://clinica-medica-production.up.railway.app/api/v1/
+### crear clinicass  https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/clinic
 Content-Type: application/json
 
 {
   "name": "clinica sur",
-  "cuit": "227566988",
+  "cuit": "22756698",
   "address": "Mitre 116",
   "phone": "224455669",
   "description": "nada",
