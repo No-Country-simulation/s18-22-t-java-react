@@ -1,0 +1,34 @@
+### crear clinica   https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/clinic
+Content-Type: application/json
+
+{
+  "name": "clinica sur",
+  "cuit": "227566988",
+  "address": "Mitre 116",
+  "phone": "224455669",
+  "description": "nada",
+  "vlinicImage": "string",
+  "active": true
+}
+### Actualizar clinica 
+PUT https://clinica-medica-production.up.railway.app/api/v1/clinic/2
+Content-Type: application/json
+
+{
+  "name": "clinica norte",
+  "cuit": "22756698899",
+  "address": "Mitre 1169",
+  "phone": "2244556699",
+  "description": "nada9",
+  "vlinicImage": "string",
+  "active": true
+}
+
+### Buscar clinica por id
+GET https://clinica-medica-production.up.railway.app/api/v1/clinic/1
+Content-Type: application/json
+
+
+
+
