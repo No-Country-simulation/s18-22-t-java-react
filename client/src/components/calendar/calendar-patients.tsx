@@ -1,12 +1,12 @@
 "use client"
 
-import { SkeletonHourDoctor } from "./skeleton/skeleton-hourDoctor";
-import { prueba } from "@/actions/doctors/doctorActions";
-import { AlertDialogCalendar } from "./alert/alertDialog";
-import { Calendar } from "@/components/ui/calendar"
+import { SkeletonHourDoctor } from "../skeleton/skeleton-hourDoctor";
+import { getHoursDoctorId } from "@/actions/doctors/doctorActions";
+import { AlertDialogCalendar } from "../alert/alertDialog";
 import { useEffect, useState } from "react";
 import { es } from 'date-fns/locale';
 import { format } from "date-fns";
+import { Calendar } from "../ui/calendar";
 
 interface HoursDoctor {
     amHours: { hour: string; }[]
@@ -15,7 +15,7 @@ interface HoursDoctor {
 
 interface Props { doctor: { id: number, name: string } }
 
-export function CalendarDemo({ doctor }: Props) {
+export function CalendarPatients({ doctor }: Props) {
     const [hoursDoctor, setHoursDoctor] = useState<HoursDoctor>({ amHours: [], pmHours: [] })
     const [loading, setLoading] = useState(false)
     const [hour, setHour] = useState<string>("")
@@ -39,7 +39,7 @@ export function CalendarDemo({ doctor }: Props) {
 
     useEffect(() => {
         const dataHours = async () => {
-            const res = await prueba(formatYear, doctor.id)
+            const res = await getHoursDoctorId(formatYear, doctor.id)
             setHoursDoctor(res)
             setLoading(true)
         }

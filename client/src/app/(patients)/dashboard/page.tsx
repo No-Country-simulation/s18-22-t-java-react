@@ -1,6 +1,7 @@
+import { getAllAppointmentByPatient } from "@/actions/appointment-action";
 import { DoctorCard } from "@/ui";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
 
     const doctorList = [
         {
@@ -25,6 +26,10 @@ export default function DashboardPage() {
             "specialization": "Pediatría",
             "licenseNumber": "MP654321"
         },]
+
+    const allAppointment = await getAllAppointmentByPatient(1)
+
+    console.log(allAppointment)
 
     return (
         <div className="max-w-[1200px] mx-auto px-10 my-16">

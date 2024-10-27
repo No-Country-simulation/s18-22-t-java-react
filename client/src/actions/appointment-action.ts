@@ -82,6 +82,7 @@ export const getAllAppointmentByPatient = async (
   }
 }
 
+
 export const getAppointmentById = async (id: string) => {
   const urlAppointment = BASE_URL + `/appointment/get_by_id/${id}`
   const getAppointment = await fetch(urlAppointment).then((res) => res.json())
