@@ -95,7 +95,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
     @Query("SELECT a FROM AppointmentEntity a " +
             "WHERE a.status = :status " +
-            "AND CONCAT(a.date, ' ', a.startTime) < :endTime")
+            "AND TIMESTAMP(CONCAT(a.date, ' ', a.startTime)) < :endTime")
     List<AppointmentEntity> findByStatusAndDateTimeBeforeWithGrace(
             @Param("status") AppointmentStatus status,
             @Param("endTime") LocalDateTime endTime
