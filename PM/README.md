@@ -1,7 +1,7 @@
 ## Ejemplo
 # Policonsultorio - Gestión de Consultas Médicas
 
-![Policonsultorio Logo](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
+![Policonsultorio Logo](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/logopeque%C3%B1o.png)
 
 ## Índice
 1. [Descripción del Proyecto](#descripción-del-proyecto)
@@ -30,14 +30,26 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
   
 ### Tecnologías Utilizadas
 
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/ux-ui%20sin%20fondo.png)
 
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/ux-ui%20sin%20fondo.png)
 
-![Tecnologías utilizadas]()
 
 - **Backend**: Java Spring Boot Swagger MySQL Spring Security JWT 
 OAuth Railway (deploy cloud) Mockito & JUnit
+
+
+
+
+
+
 - **Frontend**: Nextjs + TailwindCss + TypeScript
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/ux-ui%20sin%20fondo.png)
+
+
+
+
+
 - **Base de Datos**: Msql
 - **UX - UI**:Figma , Miro, A.ilustrator
 - **Autenticación**: JSON Web Tokens (JWT)
