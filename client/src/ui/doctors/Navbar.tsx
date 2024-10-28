@@ -1,6 +1,8 @@
 import { SvgHome, SvgNotifications } from "@/components";
 import { SvgCalendar } from "@/components/svg/svgs";
 import Link from "next/link";
+import Logo from '/public/logo_full.png'
+import Image from "next/image";
 
 export function NavbarDoctors() {
   const icons = [{ icon: <SvgCalendar />, title: "Mi Agenda" }, { icon: <SvgHome />, title: "Inicio" }, { icon: <SvgNotifications />, name: "notificación" }]
@@ -8,7 +10,9 @@ export function NavbarDoctors() {
   return (
     <div className="py-8">
       <nav className="flex justify-between items-center px-20 mx-auto text-[#004784]">
-        <Link href={"/dashboard"} className="text-3xl font-semibold">Logo policonsultorios</Link>
+        <Link href={"/dashboard"} className="text-3xl font-semibold">
+          <Image src={Logo} alt="logo" width={250} height={50} />
+        </Link>
         <div>
           <ul className="flex gap-8 items-center">
             {
