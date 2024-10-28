@@ -4,9 +4,9 @@ import { SkeletonHourDoctor } from "../skeleton/skeleton-hourDoctor";
 import { getHoursDoctorId } from "@/actions/doctors/doctorActions";
 import { AlertDialogCalendar } from "../alert/alertDialog";
 import { useEffect, useState } from "react";
+import { Calendar } from "../ui/calendar";
 import { es } from 'date-fns/locale';
 import { format } from "date-fns";
-import { Calendar } from "../ui/calendar";
 
 interface HoursDoctor {
     amHours: { hour: string; }[]

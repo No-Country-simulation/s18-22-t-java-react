@@ -40,7 +40,7 @@ export const createAppointment = async ({
   console.log('error al crear la cita')
 }
 
-export const getAllAppointmentByPatient = async (
+export const getAllAppointmentById_Patient = async (
   id: number,
   page?: number,
   size?: number
@@ -49,7 +49,7 @@ export const getAllAppointmentByPatient = async (
   const pageSize = size ? size : 10
   const url =
     BASE_URL +
-    'appointment/get_all_by_patient/' +
+    '/appointment/get_all_by_patient/' +
     id +
     '?page=' +
     pageNumber +
