@@ -30,6 +30,23 @@ GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors-pa
 ### Eliminar doctor
 DELETE https://clinica-medica-production.up.railway.app/api/v1/doctor/delete/13
 
+### Actualizar doctor por ID
+PUT https://clinica-medica-production.up.railway.app/api/v1/doctor/update/8
+Content-Type: application/json
+
+{
+  "name": "Zoe",
+  "password": "123456",
+  "email": "zoe1@gmail.com",
+  "dni": "95123456",
+  "obraSocial": "osde",
+  "numeroAsociado": "m123456",
+  "phone": "1123232323",
+  "img": "string",
+  "active": true,
+  "specialization": "Pediatra",
+  "licenseNumber": "m654321"
+}
 
 
 
