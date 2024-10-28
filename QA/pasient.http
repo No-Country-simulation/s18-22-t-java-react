@@ -4,13 +4,13 @@ Content-Type: application/json
 
 {
   "user": {
-    "name": "Debora",
-    "dni": "37123456",
+    "name": "Priscila",
+    "dni": "37123333",
     "obraSocial": "SALUD TOTAL ",
-    "numeroAsociado": "aa123456",
+    "numeroAsociado": "aa1234567",
     "password": "doce",
-    "email": "debora@gmail.com",
-    "phone": "111123456",
+    "email": "priscilaewen@gmail.com",
+    "phone": "11112345688",
     "img": "imagen.png"
 
   },
@@ -42,3 +42,4 @@ Content-Type: application/json
 ###Eliminar paciente
 DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/36
 Content-Type: application/json
+
