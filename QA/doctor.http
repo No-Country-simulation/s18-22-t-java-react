@@ -1,0 +1,17 @@
+### crear doctor
+POST https://clinica-medica-production.up.railway.app/api/v1/doctor/create
+Content-Type: application/json
+
+{
+  "name": "Jose cuervo",
+  "password": "223344",
+  "email": "diego@yahoo.com",
+  "dni": "102323232",
+  "obraSocial": "Salud total",
+  "numeroAsociado": "tres",
+  "phone": "3654545",
+  "img": "string",
+  "active": true,
+  "specialization": "Ginecologo",
+  "licenseNumber": "3"
+}

@@ -1,20 +1,20 @@
 ### crear pasientes    https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
 Content-Type: application/json
-
+##
 {
   "user": {
-    "name": "SOFIA MONSALVE",
-    "dni": "3258746254",
-    "obraSocial": "SALUD TOTAL ",
-    "numeroAsociado": "aa2365",
-    "password": "doce",
-    "email": "sofi@gmail.com",
-    "phone": "1236547802",
+    "name": "victor murillo",
+    "dni": "32587356455",
+    "obraSocial": "cmfa sur ",
+    "numeroAsociado": "anhg2365",
+    "password": "doce323232",
+    "email": "victor@gmail.com",
+    "phone": "12365478035",
     "img": "imagen.png"
 
   },
-  "insurer": "Suim"
+  "insurer": "NUEVA"
 }
 
 ### buscar pasiente por id
@@ -35,4 +35,4 @@ Content-Type: application/json
 ### faltan datos del user
 
 ### traer todos los user
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/184
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/186
