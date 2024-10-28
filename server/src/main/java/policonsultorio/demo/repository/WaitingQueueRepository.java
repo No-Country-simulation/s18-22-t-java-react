@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface WaitingQueueRepository extends JpaRepository<WaitingQueue, Long> {
     List<WaitingQueue> findByDoctorAndStatus(Doctor doctor, QueueStatus status);
+    WaitingQueue findByPatientIdAndStatus(Integer id, QueueStatus status);
 }
