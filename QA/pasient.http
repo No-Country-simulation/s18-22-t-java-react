@@ -4,17 +4,17 @@ Content-Type: application/json
 
 {
   "user": {
-    "name": "Priscila",
-    "dni": "37123333",
-    "obraSocial": "SALUD TOTAL ",
-    "numeroAsociado": "aa1234567",
-    "password": "doce",
-    "email": "priscilaewen@gmail.com",
-    "phone": "11112345688",
-    "img": "imagen.png"
+    "name": "Julia",
+    "dni": "27566982",
+    "obraSocial": "atsa",
+    "numeroAsociado": "345234",
+    "password": "doce123",
+    "email": "priscila@gmail.com",
+    "phone": "1156897888",
+    "img": "imagen2.png"
 
   },
-  "insurer": "Suim"
+  "insurer": "atsa"
 }
 
 ### buscar paciente por id
