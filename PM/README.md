@@ -33,7 +33,7 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
 
 
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
+![Tecnologías utilizadas]()
 
 - **Backend**: Java Spring Boot Swagger MySQL Spring Security JWT 
 OAuth Railway (deploy cloud) Mockito & JUnit
@@ -41,7 +41,7 @@ OAuth Railway (deploy cloud) Mockito & JUnit
 - **Base de Datos**: Msql
 - **UX - UI**:Figma , Miro, A.ilustrator
 - **Autenticación**: JSON Web Tokens (JWT)
-- **Plataforma de Despliegue**: BLBBLLBBL / BLABLABLABLA
+- **Plataforma de Despliegue**: vercel / 
 - **QA TESTING**: Jest y Cypress para pruebas unitarias y de integración
 
 ### Requisitos del Sistema
