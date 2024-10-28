@@ -28,15 +28,20 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 - **Reportes Médicos**: Genera informes de citas, historial médico y visitas.
 - **Módulo de Facturación**: Integra facturación para servicios médicos y cobros de consulta.
   
+
+
+
+
+## ⚙️  **Backend - Tecnologías Utilizadas**
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 <table>
 <thead>
 <tr>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/119468148?v=4" width="50" style="width: 80px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/119468148?v=4" width="50" style="width: 120px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64" style="width: 80px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64" style="width: 120px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 80px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 120px;">
 </th>
 </tr>
 </thead>
@@ -59,9 +64,6 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <table>
 <thead>
 <tr>
-
-
-## ⚙️  **Backend - Tecnologías Utilizadas**
 
 - **Java Spring Boot** 🌱: Framework robusto de Java para construir aplicaciones web rápidas y escalables.
 - **Swagger** 📝: Herramienta para documentar APIs REST, facilitando la integración y pruebas.
