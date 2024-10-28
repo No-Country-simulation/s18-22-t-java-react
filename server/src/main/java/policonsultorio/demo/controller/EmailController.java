@@ -4,13 +4,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.eclipse.angus.mail.util.MailConnectException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import policonsultorio.demo.dto.DtoEmail;
 import policonsultorio.demo.service.EmailService;
-
-
 
 @RestController
 @RequestMapping("/email")
