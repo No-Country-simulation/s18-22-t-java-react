@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 public record DtoEmail(
         @NotBlank
         @Email
-        String email,
+        String toUser,
         @NotBlank
-        String titulo,
+        String subject,
         @NotBlank
-        String mensaje) {
+        String message) {
 }

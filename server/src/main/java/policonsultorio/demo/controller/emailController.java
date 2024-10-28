@@ -1,15 +1,16 @@
 package policonsultorio.demo.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import policonsultorio.demo.dto.DtoEmail;
+import policonsultorio.demo.config.EmailConfig;
 import policonsultorio.demo.service.EmailService;
 
 import java.util.Map;
@@ -18,19 +19,19 @@ import java.util.Map;
 @RequestMapping("/email")
 @CrossOrigin("*")
 @Tag(name = "email")
-public class emailController {
+@RequiredArgsConstructor
+public class EmailController {
 
-    @Autowired
-    private EmailService emailService;
+    private final EmailService emailService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> sendEmail(DtoEmail dtoEmail){
-
-        try {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(emailService.sendEmail(dtoEmail)) ;
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", e.getMessage()));
-
-        }
+    @PostMapping("/sendMessage")
+    @Operation(
+            summary = "Send email",
+            description = "Send email to user",
+            tags = {"email"}
+    )
+    public ResponseEntity<?> sendEmail(@RequestBody DtoEmail dtoEmail) throws MessagingException {
+        emailService.sendEmail(dtoEmail);
+        return ResponseEntity.ok("Email sent successfully");
     }
 }
