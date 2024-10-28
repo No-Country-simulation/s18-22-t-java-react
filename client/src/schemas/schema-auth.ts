@@ -15,7 +15,6 @@ export const schemaRegister = z.object({
   password: z
     .string({ message: 'Contraseña requerido' })
     .min(6, { message: 'Minimo 6 Caracteres' }),
-  obraSocial: z.string({ message: 'Obra social requerida' }),
   numeroAsociado: z.string({ message: 'Numero de asociado requerido' }),
   dni: z
     .string({

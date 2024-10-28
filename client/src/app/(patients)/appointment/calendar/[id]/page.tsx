@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 import { BackButton } from '@/components'
 import Image from 'next/image'
 
+export const revalidate = 0
+
 export default async function AppointmentById({ params }: { params: { id: string } }) {
   const id = Number(params.id)
   const doctor = await getDoctorById(id)

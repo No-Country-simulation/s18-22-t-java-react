@@ -2,7 +2,7 @@ import { getAllProgramedAppointments } from "@/actions/appointment-action";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
 import { DoctorCard, WaitList } from "@/ui";
 
-export const revalidate = 60
+export const revalidate = 0
 
 export default async function DashboardAppointmentPage() {
   const waitList = {

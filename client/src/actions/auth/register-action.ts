@@ -11,6 +11,8 @@ export const createUser = async (formData: FormData) => {
   const passwordFromForm = formData.get('password') as string
   const phoneFromForm = formData.get('phone') as string
   const insurerFromForm = formData.get('insurer') as string
+  const dniFromForm = formData.get('dni') as string
+  const numeroAsociadoFromForm = formData.get('numeroAsociado') as string
 
   const validatedFields = schemaRegister.safeParse({
     name: nameFromForm,
@@ -18,6 +20,8 @@ export const createUser = async (formData: FormData) => {
     password: passwordFromForm,
     phone: phoneFromForm,
     insurer: insurerFromForm,
+    dni: dniFromForm,
+    numeroAsociado: numeroAsociadoFromForm,
   })
 
   if (!validatedFields.success) {
@@ -30,6 +34,9 @@ export const createUser = async (formData: FormData) => {
   const body = {
     user: {
       name: nameFromForm,
+      dni: dniFromForm,
+      obraSocial: insurerFromForm,
+      numeroAsociado: numeroAsociadoFromForm,
       email: emailFromForm,
       password: passwordFromForm,
       phone: phoneFromForm,

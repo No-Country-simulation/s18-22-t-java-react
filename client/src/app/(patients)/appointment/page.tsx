@@ -7,7 +7,7 @@ import { SwiperList } from "@/components/swiper/SwiperList";
 import { getAllClinics } from "@/actions/clinics/clinicActions";
 import { Clinic } from "@/interfaces/clinic";
 
-export const revalidate = 60
+export const revalidate = 0
 
 export default async function AppointmentsPage({
   searchParams,
