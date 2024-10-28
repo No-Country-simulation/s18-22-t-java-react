@@ -42,14 +42,8 @@ PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/cancel
 Content-Type: application/json
 
 ### Listar todas las citas por medico y fecha
-GET https://clinica-medica-production.up.railway.app/api/v1/appointment/ocuppied-times/8
+GET https://clinica-medica-production.up.railway.app/api/v1/appointment/occupied-times/14?date=2024-11-07
 
-{
-  "date": "2025-02-03",
-  "time": [
-    "string"
-  ]
-}
 ### Listar cita por id
 GET https://clinica-medica-production.up.railway.app/api/v1/appointment/get_by_id/9
 Content-Type: application/json
