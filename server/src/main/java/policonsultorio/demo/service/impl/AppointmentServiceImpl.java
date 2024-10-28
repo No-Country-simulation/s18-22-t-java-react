@@ -39,6 +39,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final PatientRepository patientRepository;
     private final IWaitingQueue waitingQueueService;
     private final WaitingQueueRepository waitingQueueRepository;
+    private final AppointmentMapper appointmentMapper;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
 
@@ -312,9 +313,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public AppointmentResponseDto getAppointment(int id) {
+    public AppointmentResponseIdDto getAppointment(int id) {
         AppointmentEntity appointment = findAppointmentById(id);
-        return AppointmentMapper.toDto(appointment);
+        return appointmentMapper.toDtoId(appointment);
     }
 
     @Override
