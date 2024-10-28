@@ -29,6 +29,38 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 - **Módulo de Facturación**: Integra facturación para servicios médicos y cobros de consulta.
   
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/119468148?v=4" width="50" style="width: 80px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64" style="width: 80px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 80px;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Leo Amaya </strong></td>
+<td align="center"><strong>Lionel Staricoff </strong></td>
+<td align="center"><strong>William Sanchez</strong></td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/Leonel-Amaya"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/Leonel-Amaya" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/LionelStaricoff"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lionel-staricoff" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
+proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/john-william-sanchez/?originalSubdomain=co" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+
+
 ## ⚙️  **Backend - Tecnologías Utilizadas**
 
 - **Java Spring Boot** 🌱: Framework robusto de Java para construir aplicaciones web rápidas y escalables.
