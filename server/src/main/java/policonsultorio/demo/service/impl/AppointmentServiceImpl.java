@@ -415,30 +415,59 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-    @Scheduled(cron = "0 0/30 * * * *") // Ejecutar cada 30 minutos
+    @Scheduled(cron = "0 */5 * * * *") // Ejecutar cada 5 minutos para mayor precisión
     public void markNoShowAppointments() {
-        LocalTime now = LocalTime.now();
+        LocalDateTime now = LocalDateTime.now();
 
-        // Ajustar el margen de gracia, por ejemplo 15 minutos después de la hora de fin
-        LocalTime graceTime = now.minusMinutes(15);
+        LocalDateTime graceTimeEnd = now.minusMinutes(15);
 
-        List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndEndTimeBefore(AppointmentStatus.PROGRAMADA, graceTime);
+        List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndDateTimeBeforeWithGrace(
+                AppointmentStatus.PROGRAMADA,
+                graceTimeEnd
+        );
 
         for (AppointmentEntity appointment : appointments) {
-            // Marcar la cita como "NO_ASISTIO" si no ha sido confirmada manualmente como ASISTIO
-            appointment.setStatus(AppointmentStatus.NO_ASISTIO);
-            appointmentRepository.save(appointment);
+            // Solo marcar como NO_ASISTIO si aún está PROGRAMADA
+            if (appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
+                appointment.setStatus(AppointmentStatus.NO_ASISTIO);
+                appointmentRepository.save(appointment);
+            }
         }
     }
+
 
 
     @Transactional
     public AppointmentResponseDto markAppointmentAsAttended(int id) {
         AppointmentEntity appointment = findAppointmentById(id);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
 
-        if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO || appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
-            appointment.setStatus(AppointmentStatus.ASISTIO);
-            appointment = appointmentRepository.save(appointment);
+        if (now.isBefore(appointmentDateTime)) {
+            throw new IllegalStateException("No se puede marcar como asistida una cita antes de su hora programada");
+        }
+
+        if (appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
+
+            LocalDateTime endTimeWithGrace = LocalDateTime.of(
+                    appointment.getDate(),
+                    appointment.getEndTime().plusMinutes(15)
+            );
+
+            if (now.isBefore(endTimeWithGrace)) {
+                appointment.setStatus(AppointmentStatus.ASISTIO);
+                appointment = appointmentRepository.save(appointment);
+            } else {
+                throw new IllegalStateException("La cita ya ha expirado y no puede marcarse como asistida");
+            }
+        } else if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO) {
+            // Permitir cambiar de NO_ASISTIO a ASISTIO solo dentro del mismo día
+            if (appointment.getDate().isEqual(LocalDate.now())) {
+                appointment.setStatus(AppointmentStatus.ASISTIO);
+                appointment = appointmentRepository.save(appointment);
+            } else {
+                throw new IllegalStateException("No se puede marcar como asistida una cita de un día anterior");
+            }
         }
 
         return AppointmentMapper.toDto(appointment);
