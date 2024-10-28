@@ -3,6 +3,7 @@ package policonsultorio.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import policonsultorio.demo.dto.request.WaitingQueueDTO;
+import policonsultorio.demo.dto.response.WaitingQueueResponse;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
@@ -56,5 +57,19 @@ public class WaitingQueueImpl implements IWaitingQueue {
         } else {
             throw new NoSuchElementException();
         }
+    }
+
+    @Override
+    public WaitingQueueResponse getQueueByPatient(Long id) {
+        Patient patient = patientRepository.findByUserId(id);
+        WaitingQueue waitingQueue = waitingQueueRepository.findByPatientIdAndStatus(patient.getId(), QueueStatus.WAITING);
+
+        WaitingQueueResponse waitingQueueResponse = new WaitingQueueResponse(waitingQueue.getDoctor().getName(),
+                waitingQueue.getDoctor().getSpecialization(),
+                waitingQueue.getRequestedDate(),
+                waitingQueue.getDoctor().getClinic().getName(),
+                waitingQueue.getDoctor().getClinic().getAddress()
+        );
+        return waitingQueueResponse;
     }
 }

@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.clinic.ResponseClinic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(name = "Clinic")
 @Table(name = "clinic")
 @Data
@@ -32,7 +35,8 @@ public class Clinic {
     private String vlinicImage;
     @Column(name = "active", nullable = false)
     private Boolean active = true;
-
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Doctor> doctors = new ArrayList<>();
 
     public Clinic(ResponseClinic responseClinic) {
         this.name = responseClinic.name();

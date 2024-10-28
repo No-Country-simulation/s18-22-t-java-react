@@ -1,9 +1,6 @@
 package policonsultorio.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
@@ -22,7 +19,9 @@ public class Doctor extends User {
 	private String specialization;
 	private String licenseNumber;
 	private Boolean deleted  = false;
-
+	@ManyToOne
+	@JoinColumn(name = "clinic_id") // Columna que referencia a Clinic
+	private Clinic clinic;
 //	private List<WorkingHous> workingHousList = new List<WorkingHous>();
 //  private List<Appointments> appointmentsList = new List<Appointments>();
 }
