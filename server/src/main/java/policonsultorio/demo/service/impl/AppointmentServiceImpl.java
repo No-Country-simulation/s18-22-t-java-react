@@ -62,13 +62,15 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new PatientNotActiveException("Patient not active");
         }*/
 
-        // Verificar si el paciente ya tiene una cita programada pendiente con cualquier especialista
-        boolean patientHasPendingAppointment = appointmentRepository.existsByPatientAndStatus(
-                patient, AppointmentStatus.PROGRAMADA);
 
-        if (patientHasPendingAppointment) {
-            throw new AppointmentAlreadyBookedException("You already have a pending appointment. Please complete or cancel the current appointment before booking a new one.");
+        //verificar si el paciente ya tiene una cita pendiente con este doctor
+        boolean patientHasPendingAppointmentWithDoctor = appointmentRepository.existsByPatientAndDoctorAndStatus(
+                patient, doctor, AppointmentStatus.PROGRAMADA);
+
+        if (patientHasPendingAppointmentWithDoctor) {
+            throw new AppointmentAlreadyBookedException("You already have a pending appointment with this doctor. Please complete or cancel the current appointment before booking a new one.");
         }
+
 
         //verificar si el paciente ya tiene una cita con este doctor
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
