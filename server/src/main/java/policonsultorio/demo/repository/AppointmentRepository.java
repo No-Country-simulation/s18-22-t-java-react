@@ -108,8 +108,12 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
     @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
             "FROM AppointmentEntity a " +
             "WHERE a.patient = :patient " +
-            "AND a.status = :status")
-    boolean existsByPatientAndStatus(@Param("patient") Patient patient, @Param("status") AppointmentStatus status);
+            "AND a.status = :status " +
+            "AND a.doctor = :doctor")
+    boolean existsByPatientAndDoctorAndStatus(@Param("patient") Patient patient,
+                                              @Param("doctor") Doctor doctor,
+                                              @Param("status") AppointmentStatus status);
+
 
 
 }
