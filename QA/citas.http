@@ -1,24 +1,23 @@
 ### Actualizar citas   https://clinica-medica-production.up.railway.app/api/v1/
-PUT https://clinica-medica-production.up.railway.app/api/v1/appointment/update/
+PUT https://clinica-medica-production.up.railway.app/api/v1/appointment/update?id=9
 Content-Type: application/json
 
-  "id": 7,
-  "id_doctor": 14,
-  "id_patient":41,
-  "date": "2024-04-04",
-  "startTime": "11:30:00"
+{
+  "id_doctor":38 ,
+  "id_patient": 43,
+  "date": "2024-10-31",
+  "startTime": "15:00",
+  "status": "PROGRAMADA"
 }
-
-
 
 ### Crear citass   https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/appointment/schedule
 Content-Type: application/json
 
 {
-  "id_doctor": 17,
-  "id_patient": 41,
-  "date": "2025-05-05",
+  "id_doctor":38 ,
+  "id_patient": 43,
+  "date": "2024-10-30",
   "startTime": "13:00",
   "status": "PROGRAMADA"
 }
@@ -31,27 +30,16 @@ Content-Type: application/json
   "newDate": "2025-07-07",
   "newStartTime": "15:00"
 }
-
-
-### Buscar cita por id
-GET https://clinica-medica-production.up.railway.app/api/v1/appointment/get_by_id/1
-Content-Type: application/json
-
 ### Marcar cita como atendida
 PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/markAsAttended/
 Content-Type: application/json
 
-
 ### Completar cita por id 
 PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/complete/7
-
-
 
 ### Cancelar cita por id 
 PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/cancel/1
 Content-Type: application/json
-
-
 
 ### Listar todas las citas por medico y fecha
 GET https://clinica-medica-production.up.railway.app/api/v1/appointment/ocuppied-times/8
@@ -62,10 +50,9 @@ GET https://clinica-medica-production.up.railway.app/api/v1/appointment/ocuppied
     "string"
   ]
 }
-
-
-### Listar todas las citas por id 
-GET https://clinica-medica-production.up.railway.app/api/v1/appointment/get_by_id/5
+### Listar cita por id
+GET https://clinica-medica-production.up.railway.app/api/v1/appointment/get_by_id/9
+Content-Type: application/json
 
 ### Listar todas las citas por paciente
 GET https://clinica-medica-production.up.railway.app/api/v1/appointment/get_all_by_patient/26
