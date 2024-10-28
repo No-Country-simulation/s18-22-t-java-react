@@ -46,7 +46,7 @@ public class UserController {
 
 
     @PostMapping(produces = "application/json")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginDtoResponse loginRequestDto) {
+    public ResponseEntity<?> login( @RequestBody @Valid LoginDtoResponse loginRequestDto) {
 
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(userService.login(loginRequestDto));
