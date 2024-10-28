@@ -12,15 +12,21 @@ interface Props {
   place?: string,
   img?: string,
   dashboard?: boolean
+  date?: string
+  startTime?: string
 }
-export function DoctorCard({ id, name, speciality, place = "Clínica Colón", img, dashboard }: Props) {
+export function DoctorCard({ id, name, speciality, place = "Clínica Colón", img, dashboard, date, startTime }: Props) {
   const [openDialog, setOpenDialog] = useState(false)
   const [messageAlert, setMessageAlert] = useState({ title: "", description: <p></p>, confirm: "Confirmar", cancel: "Cancelar" })
+  const formattedDate = date ? (() => {
+    const [year, month, day] = date.split("-")
+    return `${day}/${month}/${year}`
+  })() : '04/11/2024'
 
   const cancelAlert = () => {
     const alert = {
       title: "¿Querés cancelar la cita?",
-      description: <p>Querrías cancelra tu cita asignada para el <span className="font-bold">[Fecha de la cita]</span> a las <span className="font-bold">[Hora de la cita]</span> en <span className="font-bold">[Lugar de la cita]</span>. Si reprogramás, tu cita actual será cancelada.</p>,
+      description: <p>Querrías cancelar tu cita asignada para el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>. Si reprogramás, tu cita actual será cancelada.</p>,
       confirm: "Cancelar cita",
       cancel: "Mantener cita"
     }
@@ -31,7 +37,7 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
   const changeAppointment = () => {
     const alert = {
       title: "¿Queréis reprogramar la cita?",
-      description: <p>Tenés cita asignada el <span className="font-bold">[Fecha de la cita]</span> a las <span className="font-bold">[Hora de la cita]</span> en <span className="font-bold">[Lugar de la cita]</span>. Si reprogramás, tu cita actual será cancelada.</p>,
+      description: <p>Tenés cita asignada el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>. Si reprogramás, tu cita actual será cancelada.</p>,
       confirm: "Reprogramar cita",
       cancel: "Mantener cita"
     }
@@ -44,9 +50,18 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
       <div className="w-[854px] h-[168px] rounded-xl flex items-center gap-4 pl-4 py-4 shadow-2xl">
 
         {/* IMAGE  */}
-        {img !== '' ? (
+        {img && img !== '' ? (
           <figure className="relative rounded-full size-[88px] overflow-hidden">
-            <Image src={img || 'https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png'} fill sizes="(max-width: 768px) 100px" alt={name + "image"} className="object-cover" />
+            <Image
+              loader={({ src }) => src}
+              src={img ? img : "https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png"}
+              fill
+              sizes="(max-width: 768px) 100px"
+              alt={name + "image"} className="object-cover"
+              onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                (event.target as HTMLImageElement).srcset = "https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png";
+              }}
+            />
           </figure>
         ) : (
           <div className="size-[88px] bg-gray-300 rounded-full" />
@@ -56,11 +71,11 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
           <span className="font-medium text-[22px] text-[#0C0C0E]">{name}</span>
           <span className="font-medium -mt-1 mb-2 text-lg text-[#505256]">{speciality}</span>
           {dashboard && (
-            <span className=" text-[#3C4C51]">24/10/2024</span>
+            <span className=" text-[#3C4C51]">{formattedDate}</span>
           )}
           <span className="mb-2 text-[#3C4C51]">{place}</span>
           {!dashboard && (
-            <span className="text-sm bg-yellow-200 rounded px-2">Proximo turno disponible: 20/10 - 14:00hs</span>
+            <span className="text-sm bg-yellow-200 rounded px-2">Proximo turno disponible: 4/11 - 14:00hs</span>
           )}
         </div>
         {dashboard ? (

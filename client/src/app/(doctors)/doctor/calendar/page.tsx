@@ -1,5 +1,6 @@
 import { SvgChevronNew } from "@/components";
 import { Calendar } from "@/components/ui/calendar";
+import Link from "next/link";
 
 
 export default function CalendarDoctorPage() {
@@ -23,7 +24,7 @@ export default function CalendarDoctorPage() {
                                     </div>
                                     <div className="flex items-center gap-6">
                                         <span>Historia clínica</span>
-                                        <span className="flex items-center text-secondaryBlue-400 font-bold">Más información <SvgChevronNew /></span>
+                                        <Link href={'/doctor/appointment/1'} className="flex items-center text-secondaryBlue-400 font-bold">Más información <SvgChevronNew /></Link>
                                     </div>
                                 </div>
                             ))

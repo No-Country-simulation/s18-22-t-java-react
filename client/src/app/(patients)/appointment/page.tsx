@@ -4,6 +4,10 @@ import { Suspense } from "react";
 import { getAllDoctors } from '@/actions/doctors/doctorActions';
 import { DoctorFromResponse } from "@/interfaces/user";
 import { SwiperList } from "@/components/swiper/SwiperList";
+import { getAllClinics } from "@/actions/clinics/clinicActions";
+import { Clinic } from "@/interfaces/clinic";
+
+export const revalidate = 60
 
 export default async function AppointmentsPage({
   searchParams,
@@ -18,26 +22,11 @@ export default async function AppointmentsPage({
   const query = searchParams?.q || '';
 
   const data: DoctorFromResponse[] = await getAllDoctors()
+  const clinicList: Clinic[] = await getAllClinics()
 
-  /* const doctorListWithPlacesFiltered = data.filter((doctor, index, self) =>
-    index === self.findIndex((d) => d.place === doctor.place)
-  ) */
   const doctorListWithSpecialityFiltered = data.filter((doctor, index, self) =>
     index === self.findIndex((d) => d.specialization === doctor.specialization)
   )
-
-  const doctorListWithPlacesFiltered = [{
-    id: 0,
-    password: "",
-    email: "",
-    phone: "",
-    active: true,
-    specialization: "",
-    licenseNumber: "",
-    img: "",
-    name: "Consultorio Principal",
-    address: 'Jujuy 2176'
-  }]
 
 
   return (
@@ -57,9 +46,9 @@ export default async function AppointmentsPage({
             <SwiperList list={doctorListWithSpecialityFiltered} />
           }
           <h3 className='text-2xl text-[#1A2C33] my-2'>Establecimientos</h3>
-          {doctorListWithPlacesFiltered.length === 0 ?
+          {clinicList.length === 0 ?
             <p>No hay especialidades disponibles</p> :
-            <DoctorList list={doctorListWithPlacesFiltered} title={"places"} />
+            <DoctorList list={clinicList} title={"places"} />
           }
         </>
       )}

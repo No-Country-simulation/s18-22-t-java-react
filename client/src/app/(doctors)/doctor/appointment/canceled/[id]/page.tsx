@@ -16,7 +16,7 @@ export default function CanceledAppointmentPage({ params }: { params: { id: stri
         <h1 className="text-5xl font-medium">El turno ha sido anulado</h1>
         <p className="my-4 text-2xl text-[#5C5C5C]">El turno asignado para [Fecha de cita] a las [Hora de la cita] con [Nombre del doctor] en [Establecimiento]</p>
 
-        <Link href={"/doctor/appointment"} className="block mt-14 w-[274px] h-16 rounded-xl border border-blue-500 bg-blue-500 text-white text-lg content-center">Volver al inicio</Link>
+        <Link href={"/doctor/calendar"} className="block mt-14 w-[274px] h-16 rounded-xl border border-blue-500 bg-blue-500 text-white text-lg content-center">Volver al inicio</Link>
       </div>
     </div>
   );

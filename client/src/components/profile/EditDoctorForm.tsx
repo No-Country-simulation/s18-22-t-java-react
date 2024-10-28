@@ -81,7 +81,7 @@ export function EditDoctorForm({ doctor }: Props) {
   return (
     <>
       <BackButton />
-      <form onSubmit={submit} className="grid p-6 gap-4 text-[#1A2C33]">
+      <form onSubmit={submit} className="max-w-5xl grid p-6 gap-4 text-[#1A2C33]">
         <h2 className="text-[32px] font-medium mb-4">Mi perfil</h2>
         <div className="flex my-4 mb-11 gap-7">
           <div className='flex flex-col gap-2 relative'>

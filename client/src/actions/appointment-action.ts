@@ -32,8 +32,17 @@ export const createAppointment = async ({
       status: 'PROGRAMADA',
     }),
   }).then((res) => res.json())
+  console.log('create appointment data', data)
 
-  if (data) {
+  if (data.error) {
+    const error = 'error al crear la cita ' + data.error + ': ' + data.message
+    console.log(error)
+    return {
+      error: error,
+    }
+  }
+
+  if (data.id) {
     redirect(`/appointment/confirmed/${data.id}`)
   }
 
@@ -49,7 +58,7 @@ export const getAllAppointmentByPatient = async (
   const pageSize = size ? size : 10
   const url =
     BASE_URL +
-    'appointment/get_all_by_patient/' +
+    '/appointment/get_all_by_patient/' +
     id +
     '?page=' +
     pageNumber +
@@ -87,7 +96,8 @@ export const getAppointmentById = async (id: string) => {
   const getAppointment = await fetch(urlAppointment).then((res) => res.json())
 
   if (getAppointment.error) {
-    redirect('/')
+    console.log(getAppointment)
+    /* redirect('/') */
   }
 
   const urlDoctor = BASE_URL + `/doctor/getById/${getAppointment.id_doctor}`
@@ -100,4 +110,35 @@ export const getAppointmentById = async (id: string) => {
     starTime: getAppointment.startTime,
     doctorName: getDoctor.name,
   }
+}
+
+export const getAllProgramedAppointments = async (id_patient: number) => {
+  const data = await getAllAppointmentByPatient(id_patient)
+  if (!data) {
+    return []
+  }
+  const programedAppointments = data.filter(
+    (appointment) =>
+      appointment.status === 'PROGRAMADA' || appointment.status === 'PENDIENTE'
+  )
+  return programedAppointments
+}
+
+export const cancelAppointment = async (id: number) => {
+  const url = BASE_URL + '/appointment/cancel/' + id
+  const data = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json())
+
+  if (data.error) {
+    console.log('error al cancelar la cita ', data.error)
+    return {
+      error: data.error,
+    }
+  }
+
+  return data
 }

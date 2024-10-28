@@ -1,8 +1,9 @@
 import { DoctorFromResponse } from "@/interfaces/user"
 import { SpecialityCard, PlaceCard } from "../index"
+import { Clinic } from "@/interfaces/clinic"
 
 interface Props {
-  list: DoctorFromResponse[]
+  list: DoctorFromResponse[] | Clinic[]
   title: string
 }
 
@@ -12,10 +13,12 @@ export function DoctorList({ list, title }: Props) {
       <div className="flex gap-2">
         {list.map((doctor) => (
           <div key={doctor.id}>
-            {title === 'speciality' ? (
+            {title === 'speciality' && 'specialization' in doctor ? (
               <SpecialityCard name={doctor.specialization} img="" />
             ) : (
-              <PlaceCard details={false} name={doctor.place || 'Consultorio Principal'} img="" address="Jujuy 2176" />
+              'address' in doctor && (
+                <PlaceCard id={doctor.id} details={false} name={doctor.name} img={doctor.vlinicImage} address={doctor.address} />
+              )
             )}
           </div>
         ))}

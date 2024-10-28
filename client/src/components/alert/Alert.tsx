@@ -39,7 +39,7 @@ export const DialogComponent = ({
     <AlertDialog open={openDialog} onOpenChange={setOpenDialog}>
       <AlertDialogContent className="!w-[1146px] !max-w-[1146px] h-[625px] px-[270px] content-center">
         <AlertDialogHeader>
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-center">
             <AlertDialogTitle className="text-5xl font-medium text-[#1A2C33]">{title}</AlertDialogTitle>
             <button
               className="absolute top-16 right-16"

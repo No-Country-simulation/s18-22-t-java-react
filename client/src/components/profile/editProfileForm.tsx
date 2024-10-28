@@ -7,7 +7,7 @@ import { z } from "zod";
 import { SubmitButton } from "@/ui";
 import { useState } from "react";
 import Image from "next/image";
-import { PatientFromResponse } from "@/interfaces/user";
+import { PatientByIdFromResponse } from "@/interfaces/user";
 import { IconPencil } from "../icons";
 import { uploadSingleImage } from "@/actions/images/ImageActions";
 import { BackButton } from "../BackButton";
@@ -15,7 +15,7 @@ import { BackButton } from "../BackButton";
 type TypeFormData = z.infer<typeof schemaRegister>;
 
 interface Props {
-  data: PatientFromResponse
+  data: PatientByIdFromResponse
 }
 
 export function EditProfileForm({ data }: Props) {
@@ -27,7 +27,7 @@ export function EditProfileForm({ data }: Props) {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [profileImg, setProfileImg] = useState<string>('img' in data ? data.img : '')
+  const [profileImg, setProfileImg] = useState<string>(data.img || '')
 
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +46,7 @@ export function EditProfileForm({ data }: Props) {
     /*formData.append("surname", data.surname);*/
     formData.append("phone", data.phone);
     formData.append("email", data.email);
-    /*formData.append("dni", data.dni)*/
+    formData.append("dni", data.dni)
     formData.append("insurer", data.insurer);
     formData.append("img", profileImg);
 
@@ -62,7 +62,8 @@ export function EditProfileForm({ data }: Props) {
         password: "",
         name: "",
         phone: "",
-        insurer: ""
+        insurer: "",
+        dni: "",
       })
     } catch (error: unknown) {
       setLoading(false);
@@ -71,7 +72,7 @@ export function EditProfileForm({ data }: Props) {
   });
 
   return (
-    <form onSubmit={submit} className="grid p-6 gap-4 text-[#1A2C33]">
+    <form onSubmit={submit} className="max-w-5xl grid p-6 gap-4 text-[#1A2C33]">
       <BackButton />
       <h2 className="text-[32px] font-medium mb-4">Mi perfil</h2>
       <div className="flex my-4 mb-11 gap-7 mx-4">
@@ -108,7 +109,7 @@ export function EditProfileForm({ data }: Props) {
       <div className="flex flex-wrap gap-4">
         <div className="w-[420px] flex flex-col gap-[10px] relative">
           <label htmlFor="name">Nombre</label>
-          <input type="text" id="name" {...register("name")} value={data.name} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <input type="text" id="name" {...register("name")} defaultValue={data.name} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
           <IconPencil className="absolute top-[46px] right-3" />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         </div>
@@ -119,33 +120,43 @@ export function EditProfileForm({ data }: Props) {
 
         <div className="w-[420px] flex flex-col gap-[10px] relative">
           <label htmlFor="phone">Número de teléfono</label>
-          <input type="text" id="phone" {...register("phone")} value={data.phone} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <input type="text" id="phone" {...register("phone")} defaultValue={data.phone} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
           <IconPencil className="absolute top-[46px] right-3" />
           {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
         </div>
 
         <div className="w-[420px] flex flex-col gap-[10px] relative">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" {...register("email")} value={data.email} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <input type="email" id="email" {...register("email")} defaultValue={data.email} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
           <IconPencil className="absolute top-[46px] right-3" />
           {errors.email && <p className="text-red-500">{errors.email.message}</p>}
         </div>
 
-        {/* <div className="w-[420px] flex flex-col gap-[10px] relative">
-        <label htmlFor="dni">DNI</label>
-        <input type="text" id="dni" {...register("dni")} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
-        {errors.dni && <p className="text-red-500">{errors.dni.message}</p>}
-      </div> */}
+        {/*         <div className="w-[420px] flex flex-col gap-[10px] relative">
+          <label htmlFor="dni">DNI</label>
+          <input type="text" id="dni" {...register("dni")} defaultValue={data.dni} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <IconPencil className="absolute top-[46px] right-3" />
+          {errors.dni && <p className="text-red-500">{errors.dni.message}</p>}
+        </div> */}
       </div>
 
 
       <h2 className="text-2xl my-4 font-medium">Obra Social</h2>
 
-      <div className="w-[420px] flex flex-col gap-[10px] relative">
-        <label htmlFor="insurer">Aseguradora</label>
-        <input type="text" id="insurer" {...register("insurer")} value={data.insurer} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
-        <IconPencil className="absolute top-[46px] right-3" />
-        {errors.insurer && <p className="text-red-500">{errors.insurer.message}</p>}
+      <div className="flex flex-wrap gap-4">
+        <div className="w-[420px] flex flex-col gap-[10px] relative">
+          <label htmlFor="obraSocial">Obra Social</label>
+          <input type="text" id="obraSocial" {...register("obraSocial")} defaultValue={data.social_work} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <IconPencil className="absolute top-[46px] right-3" />
+          {errors.obraSocial && <p className="text-red-500">{errors.obraSocial.message}</p>}
+        </div>
+
+        <div className="w-[420px] flex flex-col gap-[10px] relative">
+          <label htmlFor="numeroAsociado">Numero de asociado</label>
+          <input type="text" id="numeroAsociado" {...register("numeroAsociado")} defaultValue={data.number_associate} className="block mt-1 p-2 bg-[#F6F7F7] w-full rounded-xl h-12" />
+          <IconPencil className="absolute top-[46px] right-3" />
+          {errors.numeroAsociado && <p className="text-red-500">{errors.numeroAsociado.message}</p>}
+        </div>
       </div>
 
       <SubmitButton loading={loading} variant="dark" loadingText="Cargando" text="Editar" className="mt-2" />

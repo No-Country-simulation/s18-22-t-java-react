@@ -1,38 +1,21 @@
+import { getAllProgramedAppointments } from "@/actions/appointment-action";
+import { AppointmentWithDoctor } from "@/interfaces/appointment";
 import { DoctorCard, WaitList } from "@/ui";
 
-export default function DashboardAppointmentPage() {
-  const doctorList = [
-    {
-      "id": 1,
-      "name": "Dr. Ignacio López",
-      "password": "ignacio123",
-      "email": "ignacio.lopez@example.com",
-      "phone": "1123456789",
-      "img": "https://res.cloudinary.com/db395v0wf/image/upload/v1729091462/dsocdiq0hoijcez4qv2e.png",
-      "active": true,
-      "specialization": "Cardiología",
-      "licenseNumber": "MP123456"
-    },
-    {
-      "id": 3,
-      "name": "Dra. Valeria González",
-      "password": "valeria321",
-      "email": "valeria.gonzalez@example.com",
-      "phone": "1198765432",
-      "img": "https://res.cloudinary.com/db395v0wf/image/upload/v1729091462/pzwqefrzmvppfjctdpig.png",
-      "active": true,
-      "specialization": "Pediatría",
-      "licenseNumber": "MP654321"
-    },]
+export const revalidate = 60
 
+export default async function DashboardAppointmentPage() {
   const waitList = {
     name: "Dra. Mónica Gonzalez",
     specialization: "Traumatología",
-    date: "28/10/2024",
+    date: "04/11/2024",
     establishment: "Clinica Pueyrredón - Jujuy 2176",
     startTime: "15:20",
     position: 2
   }
+
+  const doctorList: AppointmentWithDoctor[] = await getAllProgramedAppointments(44)
+
 
   return (
     <div className="flex gap-40 mx-auto px-10 my-16 text-[#1A2C33]">
@@ -44,7 +27,7 @@ export default function DashboardAppointmentPage() {
 
           {/* RESERVA DE CITAS  */}
           {doctorList.map((item, index) => (
-            <DoctorCard dashboard id={item.id} img={item.img} key={index} name={item.specialization} speciality={item.name} place="Clinica Pueyrredón - Jujuy 2176" />
+            <DoctorCard dashboard id={item.id} img={item.doctor.img} key={index} name={item.doctor.specialization} speciality={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} />
           ))}
         </div>
 

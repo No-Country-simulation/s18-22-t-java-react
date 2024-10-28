@@ -22,7 +22,24 @@ export default async function AppointmentById({ params }: { params: { id: string
 
             {/* DESCRIPTION DOCTOR  */}
             <figure className='relative size-20 rounded-full overflow-hidden'>
-              <Image src={doctor.img} fill sizes='(max-width: 728px) 100px' alt='doctor' priority />
+              {doctor.img && doctor.img !== 'string' ? (
+                <Image
+                  src={doctor.img}
+                  fill
+                  sizes="(max-width: 768px) 100px"
+                  alt={doctor.name + " doctor image"}
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <Image
+                  src="https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png"
+                  fill
+                  sizes="(max-width: 768px) 100px"
+                  alt={doctor.name + " default doctor image"}
+                  className="object-cover"
+                />
+              )}
             </figure>
             <div>
               <h3 className='text-xl font-medium '>{doctor.name}</h3>
@@ -37,7 +54,7 @@ export default async function AppointmentById({ params }: { params: { id: string
         <div>
           <div className="bg-zinc-200 p-6 rounded-lg">
             <h2 className="font-bold">Primer turno disponible</h2>
-            <p>Martes 22 de Octubre <span className="font-bold">14:00hs</span></p>
+            <p>Martes 12 de Noviembre <span className="font-bold">14:00hs</span></p>
           </div>
         </div>
       </div>
