@@ -1,7 +1,7 @@
 ## Ejemplo
 # Policonsultorio - Gestión de Consultas Médicas
 
-![Policonsultorio Logo](ruta/a/la-imagen-logo.png)
+![Policonsultorio Logo](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
 
 ## Índice
 1. [Descripción del Proyecto](#descripción-del-proyecto)
@@ -30,10 +30,10 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
   
 ### Tecnologías Utilizadas
 
-![Tecnologías utilizadas](ruta/a/la-imagen-tecnologias.png)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
 
 
-![Tecnologías utilizadas](ruta/a/la-imagen-tecnologias.png)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/PM/PM/logo.png?raw=true)
 
 - **Backend**: Java Spring Boot Swagger MySQL Spring Security JWT 
 OAuth Railway (deploy cloud) Mockito & JUnit
