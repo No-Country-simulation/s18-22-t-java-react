@@ -66,6 +66,7 @@ public class PatientService implements IPatientService {
         userOld.setNumeroAsociado(updatePatientDTO.number_associate());
         userOld.setPhone(updatePatientDTO.phone());
         userOld.setObraSocial(updatePatientDTO.social_work());
+        userOld.setImg(updatePatientDTO.image());
 
         User newUser = userRepository.save(userOld);
         patientOld.setUser(newUser);
