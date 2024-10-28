@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### buscar paciente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/29
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/43
 
 
 
@@ -40,6 +40,6 @@ Content-Type: application/json
 ### faltan datos del user1
 
 ###Eliminar paciente
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/36
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/43
 Content-Type: application/json
 
