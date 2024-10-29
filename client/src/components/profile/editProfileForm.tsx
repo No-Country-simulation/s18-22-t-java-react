@@ -47,7 +47,7 @@ export function EditProfileForm({ data }: Props) {
     formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("dni", data.dni)
-    formData.append("insurer", data.insurer);
+    formData.append("insurer", data.obraSocial);
     formData.append("img", profileImg);
 
     setLoading(true);
@@ -62,7 +62,7 @@ export function EditProfileForm({ data }: Props) {
         password: "",
         name: "",
         phone: "",
-        insurer: "",
+        obraSocial: "",
         dni: "",
       })
     } catch (error: unknown) {

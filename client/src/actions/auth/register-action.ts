@@ -10,7 +10,7 @@ export const createUser = async (formData: FormData) => {
   const emailFromForm = formData.get('email') as string
   const passwordFromForm = formData.get('password') as string
   const phoneFromForm = formData.get('phone') as string
-  const insurerFromForm = formData.get('insurer') as string
+  const obraSocialFromForm = formData.get('obraSocial') as string
   const dniFromForm = formData.get('dni') as string
   const numeroAsociadoFromForm = formData.get('numeroAsociado') as string
 
@@ -19,7 +19,7 @@ export const createUser = async (formData: FormData) => {
     email: emailFromForm,
     password: passwordFromForm,
     phone: phoneFromForm,
-    insurer: insurerFromForm,
+    obraSocial: obraSocialFromForm,
     dni: dniFromForm,
     numeroAsociado: numeroAsociadoFromForm,
   })
@@ -35,7 +35,7 @@ export const createUser = async (formData: FormData) => {
     user: {
       name: nameFromForm,
       dni: dniFromForm,
-      obraSocial: insurerFromForm,
+      obraSocial: obraSocialFromForm,
       numeroAsociado: numeroAsociadoFromForm,
       email: emailFromForm,
       password: passwordFromForm,
@@ -43,7 +43,7 @@ export const createUser = async (formData: FormData) => {
       img: 'https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png',
       active: true,
     },
-    insurer: insurerFromForm,
+    insurer: obraSocialFromForm,
   }
 
   try {

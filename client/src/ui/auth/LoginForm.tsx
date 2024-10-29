@@ -27,7 +27,7 @@ export function LoginForm() {
         console.log(data)
 
         const formData = new FormData()
-        formData.append('name', data.email)
+        formData.append('email', data.email)
         formData.append('password', data.password)
 
         setLoading(true)
@@ -38,30 +38,23 @@ export function LoginForm() {
             const result = await loginUser(formData)
             console.log(result)
 
-            /*             if (result.errors || result.loginError) {
-                            setError(result.message + ': ' + result.loginError || 'Error desconocido al iniciar sesión.')
-                            return
-                        }
-            
-                        if (result.success) {
-                            setSuccess(result.success)
-                            reset({
-                                email: "",
-                                password: ""
-                            })
-                            setTimeout(() => {
-                                router.push('/dashboard')
-                            }, 1000)
-                        } */
-            setSuccess('Inicio de sesión exitoso')
-            reset({
-                email: "",
-                password: ""
-            })
-            setTimeout(() => {
+            if (result.errors || result.loginError) {
                 setLoading(false)
-                router.push('/dashboard')
-            }, 1000)
+                setError(result.message || 'Error al iniciar Sesion' + ': ' + result.loginError || 'Error desconocido al iniciar sesión.')
+                return
+            }
+
+            if (result.success) {
+                setSuccess(result.success)
+                setSuccess('Inicio de sesión exitoso')
+                reset({
+                    email: "",
+                    password: ""
+                })
+                setTimeout(() => {
+                    router.push('/dashboard')
+                }, 1000)
+            }
         } catch (error: unknown) {
             setLoading(false)
             setError('Ha ocurrido un error al iniciar sesión: ' + error)

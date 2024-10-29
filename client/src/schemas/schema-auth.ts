@@ -11,7 +11,7 @@ export const schemaRegister = z.object({
     .string({ message: 'Telefono requerido' })
     .min(10, { message: 'Numero de telefono debe tener al menos 10 digitos' })
     .regex(/^\d+$/, { message: 'Phone must contain only numbers' }),
-  insurer: z.string({ message: 'Aseguradora u Obra social requerida' }),
+  obraSocial: z.string({ message: 'Aseguradora u Obra social requerida' }),
   password: z
     .string({ message: 'Contraseña requerido' })
     .min(6, { message: 'Minimo 6 Caracteres' }),

@@ -30,9 +30,9 @@ export function RegisterForm() {
         formData.append('email', data.email)
         formData.append('password', data.password)
         formData.append('phone', data.phone)
-        formData.append('insurer', data.insurer)
+        formData.append('insurer', data.obraSocial)
         formData.append('dni', data.dni)
-        formData.append('obraSocial', data.insurer)
+        formData.append('obraSocial', data.obraSocial)
         formData.append('numeroAsociado', data.numeroAsociado)
 
         setLoading(true)
@@ -57,7 +57,7 @@ export function RegisterForm() {
                     password: "",
                     name: "",
                     phone: "",
-                    insurer: "",
+                    obraSocial: "",
                     dni: "",
                     numeroAsociado: ""
                 })
@@ -94,9 +94,9 @@ export function RegisterForm() {
             <input type="text" id="phone" {...register("phone")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.phone && (<p className="text-red-500">{errors.phone.message}</p>)}
 
-            <label htmlFor="insurer" className="text-xl">Aseguradora/Obra Social <span className="text-red-500">*</span></label>
-            <input type="text" id="insurer" {...register("insurer")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
-            {errors.insurer && (<p className="text-red-500">{errors.insurer.message}</p>)}
+            <label htmlFor="obraSocial" className="text-xl">Aseguradora/Obra Social <span className="text-red-500">*</span></label>
+            <input type="text" id="obraSocial" {...register("obraSocial")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.obraSocial && (<p className="text-red-500">{errors.obraSocial.message}</p>)}
 
             <label htmlFor="numeroAsociado" className="text-xl">Numero de Asociado <span className="text-red-500">*</span></label>
             <input type="text" id="numeroAsociado" {...register("numeroAsociado")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
