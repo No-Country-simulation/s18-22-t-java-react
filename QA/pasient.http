@@ -1,41 +1,3 @@
-### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
-POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
-Content-Type: application/json
-##
-{
-  "user": {
-<<<<<<< HEAD
-    "name": "victor murillo",
-    "dni": "32587356455",
-    "obraSocial": "cmfa sur ",
-    "numeroAsociado": "anhg2365",
-    "password": "doce323232",
-    "email": "victor@gmail.com",
-    "phone": "12365478035",
-    "img": "imagen.png"
-
-  },
-  "insurer": "NUEVA"
-=======
-    "name": "Julia",
-    "dni": "27566982",
-    "obraSocial": "atsa",
-    "numeroAsociado": "345234",
-    "password": "doce123",
-    "email": "priscila@gmail.com",
-    "phone": "1156897888",
-    "img": "imagen2.png"
-
-  },
-  "insurer": "atsa"
->>>>>>> ed9329fec03f8cde4ceee72671c0fed58db0652b
-}
-
-### buscar paciente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/43
-
-
-
 ### actualizar paciente
 PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/33
 Content-Type: application/json
@@ -51,14 +13,31 @@ Content-Type: application/json
   "active": true,
   "insurer": "Suim"
 }
-### faltan datos del user1
 
-###Eliminar paciente
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/43
+### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
 Content-Type: application/json
 
-<<<<<<< HEAD
-### traer todos los user
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/186
-=======
->>>>>>> ed9329fec03f8cde4ceee72671c0fed58db0652b
+{
+  "user": {
+    "name": "Dani",
+    "dni": "96123456",
+    "obraSocial": "OSDE",
+    "numeroAsociado": "M123",
+    "password": "123456",
+    "email": "dani@gmail.com",
+    "phone": "1123232323",
+    "img": "string",
+    "active": true
+  },
+  "insurer": "OSDE"
+}
+
+### buscar paciente por id
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/43
+
+
+
+###Eliminar paciente
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/33
+Content-Type: application/json
