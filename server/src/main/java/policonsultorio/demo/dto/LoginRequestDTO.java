@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import policonsultorio.demo.entity.User;
+import policonsultorio.demo.enums.Roles;
 
 public record LoginRequestDTO(
         Long id,
@@ -24,16 +25,17 @@ public record LoginRequestDTO(
         @NotBlank
         String phone,
         String img,
-        Boolean active
+        Boolean active,
+        Roles rol
 ) {
     public LoginRequestDTO(User usuario) {
         this(usuario.getId(), usuario.getName(), usuario.getDni(), usuario.getObraSocial(),
                 usuario.getNumeroAsociado(), usuario.getPassword(), usuario.getEmail(), usuario.getPhone(),
-                usuario.getImg(), usuario.getActive());
+                usuario.getImg(), usuario.getActive(),usuario.getRol());
     }
 
     public LoginRequestDTO(Long id) {
-        this(id, null, null, null, null, null, null, null, null, null);
+        this(id, null, null, null, null, null, null, null, null, null,null);
     }
 
 
