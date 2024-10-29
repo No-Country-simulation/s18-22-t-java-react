@@ -2,12 +2,11 @@
 
 import { AppointmentFromResponse, AppointmentWithDoctor } from "@/interfaces/appointment"
 import { PatientFromResponse } from "@/interfaces/user"
-import Image from "next/image"
 import { ButtonComponent } from "../buttons/ButtonComponent"
 import { BackButton, DialogComponent } from "@/components"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { cancelAppointment } from "@/actions/appointment-action"
+import ImageValidate from "@/components/ImageValidate"
 
 interface Props {
   appointment: AppointmentFromResponse,
@@ -18,7 +17,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
   const [openDialog, setOpenDialog] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, month, day] = appointment.date.split("-")
@@ -38,7 +36,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
     } finally {
       setLoading(false)
     }
-    router.push('/doctor/appointment/canceled/' + appointment.id)
   }
   return (
     <>
@@ -54,7 +51,7 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
         <div className="flex px-10">
           <div>
             <div className="flex gap-7 my-14 ms-3">
-              <Image src={patient.img} alt={patient.name} width={100} height={100} />
+              <ImageValidate src={patient.img} alt={patient.name} />
               <span className="content-center text-[22px] font-medium text-wrap w-3">{patient.name}</span>
             </div>
             <div className="flex flex-col gap-[42px]">
