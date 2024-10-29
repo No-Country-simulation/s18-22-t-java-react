@@ -1,20 +1,19 @@
 import { getAllProgramedAppointments } from "@/actions/appointment-action";
+import { getWaitingList } from "@/actions/waitingList/waitingListActions";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
 import { DoctorCard, WaitList } from "@/ui";
+import { cookies } from 'next/headers'
 
 export const revalidate = 0
 
 export default async function DashboardAppointmentPage() {
-  const waitList = {
-    name: "Dra. Mónica Gonzalez",
-    specialization: "Traumatología",
-    date: "04/11/2024",
-    establishment: "Clinica Pueyrredón - Jujuy 2176",
-    startTime: "15:20",
-    position: 2
-  }
+  const userCookie = cookies().get('user');
+  const user = userCookie ? JSON.parse(userCookie.value) : {};
 
-  const doctorList: AppointmentWithDoctor[] = await getAllProgramedAppointments(44)
+  const waitList = await getWaitingList(user.id)
+  console.log('waitList2', waitList);
+
+  const doctorList: AppointmentWithDoctor[] = await getAllProgramedAppointments(user.id)
 
 
   return (

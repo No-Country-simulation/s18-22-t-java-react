@@ -6,12 +6,17 @@ const BASE_URL = process.env.API_URL
 
 export const getAllClinics = async () => {
   const url = BASE_URL + '/clinic/all'
-  const data: Clinic[] = await fetch(url).then((res) => res.json())
-
-  if (data) {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Error fetching clinics: ${response.statusText}`)
+    }
+    const data: Clinic[] = await response.json()
     return data
+  } catch (error) {
+    console.error('Failed to fetch clinics:', error)
+    return []
   }
-  return []
 }
 
 export const getClinicById = async (id: number) => {

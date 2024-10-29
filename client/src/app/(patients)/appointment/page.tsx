@@ -34,7 +34,7 @@ export default async function AppointmentsPage({
       <div className="relative flex flex-col">
         <Search placeholder="Buscá por profesional, establecimiento o especialidad..." />
         <Suspense key={query} fallback={'Cargando ...'}>
-          <SearchResults query={query} data={data} />
+          <SearchResults query={query} data={data} clinicList={clinicList} />
         </Suspense>
       </div>
 

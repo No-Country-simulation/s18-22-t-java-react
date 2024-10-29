@@ -1,13 +1,15 @@
+import { Clinic } from '@/interfaces/clinic'
 import { DoctorFromResponse } from '@/interfaces/user'
-import { DoctorCard, PlaceCard, Placeholder, SpecialityCard } from "@/ui"
+import { DoctorCard, PlaceCard, SpecialityCard } from "@/ui"
 
 type Props = {
   query: string
   data: DoctorFromResponse[]
+  clinicList: Clinic[]
 }
 
-export const SearchResults: React.FC<Props> = async ({ query, data }) => {
-  const getDoctorData = (data: DoctorFromResponse[]) => {
+export const SearchResults: React.FC<Props> = ({ query, data, clinicList }) => {
+  const getDoctorData = (data: DoctorFromResponse[], clinics: Clinic[]) => {
     const doctorList = data
       .filter((doctor) => {
         const user = data.find((user) => user.id === doctor.id)
@@ -31,20 +33,39 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
             name: user.name,
             speciality: doctor.specialization,
             img: doctor.img,
-            place: 'Consultorio Principal',
-            address: doctor.email || 'Jujuy 2176',
+            place: clinics[0]?.name,
+            address: clinics[0]?.address,
           }
         }
       })
       .filter(Boolean)
 
-    const uniqueDoctorList = Array.from(
+    const clinicList = clinics
+      .filter((clinic) => {
+        const matchesQuery =
+          clinic.name.toLowerCase().includes(query.toLowerCase()) ||
+          clinic.address.toLowerCase().includes(query.toLowerCase())
+
+        return matchesQuery
+      })
+      .map((clinic) => ({
+        id: clinic.id,
+        name: '',
+        speciality: '',
+        img: clinic.vlinicImage,
+        place: clinic.name,
+        address: clinic.address,
+      }))
+
+    const combinedList = [...doctorList, ...clinicList]
+
+    const uniqueCombinedList = Array.from(
       new Map(
-        doctorList.map((item) => [`${item?.speciality}-${item?.place}`, item])
+        combinedList.map((item) => [`${item?.speciality}-${item?.place}`, item])
       ).values()
     )
 
-    return uniqueDoctorList
+    return uniqueCombinedList
   }
 
   const results = getDoctorData([...data, {
@@ -56,9 +77,9 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
     specialization: "",
     licenseNumber: "",
     img: "",
-    place: "Consultorio Principal",
+    place: "Clinica Colon - Jujuy 2176",
     name: "",
-  }])
+  }], clinicList)
 
   const isNameSearch = results.some(result => result?.name.toLowerCase().includes(query.toLowerCase()))
   const isSpecialitySearch = results.some(result => result?.speciality.toLowerCase().includes(query.toLowerCase()))
@@ -92,21 +113,21 @@ export const SearchResults: React.FC<Props> = async ({ query, data }) => {
         {filteredResults.length > 0 && query && (
           <>
             <div className='flex flex-wrap gap-4 h-min w-full max-w-6xl'>
-              {filteredResults.map((doctor) => (
-                <div className="flex h-min flex-grow flex-wrap gap-4" key={doctor?.id}>
-                  {isNameSearch && (
-                    <DoctorCard id={doctor?.id} name={doctor?.name} img={doctor?.img} place={doctor?.place} speciality={doctor?.speciality} />
+              {filteredResults.map((result) => (
+                <div className="flex h-min flex-grow flex-wrap gap-4" key={result?.id}>
+                  {isNameSearch && result?.name && (
+                    <DoctorCard id={result?.id} name={result?.name} img={result?.img} place={result?.place} speciality={result?.speciality} />
                   )}
-                  {isSpecialitySearch && (
-                    <SpecialityCard img="" name={doctor?.speciality} />
+                  {isSpecialitySearch && result?.speciality && (
+                    <SpecialityCard img="" name={result?.speciality} />
                   )}
-                  {isPlaceSearch && (
-                    <PlaceCard details address={doctor?.address} img="" name={doctor?.place} />
+                  {isPlaceSearch && result?.place && !result?.name && (
+                    <PlaceCard details address={result?.address} img="" name={result?.place} />
                   )}
                 </div>
               ))}
             </div>
-            <Placeholder />
+            {/* <Placeholder /> */}
           </>
         )}
         {results.length === 0 && query && (
