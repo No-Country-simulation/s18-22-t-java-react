@@ -485,18 +485,20 @@ public class AppointmentServiceImpl implements AppointmentService {
     protected void reassignedAppointment(AppointmentEntity appointment){
         WaitingQueue nextPatient = waitingQueueService.getWaitingQueue(appointment);
 
-        AppointmentRequestDto reassignedAppointment = new AppointmentRequestDto(
-                Math.toIntExact(appointment.getDoctor().getId()),
-                Math.toIntExact(nextPatient.getPatient().getUser().getId()),
-                appointment.getDate(),
-                appointment.getStartTime(),
-                AppointmentStatus.PROGRAMADA
-        );
+        if (nextPatient != null) {
+            AppointmentRequestDto reassignedAppointment = new AppointmentRequestDto(
+                    Math.toIntExact(appointment.getDoctor().getId()),
+                    Math.toIntExact(nextPatient.getPatient().getUser().getId()),
+                    appointment.getDate(),
+                    appointment.getStartTime(),
+                    AppointmentStatus.PROGRAMADA
+            );
 
-        createAppointment(reassignedAppointment);
+            createAppointment(reassignedAppointment);
 
-        nextPatient.setStatus(QueueStatus.ASSIGNED);
-        waitingQueueRepository.save(nextPatient);
+            nextPatient.setStatus(QueueStatus.ASSIGNED);
+            waitingQueueRepository.save(nextPatient);
+        }
     }
 
 
