@@ -102,3 +102,20 @@ export const getAppointmentById = async (id: string) => {
     doctorName: getDoctor.name,
   }
 }
+
+export const cancelAppointment = async (id_appointment: number) => {
+
+  const urlAppointment = BASE_URL + `/appointment/update?id=${id_appointment}`
+  await fetch(urlAppointment, {
+    method: "POST",
+    body: JSON.stringify({
+      "id_doctor": 14,
+      "id_patient": 26,
+      "date": "2025-01-01",
+      "startTime": "11:00",
+      "status": "CANCELADA"
+    })
+  })
+
+
+}

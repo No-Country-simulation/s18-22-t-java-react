@@ -42,8 +42,8 @@ export default async function DashboardPage() {
                 {/* RESERVA DE CITAS  */}
                 {
                     filterAppointment.length === 0 ? (
-                        <div>
-                            No hay citas
+                        <div className="bg-[#F6F7F7] max-w-[800px] px-4 py-6 rounded-lg">
+                            <p>Aún no tenes ningún turno agendado.</p>
                         </div>
                     ) : (
                         filterAppointment.map((item, index) => (
@@ -52,6 +52,7 @@ export default async function DashboardPage() {
                                 name={item.doctor.specialization}
                                 specialty={item.doctor.name}
                                 startTime={item.startTime}
+                                id_appointment={item.id}
                                 img={item.doctor.img}
                                 id_doctor={item.id}
                                 date={item.date}

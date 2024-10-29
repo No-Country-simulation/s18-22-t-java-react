@@ -1,7 +1,14 @@
-import { SvgChevronNew } from "../svg/svgs";
+"use client"
+
 import { Calendar } from "../ui/calendar";
+import { SvgChevronNew } from "../svg/svgs";
+import { format } from "date-fns";
+import { useState } from "react";
 
 export function CalendarDoctor() {
+
+    const [date, setDate] = useState<Date | undefined>(new Date())
+
     return (
         <div className="grid grid-cols-[60%_40%] gap-8 ">
             {/* CITAS  */}
@@ -29,7 +36,14 @@ export function CalendarDoctor() {
 
             {/* CALENDARIO  */}
             <div className="">
-                <Calendar />
+                <Calendar
+                    className="col-span-2"
+                    mode="single"
+                    showOutsideDays={false}
+                    selected={date}
+                    onSelect={setDate}
+                    disabled={(date) => date.getDay() === 0 || format(date, 'yyyy-MM-dd') < format(new Date, 'yyyy-MM-dd')}
+                />
             </div>
         </div>
     )

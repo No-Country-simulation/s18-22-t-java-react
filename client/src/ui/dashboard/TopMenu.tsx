@@ -1,5 +1,7 @@
 import { SvgHome, SvgNotifications } from "@/components";
 import { SvgPerfil } from "@/components/svg/svgs";
+import logo from "/public/images/logo.png"
+import Image from "next/image";
 import Link from "next/link";
 
 export function TopMenu() {
@@ -8,7 +10,9 @@ export function TopMenu() {
     return (
         <div className="py-8">
             <nav className="flex justify-between items-center px-20 mx-auto text-[#004784]">
-                <Link href={"/dashboard"} className="text-3xl font-semibold" >Logo policonsultorios</Link>
+                <Link href={"/dashboard"} className="text-3xl font-semibold" >
+                    <Image src={logo} alt="logo" />
+                </Link>
                 <div>
                     <ul className="flex gap-8 items-center">
                         <li >
