@@ -37,22 +37,21 @@ class EmailControllerTest {
 
         String json = """
                 {
-                  "email":"staricofflionel@hotmail.com",
+                  "toUser":"staricofflionel@hotmail.com",
                     
-                         "titulo": "turno asignado",
+                         "subject": "turno asignado",
                       
-                         "mensaje": "turno para el 12 de diciebre a las 3PM con el doctor borraza Pedro"
+                         "message": "turno para el 12 de diciebre a las 3PM con el doctor borraza Pedro"
              
                 }
                 """;
         HttpEntity<String> request = new HttpEntity<>(json,headers);
-        ResponseEntity<Boolean> result = testRestTemplate.exchange("/api/v1/email", HttpMethod.POST, request, Boolean.class);
+        ResponseEntity<String> result = testRestTemplate.exchange("/api/v1/email/sendMessage", HttpMethod.POST, request, String.class);
         System.out.println("result = " + result);
 
         assertAll(
-                () -> assertEquals(HttpStatus.NO_CONTENT, result.getStatusCode()),
-                () -> assertEquals(204, result.getStatusCode().value())
-
+                () -> assertEquals(HttpStatus.OK, result.getStatusCode()),
+                () -> assertEquals("Email sent successfully", result.getBody())
         );
     }
 }

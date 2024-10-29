@@ -69,11 +69,10 @@ public class UserService {
 
     }
 
-    public String login(LoginDtoResponse loginRequestDto) {
+    public LoginRequestDTO login(LoginDtoResponse loginRequestDto) {
 
         User userDb = userRepository.findByEmail(loginRequestDto.email());
-        if (!userDb.getPassword().equals(loginRequestDto.password()))
-            throw new EntityNotFoundException("password not match");
+        if (!userDb.getPassword().equals(loginRequestDto.password())) throw new EntityNotFoundException("password not match");
 
         Authorizarion auhorization = AuthorizationRepository.findByUserId(userDb.getId());
         String jwt = tokenService.generarToken(userDb);
@@ -81,7 +80,7 @@ public class UserService {
         var auth =  AuthorizationRepository.save(auhorization);
        // userDb.setAuthorizarion(auhorization);
        // User userDbSave = userRepository.save(userDb);
-        return auth.toString();
+        return new LoginRequestDTO(userDb) ;
 
     }
 

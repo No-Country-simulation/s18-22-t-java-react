@@ -1,5 +1,6 @@
 package policonsultorio.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Doctor extends User {
 	private Boolean deleted  = false;
 	@ManyToOne
 	@JoinColumn(name = "clinic_id") // Columna que referencia a Clinic
+	@JsonIgnore
 	private Clinic clinic;
 //	private List<WorkingHous> workingHousList = new List<WorkingHous>();
 //  private List<Appointments> appointmentsList = new List<Appointments>();
