@@ -1,7 +1,6 @@
 import { getDoctorById } from '@/actions/doctors/doctorActions'
-import { CalendarDemo } from '@/components/CalendarDemo'
 import { redirect } from 'next/navigation'
-import { BackButton } from '@/components'
+import { BackButton, CalendarPatients } from '@/components'
 import Image from 'next/image'
 
 export const revalidate = 0
@@ -61,7 +60,7 @@ export default async function AppointmentById({ params }: { params: { id: string
         </div>
       </div>
 
-      <CalendarDemo doctor={{ id: doctor.id, name: doctor.name }} />
+      <CalendarPatients doctor={{ id: doctor.id, name: doctor.name }} />
 
     </div>
   )

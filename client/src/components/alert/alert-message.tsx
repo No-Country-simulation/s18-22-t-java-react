@@ -10,13 +10,13 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { useRouter } from "next/navigation"
 import { IconX } from "../icons"
 
 interface Prop {
     openDialog: boolean
     setOpenDialog: (open: boolean) => void
     messageAlert: MessageAlert
+    onConfirm: () => void
 }
 
 interface MessageAlert {
@@ -27,15 +27,7 @@ interface MessageAlert {
 }
 
 
-export function AlertMessage({ openDialog, setOpenDialog, messageAlert }: Prop) {
-
-    const route = useRouter()
-
-    const handler = (data: string) => {
-        if (data === "Reprogramar cita") {
-            route.push("/appointment/calendar/1")
-        }
-    }
+export function AlertMessage({ openDialog, setOpenDialog, messageAlert, onConfirm }: Prop) {
 
     return (
         <AlertDialog open={openDialog} onOpenChange={setOpenDialog}>
@@ -55,14 +47,15 @@ export function AlertMessage({ openDialog, setOpenDialog, messageAlert }: Prop) 
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
+
                     <AlertDialogCancel
-                        className="w-[274px] h-16 rounded-xl border-2 border-blue-500 bg-white text-blue-500 text-lg"
-                    >{messageAlert.cancel}</AlertDialogCancel>
+                        className="w-[274px] h-16 rounded-xl border-2 border-blue-500 bg-white text-blue-500 text-lg hover:text-blue-500">
+                        {messageAlert.cancel}
+                    </AlertDialogCancel>
 
                     <AlertDialogAction
-                        onClick={() => handler(messageAlert.confirm)}
-                        className="w-[274px] h-16 rounded-xl border border-blue-500 bg-blue-500 text-white text-lg"
-                    >
+                        className="w-[274px] h-16 rounded-xl border border-blue-500 bg-blue-500 text-white text-lg hover:bg-blue-700"
+                        onClick={onConfirm}>
                         {messageAlert.confirm}
                     </AlertDialogAction>
 
@@ -71,3 +64,4 @@ export function AlertMessage({ openDialog, setOpenDialog, messageAlert }: Prop) 
         </AlertDialog>
     )
 }
+

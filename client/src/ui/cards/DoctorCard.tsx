@@ -1,63 +1,46 @@
 "use client"
 
 import { cancelAppointment } from "@/actions/appointment-action"
-import { DialogComponent } from "@/components"
-import Image from "next/image"
-import Link from "next/link"
+import ImageValidate from "@/components/ImageValidate";
+import { useRouter } from "next/navigation"
+import { AlertMessage } from "@/components"
+import { es } from 'date-fns/locale';
+import { format } from "date-fns";
 import { useState } from "react"
+import Link from "next/link"
 
 interface Props {
-  id?: number,
-  name?: string,
-  speciality?: string,
+  id_appointment: number
+  dashboard?: boolean,
+  specialty?: string,
+  startTime: string
+  id_doctor: number,
   place?: string,
   img?: string,
-  dashboard?: boolean
   date?: string
-  startTime?: string
+  name: string,
+  id?: number
 }
+export function DoctorCard({ id_appointment, id_doctor, name, specialty, place = "Clínica Colón", img, dashboard, date, startTime }: Props) {
 
-export function DoctorCard({ id, name, speciality, place = "Clínica Colón", img, dashboard, date, startTime }: Props) {
+  const [messageAlert, setMessageAlert] = useState({ title: "", description: <p></p>, confirm: "Confirmar", cancel: "Cancelar" })
+  const formattedDate = format(date ?? new Date(), "EEEE d 'de' MMMM", { locale: es });
+
+  const route = useRouter()
+
   const [openDialog, setOpenDialog] = useState(false)
-  const [dialogProps, setDialogProps] = useState({
-    title: "",
-    description: "",
-    cancelText: "Cancelar",
-    confirmText: "Confirmar",
-    onConfirm: () => { }
-  })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
-  const formattedDate = date ? (() => {
-    const [year, month, day] = date.split("-")
-    return `${day}/${month}/${year}`
-  })() : '04/11/2024'
 
   const cancelAlert = async () => {
     setError(null)
     const alert = {
       title: "¿Querés cancelar la cita?",
-      description: `Querrías cancelar tu cita asignada para el ${formattedDate} a las ${startTime} en ${place}. Si reprogramás, tu cita actual será cancelada.`,
-      cancelText: "Mantener cita",
-      confirmText: "Cancelar cita",
-      onConfirm: async () => {
-        setLoading(true)
-        try {
-          const response = await cancelAppointment(id as number)
-          if (response.error) {
-            setError(response.error)
-          }
-        } catch (error) {
-          console.log('error', error);
-          setError("Error al cancelar la cita. Por favor, intente nuevamente.")
-        } finally {
-          setLoading(false)
-        }
-      }
+      description: <p>Querrías cancelar tu cita asignada para el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>.</p>,
+      cancel: "Mantener cita",
+      confirm: "Cancelar cita",
     }
-
-    setDialogProps(alert)
+    setMessageAlert(alert)
     setOpenDialog(true)
   }
 
@@ -65,16 +48,29 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
     setError(null)
     const alert = {
       title: "¿Queréis reprogramar la cita?",
-      description: `Tenés cita asignada el ${formattedDate} a las ${startTime} en ${place}. Si reprogramás, tu cita actual será cancelada.`,
-      cancelText: "Mantener cita",
-      confirmText: "Reprogramar cita",
-      onConfirm: () => {
-        // Add your reprogram logic here
-        setOpenDialog(false)
-      }
+      description: <p>Tenés cita asignada el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>. Si reprogramás, tu cita actual será cancelada.</p>,
+      confirm: "Reprogramar cita",
+      cancel: "Mantener cita"
     }
-    setDialogProps(alert)
+    setMessageAlert(alert)
     setOpenDialog(true)
+  }
+
+  const updateAppointment = async () => {
+    if (messageAlert.confirm === "Reprogramar cita") {
+      route.push(`/appointment/calendar/${id_doctor}`)
+    }
+    try {
+      const response = await cancelAppointment(id_appointment as number)
+      if (response.error) {
+        setError(response.error)
+      }
+    } catch (error) {
+      console.log('error', error);
+      setError("Error al cancelar la cita. Por favor, intente nuevamente.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -82,31 +78,14 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
       <div className="w-[854px] h-[168px] rounded-xl flex items-center gap-4 pl-4 py-4 shadow-2xl">
 
         {/* IMAGE  */}
-        {img && img !== 'string' && img !== '' ? (
-          <figure className="relative rounded-full size-[88px] overflow-hidden">
-            <Image
-              src={img}
-              fill
-              sizes="(max-width: 768px) 100px"
-              alt={name + "image"} className="object-cover"
-            />
-          </figure>
-        ) : (
-          <figure className="relative rounded-full size-[88px] overflow-hidden">
-            <Image
-              src={"https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png"}
-              fill
-              sizes="(max-width: 768px) 100px"
-              alt={name + "image"} className="object-cover"
-            />
-          </figure>
-        )}
+
+        <ImageValidate alt={name + "image"} src={img!} className="object-cover" />
 
         <div className="flex flex-col justify-center h-[89px] px-3">
           <span className="font-medium text-[22px] text-[#0C0C0E]">{name}</span>
-          <span className="font-medium -mt-1 mb-2 text-lg text-[#505256]">{speciality}</span>
+          <span className="font-medium -mt-1 mb-2 text-lg text-[#505256]">{specialty}</span>
           {dashboard && (
-            <span className=" text-[#3C4C51]">{formattedDate}</span>
+            <span className=" text-[#3C4C51]">{date?.replace(/-/g, "/")}</span>
           )}
           <span className="mb-2 text-[#3C4C51]">{place}</span>
           {!dashboard && (
@@ -129,18 +108,16 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
           </div>
         ) : (
           <div className="flex justify-center items-center ml-auto mr-[50px]">
-            <Link href={'/appointment/calendar/' + id} className="w-[274px] h-16 bg-blue-500 text-white rounded-xl text-lg font-medium text-center content-center">Ver Agenda</Link>
+            <Link href={'/appointment/calendar/' + id_doctor} className="w-[274px] h-16 bg-blue-500 text-white rounded-xl text-lg font-medium text-center content-center">Ver Agenda</Link>
           </div>
         )}
       </div>
-      <DialogComponent
+
+      <AlertMessage
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        title={dialogProps.title}
-        description={dialogProps.description}
-        cancelText={dialogProps.cancelText}
-        confirmText={dialogProps.confirmText}
-        onConfirm={dialogProps.onConfirm}
+        messageAlert={messageAlert}
+        onConfirm={updateAppointment}
       />
       {loading && <div className="loading-indicator">Cargando...</div>}
       {error && (

@@ -50,7 +50,7 @@ export const createAppointment = async ({
   console.log('error al crear la cita')
 }
 
-export const getAllAppointmentByPatient = async (
+export const getAllAppointmentById_Patient = async (
   id: number,
   page?: number,
   size?: number
@@ -104,7 +104,7 @@ export const getAppointmentById = async (id: string) => {
 }
 
 export const getAllProgramedAppointments = async (id_patient: number) => {
-  const data = await getAllAppointmentByPatient(id_patient)
+  const data = await getAllAppointmentById_Patient(id_patient)
   if (!data) {
     return []
   }

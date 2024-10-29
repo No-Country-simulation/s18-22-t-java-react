@@ -1,7 +1,7 @@
 import { SvgHome, SvgNotifications } from "@/components";
 import { SvgPerfil } from "@/components/svg/svgs";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from '/public/logo_full.png'
 
 export function TopMenu() {

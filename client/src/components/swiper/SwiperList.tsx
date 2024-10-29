@@ -14,9 +14,20 @@ export function SwiperList({ list }: { list: DoctorFromResponse[] }) {
     <div className="flex relative">
       <Swiper
         spaceBetween={4}
-        slidesPerView={5}
+        slidesPerView={4}
         modules={[Navigation]}
-        navigation={{ nextEl: '.next-arrow', prevEl: '.prev-arrow' }}
+        navigation={{ nextEl: ".next-arrow", prevEl: ".prev-arrow" }}
+        breakpoints={{
+          640: {
+            slidesPerView: 3
+          },
+          1024: {
+            slidesPerView: 4
+          },
+          1680: {
+            slidesPerView: 5
+          }
+        }}
       >
         {
           list.map((doctor, i) => (
@@ -26,10 +37,10 @@ export function SwiperList({ list }: { list: DoctorFromResponse[] }) {
           ))
         }
       </Swiper>
-      <div className="prev-arrow absolute -left-10 top-[90px] cursor-pointer select-none">
+      <div className="prev-arrow absolute -left-10 top-[90px] cursor-pointer select-none" >
         <IconSliderArrow />
       </div>
-      <div className="next-arrow absolute -right-8 top-[90px] cursor-pointer select-none">
+      <div className="next-arrow absolute -right-8 top-[90px] cursor-pointer select-none	" >
         <IconSliderArrow className="rotate-180" />
       </div>
     </div>

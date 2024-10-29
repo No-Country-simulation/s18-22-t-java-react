@@ -1,6 +1,5 @@
 import { TopMenuDoctor } from "@/ui";
 
-
 export default function LayoutDashboard({
   children
 }: {
@@ -9,11 +8,9 @@ export default function LayoutDashboard({
   return (
     <div className="min-h-screen">
       <TopMenuDoctor />
-      <div className="max-w-[1524px] ms-[240px] px-4 text-[#1A2C33]">
+      <div className="max-w-[1524px] mx-auto px-4 text-[#1A2C33]">
         {children}
       </div>
-
-
     </div>
   );
 }

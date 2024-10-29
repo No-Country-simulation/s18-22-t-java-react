@@ -1,4 +1,5 @@
 import { getAllProgramedAppointments } from "@/actions/appointment-action";
+import { getAllAppointmentById_Patient } from "@/actions/appointment-action";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
 import { DoctorCard } from "@/ui";
 import { cookies } from 'next/headers'
@@ -22,7 +23,19 @@ export default async function DashboardPage() {
 
                 {/* RESERVA DE CITAS  */}
                 {doctorList.map((item, index) => (
-                    <DoctorCard dashboard id={item.id} img={item.doctor.img} key={index} name={item.doctor.specialization} speciality={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} startTime={item.startTime} />
+                    <DoctorCard
+                        dashboard
+                        id={item.id}
+                        img={item.doctor.img}
+                        key={index}
+                        name={item.doctor.specialization}
+                        specialty={item.doctor.name}
+                        place="Clinica Colon - Jujuy 2176"
+                        date={item.date}
+                        startTime={item.startTime}
+                        id_appointment={item.id}
+                        id_doctor={item.id}
+                    />
                 ))}
 
                 {doctorList.length === 0 && <h4 className="bg-[#F6F7F7] w-[858px] rounded-xl text-xl p-7 text-[#1A2C33] mb-10">Aún no tenes ningún turno agendado.</h4>}

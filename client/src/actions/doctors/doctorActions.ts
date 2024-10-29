@@ -1,9 +1,14 @@
 'use server'
 
+import { DoctorFromResponse } from '@/interfaces/user'
 import { hourData } from '@/utils/data-hour'
 import { redirect } from 'next/navigation'
 import { SchemaDoctor } from '@/schemas'
-import { DoctorFromResponse } from '@/interfaces/user'
+
+interface HoursDoctor {
+  amHours: { hour: string }[]
+  pmHours: { hour: string }[]
+}
 
 const BASE_URL = process.env.API_URL
 
@@ -17,8 +22,8 @@ export const getAllDoctors = async () => {
   return []
 }
 
-export const getDoctorById = async (id: number) => {
-  const url = BASE_URL + '/doctor/getById/' + id
+export const getDoctorById = async (id_doctor: number) => {
+  const url = BASE_URL + '/doctor/getById/' + id_doctor
 
   const data: DoctorFromResponse = await fetch(url).then((res) => res.json())
 
@@ -45,36 +50,19 @@ export const getDoctorsBySpecialty = async (specialty: string) => {
   return filterBySpecialty
 }
 
-export const getHoursDoctorId = async (id: number, dateDoctor: string) => {
-  const baseUrl = 'https://clinica-medica-production.up.railway.app'
-  // const url = BASE_URL + `/appointment/occupied-times/${id}?date=${dateDoctor}`
-  const url = baseUrl + `/appointment/occupied-times/${id}?date=${dateDoctor}`
-  // /appointment/occupied-times/1?date=2024-10-18
-
-  const data = await fetch(url).then((res) => res.json())
-
-  if (data) {
-    return data
-  } else {
-    return { message: data.message }
-  }
-}
-
-interface HoursDoctor {
-  amHours: { hour: string }[]
-  pmHours: { hour: string }[]
-}
-
-export const prueba = async (
+export const getHoursDoctorId = async (
   data: string,
-  id: number
+  id_doctor: number
 ): Promise<HoursDoctor> => {
-  const url = BASE_URL + `/appointment/occupied-times/${id}?date=${data}`
+  const urlDoctor =
+    BASE_URL + `/appointment/occupied-times/${id_doctor}?date=${data}`
 
   const hours = hourData
-  const excludesHours = await fetch(url).then((res) => res.json())
+  const excludesHours = await fetch(urlDoctor).then((res) => res.json())
 
-  if (data) {
+  console.log(excludesHours)
+
+  if (excludesHours) {
     const filterHours = hours.filter(
       (item) => !excludesHours.time.includes(item.hour)
     )

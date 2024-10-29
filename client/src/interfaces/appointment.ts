@@ -20,6 +20,16 @@ export interface CreateAppointment {
   startTime: string
 }
 
+// LO QUE REGRESA LAS CITAS DEL PACIENTE
+export interface AllAppointmentByPatient {
+  content: AppointmentPatient[]
+  page: number
+  size: number
+  totalElements: number
+  totalPages: number
+  last: boolean
+}
+
 export interface AppointmentPatient {
   id: number
   id_doctor: number

@@ -1,10 +1,10 @@
 "use client"
 
-import { SkeletonHourDoctor } from "./skeleton/skeleton-hourDoctor";
-import { prueba } from "@/actions/doctors/doctorActions";
-import { AlertDialogCalendar } from "./alert/alertDialog";
-import { Calendar } from "@/components/ui/calendar"
+import { SkeletonHourDoctor } from "../skeleton/skeleton-hourDoctor";
+import { getHoursDoctorId } from "@/actions/doctors/doctorActions";
+import { AlertDialogCalendar } from "../alert/alertDialog";
 import { useEffect, useState } from "react";
+import { Calendar } from "../ui/calendar";
 import { es } from 'date-fns/locale';
 import { format } from "date-fns";
 
@@ -15,7 +15,7 @@ interface HoursDoctor {
 
 interface Props { doctor: { id: number, name: string } }
 
-export function CalendarDemo({ doctor }: Props) {
+export function CalendarPatients({ doctor }: Props) {
     const [hoursDoctor, setHoursDoctor] = useState<HoursDoctor>({ amHours: [], pmHours: [] })
     const [loading, setLoading] = useState(false)
     const [hour, setHour] = useState<string>("")
@@ -39,7 +39,7 @@ export function CalendarDemo({ doctor }: Props) {
 
     useEffect(() => {
         const dataHours = async () => {
-            const res = await prueba(formatYear, doctor.id)
+            const res = await getHoursDoctorId(formatYear, doctor.id)
             setHoursDoctor(res)
             setLoading(true)
         }
@@ -62,13 +62,13 @@ export function CalendarDemo({ doctor }: Props) {
             />
 
             {/* HORARIOS DISPONIBLES  */}
-            <div>
+            <div className="justify-self-center">
                 <span className="font-bold capitalize text-xl">{formattedDate}</span>
                 <h2 >Horarios disponibles</h2>
 
                 <div className="grid grid-cols-2 mt-6 justify-center justify-items-center max-w-[250px]">
                     {/* COLUMNA AM  */}
-                    <div>
+                    <div >
                         <h3 className="font-bold text-xl mb-2 text-center">AM</h3>
                         <ul className="space-y-2">
                             {
