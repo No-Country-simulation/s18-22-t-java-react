@@ -7,6 +7,7 @@ import { ButtonComponent } from "../buttons/ButtonComponent"
 import { BackButton, DialogComponent } from "@/components"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { cancelAppointment } from "@/actions/appointment-action"
 
 interface Props {
   appointment: AppointmentFromResponse,
@@ -15,18 +16,28 @@ interface Props {
 }
 export function AppointmentDetails({ appointment, patient, lastAppointments }: Props) {
   const [openDialog, setOpenDialog] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  console.log(appointment)
-  console.log(patient)
-  console.log(lastAppointments)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, month, day] = appointment.date.split("-")
   const formattedDate = `${day}/${month}`
   const fullFormattedDate = `${day}/${month}/${year}`
 
-  const handleDelete = () => {
-    console.log('se elimino la cita')
+  const handleDelete = async () => {
+    setLoading(true)
+    try {
+      const response = await cancelAppointment(appointment.id as number)
+      if (response.error) {
+        setError(response.error)
+      }
+    } catch (error) {
+      console.log('error', error);
+      setError("Error al cancelar la cita. Por favor, intente nuevamente.")
+    } finally {
+      setLoading(false)
+    }
     router.push('/doctor/appointment/canceled/' + appointment.id)
   }
   return (
@@ -85,6 +96,12 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
         description={"¿Desea anular el turno con " + lastAppointments[0].doctor.name + ' el dia ' + fullFormattedDate + ' a las ' + appointment.startTime + 'hs?'}
         onConfirm={handleDelete}
       />
+      {loading && <div className="loading-indicator">Cargando...</div>}
+      {error && (
+        <p className="bg-blue-500 text-white p-4 absolute top-28 right-24 w-64 rounded-xl rounded-tr-none">
+          {error}
+        </p>
+      )}
     </>
 
   )

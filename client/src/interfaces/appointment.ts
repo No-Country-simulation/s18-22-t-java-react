@@ -29,3 +29,9 @@ export interface AppointmentPatient {
   endTime: string
   status: string
 }
+
+export interface AppointmentWithPatient extends AppointmentFromResponse {
+  patient: {
+    name: string
+  }
+}

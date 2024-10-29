@@ -7,6 +7,7 @@ import {
   AppointmentWithDoctor,
 } from '@/interfaces/appointment'
 import { CreateAppointment } from '@/interfaces'
+import { fetchPatient } from './patients/patientActions'
 
 const BASE_URL = process.env.API_URL
 
@@ -72,7 +73,6 @@ export const getAllAppointmentByPatient = async (
       return []
     }
 
-    //no esta testeado
     const appointmentsWithDoctor = await Promise.all(
       data.content.map(async (appointment: AppointmentFromResponse) => {
         const doctor = await getDoctorById(appointment.id_doctor)
@@ -100,16 +100,7 @@ export const getAppointmentById = async (id: string) => {
     /* redirect('/') */
   }
 
-  const urlDoctor = BASE_URL + `/doctor/getById/${getAppointment.id_doctor}`
-  const getDoctor = await fetch(urlDoctor)
-    .then((res) => res.json())
-    .catch((err) => console.log(err))
-
-  return {
-    date: getAppointment.date,
-    starTime: getAppointment.startTime,
-    doctorName: getDoctor.name,
-  }
+  return getAppointment
 }
 
 export const getAllProgramedAppointments = async (id_patient: number) => {
@@ -149,4 +140,50 @@ export const cancelAppointment = async (id: number) => {
   }
 
   return data
+}
+
+export const getAppointmentByDoctor = async (
+  id: number,
+  page?: number,
+  size?: number
+) => {
+  const pageNumber = page ? page : 0
+  const pageSize = size ? size : 10
+  const url =
+    BASE_URL +
+    '/appointment/get_all_by_doctor/' +
+    id +
+    '?page=' +
+    pageNumber +
+    '&size=' +
+    pageSize
+  const data = await fetch(url).then((res) => res.json())
+
+  if (!data) {
+    return []
+  }
+
+  if (!data.content) {
+    console.log('error al obtener las citas del doctor ', id)
+    return []
+  }
+
+  const programedAppointments = data.content.filter(
+    (appointment: { status: string }) =>
+      appointment.status === 'PROGRAMADA' || appointment.status === 'PENDIENTE'
+  )
+
+  const appointmentsWithPatient = await Promise.all(
+    programedAppointments.map(async (appointment: AppointmentFromResponse) => {
+      const patient = await fetchPatient(appointment.id_patient)
+      return {
+        ...appointment,
+        patient: {
+          name: patient.name,
+        },
+      }
+    })
+  )
+
+  return appointmentsWithPatient
 }
