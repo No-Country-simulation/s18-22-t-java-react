@@ -55,7 +55,7 @@ public class WaitingQueueImpl implements IWaitingQueue {
         if (!waitingQueueList.isEmpty()) {
             return waitingQueueList.get(0);
         } else {
-            throw new NoSuchElementException();
+            return null;
         }
     }
 
