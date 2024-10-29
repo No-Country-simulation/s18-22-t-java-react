@@ -42,7 +42,7 @@ export interface Data {
 export interface DoctorFromResponse {
   id: number
   name: string
-  password: string
+  password?: string
   email: string
   phone: string
   img: string
@@ -50,4 +50,32 @@ export interface DoctorFromResponse {
   specialization: string
   licenseNumber: string
   place?: string
+  dni?: string
+  obraSocial?: string
+  numeroAsociado?: string
+}
+export interface PatientFromResponse {
+  id: number
+  name: string
+  password: string
+  email: string
+  phone: string
+  img: string
+  active: boolean
+  insurer: string
+  dni?: string
+  obraSocial?: string
+  numeroAsociado?: string
+}
+
+export interface PatientByIdFromResponse {
+  id: number
+  name: string
+  email: string
+  phone: string
+  img: string
+  active: boolean
+  insurer: string
+  social_work: string
+  number_associate: string
 }

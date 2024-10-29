@@ -61,3 +61,13 @@ export const SvgChevronDown = () => (
         </defs>
     </svg>
 )
+export const SvgCalendar = () => (
+    <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.3333 10.4167V4.75M22.6667 10.4167V4.75M9.91667 16.0833H24.0833M7.08333 30.25H26.9167C28.4815 30.25 29.75 28.9815 29.75 27.4167V10.4167C29.75 8.85186 28.4815 7.58333 26.9167 7.58333H7.08333C5.51853 7.58333 4.25 8.85186 4.25 10.4167V27.4167C4.25 28.9815 5.51853 30.25 7.08333 30.25Z" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+)
+export const SvgChevronNew = () => (
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.75 7.08317L22.6667 16.9998L12.75 26.9165" stroke="#004784" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+)

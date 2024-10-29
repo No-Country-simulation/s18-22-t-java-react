@@ -30,7 +30,10 @@ export function RegisterForm() {
         formData.append('email', data.email)
         formData.append('password', data.password)
         formData.append('phone', data.phone)
-        formData.append('insurer', data.insurer)
+        formData.append('insurer', data.obraSocial)
+        formData.append('dni', data.dni)
+        formData.append('obraSocial', data.obraSocial)
+        formData.append('numeroAsociado', data.numeroAsociado)
 
         setLoading(true)
         setError('')
@@ -54,7 +57,9 @@ export function RegisterForm() {
                     password: "",
                     name: "",
                     phone: "",
-                    insurer: ""
+                    obraSocial: "",
+                    dni: "",
+                    numeroAsociado: ""
                 })
                 setTimeout(() => {
                     router.push('/dashboard')
@@ -69,7 +74,7 @@ export function RegisterForm() {
     })
 
     return (
-        <form onSubmit={submit} className="grid p-6 border gap-4 rounded-3xl text-secondaryBlue-700">
+        <form onSubmit={submit} className="grid p-6 gap-4 rounded-3xl text-secondaryBlue-700">
 
             <h2 className="text-4xl my-2 font-medium">Formulario de Registro</h2>
 
@@ -80,18 +85,22 @@ export function RegisterForm() {
             <label htmlFor="email" className="text-xl">Email <span className="text-red-500">*</span></label>
             <input type="email" id="email" {...register("email")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.email && (<p className="text-red-500">{errors.email.message}</p>)}
-            {/* 
-            <label htmlFor="dni">DNI/CC <span className="text-red-500">*</span></label>
-            <input type="text" id="dni" {...register("dni")} className="border" />
+
+            <label htmlFor="dni">DNI<span className="text-red-500">*</span></label>
+            <input type="text" id="dni" {...register("dni")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.dni && (<p className="text-red-500">{errors.dni.message}</p>)}
- */}
+
             <label htmlFor="phone" className="text-xl">Telefono <span className="text-red-500">*</span></label>
             <input type="text" id="phone" {...register("phone")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
             {errors.phone && (<p className="text-red-500">{errors.phone.message}</p>)}
 
-            <label htmlFor="insurer" className="text-xl">Aseguradora/Obra Social <span className="text-red-500">*</span></label>
-            <input type="text" id="insurer" {...register("insurer")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
-            {errors.insurer && (<p className="text-red-500">{errors.insurer.message}</p>)}
+            <label htmlFor="obraSocial" className="text-xl">Aseguradora/Obra Social <span className="text-red-500">*</span></label>
+            <input type="text" id="obraSocial" {...register("obraSocial")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.obraSocial && (<p className="text-red-500">{errors.obraSocial.message}</p>)}
+
+            <label htmlFor="numeroAsociado" className="text-xl">Numero de Asociado <span className="text-red-500">*</span></label>
+            <input type="text" id="numeroAsociado" {...register("numeroAsociado")} className="min-h-9 border rounded-3xl bg-[#F6F7F7] px-4 py-2" />
+            {errors.numeroAsociado && (<p className="text-red-500">{errors.numeroAsociado.message}</p>)}
             {/* 
             <label htmlFor="city">City </label>
             <input type="text" id="city" {...register("city")} className="border" />

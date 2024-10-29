@@ -8,12 +8,13 @@ interface Props {
   address?: string,
   img: string
   details: boolean
+  id?: number
 }
-export function PlaceCard({ name, address, img, details }: Props) {
+export function PlaceCard({ id, name, address, img, details }: Props) {
   return (
     <>
       {details ? (
-        <Link href={`/clinic/${name}`} className="flex border-2 border-[#D9D9D9] rounded-xl overflow-hidden w-[711px] h-[176px]">
+        <Link href={`/clinic/${id}`} className="flex border-2 border-[#D9D9D9] rounded-xl overflow-hidden w-[711px] h-[176px]">
           <>
             {img !== '' ? (
               <Image src={img} height={120} width={275} alt={name + "image"} />
@@ -28,7 +29,7 @@ export function PlaceCard({ name, address, img, details }: Props) {
           </div>
         </Link>
       ) : (
-        <Link href={`/clinic/${name}`} className="flex flex-col border-2 border-[#D9D9D9] rounded-[6px]">
+        <Link href={`/clinic/${id}`} className="flex flex-col border-2 border-[#D9D9D9] rounded-[6px]">
           <>
             {img !== '' ? (
               <Image src={img} height={120} width={275} alt={name + "image"} />

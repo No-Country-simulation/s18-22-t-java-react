@@ -26,7 +26,7 @@ export default function Home() {
         <div className="flex flex-col gap-12 gaptext-center absolute left-[239px] top-[326px]">
           <h1 className="font-medium mb-4 text-[#004784] text-6xl text-start max-w-[868px]">Comenzá gestionar tus citas
             en un solo lugar.</h1>
-          <p className="max-w-[555px] text-start text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dolor nulla, maximus sit amet nulla egestas, egestas maximus sapien. Aliquam eget libero id justo molestie ultricies. Fusce ac nisi dignissim, finibus libero  amet, congue orci. Fusce non gravida nunc. Praesent fermentum egestas eros, non imperdiet dolor. </p>
+          <p className="max-w-[380px] text-base text-start">Tu salud, nuestra prioridad. Simplifica la gestión de tus citas médicas con nuestra plataforma fácil de usar. Agenda, reprograma o cancela turnos en segundos y lleva el control de tus chequeos y resultados, todo en un solo lugar. </p>
           <Link href={'/appointment'} className="mt-16 max-w-max">
             <ButtonComponent size="big" variant="dark" text="Reservá un turno" />
           </Link>

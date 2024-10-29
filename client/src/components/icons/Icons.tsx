@@ -61,3 +61,46 @@ export const IconBackArrow = ({ className, size, color }: IconProps) => {
 
   )
 }
+
+export const IconSliderArrow = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "40"} height={size ? size : "40"} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <rect width={size ? size : "40"} height={size ? size : "40"} fill={color || "url(#pattern0_357_327)"} />
+      <defs>
+        <pattern id="pattern0_357_327" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlinkHref="#image0_357_327" transform="scale(0.0111111)" />
+        </pattern>
+        <image id="image0_357_327" width="90" height="90" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAAXNSR0IArs4c6QAABG1JREFUeF7t3U9oVEccB/DvzyVpvej20EJJryL1KgYCvbVQmh56KKtgscTw5oUcAtIW1J721n9aT7m8eRgs3uLJ6qmHUnpQ8dBT8eihDZQaIaFQgk3yqwMvoEXr+yXvzfvN7Ow1v8nMfHbYfd/dmbeE9PAiQF56SZ0gQXtaBAk6QXsS8NRNWtEJ2pOAp27Sik7QngQ8dRP8ih4MBuP9fv9rAB8CeONZbsz8kIiurK2tnV9eXn7kyfapbkKHpizLrhLRyZp431prP61Z22hZ0NDGmLMAvhSIrFprXxXUN1YaLHSe5+8z83UA+wQaCVqAhSzL3iSi2wAOSNoBuGSt/UTYppHy4Fb0/Pz8K5ubm3cAHJIIENEvAN4qiuJvSbumaoOCHgwGvX6//z2A9yQAzPwHgGNlWf4uaddkbVDQeZ5fYuYzQoBHzPxOWZY/C9s1Wh4MdJZlH7trYensicgURVFK2zVdHwT03Nzc1Pb29o8AXhICdHbd/N9xqofO8/x1Zr4LYEKI/MPExMT0cDjcFLZrpVw19MzMzMtjY2M/AZgUzv4+EU0WRbEqbNdauWZoabzeQfoLwJS19tfW1Hbxj9VC53l+jpm/EM5pG8AH1tobwnatl6uENsa8+/i69yaAnkSAiM4WReE+yVP3UAc9Ozt7uNfrueR3UKi1bK09AYCF7byUq4IONV7XeabUQIccr4OCDjleBwMderwOAjqGeK0eOpZ4rRo6pnitGTqqeK0WOrZ4rRI6xnitDjrWeK0KOuZ4rQY69nitBjr2eK0CehTidefQoxKvO4UepXjdGfRe4vX4+PixxcXFh3UGH1JNKx/8Z1l2gYikG77XmXmqLMt7IQHWHWsr0MaYPwFINnyr/fa6LuSL6hL0i4Qa+ntb0N8A+Ew4xvTSIQTDXt4MtW3lks79efWtrGjXWbq8e5q8NWjXTZZlR4nIbQDfL1wZnZ01EY6zdnmr0G4UxphTAL6rPaKqUMsGcum4vb90PNmhMeYiAOlpqH+Y+e2uj0QEBT0cDvetrKy4Qz7TkoG7Qz5bW1uTS0tLv0naaaxt/aVjZ9ILCwsHNjY2bgE4IoHo+tiaZKz/V+sN2g2i+irLHcTsCydwzVp7XOtO0Tpz8QpdvTnuau8zgHPW2q/qTEpjjXfoClt6WN41C/rzkE6gq0BzmZlPC1efyvMpdebQGfSoxfTOoEctpncKPUoxvXPoUYnpKqAr7KhjuhrovcT0ru/Fofqq41mDizmmq1nRO/CxxnR10LHGdJXQMcZ0tdCxxXTV0DHFdNXQMcV09dCxxPQgoGOI6cFA7yGmpxsM1omuT9aEHNODWtEOPdSYHhx09ebobmvsti5I77vU2VazIKEr7Gkicpty0o26pa/B0vpd3Hr+gbX2NWk/TdQHu6J3Jm+MuQrgo5oYnd0UNnjo6udB3A8qDJ738yAAVpn5yvr6+ufp50FqLslQy4Jf0aHAJ2hPz1SCTtCeBDx1k1Z0gvYk4KmbtKITtCcBT938CwJIIXnKPetSAAAAAElFTkSuQmCC" />
+      </defs>
+    </svg>
+
+  )
+}
+
+export const IconPencil = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "30"} height={size ? size : "30"} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.3787 5.37868C21.5503 4.20711 23.4497 4.20711 24.6213 5.37868C25.7929 6.55025 25.7929 8.44975 24.6213 9.62132L23.432 10.8107L19.1893 6.56802L20.3787 5.37868Z" fill="#111827" />
+      <path d="M17.068 8.68934L4.5 21.2574V25.5H8.74264L21.3107 12.932L17.068 8.68934Z" fill={color || "#111827"} />
+    </svg>
+
+
+  )
+}
+
+export const IconX = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "24"} height={size ? size : "24"} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M23.0248 0.992266C22.3423 0.309766 21.2398 0.309766 20.5573 0.992266L11.9998 9.53227L3.44227 0.974766C2.75977 0.292266 1.65727 0.292266 0.974766 0.974766C0.292266 1.65727 0.292266 2.75977 0.974766 3.44227L9.53227 11.9998L0.974766 20.5573C0.292266 21.2398 0.292266 22.3423 0.974766 23.0248C1.65727 23.7073 2.75977 23.7073 3.44227 23.0248L11.9998 14.4673L20.5573 23.0248C21.2398 23.7073 22.3423 23.7073 23.0248 23.0248C23.7073 22.3423 23.7073 21.2398 23.0248 20.5573L14.4673 11.9998L23.0248 3.44227C23.6898 2.77727 23.6898 1.65727 23.0248 0.992266Z" fill={color || "black"} />
+    </svg>
+  )
+}
+
+export const IconUser = ({ className, size, color }: IconProps) => {
+  return (
+    <svg className={className} width={size ? size : "24"} height={size ? size : "25"} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.9998 10.3998C14.6508 10.3998 16.7998 8.25077 16.7998 5.5998C16.7998 2.94884 14.6508 0.799805 11.9998 0.799805C9.34884 0.799805 7.19981 2.94884 7.19981 5.5998C7.19981 8.25077 9.34884 10.3998 11.9998 10.3998Z" fill={color || "#025DAB"} />
+      <path d="M0.799805 24.7998C0.799805 18.6142 5.81422 13.5998 11.9998 13.5998C18.1854 13.5998 23.1998 18.6142 23.1998 24.7998H0.799805Z" fill={color || "#025DAB"} />
+    </svg>
+  )
+}

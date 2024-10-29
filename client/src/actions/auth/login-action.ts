@@ -1,16 +1,18 @@
 'use server'
 import { schemaLogin } from '@/schemas'
+import { cookies } from 'next/headers'
 
 const BASE_URL = process.env.API_URL
 
 export const loginUser = async (formData: FormData) => {
   const url = BASE_URL + '/user'
+  const cookieStore = cookies()
 
-  const nameFromForm = formData.get('name') as string
+  const emailFromForm = formData.get('email') as string
   const passwordFromForm = formData.get('password') as string
 
   const validatedFields = schemaLogin.safeParse({
-    name: nameFromForm,
+    email: emailFromForm,
     password: passwordFromForm,
   })
 
@@ -21,8 +23,29 @@ export const loginUser = async (formData: FormData) => {
     }
   }
 
+  /*   cookieStore.set(
+    'user',
+    JSON.stringify({
+      id: 44,
+      name: 'maria',
+      dni: '40890678',
+      password: 'test123',
+      email: 'maria@gmail.com',
+      social_work: 'OSDE',
+      number_associate: 'B1234890',
+      phone: '1589067841',
+      img: 'https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png',
+      active: true,
+      insurer: 'OSDE',
+    }),
+    {
+      httpOnly: true,
+      path: '/',
+    }
+  ) */
+
   const body = {
-    name: nameFromForm,
+    email: emailFromForm,
     password: passwordFromForm,
   }
 
@@ -36,6 +59,7 @@ export const loginUser = async (formData: FormData) => {
     })
 
     const responseData = await response.json()
+    console.log('data', responseData)
 
     if (!responseData) {
       return {
@@ -49,14 +73,20 @@ export const loginUser = async (formData: FormData) => {
       return {
         errors: {},
         loginError: responseData.error,
-        message: 'Error al iniciar sesión',
+        message: responseData.message,
       }
     }
+
+    cookieStore.set('user', JSON.stringify(responseData), {
+      httpOnly: true,
+      path: '/',
+    })
 
     return {
       success: 'Inicio de sesión exitoso',
     }
   } catch (error) {
+    console.log(error)
     return {
       errors: {},
       loginError: 'Error al comunicarse con el servidor' + error,

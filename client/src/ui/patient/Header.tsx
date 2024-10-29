@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { ButtonComponent } from "@/ui";
+import Logo from '/public/logo_full.png'
+import Image from "next/image";
+
 
 export function Header() {
 
@@ -7,7 +10,9 @@ export function Header() {
 
     <header className="flex justify-between items-center py-11 px-24 border-b-[6px] border-b-[#004784]">
 
-      <Link href={"/dashboard"} className="text-lg font-bold">Logo</Link>
+      <Link href={"/dashboard"} className="text-lg font-bold">
+        <Image src={Logo} alt="logo" width={250} height={50} />
+      </Link>
 
       <nav>
         <ul className="flex gap-8 items-center">
