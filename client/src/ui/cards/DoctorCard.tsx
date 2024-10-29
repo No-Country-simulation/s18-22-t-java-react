@@ -1,6 +1,7 @@
 "use client"
 
-import { AlertMessage } from "@/components"
+import { cancelAppointment } from "@/actions/appointment-action"
+import { DialogComponent } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -15,33 +16,64 @@ interface Props {
   date?: string
   startTime?: string
 }
+
 export function DoctorCard({ id, name, speciality, place = "Clínica Colón", img, dashboard, date, startTime }: Props) {
   const [openDialog, setOpenDialog] = useState(false)
-  const [messageAlert, setMessageAlert] = useState({ title: "", description: <p></p>, confirm: "Confirmar", cancel: "Cancelar" })
+  const [dialogProps, setDialogProps] = useState({
+    title: "",
+    description: "",
+    cancelText: "Cancelar",
+    confirmText: "Confirmar",
+    onConfirm: () => { }
+  })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
   const formattedDate = date ? (() => {
     const [year, month, day] = date.split("-")
     return `${day}/${month}/${year}`
   })() : '04/11/2024'
 
-  const cancelAlert = () => {
+  const cancelAlert = async () => {
+    setError(null)
     const alert = {
       title: "¿Querés cancelar la cita?",
-      description: <p>Querrías cancelar tu cita asignada para el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>. Si reprogramás, tu cita actual será cancelada.</p>,
-      confirm: "Cancelar cita",
-      cancel: "Mantener cita"
+      description: `Querrías cancelar tu cita asignada para el ${formattedDate} a las ${startTime} en ${place}. Si reprogramás, tu cita actual será cancelada.`,
+      cancelText: "Mantener cita",
+      confirmText: "Cancelar cita",
+      onConfirm: async () => {
+        setLoading(true)
+        try {
+          const response = await cancelAppointment(id as number)
+          if (response.error) {
+            setError(response.error)
+          }
+        } catch (error) {
+          console.log('error', error);
+          setError("Error al cancelar la cita. Por favor, intente nuevamente.")
+        } finally {
+          setLoading(false)
+        }
+      }
     }
-    setMessageAlert(alert)
+
+    setDialogProps(alert)
     setOpenDialog(true)
   }
 
   const changeAppointment = () => {
+    setError(null)
     const alert = {
       title: "¿Queréis reprogramar la cita?",
-      description: <p>Tenés cita asignada el <span className="font-bold">{formattedDate}</span> a las <span className="font-bold">{startTime}</span> en <span className="font-bold">{place}</span>. Si reprogramás, tu cita actual será cancelada.</p>,
-      confirm: "Reprogramar cita",
-      cancel: "Mantener cita"
+      description: `Tenés cita asignada el ${formattedDate} a las ${startTime} en ${place}. Si reprogramás, tu cita actual será cancelada.`,
+      cancelText: "Mantener cita",
+      confirmText: "Reprogramar cita",
+      onConfirm: () => {
+        // Add your reprogram logic here
+        setOpenDialog(false)
+      }
     }
-    setMessageAlert(alert)
+    setDialogProps(alert)
     setOpenDialog(true)
   }
 
@@ -50,21 +82,24 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
       <div className="w-[854px] h-[168px] rounded-xl flex items-center gap-4 pl-4 py-4 shadow-2xl">
 
         {/* IMAGE  */}
-        {img && img !== '' ? (
+        {img && img !== 'string' && img !== '' ? (
           <figure className="relative rounded-full size-[88px] overflow-hidden">
             <Image
-              loader={({ src }) => src}
-              src={img ? img : "https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png"}
+              src={img}
               fill
               sizes="(max-width: 768px) 100px"
               alt={name + "image"} className="object-cover"
-              onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                (event.target as HTMLImageElement).srcset = "https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png";
-              }}
             />
           </figure>
         ) : (
-          <div className="size-[88px] bg-gray-300 rounded-full" />
+          <figure className="relative rounded-full size-[88px] overflow-hidden">
+            <Image
+              src={"https://res.cloudinary.com/db395v0wf/image/upload/v1729121057/vooufndzyzyyfnyi4zwv.png"}
+              fill
+              sizes="(max-width: 768px) 100px"
+              alt={name + "image"} className="object-cover"
+            />
+          </figure>
         )}
 
         <div className="flex flex-col justify-center h-[89px] px-3">
@@ -98,13 +133,21 @@ export function DoctorCard({ id, name, speciality, place = "Clínica Colón", im
           </div>
         )}
       </div>
-      <AlertMessage
+      <DialogComponent
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        messageAlert={messageAlert}
+        title={dialogProps.title}
+        description={dialogProps.description}
+        cancelText={dialogProps.cancelText}
+        confirmText={dialogProps.confirmText}
+        onConfirm={dialogProps.onConfirm}
       />
-
+      {loading && <div className="loading-indicator">Cargando...</div>}
+      {error && (
+        <p className="bg-blue-500 text-white p-4 absolute top-28 right-24 w-64 rounded-xl rounded-tr-none">
+          {error}
+        </p>
+      )}
     </>
   )
 }
-

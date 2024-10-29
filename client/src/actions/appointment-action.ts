@@ -127,17 +127,25 @@ export const getAllProgramedAppointments = async (id_patient: number) => {
 export const cancelAppointment = async (id: number) => {
   const url = BASE_URL + '/appointment/cancel/' + id
   const data = await fetch(url, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
   }).then((res) => res.json())
 
+  console.log(url, data)
+
   if (data.error) {
-    console.log('error al cancelar la cita ', data.error)
+    const error =
+      'error al cancelar la cita ' + data.error + ': ' + data.message
+    console.log(error)
     return {
-      error: data.error,
+      error: error,
     }
+  }
+
+  if (data.id) {
+    redirect(`/doctor/appointment/canceled/${data.id}`)
   }
 
   return data
