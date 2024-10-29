@@ -38,7 +38,7 @@ Content-Type: application/json
 PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/complete/7
 
 ### Cancelar cita por id 
-PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/cancel/1
+PATCH https://clinica-medica-production.up.railway.app/api/v1/appointment/cancel/17
 Content-Type: application/json
 
 ### Listar todas las citas por medico y fecha
