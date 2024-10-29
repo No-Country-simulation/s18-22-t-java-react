@@ -4,10 +4,16 @@ import Image from "next/image";
 import { Select } from "@/ui";
 import { getClinicById } from "@/actions/clinics/clinicActions";
 import { Clinic } from "@/interfaces/clinic";
+import { getAllSpecializationList } from "@/actions/doctors/doctorActions";
+import { DoctorFromResponse } from "@/interfaces/user";
 
 export default async function ClinicPage({ params }: { params: { id: string } }) {
     const id = Number(params.id)
     const data: Clinic | null = await getClinicById(id)
+    const specializationList = (await getAllSpecializationList()).map(item => ({
+        specialization: String(item.specialization),
+        doctors: item.doctors as DoctorFromResponse[]
+    }));
 
     return (
         <div className="max-w-[1200px] mx-auto px-4">
@@ -38,7 +44,7 @@ export default async function ClinicPage({ params }: { params: { id: string } })
                 </div>
             </div>
 
-            <Select />
+            <Select specializationList={specializationList} />
         </div>
     );
 }

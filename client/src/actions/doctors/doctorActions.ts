@@ -150,3 +150,32 @@ export const editDoctor = async (
     }
   }
 }
+
+export const getAllSpecializationList = async () => {
+  try {
+    const doctors = await getAllDoctors()
+
+    const specializationList = doctors.map((doctor: DoctorFromResponse) => {
+      return doctor.specialization
+    })
+
+    const uniqueSpecializationList = Array.from(new Set(specializationList))
+
+    const filteredDoctorsBySpecialization = uniqueSpecializationList.map(
+      (specialization) => {
+        return {
+          specialization,
+          doctors: doctors.filter(
+            (doctor: DoctorFromResponse) =>
+              doctor.specialization === specialization
+          ),
+        }
+      }
+    )
+
+    return filteredDoctorsBySpecialization
+  } catch (error) {
+    console.error('Error fetching specialization list:', error)
+    return []
+  }
+}
