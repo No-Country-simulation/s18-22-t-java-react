@@ -2,12 +2,17 @@ import { getDoctorById } from '@/actions/doctors/doctorActions'
 import { redirect } from 'next/navigation'
 import { BackButton, CalendarPatients } from '@/components'
 import Image from 'next/image'
+import { cookies } from 'next/headers'
 
 export const revalidate = 0
 
-export default async function AppointmentById({ params }: { params: { id: string } }) {
-  const id = Number(params.id)
+export default async function AppointmentById({ params, searchParams }: { params: { id: string }, searchParams: { reschedule?: string, appointmentId?: string } }) {
+  const isReschedule = searchParams.reschedule === 'true';
+  const appointmentId = searchParams.appointmentId;
+  const id = Number(params.id.split('?')[0]);
   const doctor = await getDoctorById(id)
+  const userCookie = cookies().get('user');
+  const user = userCookie ? JSON.parse(userCookie.value) : {};
 
   if (!doctor) {
     redirect("/dashboard")
@@ -60,7 +65,7 @@ export default async function AppointmentById({ params }: { params: { id: string
         </div>
       </div>
 
-      <CalendarPatients doctor={{ id: doctor.id, name: doctor.name }} />
+      <CalendarPatients reschedule={isReschedule} doctor={{ id: doctor.id, name: doctor.name }} user={user} appointmentId={Number(appointmentId)} />
 
     </div>
   )

@@ -18,7 +18,7 @@ export default async function SpecialtyPage({ params }: { params: { name: string
                 <div className="my-8 flex flex-col gap-6">
                     {
                         doctors?.map(doctor => (
-                            <DoctorCard key={doctor.id} id={doctor.id} name={doctor.name} img={doctor.img} specialty={doctor.specialization} place="Clínica Colón" />
+                            <DoctorCard key={doctor.id} id_doctor={doctor.id} name={doctor.name} img={doctor.img} specialty={doctor.specialization} place="Clínica Colón" />
                         ))
                     }
                 </div>

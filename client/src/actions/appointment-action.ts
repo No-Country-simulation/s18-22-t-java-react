@@ -5,6 +5,7 @@ import { getDoctorById } from './doctors/doctorActions'
 import {
   AppointmentFromResponse,
   AppointmentWithDoctor,
+  RescheduleAppointment,
 } from '@/interfaces/appointment'
 import { CreateAppointment } from '@/interfaces'
 import { fetchPatient } from './patients/patientActions'
@@ -186,4 +187,33 @@ export const getAppointmentByDoctor = async (
   )
 
   return appointmentsWithPatient
+}
+
+export const rescheduleAppointment = async (
+  id: number,
+  newAppointment: RescheduleAppointment
+) => {
+  const url = BASE_URL + '/appointment/reschedule/' + id
+  const data = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newAppointment),
+  }).then((res) => res.json())
+
+  if (data.error) {
+    const error =
+      'error al reprogramar la cita ' + data.error + ': ' + data.message
+    console.log(error)
+    return {
+      error: error,
+    }
+  }
+
+  if (data.id) {
+    redirect(`/appointment/confirmed/${data.id}`)
+  }
+
+  return data
 }

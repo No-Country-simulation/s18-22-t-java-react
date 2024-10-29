@@ -57,19 +57,27 @@ export function DoctorCard({ id_appointment, id_doctor, name, specialty, place =
   }
 
   const updateAppointment = async () => {
+    console.log('id_doctor', id_doctor);
     if (messageAlert.confirm === "Reprogramar cita") {
-      route.push(`/appointment/calendar/${id_doctor}`)
+      const pathname = `/appointment/calendar/${id_doctor}`;
+      const query = { reschedule: 'true', appointmentId: String(id_appointment) };
+      const url = `${pathname}?${new URLSearchParams(query).toString()}`;
+
+      route.push(url);
     }
-    try {
-      const response = await cancelAppointment(id_appointment as number)
-      if (response.error) {
-        setError(response.error)
+
+    if (messageAlert.confirm === "Cancelar cita") {
+      try {
+        const response = await cancelAppointment(id_appointment as number)
+        if (response.error) {
+          setError(response.error)
+        }
+      } catch (error) {
+        console.log('error', error);
+        setError("Error al cancelar la cita. Por favor, intente nuevamente.")
+      } finally {
+        setLoading(false)
       }
-    } catch (error) {
-      console.log('error', error);
-      setError("Error al cancelar la cita. Por favor, intente nuevamente.")
-    } finally {
-      setLoading(false)
     }
   }
 

@@ -7,15 +7,21 @@ import { useEffect, useState } from "react";
 import { Calendar } from "../ui/calendar";
 import { es } from 'date-fns/locale';
 import { format } from "date-fns";
+import { PatientFromResponse } from "@/interfaces/user";
 
 interface HoursDoctor {
     amHours: { hour: string; }[]
     pmHours: { hour: string; }[]
 }
 
-interface Props { doctor: { id: number, name: string } }
+interface Props {
+    doctor: { id: number, name: string }
+    user: PatientFromResponse
+    reschedule: boolean
+    appointmentId: number
+}
 
-export function CalendarPatients({ doctor }: Props) {
+export function CalendarPatients({ doctor, user, reschedule, appointmentId }: Props) {
     const [hoursDoctor, setHoursDoctor] = useState<HoursDoctor>({ amHours: [], pmHours: [] })
     const [loading, setLoading] = useState(false)
     const [hour, setHour] = useState<string>("")
@@ -106,6 +112,9 @@ export function CalendarPatients({ doctor }: Props) {
                 formattedDate={formattedDate}
                 hour={hour}
                 doctor={{ id: doctor.id, name: doctor.name, dateYear: formatYear }}
+                patientId={user.id}
+                reschedule={reschedule}
+                appointmentId={appointmentId}
             />
         </div>
     )

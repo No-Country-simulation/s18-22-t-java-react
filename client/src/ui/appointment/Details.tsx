@@ -6,7 +6,6 @@ import Image from "next/image"
 import { ButtonComponent } from "../buttons/ButtonComponent"
 import { BackButton, DialogComponent } from "@/components"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { cancelAppointment } from "@/actions/appointment-action"
 
 interface Props {
@@ -18,7 +17,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
   const [openDialog, setOpenDialog] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, month, day] = appointment.date.split("-")
@@ -38,7 +36,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
     } finally {
       setLoading(false)
     }
-    router.push('/doctor/appointment/canceled/' + appointment.id)
   }
   return (
     <>
