@@ -5,13 +5,13 @@ Content-Type: application/json
 {
   "user": {
     "id": 0,
-    "name": "dafne ewens",
-    "dni": "35456899",
-    "obraSocial": "swissmedical",
-    "numeroAsociado": "8989",
-    "password": "45678",
-    "email": "dafneewens@gmail.com",
-    "phone": "115689477",
+    "name": "maria julieta",
+    "dni": "35453355",
+    "obraSocial": "lus y fuerza",
+    "numeroAsociado": "89891330",
+    "password": "10111213",
+    "email": "mariajulieta@gmail.com",
+    "phone": "11568943322",
     "img": "string",
     "active": true
   },
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### buscar paciente por id
-GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/58
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/59
 
 ### actualizar paciente
 PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/33
@@ -39,5 +39,5 @@ Content-Type: application/json
 
 
 ###Eliminar paciente
-DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/43
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/59
 Content-Type: application/json
