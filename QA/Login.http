@@ -3,6 +3,6 @@ POST https://clinica-medica-production.up.railway.app/api/v1/user
 Content-Type: application/json
 
 {
-  "email": "string",
-  "password": "string"
+  "email": "victor@gmail.com",
+  "password": "12365478035"
 }
