@@ -1,0 +1,53 @@
+### crear doctor    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/doctor/create
+Content-Type: application/json
+
+{
+  "name": "Ana Paula",
+  "password": "1234567",
+  "email": "anapaula@gmail.com",
+  "dni": "56123456",
+  "obraSocial": "ospe",
+  "numeroAsociado": "m12345699",
+  "phone": "112322222",
+  "img": "string",
+  "active": true,
+  "specialization": "gastroenterologa",
+  "licenseNumber": "m6543210"
+}
+
+### buscar todos los doctores
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors
+
+
+### buscar doctor por id
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/getById/45
+
+
+### buscar todos los doctores paginacion
+GET https://clinica-medica-production.up.railway.app/api/v1/doctor/allDoctors-page?page=0&size=10
+
+### Eliminar doctor
+DELETE https://clinica-medica-production.up.railway.app/api/v1/doctor/delete/45
+
+### Actualizar doctor por ID
+PUT https://clinica-medica-production.up.railway.app/api/v1/doctor/update/45
+Content-Type: application/json
+
+{
+  "name": "Ana Maria Paula",
+  "password": "1234567",
+  "email": "anapaula@gmail.com",
+  "dni": "58123456",
+  "obraSocial": "Fatsa",
+  "numeroAsociado": "m12345699",
+  "phone": "112322222",
+  "img": "string",
+  "active": true,
+  "specialization": "gastroenterologa",
+  "licenseNumber": "m6543210"
+}
+
+
+
+
