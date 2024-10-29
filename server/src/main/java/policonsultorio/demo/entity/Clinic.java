@@ -35,7 +35,7 @@ public class Clinic {
     private String vlinicImage;
     @Column(name = "active", nullable = false)
     private Boolean active = true;
-    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Doctor> doctors = new ArrayList<>();
 
     public Clinic(ResponseClinic responseClinic) {
