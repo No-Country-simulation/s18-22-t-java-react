@@ -1,5 +1,4 @@
 import { getAllProgramedAppointments } from "@/actions/appointment-action";
-import { getAllAppointmentById_Patient } from "@/actions/appointment-action";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
 import { DoctorCard } from "@/ui";
 import { cookies } from 'next/headers'

@@ -10,11 +10,11 @@ import { useState } from "react"
 import Link from "next/link"
 
 interface Props {
-  id_appointment: number
+  id_appointment?: number
   dashboard?: boolean,
   specialty?: string,
-  startTime: string
-  id_doctor: number,
+  startTime?: string
+  id_doctor?: number,
   place?: string,
   img?: string,
   date?: string

@@ -26,7 +26,7 @@ export default async function DashboardAppointmentPage() {
 
           {/* RESERVA DE CITAS  */}
           {doctorList.map((item, index) => (
-            <DoctorCard dashboard id={item.id} img={item.doctor.img} key={index} name={item.doctor.specialization} speciality={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} />
+            <DoctorCard dashboard id={item.id} img={item.doctor.img} key={index} name={item.doctor.specialization} specialty={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} />
           ))}
         </div>
 
