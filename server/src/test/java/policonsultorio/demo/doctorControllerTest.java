@@ -49,7 +49,7 @@ public class doctorControllerTest {
 
     @Test
     public void testCrearUsuario() throws Exception {
-        DoctorRequest doctor = new DoctorRequest("carlos","1234","carlos@gmail.com","1234","1234","1234","1234567890",null,null,"pediatra","14597");
+        DoctorRequest doctor = new DoctorRequest("carlos","1234","carlos@gmail.com","1234","1234","1234","1234567890",null,null,"pediatra","14597", 1L);
         ResponseEntity doctorEntity = new ResponseEntity<>(doctor, HttpStatus.CREATED);
 
 
@@ -75,7 +75,7 @@ public class doctorControllerTest {
 
     @BeforeEach
     public void setUp() {
-        DoctorRequest doctor = new DoctorRequest("carlos","1234","carlos@gmail.com", "1234","1234","1234","1234567890",null,null,"pediatra","14597");
+        DoctorRequest doctor = new DoctorRequest("carlos","1234","carlos@gmail.com", "1234","1234","1234","1234567890",null,null,"pediatra","14597", 1L);
         ResponseEntity doctorEntity = new ResponseEntity<>(doctor, HttpStatus.CREATED);
 
         when(doctorController.getDoctorById(1)).thenReturn(doctorEntity);
