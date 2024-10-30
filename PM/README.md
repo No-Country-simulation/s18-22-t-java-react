@@ -8,7 +8,7 @@
   <p>
   ## 🎥 Vista Previa del Proyecto
 
-![Vista Previa del Video](rhttps://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/reserva_turno-ezgif.com-effects.gif)
+![Vista Previa del Video](<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/main/PM/logo1.png" alt="Logo" width="400">)
    Medilink es ......
   </p>
 </div>
