@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import policonsultorio.demo.dto.request.DoctorRequest;
 import policonsultorio.demo.dto.response.DoctorResponse;
+import policonsultorio.demo.entity.Clinic;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.enums.Roles;
+import policonsultorio.demo.repository.ClinicRepository;
 import policonsultorio.demo.repository.DoctorRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,12 +26,16 @@ public class DoctorServiceImpl implements IDoctorService {
 	DoctorRepository doctorRepository;
 	@Autowired
 	ModelMapper mapper;
+    @Autowired
+    private ClinicRepository clinicRepository;
 
 	@Override
 	public DoctorResponse create(DoctorRequest request) {
 		try {
 			Doctor doctor = mapper.map(request, Doctor.class);
 			doctor.setRol(Roles.MEDIC);
+			Optional<Clinic> clinic = clinicRepository.findById(request.getClinic_id());
+            clinic.ifPresent(doctor::setClinic);
 			doctorRepository.save(doctor);
 			return mapper.map(doctor, DoctorResponse.class);
 		} catch (DataIntegrityViolationException ex) {
