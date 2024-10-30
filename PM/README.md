@@ -2,8 +2,10 @@
 
 <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
 
+
+
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" 
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/60435dc67255a35217d966ec5cd0d9cdd1e581e1/PM/logo001.png" 
 </p>
 
 <h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
@@ -128,7 +130,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 ## 🎨 **Frontend - Tecnologías Utilizadas**
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
@@ -209,7 +211,7 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 ## ⚙️  **Qa - Teting**
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
@@ -257,7 +259,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 ## ⚙️  **UX-UI**
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
@@ -378,10 +380,6 @@ Copia el siguiente comando y pégalo en tu terminal para clonar el repositorio a
 git clone https://github.com/usuario/nombre-del-repositorio.git
 git clone https://github.com/usuario/policonsultorio.git
 cd policonsultorio
-
-<h2 align="center" style="color: #007bff;">📂 Paso 2: Navegar a la Carpeta del Proyecto</h2>
-
-<p align="center">Una vez clonado el repositorio, navega a la carpeta del proyecto con el siguiente comando:</p>
 
 ```bash
 cd nombre-del-repositorio
