@@ -10,13 +10,13 @@
 
 <div align="center">
   
-  <
+ 
 <p style="color: #007bff; font-weight: bold; font-size: 24px;">
-    ## 🎥 Vista Previa del Proyecto
+    🎥 Vista Previa del Proyecto
   </p>
+  
+  ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 </div>
-
-![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 
    Medilink es ......
   </p>
@@ -305,10 +305,10 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <h1 align="center" style="color: #007bff;">Project Manager </h1>
 
 <p align="center">
-  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e948aee114a173f38bea735ae1d5815170529b03/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e948aee114a173f38bea735ae1d5815170529b03/PM/PM.png)
 
 
 
@@ -318,7 +318,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
     <thead>
       <tr>
         <th align="center">
-          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="width: 120px;">
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="display: block; margin: 0 auto; width: 120px;"> 
         </th>
       </tr>
     </thead>
@@ -329,10 +329,10 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
       <tr>
         <td align="center">
           <a href="https://github.com/Jhone-fori-freelancer">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%; display: inline-block; margin-right: 10px;">
           </a>
           <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%; display: inline-block;">
           </a>
         </td>
       </tr>
@@ -361,23 +361,6 @@ Para el rol de **Project Manager**, se han utilizado diversas herramientas que f
 
 Estas herramientas permiten al **Project Manager** gestionar el cronograma, controlar los cambios en el código, documentar cada aspecto del proyecto y mantener una comunicación fluida entre todos los miembros del equipo, asegurando el éxito del proyecto en cada fase.
 
-
-
-- **Frontend**: Nextjs + TailwindCss + TypeScript
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/ux-ui%20sin%20fondo.png)
-
-
-
-
-
-
-
-### Requisitos del Sistema
-
-- **Node.js** (v14 o superior)
-- **Msql.DB** (v4.0 o superior)
-- **Git** para el control de versiones
-- **Cuenta de Heroku o AWS** (para el despliegue en la nube)
 
 <h2 align="center">💻 Instalación y Configuración</h2>
 
