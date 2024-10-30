@@ -1,5 +1,9 @@
+
+
+<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
+
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" 
 </p>
 
 <h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
@@ -16,7 +20,6 @@
 
 <br>
 
-![Demo of the application](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 
 
 
