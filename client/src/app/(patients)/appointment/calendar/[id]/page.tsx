@@ -57,12 +57,12 @@ export default async function AppointmentById({ params, searchParams }: { params
 
         </div>
 
-        <div>
+        {/*         <div>
           <div className="bg-zinc-200 p-6 rounded-lg">
             <h2 className="font-bold">Primer turno disponible</h2>
             <p>Martes 12 de Noviembre <span className="font-bold">14:00hs</span></p>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <CalendarPatients reschedule={isReschedule} doctor={{ id: doctor.id, name: doctor.name }} user={user} appointmentId={Number(appointmentId)} />

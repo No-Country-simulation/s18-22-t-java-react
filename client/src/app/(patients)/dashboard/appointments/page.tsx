@@ -32,9 +32,12 @@ export default async function DashboardAppointmentPage() {
         </div>
 
       </div>
-      <div className="flex flex-col justify-center mt-12">
-        <WaitList confirmWaitList={false} waitList={waitList} />
-      </div>
+
+      {waitList && !waitList.error && (
+        <div className="flex flex-col justify-center mt-12">
+          <WaitList confirmWaitList={false} waitList={waitList} />
+        </div>
+      )}
     </div>
   );
 }
