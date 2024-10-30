@@ -41,7 +41,7 @@ export function Select({ specializationList, }: Props) {
                                         <span className="text-base font-medium">{doctor.specialization}</span>
                                         <p className="text-base mt-5">Proximo turno disponible: 20/11 - 14:00hs</p>
                                     </div>
-                                    <Link href={"#"} className="self-center grow flex justify-center">
+                                    <Link href={'/appointment/calendar/' + doctor.id} className="self-center grow flex justify-center">
                                         <button className="bg-[#025DAB] text-white text-lg px-6 py-4 font-medium rounded-xl w-40 h-16">
                                             Ver agenda
                                         </button>
