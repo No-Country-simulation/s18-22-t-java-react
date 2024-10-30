@@ -1,14 +1,4 @@
 
-<div align="center">
-
-| ![Icono](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/64e7e3e64aee0967b8212458c5bc9682c4918d5f/PM/ISOTIPO.png) |
- <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/64e7e3e64aee0967b8212458c5bc9682c4918d5f/PM/logo001.png" width="120"> |
-|------------------------------------------|---------------------------------------------|
-
-</div>
-
-
-<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
 
 
 
@@ -85,6 +75,18 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 </p> 
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+- **Java Spring Boot** 🌱: Framework robusto de Java para construir aplicaciones web rápidas y escalables.
+- **Swagger** 📝: Herramienta para documentar APIs REST, facilitando la integración y pruebas.
+- **MySQL** 💾: Base de datos relacional que permite almacenar y gestionar datos estructurados.
+- **Spring Security** 🔒: Módulo de seguridad para gestionar la autenticación y autorización de usuarios.
+- **JWT (JSON Web Token)** 🔑: Tecnología de autenticación basada en tokens, ideal para sistemas seguros y sin estado.
+- **OAuth** 🔐: Protocolo de autorización que permite el acceso seguro a recursos mediante tokens.
+- **Railway** ☁️: Plataforma en la nube utilizada para el despliegue del proyecto, proporcionando escalabilidad y alta disponibilidad.
+- **Mockito & JUnit** 🧪: Herramientas de testing para realizar pruebas unitarias y asegurar la calidad del código.
+
+
+
+
 <table>
 <thead>
 <tr>
@@ -122,14 +124,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <thead>
 <tr>
 
-- **Java Spring Boot** 🌱: Framework robusto de Java para construir aplicaciones web rápidas y escalables.
-- **Swagger** 📝: Herramienta para documentar APIs REST, facilitando la integración y pruebas.
-- **MySQL** 💾: Base de datos relacional que permite almacenar y gestionar datos estructurados.
-- **Spring Security** 🔒: Módulo de seguridad para gestionar la autenticación y autorización de usuarios.
-- **JWT (JSON Web Token)** 🔑: Tecnología de autenticación basada en tokens, ideal para sistemas seguros y sin estado.
-- **OAuth** 🔐: Protocolo de autorización que permite el acceso seguro a recursos mediante tokens.
-- **Railway** ☁️: Plataforma en la nube utilizada para el despliegue del proyecto, proporcionando escalabilidad y alta disponibilidad.
-- **Mockito & JUnit** 🧪: Herramientas de testing para realizar pruebas unitarias y asegurar la calidad del código.
+
 
 
 
