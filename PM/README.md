@@ -8,12 +8,18 @@
   <p>
   ## 🎥 Vista Previa del Proyecto
 
-![Vista Previa del Video](<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/main/PM/logo1.png" alt="Logo" width="400">)
+![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
+
    Medilink es ......
   </p>
 </div>
 
 <br>
+
+![Demo of the application](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
+
+
+
 
 <h1 align="center"style="color: #007bff;">¿POR QUÉ MEDILINK? </h1>
 
