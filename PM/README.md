@@ -1,6 +1,6 @@
 
 
-<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
+<img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
 
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/logo1.png" 
@@ -9,8 +9,12 @@
 <h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
 
 <div align="center">
-  <p>
-  ## 🎥 Vista Previa del Proyecto
+  
+  <
+<p style="color: #007bff; font-weight: bold; font-size: 24px;">
+    ## 🎥 Vista Previa del Proyecto
+  </p>
+</div>
 
 ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 
@@ -35,9 +39,6 @@
 
 <br>
 30 de octubre de 2024
-
-
-![Policonsultorio Logo](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/logopeque%C3%B1o.png)
 
 ## Índice
 1. [Descripción del Proyecto](#descripción-del-proyecto)
@@ -70,7 +71,7 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 
 ## ⚙️  **Backend - Tecnologías Utilizadas**
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/BACK-END-SINFONDO.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p> 
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
@@ -125,11 +126,14 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 
 ## 🎨 **Frontend - Tecnologías Utilizadas**
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/FRONT%20END%20TECNOLOGIAS.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
 </p>
+
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+
+
 
 <table>
 <thead>
@@ -203,12 +207,12 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 4. **Pruebas de Calidad**: A través de **Mockito** y **JUnit** para mantener la integridad del código.
 
 ## ⚙️  **Qa - Teting**
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/QA-TESTING-SINFONDO.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
 </p>
 
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 
 
 <table>
@@ -251,13 +255,12 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 ---
 
 ## ⚙️  **UX-UI**
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/5705f887459f760a45fba171f0a7a89913b54a4a/PM/ux-ui%20sin%20fondo.png" alt="Logo" width="100" height="100">
+  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" >
 </p>
 
-
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 
 <table>
 <thead>
@@ -299,7 +302,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 ---
 
 
-<h1 align="center" style="color: #007bff;">Project Manager - Tecnologías Utilizadas</h1>
+<h1 align="center" style="color: #007bff;">Project Manager </h1>
 
 <p align="center">
   <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
