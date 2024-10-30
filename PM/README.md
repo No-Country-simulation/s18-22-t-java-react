@@ -1,5 +1,32 @@
-## Ejemplo
-# Policonsultorio - Gestión de Consultas Médicas
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p>
+
+<h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
+
+<div align="center">
+  <p>
+  ## 🎥 Vista Previa del Proyecto
+
+![Vista Previa del Video](ruta/del-video.gif)
+   Medilink es ......
+  </p>
+</div>
+
+<br>
+
+<h1 align="center"style="color: #007bff;">¿POR QUÉ MEDILINK? </h1>
+
+<div align="center">
+  <p>Porque ofrece ...... .</p>
+  <p>Porque puedes .... ,  </p>
+  <p>Porque es ..... .</p>
+  <p>Porque puedes ...... .</p>
+</div>
+
+<br>
+30 de octubre de 2024
+
 
 ![Policonsultorio Logo](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/9beb8978dc834dcec1bb1ccfff520c813ac69a77/PM/logopeque%C3%B1o.png)
 
@@ -33,6 +60,10 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 
 
 ## ⚙️  **Backend - Tecnologías Utilizadas**
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p> 
+
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
 <table>
 <thead>
@@ -41,7 +72,9 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 </th>
 <th align="center"><img src="https://avatars.githubusercontent.com/u/90513356?v=4&size=64" style="width: 120px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 120px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/91570972?v=4" style="width: 120px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/69874820?v=4" style="width: 120px;">
 </th>
 </tr>
 </thead>
@@ -49,14 +82,18 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 <tr>
 <td align="center"><strong>Leo Amaya </strong></td>
 <td align="center"><strong>Lionel Staricoff </strong></td>
-<td align="center"><strong>William Sanchez</strong></td>
+<td align="center"><strong>Antonio Parra</strong></td>
+<td align="center"><strong>Marcos Paz </strong></td>
 </tr>
 <tr>
 <td align="center"><a href="https://github.com/Leonel-Amaya"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/Leonel-Amaya" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 <td align="center"><a href="https://github.com/LionelStaricoff"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lionel-staricoff" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
 proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
 <td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/john-william-sanchez/?originalSubdomain=co" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/marcosep192000"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/marcos-paz-goncheff/?originalSubdomain=co" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
@@ -80,6 +117,42 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 ## 🎨 **Frontend - Tecnologías Utilizadas**
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/57498171?v=4" width="50" style="width: 120px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/126597413?v=4" style="width: 120px;">
+</th>
+
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Lazaro Nazareno </strong></td>
+<td align="center"><strong>william sanchez  </strong></td>
+
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/lazaronazareno"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lazaro-vega-sanchez" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/jwilliam96" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
+proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
 
 
 
@@ -120,9 +193,161 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 3. **Despliegue en la Nube**: Implementado en **Railway** para alta disponibilidad.
 4. **Pruebas de Calidad**: A través de **Mockito** y **JUnit** para mantener la integridad del código.
 
+## ⚙️  **Qa - Teting**
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p>
+
+
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/170377279?v=4" width="50" style="width: 120px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/146945311?v=4" style="width: 120px;">
+</th>
+<th align="center"><img src="https://ca.slack-edge.com/T02KS88FB0E-U07GJ2T78SH-64ff594b3f46-512" style="width: 120px;">
+</th>
+
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Jeniree Suarez </strong></td>
+<td align="center"><strong>Priscila Dafne </strong></td>
+<td align="center"><strong>Darlyn Ramírez </strong></td>
+
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/Jenisuarez"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/Leonel-Amaya" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/dafnepriscilaewens"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/dafne-priscila-ewens/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
+proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/Darlynva"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/darlyn-vanessa-ram%C3%ADrez-mosquera-1a23481bb/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+
+---
+
+## ⚙️  **UX-UI**
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p>
+
+
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/179177172?v=4" width="50" style="width: 120px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/150383007?v=4" style="width: 120px;">
+</th>
+<th align="center"><img src="https://avatars.githubusercontent.com/u/137012654?v=4" style="width: 120px;">
+</th>
+
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Micaela Santana</strong></td>
+<td align="center"><strong>Camila Eberwein</strong></td>
+<td align="center"><strong>Nadia Maure</strong></td>
+
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/micusan"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/micaela-santana-84b8861aa/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/Cami-e"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/camila-eber/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
+proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+<td align="center"><a href="https://github.com/Nadmaure"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nadia-maure/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+
+
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+
 ---
 
 
+<h1 align="center" style="color: #007bff;">Project Manager - Tecnologías Utilizadas</h1>
+
+<p align="center">
+  <img src="ruta/del/logo.png" alt="Logo" width="100" height="100">
+</p>
+
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+
+
+
+<div align="center">
+
+  <table>
+    <thead>
+      <tr>
+        <th align="center">
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="width: 120px;">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center"><strong>Jhonatan Remon</strong></td>
+      </tr>
+      <tr>
+        <td align="center">
+          <a href="https://github.com/Jhone-fori-freelancer">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%;">
+          </a>
+          <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+<h2 align="center" style="color:#007bff">🚀 Project Manager - Herramientas Utilizadas</h2>
+
+Para el rol de **Project Manager**, se han utilizado diversas herramientas que facilitan la gestión del proyecto, la comunicación y la colaboración entre los miembros del equipo. A continuación, se presentan las herramientas clave:
+
+---
+
+<p align="center">
+  <strong style="color:#007bff">ClickUp</strong> - Herramienta de gestión de tareas para planificación ágil y control del flujo de trabajo.<br>
+  <strong style="color:#007bff">Git (Control de Versiones)</strong> - Permite el seguimiento de cambios en el código y la colaboración efectiva.<br>
+  <strong style="color:#007bff">README</strong> - Documentación clara y accesible de cada sección del proyecto.<br>
+  <strong style="color:#007bff">Discord</strong> - Canal de comunicación en tiempo real para coordinar tareas y resolver dudas.<br>
+  <strong style="color:#007bff">Google Drive</strong> - Almacenamiento y compartición de documentos del proyecto de forma segura y centralizada.
+</p>
+
+---
+
+Estas herramientas permiten al **Project Manager** gestionar el cronograma, controlar los cambios en el código, documentar cada aspecto del proyecto y mantener una comunicación fluida entre todos los miembros del equipo, asegurando el éxito del proyecto en cada fase.
 
 
 
@@ -133,11 +358,7 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 
 
-- **Base de Datos**: Msql
-- **UX - UI**:Figma , Miro, A.ilustrator
-- **Autenticación**: JSON Web Tokens (JWT)
-- **Plataforma de Despliegue**: vercel / 
-- **QA TESTING**: Jest y Cypress para pruebas unitarias y de integración
+
 
 ### Requisitos del Sistema
 
@@ -146,10 +367,26 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 - **Git** para el control de versiones
 - **Cuenta de Heroku o AWS** (para el despliegue en la nube)
 
-### Instalación y Configuración
+<h2 align="center">💻 Instalación y Configuración</h2>
 
-#### 1. Clonar el Repositorio
+Para comenzar con el proyecto, sigue estos pasos de instalación. Asegúrate de tener **Visual Studio Code** o tu editor de código preferido instalado.
+
+---
+
+<h3 align="center">Paso 1: Clonar el Repositorio</h3>
+
+<p align="center">
+Copia el siguiente comando y pégalo en tu terminal para clonar el repositorio a tu máquina local:
+</p>
 
 ```bash
+git clone https://github.com/usuario/nombre-del-repositorio.git
 git clone https://github.com/usuario/policonsultorio.git
 cd policonsultorio
+
+<h2 align="center" style="color: #007bff;">📂 Paso 2: Navegar a la Carpeta del Proyecto</h2>
+
+<p align="center">Una vez clonado el repositorio, navega a la carpeta del proyecto con el siguiente comando:</p>
+
+```bash
+cd nombre-del-repositorio
