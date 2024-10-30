@@ -3,6 +3,8 @@ import { getAppointmentByDoctor } from "@/actions/appointment-action";
 import { AppointmentWithPatient } from "@/interfaces/appointment";
 import { CalendarDoctor } from "@/components";
 
+export const revalidate = 0
+
 export default async function CalendarDoctorPage() {
     const userCookie = cookies().get('user');
     const user = userCookie ? JSON.parse(userCookie.value) : {};

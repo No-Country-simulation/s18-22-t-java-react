@@ -108,7 +108,10 @@ export const editDoctor = async (
     img: imgFromForm,
     password: doctor.password,
     licenseNumber: doctor.licenseNumber,
-    id: doctor.id,
+    dni: doctor.dni,
+    active: doctor.active,
+    obraSocial: doctor.obraSocial,
+    numeroAsociado: doctor.numeroAsociado,
   }
 
   try {
@@ -121,7 +124,6 @@ export const editDoctor = async (
     })
 
     const responseData = await response.json()
-    console.log(responseData)
 
     if (!responseData) {
       return {

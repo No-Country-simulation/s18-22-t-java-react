@@ -63,8 +63,8 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
               </div>
 
               <div className="flex flex-col text-xl">
-                <span><span className="font-medium">Obra Social:</span> {patient.obraSocial}</span>
-                <span><span className="font-medium">Numero de asociado:</span>  {patient.numeroAsociado}</span>
+                <span><span className="font-medium">Obra Social:</span> {patient.social_work}</span>
+                <span><span className="font-medium">Numero de asociado:</span>  {patient.number_associate}</span>
               </div>
 
               <ButtonComponent size={'large'} variant={'mainLight'} text={'Historial clinico'} className="font-medium mt-4 border-blue-500 text-blue-500" />

@@ -4,6 +4,8 @@ import { AppointmentFromResponse, AppointmentWithDoctor } from "@/interfaces/app
 import { PatientFromResponse } from "@/interfaces/user";
 import { AppointmentDetails } from "@/ui";
 
+export const revalidate = 0
+
 export default async function DoctorAppointmentPage({ params }: { params: { id: string } }) {
   const appointment: AppointmentFromResponse = await getAppointmentById(params.id)
   const patient: PatientFromResponse = await fetchPatient(appointment.id_patient)

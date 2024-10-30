@@ -66,6 +66,8 @@ export interface PatientFromResponse {
   dni?: string
   obraSocial?: string
   numeroAsociado?: string
+  social_work?: string
+  number_associate?: string
 }
 
 export interface PatientByIdFromResponse {
