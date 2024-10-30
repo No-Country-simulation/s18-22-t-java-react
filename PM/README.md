@@ -1,4 +1,12 @@
 
+<div align="center">
+
+| ![Icono](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/64e7e3e64aee0967b8212458c5bc9682c4918d5f/PM/ISOTIPO.png) |
+ <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/64e7e3e64aee0967b8212458c5bc9682c4918d5f/PM/logo001.png" width="120"> |
+|------------------------------------------|---------------------------------------------|
+
+</div>
+
 
 <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100" style="float: left; margin-right: 10px;">
 
@@ -40,7 +48,7 @@
 </div>
 
 <br>
-30 de octubre de 2024
+
 
 ## Índice
 1. [Descripción del Proyecto](#descripción-del-proyecto)
@@ -320,7 +328,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
     <thead>
       <tr>
         <th align="center">
-          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="display: block; margin: 0 auto; width: 120px;"> 
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="width: 120px;">
         </th>
       </tr>
     </thead>
@@ -331,10 +339,10 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
       <tr>
         <td align="center">
           <a href="https://github.com/Jhone-fori-freelancer">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%; display: inline-block; margin-right: 10px;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%;">
           </a>
           <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%; display: inline-block;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;">
           </a>
         </td>
       </tr>
