@@ -93,9 +93,14 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 
     Page<AppointmentEntity> findByDoctor(Doctor doctor, PageRequest id);
 
-    @Query("SELECT a FROM AppointmentEntity a WHERE a.status = :status AND a.endTime < :endTime")
-    List<AppointmentEntity> findByStatusAndEndTimeBefore(@Param("status") AppointmentStatus status,
-                                                         @Param("endTime") LocalTime endTime);
+    @Query("SELECT a FROM AppointmentEntity a " +
+            "WHERE a.status = :status " +
+            "AND TIMESTAMP(CONCAT(a.date, ' ', a.startTime)) < :endTime")
+    List<AppointmentEntity> findByStatusAndDateTimeBeforeWithGrace(
+            @Param("status") AppointmentStatus status,
+            @Param("endTime") LocalDateTime endTime
+    );
+
 
 
 
@@ -103,8 +108,12 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
     @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
             "FROM AppointmentEntity a " +
             "WHERE a.patient = :patient " +
-            "AND a.status = :status")
-    boolean existsByPatientAndStatus(@Param("patient") Patient patient, @Param("status") AppointmentStatus status);
+            "AND a.status = :status " +
+            "AND a.doctor = :doctor")
+    boolean existsByPatientAndDoctorAndStatus(@Param("patient") Patient patient,
+                                              @Param("doctor") Doctor doctor,
+                                              @Param("status") AppointmentStatus status);
+
 
 
 }

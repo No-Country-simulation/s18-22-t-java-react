@@ -150,8 +150,8 @@ public class AppointmentController {
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
     })
-    public ResponseEntity<AppointmentResponseDto> getAppointment(@PathVariable("id") int id) {
-        AppointmentResponseDto responseDto = appointmentService.getAppointment(id);
+    public ResponseEntity<AppointmentResponseIdDto> getAppointment(@PathVariable("id") int id) {
+        AppointmentResponseIdDto responseDto = appointmentService.getAppointment(id);
         return ResponseEntity.ok(responseDto);
     }
 

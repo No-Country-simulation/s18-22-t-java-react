@@ -11,10 +11,14 @@ import policonsultorio.demo.dto.appointment.*;
 import policonsultorio.demo.entity.AppointmentEntity;
 import policonsultorio.demo.entity.Doctor;
 import policonsultorio.demo.entity.Patient;
+import policonsultorio.demo.entity.WaitingQueue;
+import policonsultorio.demo.enums.QueueStatus;
 import policonsultorio.demo.repository.AppointmentRepository;
 import policonsultorio.demo.repository.DoctorRepository;
 import policonsultorio.demo.repository.PatientRepository;
+import policonsultorio.demo.repository.WaitingQueueRepository;
 import policonsultorio.demo.service.AppointmentService;
+import policonsultorio.demo.service.IWaitingQueue;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
 import policonsultorio.demo.util.exception.appointment.*;
@@ -33,6 +37,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
+    private final IWaitingQueue waitingQueueService;
+    private final WaitingQueueRepository waitingQueueRepository;
+    private final AppointmentMapper appointmentMapper;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
 
@@ -56,13 +63,15 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new PatientNotActiveException("Patient not active");
         }*/
 
-        // Verificar si el paciente ya tiene una cita programada pendiente con cualquier especialista
-        boolean patientHasPendingAppointment = appointmentRepository.existsByPatientAndStatus(
-                patient, AppointmentStatus.PROGRAMADA);
 
-        if (patientHasPendingAppointment) {
-            throw new AppointmentAlreadyBookedException("You already have a pending appointment. Please complete or cancel the current appointment before booking a new one.");
+        //verificar si el paciente ya tiene una cita pendiente con este doctor
+        boolean patientHasPendingAppointmentWithDoctor = appointmentRepository.existsByPatientAndDoctorAndStatus(
+                patient, doctor, AppointmentStatus.PROGRAMADA);
+
+        if (patientHasPendingAppointmentWithDoctor) {
+            throw new AppointmentAlreadyBookedException("You already have a pending appointment with this doctor. Please complete or cancel the current appointment before booking a new one.");
         }
+
 
         //verificar si el paciente ya tiene una cita con este doctor
         boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
@@ -196,6 +205,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setStatus(AppointmentStatus.CANCELADA);
         appointment = appointmentRepository.save(appointment);
 
+        //Llama a la funcionalidad de reasignar cita
+        reassignedAppointment(appointment);
+
         return AppointmentMapper.toDto(appointment);
     }
 
@@ -301,9 +313,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public AppointmentResponseDto getAppointment(int id) {
+    public AppointmentResponseIdDto getAppointment(int id) {
         AppointmentEntity appointment = findAppointmentById(id);
-        return AppointmentMapper.toDto(appointment);
+        return appointmentMapper.toDtoId(appointment);
     }
 
     @Override
@@ -406,30 +418,59 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-    @Scheduled(cron = "0 0/30 * * * *") // Ejecutar cada 30 minutos
+    @Scheduled(cron = "0 */5 * * * *") // Ejecutar cada 5 minutos para mayor precisión
     public void markNoShowAppointments() {
-        LocalTime now = LocalTime.now();
+        LocalDateTime now = LocalDateTime.now();
 
-        // Ajustar el margen de gracia, por ejemplo 15 minutos después de la hora de fin
-        LocalTime graceTime = now.minusMinutes(15);
+        LocalDateTime graceTimeEnd = now.minusMinutes(15);
 
-        List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndEndTimeBefore(AppointmentStatus.PROGRAMADA, graceTime);
+        List<AppointmentEntity> appointments = appointmentRepository.findByStatusAndDateTimeBeforeWithGrace(
+                AppointmentStatus.PROGRAMADA,
+                graceTimeEnd
+        );
 
         for (AppointmentEntity appointment : appointments) {
-            // Marcar la cita como "NO_ASISTIO" si no ha sido confirmada manualmente como ASISTIO
-            appointment.setStatus(AppointmentStatus.NO_ASISTIO);
-            appointmentRepository.save(appointment);
+            // Solo marcar como NO_ASISTIO si aún está PROGRAMADA
+            if (appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
+                appointment.setStatus(AppointmentStatus.NO_ASISTIO);
+                appointmentRepository.save(appointment);
+            }
         }
     }
+
 
 
     @Transactional
     public AppointmentResponseDto markAppointmentAsAttended(int id) {
         AppointmentEntity appointment = findAppointmentById(id);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
 
-        if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO || appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
-            appointment.setStatus(AppointmentStatus.ASISTIO);
-            appointment = appointmentRepository.save(appointment);
+        if (now.isBefore(appointmentDateTime)) {
+            throw new IllegalStateException("No se puede marcar como asistida una cita antes de su hora programada");
+        }
+
+        if (appointment.getStatus() == AppointmentStatus.PROGRAMADA) {
+
+            LocalDateTime endTimeWithGrace = LocalDateTime.of(
+                    appointment.getDate(),
+                    appointment.getEndTime().plusMinutes(15)
+            );
+
+            if (now.isBefore(endTimeWithGrace)) {
+                appointment.setStatus(AppointmentStatus.ASISTIO);
+                appointment = appointmentRepository.save(appointment);
+            } else {
+                throw new IllegalStateException("La cita ya ha expirado y no puede marcarse como asistida");
+            }
+        } else if (appointment.getStatus() == AppointmentStatus.NO_ASISTIO) {
+            // Permitir cambiar de NO_ASISTIO a ASISTIO solo dentro del mismo día
+            if (appointment.getDate().isEqual(LocalDate.now())) {
+                appointment.setStatus(AppointmentStatus.ASISTIO);
+                appointment = appointmentRepository.save(appointment);
+            } else {
+                throw new IllegalStateException("No se puede marcar como asistida una cita de un día anterior");
+            }
         }
 
         return AppointmentMapper.toDto(appointment);
@@ -440,7 +481,25 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found"));
     }
 
+    @Transactional
+    protected void reassignedAppointment(AppointmentEntity appointment){
+        WaitingQueue nextPatient = waitingQueueService.getWaitingQueue(appointment);
 
+        if (nextPatient != null) {
+            AppointmentRequestDto reassignedAppointment = new AppointmentRequestDto(
+                    Math.toIntExact(appointment.getDoctor().getId()),
+                    Math.toIntExact(nextPatient.getPatient().getUser().getId()),
+                    appointment.getDate(),
+                    appointment.getStartTime(),
+                    AppointmentStatus.PROGRAMADA
+            );
+
+            createAppointment(reassignedAppointment);
+
+            nextPatient.setStatus(QueueStatus.ASSIGNED);
+            waitingQueueRepository.save(nextPatient);
+        }
+    }
 
 
 }

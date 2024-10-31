@@ -1,5 +1,6 @@
 package policonsultorio.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Authorizarion {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnore
     private User userId;
     @Column(name = "jwt", nullable = false)
     private String jwt;
