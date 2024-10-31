@@ -18,7 +18,6 @@
   ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 </div>
 
-   Medilink es ......
   </p>
 </div>
 
@@ -31,10 +30,13 @@
 <h1 align="center"style="color: #007bff;">¿POR QUÉ MEDILINK? </h1>
 
 <div align="center">
-  <p>Porque ofrece ...... .</p>
-  <p>Porque puedes .... ,  </p>
-  <p>Porque es ..... .</p>
-  <p>Porque puedes ...... .</p>
+  <p>Porque ofrece una plataforma que facilita la comunicación y gestión entre profesionales de la salud y pacientes, centralizando múltiples especialidades médicas y establecimientos en un solo lugar. Responde, además, a las necesidades de los usuarios, que en otras plataformas son desatendidas.</p>
+
+
+  <p>Porque puedes como paciente tener recordatorios de tus citas médicas, anotarte en listas de espera, obtener notificaciones a modo de aviso para saber qué consultas médicas realizar, entre otras funciones pensadas en función de las necesidades del usuario.</p>
+
+  <p>Por otro lado, como profesional de la salud puedes tener de forma centralizada la agenda completa, que se actualiza de acuerdo a las modificaciones realizadas.</p>
+
 </div>
 
 <br>
