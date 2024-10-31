@@ -49,6 +49,7 @@ class EmailControllerTest {
         ResponseEntity<String> result = testRestTemplate.exchange("/api/v1/email/sendMessage", HttpMethod.POST, request, String.class);
         System.out.println("result = " + result);
 
+
         assertAll(
                 () -> assertEquals(HttpStatus.OK, result.getStatusCode()),
                 () -> assertEquals("Email sent successfully", result.getBody())
