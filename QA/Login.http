@@ -1,0 +1,8 @@
+### Login
+POST https://clinica-medica-production.up.railway.app/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "dafneewens@gmail.com",
+  "password": "45678"
+}

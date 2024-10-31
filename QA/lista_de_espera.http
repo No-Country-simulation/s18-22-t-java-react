@@ -1,0 +1,14 @@
+### Control lista de espera  https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/waiting-list/create
+Content-Type: application/json
+
+{
+  "id_patient": 43,
+  "id_doctor": 24,
+  "requested_date": "2024-10-28"
+}
+
+### Buscar lista de espera por id 
+GET https://clinica-medica-production.up.railway.app/api/v1/waiting-list/getList/1
+
+

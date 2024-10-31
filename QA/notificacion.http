@@ -1,0 +1,9 @@
+### Enviar notificacion
+POST https://clinica-medica-production.up.railway.app/api/v1/email/sendMessage
+Content-Type: application/json
+
+{
+  "toUser": "priscilaewens@gmail.com",
+  "subject": "hola",
+  "message": "su turno ha sido cancelado"
+}

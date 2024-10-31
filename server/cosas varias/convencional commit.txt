@@ -1,0 +1,15 @@
+  feat: Añadir una nueva funcionalidad.
+    fix: Corregir un error o bug.
+    docs: Cambios en la documentación.
+    style: Cambios que no afectan la lógica (formato, espaciado, etc.).
+    refactor: Cambios en el código que no agregan funcionalidad ni corrigen errores.
+    test: Añadir o modificar tests.
+    chore: Tareas de mantenimiento (actualización de dependencias, etc.).
+    perf: Cambios que mejoran el rendimiento.
+    build: Cambios en el sistema de compilación o dependencias externas.
+
+Ejemplos:
+
+    feat: add login functionality
+    fix(auth): resolve login error on mobile devices
+    docs: update API documentation
