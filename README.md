@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/develop/PM/logo001.png?token=GHSAT0AAAAAACWOUESVGX4QSN3XPM52SG26ZZD6Y7A" >
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/develop/PM/logo001.png?token=GHSAT0AAAAAACWOUESUCVEDRNCTD7BLIFX4ZZD7RYA"
 </p>
 
 <h1 align="center" style="color: #007bff;">- Gestión de Consultas Médicas</h1>
