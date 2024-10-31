@@ -6,7 +6,7 @@
   <img src="https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/develop/PM/logo001.png?token=GHSAT0AAAAAACWOUESVGX4QSN3XPM52SG26ZZD6Y7A" >
 </p>
 
-<h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
+<h1 align="center" style="color: #007bff;">- Gestión de Consultas Médicas</h1>
 
 <div align="center">
   
@@ -136,7 +136,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/aea6ea5655fb5bba8f4bd7154f1309c5a1d87263/PM/FRONT%20END%20TECNOLOGIAS.png)
+![Tecnologías utilizadas](https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/PM/PM/FRONTEND-PNG.png?token=GHSAT0AAAAAACWOUESUBTCGCZEJDLKXTK6KZZD7NDA)
 
 El frontend de **Policonsultorio** está diseñado para ser **rápido**, **escalable** y **responsivo**, garantizando una experiencia de usuario fluida y agradable en todos los dispositivos. Gracias a un stack de tecnologías modernas, hemos logrado una interfaz intuitiva y de alto rendimiento que se adapta a las necesidades tanto de profesionales de la salud como del personal administrativo.
 
