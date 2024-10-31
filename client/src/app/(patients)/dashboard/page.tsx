@@ -1,7 +1,7 @@
 import { getAllProgramedAppointments } from "@/actions/appointment-action";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
-import { DoctorCard } from "@/ui";
 import { cookies } from 'next/headers'
+import { DoctorCard } from "@/ui";
 
 export const revalidate = 0
 

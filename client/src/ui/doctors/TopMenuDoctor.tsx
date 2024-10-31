@@ -14,7 +14,7 @@ export function TopMenuDoctor({ user }: { user: DoctorFromResponse }) {
         <div className="py-8">
             <nav className="flex justify-between items-center px-20 mx-auto text-[#004784]">
                 <Link href={"/doctor/calendar"} className="text-3xl font-semibold" >
-                    <Image src={Logo} alt="logo" width={250} height={50} />
+                    <Image src={Logo} alt="logo" width={250} height={50} priority />
                 </Link>
                 <div>
                     <ul className="flex gap-8 items-center">
