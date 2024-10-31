@@ -20,6 +20,7 @@ import org.springframework.util.Assert;
 import policonsultorio.demo.controller.UserController;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.entity.User;
+import policonsultorio.demo.enums.Roles;
 import policonsultorio.demo.service.Doctor.IDoctorService;
 import policonsultorio.demo.service.UserService;
 
@@ -55,7 +56,7 @@ public class TestUserController {
 
     @Test
     public void testCrearUsuario() throws Exception {
-        LoginRequestDTO user = new LoginRequestDTO(null, "alex15", "1234","12354789","pasteur","123654jdjd" ,"algon@gmai.com", "32536987", null,null);
+        LoginRequestDTO user = new LoginRequestDTO(null, "alex15", "1234","12354789","pasteur","123654jdjd" ,"algon@gmai.com", "32536987", null,null, Roles.PATIENT);
 
         // User user = new User(alex);
         when(userService.register(any(LoginRequestDTO.class))).thenReturn(user);

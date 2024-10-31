@@ -9,6 +9,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Rollback;
 import policonsultorio.demo.dto.LoginRequestDTO;
 import policonsultorio.demo.entity.User;
+import policonsultorio.demo.enums.Roles;
 import policonsultorio.demo.service.UserService;
 
 
@@ -26,7 +27,7 @@ class ClinicaApplicationTests {
     @Rollback(value = false)
     public void createUserTest() throws Exception {
 
-            LoginRequestDTO alex = new LoginRequestDTO(null, "alex15", "1234","12354789","pasteur","123654jdjd" ,"algon@gmai.com", "32536987", null,null);
+            LoginRequestDTO alex = new LoginRequestDTO(null, "alex15", "1234","12354789","pasteur","123654jdjd" ,"algon@gmai.com", "32536987", null,null, Roles.PATIENT);
 
             LoginRequestDTO userCreated = userService.register(alex);
 
