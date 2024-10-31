@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/60435dc67255a35217d966ec5cd0d9cdd1e581e1/PM/logo001.png" 
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/develop/PM/logo001.png?token=GHSAT0AAAAAACWOUESVGX4QSN3XPM52SG26ZZD6Y7A" >
 </p>
 
 <h1 align="center" style="color: #007bff;">Policonsultorio - Gestión de Consultas Médicas</h1>
