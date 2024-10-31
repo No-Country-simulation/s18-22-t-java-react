@@ -14,6 +14,7 @@ import {
 import { IconX } from "../icons"
 import { RescheduleAppointment } from "@/interfaces/appointment"
 import { format } from 'date-fns';
+import { useState } from "react"
 
 interface Props {
     openDialog: boolean
@@ -28,6 +29,7 @@ interface Props {
 
 export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formattedDate, doctor, patientId, reschedule, appointmentId }: Props) => {
     console.log(hour, formattedDate)
+    const [error, setError] = useState<string | null>(null);
 
 
     const appointmentCreate = async () => {
@@ -44,12 +46,15 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                 console.log(response);
 
                 if (response && response.error) {
-                    alert(response.error);
+                    setError(response.error);
+                    setTimeout(() => {
+                        setError(null);
+                    }, 7000);
                 }
                 setOpenDialog(false);
             } catch (error) {
                 console.error("Failed to reschedule appointment:", error);
-                alert("Failed to reschedule appointment. Please try again.");
+                setError("Error al reprogramar la cita. Por favor, intente nuevamente.");
             }
 
         } else {
@@ -60,13 +65,15 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                 console.log(response);
 
                 if (response && response.error) {
-                    alert(response.error);
+                    setError(response.error);
+                    setTimeout(() => {
+                        setError(null);
+                    }, 7000);
                 }
                 setOpenDialog(false);
             } catch (error) {
-                // Handle error (e.g., show an error message)
                 console.error("Failed to create appointment:", error);
-                alert("Failed to create appointment. Please try again.");
+                setError("Error al crear la cita. Por favor, intente nuevamente.");
             }
         }
     }
@@ -100,6 +107,14 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+            {error && (
+                <div className="absolute top-28 right-24 w-64 rounded-xl px-4 py-6 shadow-2xl">
+                    <h4 className="font-semibold text-[22px] pb-4 border-b-2 border-[#B9B7B7]">Notificaciones</h4>
+                    <p className="pt-4">
+                        {error}
+                    </p>
+                </div>
+            )}
         </>
     )
 }

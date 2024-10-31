@@ -95,9 +95,12 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
       />
       {loading && <div className="loading-indicator">Cargando...</div>}
       {error && (
-        <p className="bg-blue-500 text-white p-4 absolute top-28 right-24 w-64 rounded-xl rounded-tr-none">
-          {error}
-        </p>
+        <div className="absolute top-28 right-24 w-64 rounded-xl px-4 py-6 shadow-2xl">
+          <h4 className="font-semibold text-[22px] pb-4 border-b-2 border-[#B9B7B7]">Notificaciones</h4>
+          <p className="pt-4">
+            {error}
+          </p>
+        </div>
       )}
     </>
 

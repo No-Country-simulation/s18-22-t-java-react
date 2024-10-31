@@ -37,10 +37,19 @@ export const createAppointment = async ({
   console.log('create appointment data', data)
 
   if (data.error) {
-    const error = 'error al crear la cita ' + data.error + ': ' + data.message
-    console.log(error)
-    return {
-      error: error,
+    if (data.error === 'Appointment already booked') {
+      const error =
+        'error al crear la cita, cita ya reservada: ya tienes una cita pendiente con este médico. Por favor, completa o cancela la cita actual antes de reservar una nueva. '
+      console.log(error)
+      return {
+        error: error,
+      }
+    } else {
+      const error = 'error al crear la cita ' + data.error + ': ' + data.message
+      console.log(error)
+      return {
+        error: error,
+      }
     }
   }
 
