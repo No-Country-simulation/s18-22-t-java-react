@@ -32,4 +32,5 @@ public class DoctorRequest {
 	private Boolean active = true;
 	private String specialization;
 	private String licenseNumber;
+	private Long clinic_id;
 }

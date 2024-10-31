@@ -1,8 +1,12 @@
 package policonsultorio.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import policonsultorio.demo.dto.clinic.ResponseClinic;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Clinic")
 @Table(name = "clinic")
@@ -32,7 +36,9 @@ public class Clinic {
     private String vlinicImage;
     @Column(name = "active", nullable = false)
     private Boolean active = true;
-
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Doctor> doctors = new ArrayList<>();
 
     public Clinic(ResponseClinic responseClinic) {
         this.name = responseClinic.name();
