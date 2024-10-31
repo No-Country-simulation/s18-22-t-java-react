@@ -56,18 +56,28 @@ export function CalendarDoctor({ user_id }: Props) {
                 <div className="mt-8">
                     {
                         loading ? (
-                            appointments?.map((item, index) => (
-                                <div key={index} className="p-7 flex justify-between items-center shadow-5xl rounded-xl mb-4">
-                                    <div className="font-bold">
-                                        <h3><span className="text-blue-800">{item.startTime}</span> {item.patient.name}</h3>
-                                        <p className="font-normal">Clínica Pueyrredón - Jujuy 2176</p>
+                            <>
+                                {appointments?.length === 0 ? (
+                                    <div className="p-7 flex justify-between items-center shadow-5xl rounded-xl mb-4">
+                                        <p>No tiene pacientes programados para el dia de hoy</p>
                                     </div>
-                                    <div className="flex items-center gap-6">
-                                        <span>Historia clínica</span>
-                                        <Link href={'/doctor/appointment/' + item.id} className="flex items-center text-secondaryBlue-400 font-bold">Más información <SvgChevronNew /></Link>
-                                    </div>
-                                </div>
-                            ))
+                                ) : (
+                                    <>
+                                        {appointments?.sort((a, b) => a.startTime.localeCompare(b.startTime)).map((item, index) => (
+                                            <div key={index} className="p-7 flex justify-between items-center shadow-5xl rounded-xl mb-4">
+                                                <div className="font-bold">
+                                                    <h3><span className="text-blue-800">{item.startTime.slice(0, -3)}</span> {item.patient.name}</h3>
+                                                    <p className="font-normal">Clínica Pueyrredón - Jujuy 2176</p>
+                                                </div>
+                                                <div className="flex items-center gap-6">
+                                                    <span>Historia clínica</span>
+                                                    <Link href={'/doctor/appointment/' + item.id} className="flex items-center text-secondaryBlue-400 font-bold">Más información <SvgChevronNew /></Link>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                            </>
                         ) : (
                             Array.from({ length: 3 }).map((item, index) => (
                                 <SkeletonDoctorPatients key={index} />
