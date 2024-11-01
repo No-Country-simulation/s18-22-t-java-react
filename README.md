@@ -28,26 +28,25 @@
 
 
 <p style="color: #007bff; font-weight: bold; font-size: 24px;">
+
     🎥 Vista Previa del Proyecto
   </p>
   
   ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 </div>
 
-### Características Principales
+  </p>
+</div>
+
+  ### Características Principales
 
 - **Gestión de Citas**: Permite agendar, modificar y cancelar citas de manera sencilla.
 - **Control de Pacientes**: Registra datos personales y médicos de cada paciente.
 - **Historial Médico**: Almacena un registro detallado de los antecedentes y tratamientos médicos.
 - **Reportes Médicos**: Genera informes de citas, historial médico y visitas.
 - **Módulo de Facturación**: Integra facturación para servicios médicos y cobros de consulta.
-
-
-  </p>
-</div>
-
 <br>
-<h1 align="center"style="color: #007bff;">¿Descripción del Proyecto? </h1>
+<h1 align="center"style="color: #007bff;">¿Porque Medilink? </h1>
 
 <div align="center">
   <p>Porque ofrece una plataforma que facilita la comunicación y gestión entre profesionales de la salud y pacientes, centralizando múltiples especialidades médicas y establecimientos en un solo lugar. Responde, además, a las necesidades de los usuarios, que en otras plataformas son desatendidas.</p>
@@ -354,8 +353,11 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 
 
 <div align="center">
-  <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120">
-</div>
+  <table>
+    <thead>
+      <tr>
+        <th align="center">
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120">
         </th>
       </tr>
     </thead>
@@ -366,17 +368,17 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
       <tr>
         <td align="center">
           <a href="https://github.com/Jhone-fori-freelancer">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 50%;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" width="30">
           </a>
           <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: %;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" width="30">
           </a>
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>
+
 
 
 
