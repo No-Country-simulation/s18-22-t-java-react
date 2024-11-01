@@ -1,7 +1,5 @@
 
 
-
-
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/67a5029a2d0f33247f9fb98e9d75b47af3baf8a1/PM/logo001.png"
 </p>
@@ -112,7 +110,7 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
 <tr>
 <td align="center"><a href="https://github.com/Leonel-Amaya"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/Leonel-Amaya" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
-<td align="center"><a href="https://github.com/LionelStaricoff"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lionel-staricoff" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
+<td align="center"><a href="https://github.com/LionelStaricoff"><img src=615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lionel-staricoff/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
 proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 <td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/john-william-sanchez/?originalSubdomain=co" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
@@ -125,11 +123,6 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <table>
 <thead>
 <tr>
-
-
-
-
-
 
 
 ## 🎨 **Frontend - Tecnologías Utilizadas**
@@ -245,7 +238,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 </tr>
 <tr>
-<td align="center"><a href="https://github.com/Jenisuarez"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/Leonel-Amaya" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/Jenisuarez"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/jenireesuarez/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 <td align="center"><a href="https://github.com/dafnepriscilaewens"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/dafne-priscila-ewens/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
 proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
@@ -318,7 +311,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </p>
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e948aee114a173f38bea735ae1d5815170529b03/PM/PM.png)
-<h2 align="center" style="color:#007bff">🚀 Project Manager - Herramientas Utilizadas</h2>
+<h2 align="center" style="color:#007bff">🚀 Project Manager - Tecnologias Utilizadas</h2>
 
 Para el rol de **Project Manager**, se han utilizado diversas herramientas que facilitan la gestión del proyecto, la comunicación y la colaboración entre los miembros del equipo. A continuación, se presentan las herramientas clave:
 
@@ -339,12 +332,8 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 
 
 <div align="center">
-
-  <table>
-    <thead>
-      <tr>
-        <th align="center">
-          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120" style="width: 120px;">
+  <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120">
+</div>
         </th>
       </tr>
     </thead>
