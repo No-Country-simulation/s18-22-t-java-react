@@ -1,5 +1,7 @@
 
 
+
+
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/67a5029a2d0f33247f9fb98e9d75b47af3baf8a1/PM/logo001.png"
 </p>
@@ -8,7 +10,23 @@
 
 <div align="center">
   
- 
+ <h3 align="center">Descripción del Proyecto</h3>
+
+  <p align="center">
+    Policonsultorio es una aplicación de gestión de clínicas y consultorios médicos diseñada para optimizar la administración de citas, historiales médicos y la gestión de pacientes. Este sistema permite a los profesionales de la salud y a los administradores de clínicas agilizar sus tareas diarias de forma eficiente.
+    <br />
+    <a href="https://github.com/No-Country-simulation/s18-22-t-java-react"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://policonsultorio.vercel.app/">View Demo</a>
+    ·
+    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/">Reporte de Errores</a>
+    ·
+    <a href="https://www.figma.com/design/p1lPIXy4s8uSQcLMWmCEw7/Policonsultorios-MVP?node-id=216-25">UX-UI</a>
+  </p>
+</div>
+
+
 <p style="color: #007bff; font-weight: bold; font-size: 24px;">
     🎥 Vista Previa del Proyecto
   </p>
@@ -16,16 +34,20 @@
   ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 </div>
 
+### Características Principales
+
+- **Gestión de Citas**: Permite agendar, modificar y cancelar citas de manera sencilla.
+- **Control de Pacientes**: Registra datos personales y médicos de cada paciente.
+- **Historial Médico**: Almacena un registro detallado de los antecedentes y tratamientos médicos.
+- **Reportes Médicos**: Genera informes de citas, historial médico y visitas.
+- **Módulo de Facturación**: Integra facturación para servicios médicos y cobros de consulta.
+
+
   </p>
 </div>
 
 <br>
-
-
-
-
-
-<h1 align="center"style="color: #007bff;">¿POR QUÉ MEDILINK? </h1>
+<h1 align="center"style="color: #007bff;">¿Descripción del Proyecto? </h1>
 
 <div align="center">
   <p>Porque ofrece una plataforma que facilita la comunicación y gestión entre profesionales de la salud y pacientes, centralizando múltiples especialidades médicas y establecimientos en un solo lugar. Responde, además, a las necesidades de los usuarios, que en otras plataformas son desatendidas.</p>
@@ -40,34 +62,35 @@
 <br>
 
 
-## Índice
-1. [Descripción del Proyecto](#descripción-del-proyecto)
-2. [Características Principales](#características-principales)
-3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-4. [Requisitos del Sistema](#requisitos-del-sistema)
-5. [Instalación y Configuración](#instalación-y-configuración)
-6. [Uso del Sistema](#uso-del-sistema)
-7. [Créditos y Colaboradores](#créditos-y-colaboradores)
+
+<!-- TABLA DE CONTENIDOS -->
+<details> <!-- Etiqueta que crea un contenedor desplegable para mostrar u ocultar contenido -->
+  <summary>Índice</summary> <!-- Define el título visible del contenedor desplegable -->
+  <ol> <!-- Lista ordenada (numerada) que muestra las secciones principales del contenido -->
+    <li> <!-- Elemento de lista numerado -->
+      <a href="#¿POR QUÉ MEDILINK?">¿POR QUÉ MEDILINK?</a> <!-- Enlace que redirige a la sección "Sobre el Proyecto" -->
+      <ul> <!-- Lista no ordenada (con viñetas) para las subsecciones de "Sobre el Proyecto" -->
+        <li><a href="#built-with">Construido Con</a></li> <!-- Enlace que redirige a la subsección "Construido Con" -->
+      </ul>
+    </li>
+    <li>
+      <a href="#Tecnologías Utilizadas">Tecnologías Utilizadas</a> <!-- Enlace a la sección "Primeros Pasos" -->
+      <ul>
+        <li><a href="#Backend - Tecnologías Utilizadas">Backend - Tecnologías Utilizadas</a></li> <!-- Enlace a la subsección "Requisitos Previos" -->
+        <li><a href="#installation">Instalación</a></li> <!-- Enlace a la subsección "Instalación" -->
+      </ul>
+    </li>
+    <li><a href="#usage">Uso</a></li> <!-- Enlace a la sección "Uso" -->
+    <li><a href="#roadmap">Ruta de Desarrollo</a></li> <!-- Enlace a la sección "Ruta de Desarrollo" -->
+    <li><a href="#contributing">Contribuciones</a></li> <!-- Enlace a la sección "Contribuciones" -->
+    <li><a href="#license">Licencia</a></li> <!-- Enlace a la sección "Licencia" -->
+    <li><a href="#Instalación">Instalación</a></li> <!-- Enlace a la sección "Contacto" -->
+    <li><a href="#acknowledgments">Agradecimientos</a></li> <!-- Enlace a la sección "Agradecimientos" -->
+  </ol>
+</details>
+
 
 ---
-
-### Descripción del Proyecto
-
-Policonsultorio es una aplicación de gestión de clínicas y consultorios médicos diseñada para optimizar la administración de citas, historiales médicos y la gestión de pacientes. Este sistema permite a los profesionales de la salud y a los administradores de clínicas agilizar sus tareas diarias de forma eficiente.
-
-![Interfaz de usuario](ruta/a/la-imagen-interfaz.png)
-
-### Características Principales
-
-- **Gestión de Citas**: Permite agendar, modificar y cancelar citas de manera sencilla.
-- **Control de Pacientes**: Registra datos personales y médicos de cada paciente.
-- **Historial Médico**: Almacena un registro detallado de los antecedentes y tratamientos médicos.
-- **Reportes Médicos**: Genera informes de citas, historial médico y visitas.
-- **Módulo de Facturación**: Integra facturación para servicios médicos y cobros de consulta.
-  
-
-
-
 
 ## ⚙️  **Backend - Tecnologías Utilizadas**
 <p align="center">
@@ -130,7 +153,7 @@ Policonsultorio es una aplicación de gestión de clínicas y consultorios médi
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p>
 
-![Tecnologías utilizadas](https://raw.githubusercontent.com/No-Country-simulation/s18-22-t-java-react/refs/heads/PM/PM/FRONTEND-PNG.png?token=GHSAT0AAAAAACWOUESUBTCGCZEJDLKXTK6KZZD7NDA)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/bfc2bc36ec88be90baf35332d20dd484f60eccdf/PM/FRONTEND-PNG.png)
 
 El frontend de **Policonsultorio** está diseñado para ser **rápido**, **escalable** y **responsivo**, garantizando una experiencia de usuario fluida y agradable en todos los dispositivos. Gracias a un stack de tecnologías modernas, hemos logrado una interfaz intuitiva y de alto rendimiento que se adapta a las necesidades tanto de profesionales de la salud como del personal administrativo.
 
@@ -343,10 +366,10 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
       <tr>
         <td align="center">
           <a href="https://github.com/Jhone-fori-freelancer">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 100%;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" style="max-width: 50%;">
           </a>
           <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: %;">
           </a>
         </td>
       </tr>
@@ -365,6 +388,8 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 Para comenzar con el proyecto, sigue estos pasos de instalación. Asegúrate de tener **Visual Studio Code** o tu editor de código preferido instalado.
 
 ---
+<p align="right">(<a href="#readme-top">back to 
+top</a>)</p>
 
 <h3 align="center">Paso 1: Clonar el Repositorio</h3>
 
@@ -379,3 +404,4 @@ cd policonsultorio
 
 ```bash
 cd nombre-del-repositorio
+
