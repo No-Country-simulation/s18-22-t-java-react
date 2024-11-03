@@ -271,6 +271,101 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/aea6ea5655fb5bba8f4bd7154f1309c5a1d87263/PM/ux-ui%20sin%20fondo.png)
 
+<h1 align="center" style="color: #007bff;">Descripción del Proyecto</h1>
+
+<p align="center">
+Este MVP de <strong>Medilink</strong> se centra en establecer un sistema básico pero funcional para la gestión de citas médicas en una plataforma digital. En esta fase inicial, el objetivo es ofrecer las características necesarias que permitan a los usuarios agendar y gestionar citas médicas, además de optimizar el tiempo de los profesionales de la salud.
+</p>
+
+---
+
+<h2 align="center" style="color: #007bff;">Duración y Alcance del Proyecto</h2>
+
+### Duración del Proyecto
+El desarrollo de este MVP se realizó en el contexto de una simulación laboral de 4 semanas, en la que se organizó el trabajo en sprints semanales para cumplir con cada uno de los objetivos establecidos de manera iterativa y progresiva.
+
+### Alcance del MVP
+#### Objetivo Principal
+**Problema a Resolver:** La dificultad en la gestión de citas y turnos médicos, que a menudo implica problemas de disponibilidad, organización y recordatorio de citas.
+
+- **Funcionalidades esenciales**: Agendamiento y gestión de citas, recordatorios automáticos y un sistema básico de lista de espera.
+- **Características adicionales (futuras iteraciones)**: La gestión completa del historial clínico y el soporte directo al cliente durante el agendamiento.
+- **Enfoque actual**: Asegurar que la experiencia de agendar y gestionar citas sea funcional, intuitiva y permita cumplir con las necesidades prioritarias de los usuarios.
+
+#### Objetivo del MVP
+Proporcionar a los usuarios una herramienta simplificada que permita a los pacientes gestionar sus citas médicas de manera conveniente y recibir recordatorios automatizados, con el fin de mejorar la puntualidad y evitar citas perdidas. Este MVP busca optimizar el tiempo de los pacientes y los profesionales de salud, facilitando la comunicación y reduciendo las fricciones en la programación de citas.
+
+---
+
+<h2 align="center" style="color: #007bff;">Beneficios Esperados para los Usuarios</h2>
+
+- **Para los pacientes**: Mayor facilidad para agendar citas y recibir recordatorios, optimización del tiempo al tener visibilidad de la disponibilidad de los profesionales de la salud, y opciones de lista de espera.
+- **Para los médicos**: Una organización más efectiva de sus agendas, reducción de tiempos muertos y cancelaciones con un sistema automatizado de reprogramación.
+
+<h1 align="center" style="color: #007bff;">User Stories</h1>
+
+### Punto de vista del paciente
+- Como paciente, quiero poder gestionar mis citas médicas, incluyendo la posibilidad de cancelar la cita y ver la disponibilidad de agenda del médico, para poder reprogramar de manera conveniente.
+- Como paciente, quiero buscar y filtrar entre una serie de profesionales de la salud de diversas especialidades, para optar por el que se ajuste mejor a mis necesidades.
+- Como paciente, quiero buscar por nombre del médico en particular, para agendar cita.
+- Como paciente, quiero recibir recordatorios de mis chequeos médicos y citas a través de correo electrónico o WhatsApp para no olvidar realizarme los exámenes requeridos.
+- Como paciente, quiero inscribirme en una lista de espera si no encuentro una cita disponible, de forma que pueda recibir una notificación si alguien cancela su cita.
+- Como paciente, quiero recibir una notificación si alguien cancela una cita, para tener la oportunidad de tomar ese espacio antes que otros.
+- Como paciente, quisiera tener una lista dónde ver los turnos ya reservados, para organización y recordatorio.
+- Como paciente, quisiera tener algún tipo de atención al cliente durante el proceso de agendar una cita, para consultar mis dudas en caso de tenerlas.
+
+### Punto de vista del médico
+- Como médico, quiero que los pacientes puedan ver la disponibilidad de mi agenda y cancelen citas de forma clara, para tener una mejor organización de mis horarios.
+- Como médico, quiero poder subir y gestionar la información clínica de cada paciente, de manera que pueda tener un control claro sobre su historial y actualizarla fácilmente.
+- Como médico, quiero que las citas canceladas sean gestionadas automáticamente y ofrecidas a los pacientes en la lista de espera, para optimizar mi agenda sin perder tiempo de atención.
+
+---
+
+<h2 align="center" style="color: #007bff;">Resumen de funcionalidades</h2>
+
+- Cargar datos médicos o historia clínica del paciente.
+- Seguimiento de chequeos médicos y recordatorios.
+- Gestión de citas médicas.
+- Control sobre la información clínica del paciente.
+- Lista de espera para citas canceladas o citas no disponibles.
+- Notificaciones por cancelaciones de citas.
+- Prevención de superposición de turnos y citas duplicadas.
+- Reglas de cancelación de citas con 24 horas de anticipación.
+
+---
+
+<h2 align="center" style="color: #007bff;">Objetivos de Usabilidad y UX</h2>
+
+### Metas del Usuario
+- **Pacientes**:
+  - Agendar y gestionar citas de manera rápida, incluyendo cancelaciones y reprogramaciones.
+  - Filtrar y buscar médicos por especialidad o nombre.
+  - Recibir recordatorios automáticos de citas.
+  - Inscribirse en listas de espera para recibir notificaciones de disponibilidad.
+  - Visualizar turnos reservados para mejor organización.
+
+- **Médicos**:
+  - Tener un calendario de citas actualizado y organizado.
+  - Minimizar tiempos muertos mediante listas de espera.
+  - Gestionar eficientemente los turnos y notificaciones.
+
+### Metas del Negocio
+- Incrementar la accesibilidad a los servicios de salud.
+- Reducir las citas no asistidas mediante recordatorios.
+- Fidelizar a los usuarios con una experiencia fluida.
+- Crear una base sólida para futuras expansiones de la plataforma.
+
+---
+
+<h2 align="center" style="color: #007bff;">KPI’s y Métricas de Éxito</h2>
+
+- **Tasa de conversión de citas**: Porcentaje de usuarios que agendan citas.
+- **Índice de citas asistidas**: Porcentaje de citas en las que los pacientes se presentan.
+- **Satisfacción del usuario (CSAT)**: Medición de satisfacción a través de encuestas.
+- **Tiempo promedio en la tarea**: Tiempo necesario para agendar una cita.
+- **Tasa de uso de la lista de espera**: Porcentaje de usuarios que obtienen citas a través de esta funcionalidad.
+- **Retención de usuarios**: Porcentaje de usuarios que regresan a la plataforma.
+
 <table>
 <thead>
 <tr>
