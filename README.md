@@ -26,7 +26,7 @@
   </p>
 </div>
 
-
+<div align="center">
 <p style="color: #007bff; font-weight: bold; font-size: 24px;">
 
     🎥 Vista Previa del Proyecto
@@ -35,8 +35,7 @@
   ![Vista Previa del Video](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/e643a2591b0f7e1ad3cedb17d7926a3f44124974/PM/reserva_turno-ezgif.com-effects.gif)
 </div>
 
-  </p>
-</div>
+
 
   ### Características Principales
 
