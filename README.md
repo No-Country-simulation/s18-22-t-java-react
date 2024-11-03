@@ -1,7 +1,5 @@
 
 
-
-
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/67a5029a2d0f33247f9fb98e9d75b47af3baf8a1/PM/logo001.png"
 </p>
@@ -18,11 +16,11 @@
     <a href="https://github.com/No-Country-simulation/s18-22-t-java-react"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://policonsultorio.vercel.app/">View Demo</a>
+    <a href="https://policonsultorio.vercel.app/">Demo Deploy</a>
     ·
-    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/">Reporte de Errores</a>
+    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/">Demo Video</a>
     ·
-    <a href="https://www.figma.com/design/p1lPIXy4s8uSQcLMWmCEw7/Policonsultorios-MVP?node-id=216-25">UX-UI</a>
+    <a href="https://docs.google.com/presentation/d/1JBc4hJX9XxDRVXj96_4uEcKB00PZFJQxYbE9TMXOzkI/edit#slide=id.g310bf0e0ad8_0_12">Demo Day</a>
   </p>
 </div>
 
