@@ -10,7 +10,7 @@ export default async function CalendarDoctorPage() {
 
     return (
         <div className="max-w-[1400px] mx-auto px-6">
-            <CalendarDoctor user_id={user.id} />
+            <CalendarDoctor user_id={user.id} user_name={user.name} />
         </div>
     );
 }

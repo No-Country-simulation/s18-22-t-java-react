@@ -9,3 +9,4 @@ export { AlertMessage } from "./alert/alert-message"
 export { DialogComponent } from './alert/Alert'
 export { BackButton } from './BackButton'
 export { Search } from "./search/Search"
+export { ScheduleDoctor } from "./schedule/schedule"

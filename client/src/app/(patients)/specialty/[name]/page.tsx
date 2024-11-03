@@ -2,6 +2,8 @@ import { getDoctorsBySpecialty } from "@/actions/doctors/doctorActions";
 import { BackButton } from "@/components";
 import { DoctorCard } from "@/ui";
 
+export const revalidate = 0
+
 export default async function SpecialtyPage({ params }: { params: { name: string } }) {
 
     const specialty = decodeURIComponent(params.name)

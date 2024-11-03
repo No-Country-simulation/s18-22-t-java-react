@@ -2,6 +2,7 @@ import { IconUser } from "@/components/icons"
 import { ButtonComponent } from "../buttons/ButtonComponent"
 import { createWaitingList } from "@/actions/waitingList/waitingListActions"
 import { useState } from "react"
+import { useRouter } from "next/navigation";
 
 interface Props {
   confirmWaitList: boolean
@@ -14,6 +15,8 @@ interface Props {
 
 export function CalendarWaitList({ confirmWaitList, position, setPosition, date, doctorId, userId }: Props) {
   const [success, setSuccess] = useState(false)
+  const router = useRouter()
+
 
   const handleCreateWaitList = async () => {
     setSuccess(false)
@@ -22,6 +25,9 @@ export function CalendarWaitList({ confirmWaitList, position, setPosition, date,
       if (response.id) {
         setPosition(position + 1)
         setSuccess(true)
+        setTimeout(() => {
+          router.push('/waitlist')
+        }, 3000)
       }
     } catch (error) {
       console.log('Error: ', error);

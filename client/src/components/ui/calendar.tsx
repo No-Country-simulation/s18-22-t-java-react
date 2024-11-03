@@ -14,7 +14,7 @@ function Calendar({
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: CalendarProps & { appointmentsStatus?: { [key: string]: string } }) {
   return (
     <DayPicker
       locale={es}

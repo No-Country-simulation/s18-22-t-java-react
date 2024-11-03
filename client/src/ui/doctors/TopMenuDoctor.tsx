@@ -7,7 +7,7 @@ import { DoctorFromResponse } from '@/interfaces/user'
 
 export function TopMenuDoctor({ user }: { user: DoctorFromResponse }) {
 
-    const icons = [{ icon: <SvgCalendar />, title: "Mi agenda", url: '#' }, { icon: <SvgPerfil />, title: "Mi perfil", url: '/doctor/profile/' + user.id }, { icon: <SvgNotifications />, name: "notificación", url: '#' }]
+    const icons = [{ icon: <SvgCalendar />, title: "Mi agenda", url: '/doctor/schedule' }, { icon: <SvgPerfil />, title: "Mi perfil", url: '/doctor/profile/' + user.id }, { icon: <SvgNotifications />, name: "notificación", url: '#' }]
 
 
     return (
