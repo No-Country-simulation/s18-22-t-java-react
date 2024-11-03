@@ -241,23 +241,22 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <table>
 <thead>
 <tr>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/170377279?v=4" width="50" style="width: 120px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/170377279?v=4" width="50" style="width: 100px;">
 </th>
-<th align="center"><img src="https://avatars.githubusercontent.com/u/146945311?v=4" style="width: 120px;">
+<th align="center"><img src="https://avatars.githubusercontent.com/u/146945311?v=4" style="width: 100px;">
 </th>
-<th align="center"><img src="https://ca.slack-edge.com/T02KS88FB0E-U07GJ2T78SH-64ff594b3f46-512" style="width: 120px;">
-</th>
-
+<th align="center"><img src="https://ca.slack-edge.com/T02KS88FB0E-U07GJ2T78SH-64ff594b3f46-512" style="width: 100px;">
 </th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td align="center"><strong>Jeniree Suarez </strong></td>
 <td align="center"><strong>Priscila Dafne </strong></td>
 <td align="center"><strong>Darlyn Ramírez </strong></td>
-
 </tr>
+
 <tr>
 <td align="center"><a href="https://github.com/Jenisuarez"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/jenireesuarez/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
@@ -265,8 +264,6 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 <td align="center"><a href="https://github.com/Darlynva"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/darlyn-vanessa-ram%C3%ADrez-mosquera-1a23481bb/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
-
-
 </tr>
 </tbody>
 </table>
