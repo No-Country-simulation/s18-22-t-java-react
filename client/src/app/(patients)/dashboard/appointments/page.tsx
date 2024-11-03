@@ -26,14 +26,18 @@ export default async function DashboardAppointmentPage() {
 
           {/* RESERVA DE CITAS  */}
           {doctorList.map((item, index) => (
-            <DoctorCard dashboard id={item.id} img={item.doctor.img} key={index} name={item.doctor.specialization} speciality={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} />
+            <DoctorCard dashboard id_doctor={item.doctor.id} img={item.doctor.img} id_appointment={item.id} key={index} name={item.doctor.specialization} specialty={item.doctor.name} place="Clinica Colon - Jujuy 2176" date={item.date} startTime={item.startTime} />
           ))}
+          {doctorList.length === 0 && <h4 className="bg-[#F6F7F7] w-[858px] rounded-xl text-xl p-7 text-[#1A2C33] mb-10">Aún no tenes ningún turno agendado.</h4>}
         </div>
 
       </div>
-      <div className="flex flex-col justify-center mt-12">
-        <WaitList confirmWaitList={false} waitList={waitList} />
-      </div>
+
+      {waitList && !waitList.error && (
+        <div className="flex flex-col justify-center mt-12">
+          <WaitList confirmWaitList={false} waitList={waitList} />
+        </div>
+      )}
     </div>
   );
 }

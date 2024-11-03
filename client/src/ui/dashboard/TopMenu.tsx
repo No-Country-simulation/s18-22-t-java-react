@@ -3,9 +3,10 @@ import { SvgPerfil } from "@/components/svg/svgs";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from '/public/logo_full.png'
+import { DoctorFromResponse } from "@/interfaces/user";
 
-export function TopMenu() {
-    const icons = [{ icon: <SvgPerfil />, title: "Mi perfil", url: '/profile/44' }, { icon: <SvgHome />, title: "Inicio", url: '/dashboard' }, { icon: <SvgNotifications />, name: "notificación", url: '#' }]
+export function TopMenu({ user }: { user: DoctorFromResponse }) {
+    const icons = [{ icon: <SvgPerfil />, title: "Mi perfil", url: '/profile/' + user.id }, { icon: <SvgHome />, title: "Inicio", url: '/dashboard' }, { icon: <SvgNotifications />, name: "notificación", url: '#' }]
 
     return (
         <div className="py-8">

@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function WaitList({ confirmWaitList, waitList }: Props) {
-  const position = waitList.position ?? 2;
+  const position = waitList.position ?? 1;
 
   return (
     <>

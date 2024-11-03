@@ -1,6 +1,6 @@
 "use client"
 
-import { createAppointment } from "@/actions/appointment-action"
+import { createAppointment, rescheduleAppointment } from "@/actions/appointment-action"
 import {
     AlertDialog,
     AlertDialogAction,
@@ -12,6 +12,9 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { IconX } from "../icons"
+import { RescheduleAppointment } from "@/interfaces/appointment"
+import { format } from 'date-fns';
+import { useState } from "react"
 
 interface Props {
     openDialog: boolean
@@ -19,25 +22,59 @@ interface Props {
     hour: string
     formattedDate: string
     doctor: { id: number, name: string, dateYear: string }
+    patientId: number
+    reschedule: boolean
+    appointmentId: number
 }
 
-export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formattedDate, doctor }: Props) => {
+export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formattedDate, doctor, patientId, reschedule, appointmentId }: Props) => {
+    console.log(hour, formattedDate)
+    const [error, setError] = useState<string | null>(null);
+
 
     const appointmentCreate = async () => {
-        try {
-            const response = await createAppointment({
-                id_doctor: doctor.id, id_patient: 44, date: doctor.dateYear, startTime: hour
-            });
-            console.log(response);
+        if (reschedule) {
+            const formattedDate = format(new Date(doctor.dateYear + 'T00:00:00'), 'yyyy-MM-dd');
+            console.log('formattedDate', formattedDate);
+            try {
+                const newAppointment: RescheduleAppointment = {
+                    newDate: formattedDate,
+                    newStartTime: hour
+                }
+                console.log('newAppointment', newAppointment);
+                const response = await rescheduleAppointment(appointmentId, newAppointment);
+                console.log(response);
 
-            if (response && response.error) {
-                alert(response.error);
+                if (response && response.error) {
+                    setError(response.error);
+                    setTimeout(() => {
+                        setError(null);
+                    }, 7000);
+                }
+                setOpenDialog(false);
+            } catch (error) {
+                console.error("Failed to reschedule appointment:", error);
+                setError("Error al reprogramar la cita. Por favor, intente nuevamente.");
             }
-            setOpenDialog(false);
-        } catch (error) {
-            // Handle error (e.g., show an error message)
-            console.error("Failed to create appointment:", error);
-            alert("Failed to create appointment. Please try again.");
+
+        } else {
+            try {
+                const response = await createAppointment({
+                    id_doctor: doctor.id, id_patient: patientId, date: doctor.dateYear, startTime: hour
+                });
+                console.log(response);
+
+                if (response && response.error) {
+                    setError(response.error);
+                    setTimeout(() => {
+                        setError(null);
+                    }, 7000);
+                }
+                setOpenDialog(false);
+            } catch (error) {
+                console.error("Failed to create appointment:", error);
+                setError("Error al crear la cita. Por favor, intente nuevamente.");
+            }
         }
     }
 
@@ -70,6 +107,14 @@ export const AlertDialogCalendar = ({ openDialog, setOpenDialog, hour, formatted
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+            {error && (
+                <div className="absolute top-0 -right-72 w-64 rounded-xl px-4 py-6 shadow-2xl">
+                    <h4 className="font-semibold text-[22px] pb-4 border-b-2 border-[#B9B7B7]">Notificaciones</h4>
+                    <p className="pt-4">
+                        {error}
+                    </p>
+                </div>
+            )}
         </>
     )
 }

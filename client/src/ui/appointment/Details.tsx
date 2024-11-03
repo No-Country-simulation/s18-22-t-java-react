@@ -2,12 +2,11 @@
 
 import { AppointmentFromResponse, AppointmentWithDoctor } from "@/interfaces/appointment"
 import { PatientFromResponse } from "@/interfaces/user"
-import Image from "next/image"
 import { ButtonComponent } from "../buttons/ButtonComponent"
 import { BackButton, DialogComponent } from "@/components"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { cancelAppointment } from "@/actions/appointment-action"
+import ImageValidate from "@/components/ImageValidate"
 
 interface Props {
   appointment: AppointmentFromResponse,
@@ -18,7 +17,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
   const [openDialog, setOpenDialog] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, month, day] = appointment.date.split("-")
@@ -38,7 +36,6 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
     } finally {
       setLoading(false)
     }
-    router.push('/doctor/appointment/canceled/' + appointment.id)
   }
   return (
     <>
@@ -54,7 +51,7 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
         <div className="flex px-10">
           <div>
             <div className="flex gap-7 my-14 ms-3">
-              <Image src={patient.img} alt={patient.name} width={100} height={100} />
+              <ImageValidate src={patient.img} alt={patient.name} />
               <span className="content-center text-[22px] font-medium text-wrap w-3">{patient.name}</span>
             </div>
             <div className="flex flex-col gap-[42px]">
@@ -66,8 +63,8 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
               </div>
 
               <div className="flex flex-col text-xl">
-                <span><span className="font-medium">Obra Social:</span> {patient.obraSocial}</span>
-                <span><span className="font-medium">Numero de asociado:</span>  {patient.numeroAsociado}</span>
+                <span><span className="font-medium">Obra Social:</span> {patient.social_work}</span>
+                <span><span className="font-medium">Numero de asociado:</span>  {patient.number_associate}</span>
               </div>
 
               <ButtonComponent size={'large'} variant={'mainLight'} text={'Historial clinico'} className="font-medium mt-4 border-blue-500 text-blue-500" />
@@ -98,9 +95,12 @@ export function AppointmentDetails({ appointment, patient, lastAppointments }: P
       />
       {loading && <div className="loading-indicator">Cargando...</div>}
       {error && (
-        <p className="bg-blue-500 text-white p-4 absolute top-28 right-24 w-64 rounded-xl rounded-tr-none">
-          {error}
-        </p>
+        <div className="absolute top-28 right-24 w-64 rounded-xl px-4 py-6 shadow-2xl">
+          <h4 className="font-semibold text-[22px] pb-4 border-b-2 border-[#B9B7B7]">Notificaciones</h4>
+          <p className="pt-4">
+            {error}
+          </p>
+        </div>
       )}
     </>
 

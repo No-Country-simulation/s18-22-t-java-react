@@ -6,9 +6,11 @@ export default function LayoutAuth({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      {children}
-    </>
+      <div className="grow flex justify-center items-center">
+        {children}
+      </div>
+    </div>
   );
 }

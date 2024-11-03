@@ -116,7 +116,7 @@ export const SearchResults: React.FC<Props> = ({ query, data, clinicList }) => {
               {filteredResults.map((result) => (
                 <div className="flex h-min flex-grow flex-wrap gap-4" key={result?.id}>
                   {isNameSearch && result?.name && (
-                    <DoctorCard id={result?.id} name={result?.name} img={result?.img} place={result?.place} speciality={result?.speciality} />
+                    <DoctorCard id_doctor={result?.id} name={result?.name} img={result?.img} place={result?.place} specialty={result?.speciality} />
                   )}
                   {isSpecialitySearch && result?.speciality && (
                     <SpecialityCard img="" name={result?.speciality} />

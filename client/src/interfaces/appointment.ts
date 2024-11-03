@@ -45,3 +45,8 @@ export interface AppointmentWithPatient extends AppointmentFromResponse {
     name: string
   }
 }
+
+export interface RescheduleAppointment {
+  newDate: string
+  newStartTime: string
+}

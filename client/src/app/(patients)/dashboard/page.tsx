@@ -1,8 +1,7 @@
 import { getAllProgramedAppointments } from "@/actions/appointment-action";
-import { getAllAppointmentById_Patient } from "@/actions/appointment-action";
 import { AppointmentWithDoctor } from "@/interfaces/appointment";
-import { DoctorCard } from "@/ui";
 import { cookies } from 'next/headers'
+import { DoctorCard } from "@/ui";
 
 export const revalidate = 0
 
@@ -12,6 +11,7 @@ export default async function DashboardPage() {
     const user = userCookie ? JSON.parse(userCookie.value) : {};
 
     const doctorList: AppointmentWithDoctor[] = await getAllProgramedAppointments(user.id)
+    console.log(doctorList);
 
     return (
         <div className="max-w-[1200px] mx-auto px-10 my-16">
@@ -34,7 +34,7 @@ export default async function DashboardPage() {
                         date={item.date}
                         startTime={item.startTime}
                         id_appointment={item.id}
-                        id_doctor={item.id}
+                        id_doctor={item.id_doctor}
                     />
                 ))}
 
