@@ -222,7 +222,7 @@ proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 
 
-## ⚙️  **Qa - Teting**
+## ⚙️  **Qa - Testing**
 
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
