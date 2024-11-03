@@ -352,32 +352,34 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 
 
 
-<div align="center">
+<div align="center" width="300px">
+
   <table>
     <thead>
       <tr>
-        <th align="center">
-          <img src="https://avatars.githubusercontent.com/u/83551117?v=4" width="120">
+        <th align="center" >
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4">
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody maxwidth="100px">
       <tr>
         <td align="center"><strong>Jhonatan Remon</strong></td>
       </tr>
       <tr>
         <td align="center">
           <a href="https://github.com/Jhone-fori-freelancer">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg" width="30">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg">
           </a>
           <a href="https://www.linkedin.com/in/jhonatanremon/" rel="nofollow">
-            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" width="30">
+            <img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg">
           </a>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+
+</div >
 
 
 
