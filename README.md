@@ -339,17 +339,17 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 
 
 
-<div align="center" width="300px">
 
-  <table>
+
+  <table  align="center">
     <thead>
       <tr>
-        <th align="center" >
-          <img src="https://avatars.githubusercontent.com/u/83551117?v=4">
+        <th style={"margin": "auto"}>
+          <img src="https://avatars.githubusercontent.com/u/83551117?v=4"  width="150px">
         </th>
       </tr>
     </thead>
-    <tbody maxwidth="100px">
+    <tbody>
       <tr>
         <td align="center"><strong>Jhonatan Remon</strong></td>
       </tr>
@@ -366,7 +366,7 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
     </tbody>
   </table>
 
-</div >
+
 
 
 
