@@ -296,8 +296,7 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 <tr>
 <td align="center"><a href="https://github.com/micusan"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/micaela-santana-84b8861aa/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
-<td align="center"><a href="https://github.com/Cami-e"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/camila-eber/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
-proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/Cami-e"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/camila-eber/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
 <td align="center"><a href="https://github.com/Nadmaure"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nadia-maure/" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 
