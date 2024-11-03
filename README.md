@@ -207,9 +207,8 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 <td align="center"><strong>william sanchez  </strong></td>
 </tr>
 <tr>
-<td align="center"><a href="https://github.com/lazaronazareno"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lazaro-vega-sanchez" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
-<td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/jwilliam96" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/
-proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/lazaronazareno"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lazaro-vega-sanchez"rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/jwilliam96"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://github.com/jwilliam96" rel="nofollow"><img src="https://raw.githubusercontent.com/LionelStaricoff/c16-84-ft-java/615dd2bb3247fd67184c5c9a3c0ff80d58c8da9f/proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
