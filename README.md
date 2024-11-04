@@ -247,7 +247,7 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
     ·
     <a href="https://github.com/No-Country-simulation/s18-22-t-java-react/tree/develop/QA">Testing-VS-Code</a>
     ·
-    <a href="https://docs.google.com/presentation/d/1JBc4hJX9XxDRVXj96_4uEcKB00PZFJQxYbE9TMXOzkI/edit#slide=id.g310bf0e0ad8_0_12">Demo Day</a>
+    <a href="https://docs.google.com/spreadsheets/d/1Eq8uTgo4Amv9eyuIZQXyG51S0XrzQXZKcvXs6qBukq0/edit?gid=871132425#gid=871132425">Casos de prueba</a>
   </p>
 </div>
 
