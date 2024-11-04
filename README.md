@@ -221,11 +221,37 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 ## ⚙️  **Qa - Testing**
 
-<p align="center">
-  <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
-</p>
+<h1 align="center" style="color: #007bff;">Alcance de las Pruebas
+</h1>
+
+<div align="center">
+  
+ <h3 align="center">Descripción del Proyecto</h3>
+
+  <p align="center">
+    El equipo de QA se centrará en las siguientes áreas:
+📋 Pruebas Funcionales: 
+⦁	Verificar que todas las características y funcionalidades funcionen como se espera.
+⦁	Probar diferentes escenarios de usuario y casos límite.
+⦁	Asegurar la correcta entrada y salida de datos.
+
+   <br /> 
+    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/Appointment/getAllAppointments"><strong>App de Testeo»</strong></a>
+    <br />
+    <br />
+    <a href="https://policonsultorio.vercel.app/">Demo Deploy</a>
+    ·
+    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/">Demo Video</a>
+    ·
+    <a href="https://docs.google.com/presentation/d/1JBc4hJX9XxDRVXj96_4uEcKB00PZFJQxYbE9TMXOzkI/edit#slide=id.g310bf0e0ad8_0_12">Demo Day</a>
+  </p>
+</div>
+
+<div align="center">
+
 
 ![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/aea6ea5655fb5bba8f4bd7154f1309c5a1d87263/PM/QA-TESTING-SINFONDO.png)
+
 
 
 <table>
