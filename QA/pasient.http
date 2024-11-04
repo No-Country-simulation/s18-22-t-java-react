@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 ### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
 POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
 Content-Type: application/json
@@ -21,6 +23,7 @@ Content-Type: application/json
 ### buscar paciente por id
 GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/59
 
+>>>>>>> 8346b700fd14ef1473311489ce4f196a925dc230
 ### actualizar paciente
 PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/33
 Content-Type: application/json
@@ -36,8 +39,39 @@ Content-Type: application/json
   "active": true,
   "insurer": "Suim"
 }
+<<<<<<< HEAD
+
+### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
+Content-Type: application/json
+
+{
+  "user": {
+    "name": "Dani",
+    "dni": "96123456",
+    "obraSocial": "OSDE",
+    "numeroAsociado": "M123",
+    "password": "123456",
+    "email": "dani@gmail.com",
+    "phone": "1123232323",
+    "img": "string",
+    "active": true
+  },
+  "insurer": "OSDE"
+}
+
+### buscar paciente por id
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/43
+
+
+
+###Eliminar paciente
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/33
+Content-Type: application/json
+=======
 
 
 ###Eliminar paciente
 DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/59
 Content-Type: application/json
+>>>>>>> 8346b700fd14ef1473311489ce4f196a925dc230
