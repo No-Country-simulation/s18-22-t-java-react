@@ -231,10 +231,9 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
   <p align="center">
     El equipo de QA se centrará en las siguientes áreas:
 📋 Pruebas Funcionales: 
-⦁	Verificar que todas las características y funcionalidades funcionen como se espera.
-⦁	Probar diferentes escenarios de usuario y casos límite.
-⦁	Asegurar la correcta entrada y salida de datos.
-
+⦁    Verificar que todas las características y funcionalidades funcionen como se espera.
+⦁    Probar diferentes escenarios de usuario y casos límite.
+⦁    Asegurar la correcta entrada y salida de datos.
 
 
 
