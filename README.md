@@ -235,13 +235,17 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 ⦁	Probar diferentes escenarios de usuario y casos límite.
 ⦁	Asegurar la correcta entrada y salida de datos.
 
+
+
+
+
    <br /> 
     <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/Appointment/getAllAppointments"><strong>App de Testeo»</strong></a>
     <br />
     <br />
-    <a href="https://policonsultorio.vercel.app/">Demo Deploy</a>
+    <a href="https://app.clickup.com/9011373809/v/b/li/901105201521">Click Up</a>
     ·
-    <a href="https://clinica-medica-production.up.railway.app/api/v1/swagger-ui/index.html#/">Demo Video</a>
+    <a href="https://github.com/No-Country-simulation/s18-22-t-java-react/tree/develop/QA">Testing-VS-Code</a>
     ·
     <a href="https://docs.google.com/presentation/d/1JBc4hJX9XxDRVXj96_4uEcKB00PZFJQxYbE9TMXOzkI/edit#slide=id.g310bf0e0ad8_0_12">Demo Day</a>
   </p>
@@ -301,6 +305,13 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 <p align="center">
 Este MVP de <strong>Medilink</strong> se centra en establecer un sistema básico pero funcional para la gestión de citas médicas en una plataforma digital. En esta fase inicial, el objetivo es ofrecer las características necesarias que permitan a los usuarios agendar y gestionar citas médicas, además de optimizar el tiempo de los profesionales de la salud.
+
+🏭 Pruebas de humo 
+⦁	Identificación de las funciones críticas: Determinamos que las funciones más importantes del sistema funcionen correctamente para que el sistema se considere estable. 
+⦁	Crear un conjunto de casos de prueba: Diseñamos un conjunto mínimo de casos de prueba para cubrir las funciones críticas. 
+⦁	Ejecutar los casos de prueba: Ejecutamos los casos de prueba de forma secuencial. 
+⦁	Evaluar los resultados: Si se encuentran errores críticos, se detiene la prueba y se notifica al equipo de desarrollo. Si todas las funciones críticas funcionan correctamente, se considera que la prueba de humo ha sido exitosa.
+
 </p>
 
 ---
