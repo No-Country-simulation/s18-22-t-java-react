@@ -501,7 +501,6 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
 
 
 
-
 <h2 align="center">💻 Instalación y Configuración</h2>
 
 Para comenzar con el proyecto, sigue estos pasos de instalación. Asegúrate de tener **Visual Studio Code** o tu editor de código preferido instalado.
