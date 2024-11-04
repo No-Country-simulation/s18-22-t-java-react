@@ -34,7 +34,7 @@
 
 
 
-  ### Características Principales
+  ### Características Principales 
 
 - **Gestión de Citas**: Permite agendar, modificar y cancelar citas de manera sencilla.
 - **Control de Pacientes**: Registra datos personales y médicos de cada paciente.
