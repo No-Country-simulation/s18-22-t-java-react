@@ -1,0 +1,43 @@
+### crear pacientes    https://clinica-medica-production.up.railway.app/api/v1/
+POST https://clinica-medica-production.up.railway.app/api/v1/patients/create
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 0,
+    "name": "maria julieta",
+    "dni": "35453355",
+    "obraSocial": "lus y fuerza",
+    "numeroAsociado": "89891330",
+    "password": "10111213",
+    "email": "mariajulieta@gmail.com",
+    "phone": "11568943322",
+    "img": "string",
+    "active": true
+  },
+  "insurer": "string"
+}
+
+### buscar paciente por id
+GET https://clinica-medica-production.up.railway.app/api/v1/patients/search/59
+
+### actualizar paciente
+PUT https://clinica-medica-production.up.railway.app/api/v1/patients/update/33
+Content-Type: application/json
+
+{
+  "name": "Elena",
+  "password": "doce",
+  "email": "sofi123@gmail.com",
+  "social_work": "SALUD TOTAL ",
+  "number_associate": "aa123",
+  "phone": "11223344",
+  "img": "imagen.png",
+  "active": true,
+  "insurer": "Suim"
+}
+
+
+###Eliminar paciente
+DELETE https://clinica-medica-production.up.railway.app/api/v1/patients/delete/59
+Content-Type: application/json

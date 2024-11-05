@@ -1,0 +1,182 @@
+{
+  "roles": [
+    {
+      "id": 1,
+      "name": "Doctor"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. John Smith",
+      "password": "password123",
+      "rol": 1,
+      "dni": "12345678",
+      "phone": "+54 11 5555 1234",
+      "email": "john.smith@example.com",
+      "address": "123 Elm St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Dr. Emily Johnson",
+      "password": "password123",
+      "rol": 1,
+      "dni": "87654321",
+      "phone": "+54 11 5555 5678",
+      "email": "emily.johnson@example.com",
+      "address": "456 Oak St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Dr. Michael Williams",
+      "password": "password123",
+      "rol": 1,
+      "dni": "12348765",
+      "phone": "+54 11 5555 9876",
+      "email": "michael.williams@example.com",
+      "address": "789 Maple St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Dr. Sarah Brown",
+      "password": "password123",
+      "rol": 1,
+      "dni": "87651234",
+      "phone": "+54 11 5555 2468",
+      "email": "sarah.brown@example.com",
+      "address": "101 Pine St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Dr. James Davis",
+      "password": "password123",
+      "rol": 1,
+      "dni": "13572468",
+      "phone": "+54 11 5555 1357",
+      "email": "james.davis@example.com",
+      "address": "202 Cedar St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Dr. Laura White",
+      "password": "password123",
+      "rol": 1,
+      "dni": "98765432",
+      "phone": "+54 11 5555 2468",
+      "email": "laura.white@example.com",
+      "address": "303 Birch St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Dr. Robert Miller",
+      "password": "password123",
+      "rol": 1,
+      "dni": "87651234",
+      "phone": "+54 11 5555 7890",
+      "email": "robert.miller@example.com",
+      "address": "404 Ash St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Dr. Anna Green",
+      "password": "password123",
+      "rol": 1,
+      "dni": "11223344",
+      "phone": "+54 11 5555 1122",
+      "email": "anna.green@example.com",
+      "address": "505 Cherry St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Dr. David Wilson",
+      "password": "password123",
+      "rol": 1,
+      "dni": "55667788",
+      "phone": "+54 11 5555 3344",
+      "email": "david.wilson@example.com",
+      "address": "606 Elm St, Buenos Aires",
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Dr. Maria Garcia",
+      "password": "password123",
+      "rol": 1,
+      "dni": "66778899",
+      "phone": "+54 11 5555 5566",
+      "email": "maria.garcia@example.com",
+      "address": "707 Cedar St, Buenos Aires",
+      "active": true
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "id_user": 1,
+      "speciality": "Cardiología",
+      "place": "Primer Consultorio"
+    },
+    {
+      "id": 2,
+      "id_user": 2,
+      "speciality": "Dermatología",
+      "place": "Primer Consultorio"
+    },
+    {
+      "id": 3,
+      "id_user": 3,
+      "speciality": "Neurología",
+      "place": "Segundo Consultorio"
+    },
+    {
+      "id": 4,
+      "id_user": 4,
+      "speciality": "Pediatría",
+      "place": "Segundo Consultorio"
+    },
+    {
+      "id": 5,
+      "id_user": 5,
+      "speciality": "Traumatología",
+      "place": "Tercer Consultorio"
+    },
+    {
+      "id": 6,
+      "id_user": 6,
+      "speciality": "Cardiología",
+      "place": "Primer Consultorio"
+    },
+    {
+      "id": 7,
+      "id_user": 7,
+      "speciality": "Dermatología",
+      "place": "Primer Consultorio"
+    },
+    {
+      "id": 8,
+      "id_user": 8,
+      "speciality": "Neurología",
+      "place": "Segundo Consultorio"
+    },
+    {
+      "id": 9,
+      "id_user": 9,
+      "speciality": "Pediatría",
+      "place": "Segundo Consultorio"
+    },
+    {
+      "id": 10,
+      "id_user": 10,
+      "speciality": "Traumatología",
+      "place": "Tercer Consultorio"
+    }
+  ]
+}

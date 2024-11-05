@@ -17,6 +17,9 @@ stjavareact71@gmail.com
 password:
 Contrasenia#
 
+app:
+ngzt mvwl qztz aaxh
+
 
 github:
 email: stjavareact71@gmail.com
@@ -26,6 +29,19 @@ name: stjavareact71
 
 server:
 https://railway.app
+
+mysql:{
+
+user: root,
+
+password: QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB,
+
+url: mysql://root:QMxwXRjewykDOtTgPUEkcqIhSrVfgBrB@junction.proxy.rlwy.net:19333/railway,
+
+ip: junction.proxy.rlwy.net,
+
+dominio: s18-22-t-java-react-production.up.railway.app
+}
 
 
 diagramas:
