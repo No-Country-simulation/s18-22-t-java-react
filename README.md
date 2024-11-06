@@ -226,8 +226,6 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 <div align="center">
   
- <h3 align="center">Descripción del Proyecto</h3>
-
   <p align="center">
     El equipo de QA se centrará en las siguientes áreas:
 📋 Pruebas Funcionales: 
@@ -237,6 +235,72 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
 
 
 
+<h2 align="center" style="color: #007bff;">📋 Pruebas Funcionales</h2>
+
+- Verificar que todas las características y funcionalidades funcionen como se espera.
+- Probar diferentes escenarios de usuario y casos límite.
+- Asegurar la correcta entrada y salida de datos.
+
+<h2 align="center" style="color: #007bff;">🏭 Pruebas de Humo</h2>
+
+- **Identificación de las funciones críticas**: Determinar que las funciones más importantes del sistema funcionen correctamente para que el sistema se considere estable.
+- **Crear un conjunto de casos de prueba**: Diseñar un conjunto mínimo de casos de prueba para cubrir las funciones críticas.
+- **Ejecutar los casos de prueba**: Ejecutar los casos de prueba de forma secuencial.
+- **Evaluar los resultados**: Si se encuentran errores críticos, se detiene la prueba y se notifica al equipo de desarrollo. Si todas las funciones críticas funcionan correctamente, se considera que la prueba de humo ha sido exitosa.
+
+<h2 align="center" style="color: #007bff;">🤝 Pruebas de Integración</h2>
+
+- **Detección temprana de defectos**: Identificar problemas en las interfaces entre los módulos que podrían no ser evidentes en las pruebas unitarias.
+- **Validación de la arquitectura**: Confirmar que la arquitectura del sistema funciona como se diseñó.
+- **Reducción de riesgos**: Prevenir errores en etapas posteriores del desarrollo.
+
+<h2 align="center" style="color: #007bff;">🔄 Pruebas de Regresión</h2>
+
+- Asegurar que las nuevas características o correcciones de errores no alteren la funcionalidad existente de la API.
+- **Consistencia**: Asegurar que la API se comporte de manera consistente a lo largo del tiempo, independientemente de los cambios realizados.
+- **Confianza**: Proporcionar confianza a los desarrolladores y consumidores de la API al garantizar que las funcionalidades existentes sigan funcionando como se espera.
+- **Prevención de errores**: Ayudar a identificar y corregir errores que podrían introducirse accidentalmente al realizar cambios.
+- **Mejora de la calidad**: Contribuir a una mayor calidad del producto final al garantizar que la API sea robusta y confiable.
+
+
+
+<h2 align="center" style="color: #007bff;">Procedimientos de Prueba</h2>
+
+- **Diseño de Casos de Prueba**:
+  - Crear casos de prueba detallados que cubran todos los requisitos funcionales y no funcionales.
+  - Priorizar los casos de prueba en función del riesgo y la criticidad.
+- **Ejecución de Pruebas**:
+  - Ejecutar los casos de prueba de forma manual.
+  - Registrar los resultados de las pruebas, incluidos los casos de prueba ejecutados, los defectos encontrados y el estado de las pruebas.
+- **Seguimiento de Defectos**:
+  - Registrar y rastrear los defectos utilizando ClickUp.
+  - Asignar los defectos a los desarrolladores para su corrección mediante ClickUp.
+  - Verificar las correcciones de defectos y volver a probar las áreas afectadas.
+- **Informes de Pruebas**:
+  - Generar informes de pruebas completos que resuman los resultados de las pruebas, los defectos encontrados y la cobertura general de las pruebas.
+  - Compartir los informes de pruebas con el equipo de desarrollo y las partes interesadas del proyecto.
+
+<h2 align="center" style="color: #007bff;">Responsabilidades del Equipo de QA</h2>
+
+- Diseñar y ejecutar casos de prueba.
+- Identificar y reportar defectos.
+- Colaborar con los desarrolladores para resolver problemas.
+- Realizar pruebas de regresión después de los cambios de código.
+- Garantizar la calidad y fiabilidad de la aplicación.
+
+
+
+<h2 align="center" style="color: #007bff;">Notas Adicionales</h2>
+
+- **Colaboración**: La estrecha colaboración con el equipo de desarrollo fue esencial para una QA efectiva.
+- **Mejora Continua**: Revisar y perfeccionar periódicamente el proceso de QA para mejorar su eficacia.
+- **Swagger 📝**: Herramienta para documentar APIs REST, facilitando la integración y pruebas.
+- **Visual Studio Code**: Editor de código fuente.
+- **ClickUp**: Software de gestión de proyectos con funciones que incluyen tareas.
+
+<p align="center">
+Siguiendo estas pautas y manteniendo un fuerte enfoque en la calidad, el equipo de QA contribuyó al éxito del proyecto del Policonsultorio Medilink. Este documento puede ser adaptado y ampliado para satisfacer las necesidades específicas de tu proyecto.
+</p>
 
 
    <br /> 
