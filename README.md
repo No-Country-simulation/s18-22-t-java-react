@@ -92,7 +92,7 @@
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/15c9c38451f59741b4560f1771136003e47ffd8b/PM/ISOTIPO.png" alt="Logo" width="100" height="100">
 </p> 
 
-![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/d1be46f721a1b68d1dff90e48f3ba854c5617f2d/PM/BACK-END-SINFONDO.png)
+![Tecnologías utilizadas](https://github.com/No-Country-simulation/s18-22-t-java-react/blob/88245e648fccf69e7a03062dab9a918555df8d2f/PM/backend.png)
 - **Java Spring Boot** 🌱: Framework robusto de Java para construir aplicaciones web rápidas y escalables.
 - **Swagger** 📝: Herramienta para documentar APIs REST, facilitando la integración y pruebas.
 - **MySQL** 💾: Base de datos relacional que permite almacenar y gestionar datos estructurados.
