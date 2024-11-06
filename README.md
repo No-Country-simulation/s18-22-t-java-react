@@ -1,5 +1,4 @@
 
-
 <p align="center">
   <img src="https://github.com/No-Country-simulation/s18-22-t-java-react/blob/67a5029a2d0f33247f9fb98e9d75b47af3baf8a1/PM/logo001.png"
 </p>
@@ -35,7 +34,7 @@
 
 
 
-  ### Características Principales
+  ### Características Principales 
 
 - **Gestión de Citas**: Permite agendar, modificar y cancelar citas de manera sencilla.
 - **Control de Pacientes**: Registra datos personales y médicos de cada paciente.
@@ -229,10 +228,9 @@ Gracias a este stack de frontend, **Policonsultorio** ofrece una interfaz fácil
   <p align="center">
     El equipo de QA se centrará en las siguientes áreas:
 📋 Pruebas Funcionales: 
-⦁	Verificar que todas las características y funcionalidades funcionen como se espera.
-⦁	Probar diferentes escenarios de usuario y casos límite.
-⦁	Asegurar la correcta entrada y salida de datos.
-
+⦁    Verificar que todas las características y funcionalidades funcionen como se espera.
+⦁    Probar diferentes escenarios de usuario y casos límite.
+⦁    Asegurar la correcta entrada y salida de datos.
 
 
 <h2 align="center" style="color: #007bff;">📋 Pruebas Funcionales</h2>
@@ -559,7 +557,6 @@ Estas herramientas permiten al **Project Manager** gestionar el cronograma, cont
       </tr>
     </tbody>
   </table>
-
 
 
 
