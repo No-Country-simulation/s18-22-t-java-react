@@ -18,6 +18,7 @@ import policonsultorio.demo.repository.DoctorRepository;
 import policonsultorio.demo.repository.PatientRepository;
 import policonsultorio.demo.repository.WaitingQueueRepository;
 import policonsultorio.demo.service.AppointmentService;
+import policonsultorio.demo.service.Appointments.AppointmentValidator;
 import policonsultorio.demo.service.IWaitingQueue;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
@@ -40,6 +41,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final IWaitingQueue waitingQueueService;
     private final WaitingQueueRepository waitingQueueRepository;
     private final AppointmentMapper appointmentMapper;
+    private final List<AppointmentValidator> validators;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
 
@@ -50,79 +52,26 @@ public class AppointmentServiceImpl implements AppointmentService {
         Doctor doctor = doctorRepository.findById(appointmentRequestDto.id_doctor())
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
 
-        if(!doctor.getActive()){
-            throw new DoctorNotActiveException("Doctor not active");
-        }
-
+        // Obtener Paciente y validar su existencia
         Patient patient = patientRepository.findByUserId(Long.valueOf(appointmentRequestDto.id_patient()));
         if (patient == null) {
             throw new PatientNotFoundException("Patient not found");
         }
 
-        /*if(!patient.getActive()){
-            throw new PatientNotActiveException("Patient not active");
-        }*/
-
-
-        //verificar si el paciente ya tiene una cita pendiente con este doctor
-        boolean patientHasPendingAppointmentWithDoctor = appointmentRepository.existsByPatientAndDoctorAndStatus(
-                patient, doctor, AppointmentStatus.PROGRAMADA);
-
-        if (patientHasPendingAppointmentWithDoctor) {
-            throw new AppointmentAlreadyBookedException("You already have a pending appointment with this doctor. Please complete or cancel the current appointment before booking a new one.");
+        // Ejecutar todas las validaciones
+        for (AppointmentValidator validator : validators) {
+            validator.validate(appointmentRequestDto, doctor, patient);
         }
 
+        // Calcular horario final
+        LocalTime calculatedEndTime = appointmentRequestDto.startTime().plusMinutes(30);
 
-        //verificar si el paciente ya tiene una cita con este doctor
-        boolean patientAlreadyHasAppointment = appointmentRepository.existsByDoctorAndPatientAndDate(
-                doctor, patient, appointmentRequestDto.date());
-
-        if (patientAlreadyHasAppointment) {
-            throw new PatientAlreadyHasAppointmentException("Patient already has an appointment with this doctor on the same day.");
-        }
-
-        //verificar si el paciente ya tiene una cita con otro doctor en el mismo horario
-        boolean patientHasConflictWithOtherDoctor = appointmentRepository.existsByPatientAndDateAndTimeConflict(
-                patient, appointmentRequestDto.date(), appointmentRequestDto.startTime(), appointmentRequestDto.startTime().plusMinutes(30));
-
-        if (patientHasConflictWithOtherDoctor) {
-            throw new AppointmentTimeConflictException("Patient already has an appointment with another doctor in this time slot.");
-        }
-
-        LocalDateTime appointmentDateTime = LocalDateTime.of(appointmentRequestDto.date(), appointmentRequestDto.startTime());
-        LocalDateTime currentTime = LocalDateTime.now();
-
-        if (appointmentDateTime.isBefore(currentTime)) {
-            throw new AppointmentDateException("The appointment time cannot be in the past. Please select a future time.");
-        }
-
-        if (!TimeSlot.isValidTime(appointmentRequestDto.startTime())) {
-            throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
-        }
-
-        if(appointmentRequestDto.date().isBefore(LocalDate.now())){
-            throw new AppointmentDateException("The appointment date cannot be in the past. Please select a future date.");
-        }
-
-        calculatedEndTime = appointmentRequestDto.startTime().plusMinutes(30);
-
-        if (appointmentRequestDto.startTime().isAfter(calculatedEndTime)) {
-            throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
-        }
-
-        // Verifica si hay otra cita en el mismo horario
-        boolean existsAppointment = appointmentRepository.existsByDoctorAndDateAndTimeConflict(
-                doctor, appointmentRequestDto.date(), appointmentRequestDto.startTime(), calculatedEndTime);
-
-        if (existsAppointment) {
-            throw new AppointmentAlreadyBookedException("Doctor already has an appointment in this time slot");
-        }
-
+        // Crear y guardar la cita
         AppointmentEntity entity = AppointmentMapper.toEntity(appointmentRequestDto, doctor, patient);
         entity.setEndTime(calculatedEndTime);
-
         entity = appointmentRepository.save(entity);
 
+        // Retornar la respuesta
         return AppointmentMapper.toDto(entity);
     }
 
