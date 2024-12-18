@@ -1,0 +1,21 @@
+package policonsultorio.demo.service.Appointments;
+
+import policonsultorio.demo.dto.appointment.AppointmentRescheduleDto;
+import policonsultorio.demo.entity.AppointmentEntity;
+import policonsultorio.demo.util.exception.appointment.AppointmentTimeRestrictionException;
+
+import java.time.LocalDateTime;
+
+public class RescheduleTimeRestrictionValidator implements AppointmentValidator{
+    @Override
+    public void validateForReschedule(AppointmentEntity appointment, AppointmentRescheduleDto rescheduleDto) {
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
+
+        if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
+            throw new AppointmentTimeRestrictionException(
+                    "Appointments can only be rescheduled with at least 24 hours in advance."
+            );
+        }
+    }
+}

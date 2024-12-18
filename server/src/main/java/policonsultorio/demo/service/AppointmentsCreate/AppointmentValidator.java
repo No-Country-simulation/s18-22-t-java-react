@@ -1,4 +1,4 @@
-package policonsultorio.demo.service.Appointments;
+package policonsultorio.demo.service.AppointmentsCreate;
 
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;
 import policonsultorio.demo.entity.Doctor;

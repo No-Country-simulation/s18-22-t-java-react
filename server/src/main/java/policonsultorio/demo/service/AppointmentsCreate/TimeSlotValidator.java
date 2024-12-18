@@ -1,4 +1,4 @@
-package policonsultorio.demo.service.Appointments;
+package policonsultorio.demo.service.AppointmentsCreate;
 
 import java.time.LocalTime;
 

@@ -1,4 +1,4 @@
-package policonsultorio.demo.service.Appointments;
+package policonsultorio.demo.service.AppointmentsCreate;
 
 import org.springframework.stereotype.Component;
 import policonsultorio.demo.dto.appointment.AppointmentRequestDto;

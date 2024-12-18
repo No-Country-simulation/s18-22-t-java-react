@@ -1,4 +1,4 @@
-package policonsultorio.demo.service.Appointments;
+package policonsultorio.demo.service.AppointmentsCreate;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -9,8 +9,6 @@ import policonsultorio.demo.repository.AppointmentRepository;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.exception.appointment.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Component

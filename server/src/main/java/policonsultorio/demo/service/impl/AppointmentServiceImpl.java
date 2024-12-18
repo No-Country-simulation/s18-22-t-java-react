@@ -17,8 +17,9 @@ import policonsultorio.demo.repository.AppointmentRepository;
 import policonsultorio.demo.repository.DoctorRepository;
 import policonsultorio.demo.repository.PatientRepository;
 import policonsultorio.demo.repository.WaitingQueueRepository;
+import policonsultorio.demo.service.AppointmentReschedule.RescheduleAppointmentValidator;
 import policonsultorio.demo.service.AppointmentService;
-import policonsultorio.demo.service.Appointments.AppointmentValidator;
+import policonsultorio.demo.service.AppointmentsCreate.AppointmentValidator;
 import policonsultorio.demo.service.IWaitingQueue;
 import policonsultorio.demo.util.Enum.AppointmentStatus;
 import policonsultorio.demo.util.Enum.TimeSlot;
@@ -42,6 +43,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final WaitingQueueRepository waitingQueueRepository;
     private final AppointmentMapper appointmentMapper;
     private final List<AppointmentValidator> validators;
+    private final List<RescheduleAppointmentValidator> rescheduleValidators;
 
     LocalTime calculatedEndTime = LocalTime.ofSecondOfDay(0);
 
@@ -80,52 +82,20 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentResponseDto rescheduleAppointment(int id, AppointmentRescheduleDto rescheduleDto) {
         AppointmentEntity appointment = findAppointmentById(id);
 
-        if (appointment.getStatus() == AppointmentStatus.CANCELADA) {
-            throw new AppointmentAlreadyCancelledException("Cannot reschedule a cancelled appointment");
+        // Validar reglas generales
+        for (RescheduleAppointmentValidator validator : rescheduleValidators) {
+            validator.validate(appointment, rescheduleDto);
         }
 
-        if (appointment.getStatus() == AppointmentStatus.COMPLETADA) {
-            throw new AppointmentAlreadyCompletedException("Cannot reschedule a completed appointment");
-        }
+        // Calcular horario final
+        LocalTime calculatedEndTime = rescheduleDto.newStartTime().plusMinutes(30);
 
-        LocalDateTime appointmentDateTime = LocalDateTime.of(appointment.getDate(), appointment.getStartTime());
-        LocalDateTime currentTime = LocalDateTime.now();
-
-        if (appointmentDateTime.isBefore(currentTime.plusHours(24))) {
-            throw new AppointmentTimeRestrictionException("Appointments can only be rescheduled with at least 24 hours in advance.");
-        }
-
-        LocalDateTime newAppointmentDateTime = LocalDateTime.of(rescheduleDto.newDate(), rescheduleDto.newStartTime());
-
-        if (newAppointmentDateTime.isBefore(currentTime)) {
-            throw new AppointmentDateException("The new appointment time cannot be in the past. Please select a future time.");
-        }
-
-
-        if (!TimeSlot.isValidTime(rescheduleDto.newStartTime())) {
-            throw new RuntimeException("The start time must be a valid time between 07:00 and 18:00 (e.g., 10:00, 10:30, etc.).");
-        }
-
-        if (rescheduleDto.newDate().isBefore(LocalDate.now())) {
-            throw new AppointmentDateException("The appointment date cannot be in the past. Please select a future date.");
-        }
-
-        calculatedEndTime = rescheduleDto.newStartTime().plusMinutes(30);
-
-        if (rescheduleDto.newStartTime().isAfter(calculatedEndTime)) {
-            throw new AppointmentTimeException("The start time must be before the end time. Please adjust the time range.");
-        }
-
-
-        // Verifica si hay otra cita en el mismo horario
-        if (appointmentRepository.existsByDoctorAndDateAndTimeConflict(
-                appointment.getDoctor(), rescheduleDto.newDate(), rescheduleDto.newStartTime(), calculatedEndTime)) {
-            throw new AppointmentConflictException("Doctor already has an appointment at the specified time");
-        }
-
+        // Actualizar datos de la cita
         appointment.setDate(rescheduleDto.newDate());
         appointment.setStartTime(rescheduleDto.newStartTime());
         appointment.setEndTime(calculatedEndTime);
+
+        // Guardar cambios
         appointment = appointmentRepository.save(appointment);
 
         return AppointmentMapper.toDto(appointment);
